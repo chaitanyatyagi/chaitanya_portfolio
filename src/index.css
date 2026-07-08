@@ -1,0 +1,94 @@
+* { box-sizing: border-box; }
+
+:root {
+  /* Horizontal section padding — shrinks on small screens.
+     Used inside inline styles as `var(--px)`. */
+  --px: 40px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: 'Geist', system-ui, sans-serif;
+  background: #faf8f4;
+  color: #1a1714;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection { background: #ff6b35; color: #fff; }
+
+a { color: inherit; }
+
+@keyframes floatUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: .35; }
+}
+
+@keyframes flowDash {
+  to { stroke-dashoffset: -24; }
+}
+
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-thumb { background: #ded8cc; border-radius: 20px; }
+
+/* --- Scroll-reveal ------------------------------------------------------ */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+.reveal-in {
+  opacity: 1;
+  transform: none; /* fully cleared so position:sticky inside still works */
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  html { scroll-behavior: auto; }
+}
+
+/* --- Micro-interactions ------------------------------------------------- */
+.btn-lift { transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease; }
+.btn-lift:hover { transform: translateY(-2px); }
+
+.chip-lift { transition: transform .15s ease, border-color .15s ease; }
+.chip-lift:hover { transform: translateY(-2px); border-color: #ff6b35 !important; }
+
+.card-lift { transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease; }
+.card-lift:hover {
+  transform: translateY(-3px);
+  border-color: #ffd9c7 !important;
+  box-shadow: 0 16px 34px -22px rgba(26, 23, 20, .25);
+}
+
+/* --- Projects ------------------------------------------------------------ */
+.project-card:hover .project-link { color: #ff6b35 !important; }
+
+/* --- Responsive --------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .chapters-grid { grid-template-columns: repeat(3, 1fr) !important; }
+}
+
+@media (max-width: 900px) {
+  :root { --px: 24px; }
+  .grid-collapse { grid-template-columns: 1fr !important; }
+  .xp-rail { display: none !important; }
+  .xp-row { grid-template-columns: 1fr !important; }
+  .xp-grid { grid-template-columns: 1fr !important; }
+  .nav-links { display: none !important; }
+  .nav-burger { display: flex !important; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  .chapters-grid { grid-template-columns: repeat(2, 1fr) !important; }
+}
+
+@media (max-width: 560px) {
+  :root { --px: 18px; }
+  .nav-resume { display: none !important; }
+  .chapters-grid { grid-template-columns: 1fr !important; }
+  h2 { font-size: 28px !important; }
+}
