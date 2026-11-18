@@ -57,31 +57,40 @@ function EditProfile({ user, onSaved, onCancel }) {
   );
 }
 
-function IdentityCard({ data, onUserChange }) {
+function ProfileHeader({ data, onUserChange }) {
   const { user, stats } = data;
   const [editing, setEditing] = useState(false);
   return (
-    <section className="pf-pcard">
-      <div className="pf-pavatar">{initials(user.name)}</div>
+    <header className="pf-phead">
+      <div className="pf-pavatar" aria-hidden="true">{initials(user.name)}</div>
       {editing ? (
-        <EditProfile
-          user={user}
-          onCancel={() => setEditing(false)}
-          onSaved={(u) => { setEditing(false); onUserChange(u); }}
-        />
+        <div className="pf-phead-id">
+          <EditProfile user={user} onCancel={() => setEditing(false)} onSaved={(u) => { setEditing(false); onUserChange(u); }} />
+        </div>
       ) : (
-        <>
+        <div className="pf-phead-id">
           <h1 className="pf-pname">{user.name}</h1>
-          <div className="pf-meta">@{user.username}</div>
-          {user.headline && <p className="pf-pheadline">{user.headline}</p>}
-          <div className="pf-prank">
-            <div><span className="pf-meta">Rank</span><b>{stats.rank ? `#${stats.rank.toLocaleString()}` : 'Unranked'}</b></div>
-            <div><span className="pf-meta">Points</span><b>{stats.points.toLocaleString()}</b></div>
+          <div className="pf-phead-meta">
+            <span>@{user.username}</span>
+            <span>joined {new Date(user.joinedAt).toLocaleDateString(undefined, { month: 'long', year: 'numeric' })}</span>
           </div>
-          <div className="pf-meta" style={{ marginTop: 12 }}>Joined {new Date(user.joinedAt).toLocaleDateString(undefined, { month: 'long', year: 'numeric' })}</div>
-          {user.isMe && <button className="pf-btn pf-btn-ghost pf-btn-sm" style={{ marginTop: 14, width: '100%', justifyContent: 'center' }} onClick={() => setEditing(true)}>Edit profile</button>}
-        </>
+          {user.headline && <p className="pf-pheadline">{user.headline}</p>}
+          {user.isMe && <button className="pf-btn pf-btn-ghost pf-btn-sm pf-phead-edit" onClick={() => setEditing(true)}>Edit profile</button>}
+        </div>
       )}
+      <dl className="pf-phead-score">
+        <div><dt>Global rank</dt><dd>{stats.rank ? `#${stats.rank.toLocaleString()}` : '—'}</dd><small>{stats.rank ? `of ${stats.totalUsers.toLocaleString()} learners` : 'solve a problem to rank'}</small></div>
+        <div><dt>Points</dt><dd>{stats.points.toLocaleString()}</dd><small>practice, first Accepted only</small></div>
+      </dl>
+    </header>
+  );
+}
+
+function Section({ title, meta, children, className = '' }) {
+  return (
+    <section className={`pf-psec ${className}`}>
+      <h2 className="pf-psec-head"><span>{title}</span>{meta && <span className="pf-meta">{meta}</span>}</h2>
+      {children}
     </section>
   );
 }
@@ -89,95 +98,88 @@ function IdentityCard({ data, onUserChange }) {
 function Badges({ badges }) {
   const earned = badges.filter((b) => b.earned);
   return (
-    <section className="pf-pcard">
-      <h2 className="pf-ph2">Badges <span className="pf-meta">{earned.length}/{badges.length}</span></h2>
-      <div className="pf-badges">
+    <Section title="Badges" meta={`${earned.length} of ${badges.length}`}>
+      <ul className="pf-blist">
         {badges.map((b) => (
-          <div key={b.id} className={`pf-badge-item${b.earned ? ' is-earned' : ''}`} title={`${b.name} — ${b.description}${b.earned ? '' : ' (locked)'}`}>
-            <span className="pf-badge-icon" aria-hidden="true">{b.earned ? '★' : '☆'}</span>
+          <li key={b.id} className={b.earned ? 'is-earned' : ''} title={b.earned ? b.description : `${b.description} (locked)`}>
+            <span className="pf-blist-mark" aria-hidden="true">{b.earned ? '●' : '○'}</span>
             <span><b>{b.name}</b><span>{b.description}</span></span>
-          </div>
+          </li>
         ))}
-      </div>
-    </section>
+      </ul>
+    </Section>
   );
 }
 
 function Skills({ skills }) {
   const byTrack = useMemo(() => {
     const m = {};
-    for (const s of skills.topics) (m[s.track] ||= []).push(s);
+    for (const x of skills.topics) (m[x.track] ||= []).push(x);
     return m;
   }, [skills]);
   return (
-    <section className="pf-pcard">
-      <h2 className="pf-ph2">Skills</h2>
+    <Section title="Skills">
       {!skills.topics.length && <p className="pf-meta">Skills appear as you solve problems.</p>}
-      {Object.entries(byTrack).map(([track, list]) => (
-        <div key={track} className="pf-skill-group">
-          <div className="pf-side-label" style={{ margin: '12px 0 6px' }}>{track}</div>
-          {list.map((s) => <span key={s.name} className="pf-chip">{s.name} <b>×{s.count}</b></span>)}
-        </div>
-      ))}
-      {skills.patterns.length > 0 && (
-        <div className="pf-skill-group">
-          <div className="pf-side-label" style={{ margin: '12px 0 6px' }}>Patterns</div>
-          {skills.patterns.map((p) => <span key={p.name} className="pf-chip pf-chip-pattern">{p.name} <b>×{p.count}</b></span>)}
-        </div>
-      )}
-    </section>
-  );
-}
-
-function StatTiles({ stats, calendar }) {
-  const tiles = [
-    ['Points', stats.points.toLocaleString()],
-    ['Global rank', stats.rank ? `#${stats.rank.toLocaleString()}` : '—', stats.rank ? `of ${stats.totalUsers.toLocaleString()} learners` : 'solve a problem to rank'],
-    ['Acceptance', stats.acceptance != null ? `${stats.acceptance}%` : '—', `${stats.accepted}/${stats.submissions} submissions`],
-    ['First-try solves', stats.firstTry],
-    ['Current streak', `${calendar.currentStreak} day${calendar.currentStreak === 1 ? '' : 's'}`],
-    ['Longest streak', `${calendar.maxStreak} day${calendar.maxStreak === 1 ? '' : 's'}`],
-  ];
-  return (
-    <div className="pf-tiles">
-      {tiles.map(([label, value, sub]) => (
-        <div key={label} className="pf-tile"><span>{label}</span><b>{value}</b>{sub && <small>{sub}</small>}</div>
-      ))}
-    </div>
-  );
-}
-
-function SolvedCard({ stats }) {
-  return (
-    <section className="pf-pcard pf-solved">
-      <SolvedRing solved={stats.solved.total} total={stats.available.total} />
-      <div className="pf-solved-bars">
-        {['Easy', 'Medium', 'Hard'].map((d) => (
-          <div key={d} className="pf-solved-row">
-            <div className="pf-solved-head"><Difficulty level={d} /><span className="pf-meta"><b>{stats.solved[d]}</b> / {stats.available[d]}</span></div>
-            <div className={`pf-progress pf-progress-${d.toLowerCase()}`}><span style={{ width: `${stats.available[d] ? (stats.solved[d] / stats.available[d]) * 100 : 0}%` }} /></div>
+      <dl className="pf-facts pf-facts-col">
+        {Object.entries(byTrack).map(([track, list]) => (
+          <div key={track}>
+            <dt>{track}</dt>
+            <dd>{list.map((x, i) => <span key={x.name}>{i > 0 && <span className="pf-facts-sep">·</span>}{x.name} <span className="pf-count">×{x.count}</span></span>)}</dd>
           </div>
         ))}
-        <div className="pf-meta">{stats.attempting} attempting</div>
-      </div>
-    </section>
+        {skills.patterns.length > 0 && (
+          <div>
+            <dt>patterns</dt>
+            <dd className="is-stacked">{skills.patterns.map((x) => <span key={x.name}>{x.name} <span className="pf-count">×{x.count}</span></span>)}</dd>
+          </div>
+        )}
+      </dl>
+    </Section>
   );
 }
 
-function TrackCard({ byTrack }) {
+function StatStrip({ stats, calendar }) {
+  const items = [
+    ['Solved', `${stats.solved.total}`, `of ${stats.available.total} problems`],
+    ['Acceptance', stats.acceptance != null ? `${stats.acceptance}%` : '—', `${stats.accepted} of ${stats.submissions} submissions`],
+    ['First-try solves', stats.firstTry, 'accepted on attempt one'],
+    ['Current streak', `${calendar.currentStreak}d`, `longest ${calendar.maxStreak} day${calendar.maxStreak === 1 ? '' : 's'}`],
+  ];
   return (
-    <section className="pf-pcard">
-      <h2 className="pf-ph2">Tracks</h2>
-      <div className="pf-trackbars">
-        {byTrack.map((t) => (
-          <a key={t.id} href={`/practice/${t.id}`} className="pf-trackbar">
-            <span className="pf-trackbar-name"><Icon name={TRACK_ICONS[t.id] || 'code'} size={15} /> {t.title}</span>
-            <ProgressBar pct={t.total ? (t.solved / t.total) * 100 : 0} style={{ flex: 1 }} />
-            <span className="pf-meta">{t.solved}/{t.total} · {t.points} pts</span>
-          </a>
-        ))}
+    <dl className="pf-pstrip">
+      {items.map(([label, value, sub]) => (
+        <div key={label}><dt>{label}</dt><dd>{value}</dd><small>{sub}</small></div>
+      ))}
+    </dl>
+  );
+}
+
+function Progress({ stats, byTrack }) {
+  return (
+    <Section title="Progress" meta={`${stats.attempting} attempting`}>
+      <div className="pf-pprogress">
+        <div className="pf-solved">
+          <SolvedRing solved={stats.solved.total} total={stats.available.total} />
+          <div className="pf-solved-bars">
+            {['Easy', 'Medium', 'Hard'].map((d) => (
+              <div key={d} className="pf-solved-row">
+                <div className="pf-solved-head"><Difficulty level={d} /><span className="pf-meta"><b>{stats.solved[d]}</b> / {stats.available[d]}</span></div>
+                <div className={`pf-progress pf-progress-${d.toLowerCase()}`}><span style={{ width: `${stats.available[d] ? (stats.solved[d] / stats.available[d]) * 100 : 0}%` }} /></div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="pf-trackbars">
+          {byTrack.map((t) => (
+            <a key={t.id} href={`/practice/${t.id}`} className="pf-trackbar">
+              <span className="pf-trackbar-name"><Icon name={TRACK_ICONS[t.id] || 'code'} size={15} /> {t.title}</span>
+              <ProgressBar pct={t.total ? (t.solved / t.total) * 100 : 0} style={{ flex: 1 }} />
+              <span className="pf-meta">{t.solved}/{t.total} · {t.points} pts</span>
+            </a>
+          ))}
+        </div>
       </div>
-    </section>
+    </Section>
   );
 }
 
@@ -185,8 +187,8 @@ function Activity({ data }) {
   const [tab, setTab] = useState('accepted');
   const { recentAccepted, recentSubmissions, user } = data;
   return (
-    <section className="pf-pcard">
-      <div className="pf-ws-tabs pf-ptabs">
+    <section className="pf-psec">
+      <div className="pf-psec-head pf-ptabs">
         <button className={tab === 'accepted' ? 'is-active' : ''} onClick={() => setTab('accepted')}>Recent solves</button>
         {user.isMe && <button className={tab === 'all' ? 'is-active' : ''} onClick={() => setTab('all')}>My submissions</button>}
       </div>
@@ -196,7 +198,7 @@ function Activity({ data }) {
             {recentAccepted.map((r) => (
               <li key={r.problemId}>
                 <a href={`/practice/${r.track}/${r.problemId}`}><b>{r.title}</b></a>
-                <span className="pf-chip">{r.track}</span>
+                <span className="pf-meta">{r.track}</span>
                 <Difficulty level={r.difficulty} />
                 <span className="pf-meta">+{r.points} pts · {ago(r.at)}</span>
               </li>
@@ -220,8 +222,8 @@ function Activity({ data }) {
 
 function Learning({ learning }) {
   return (
-    <section className="pf-pcard">
-      <h2 className="pf-ph2">Learning <span className="pf-meta">{learning.modulesCompleted} modules completed</span></h2>
+    <section className="pf-psec">
+      <h2 className="pf-psec-head"><span>Learning</span><span className="pf-meta">{learning.modulesCompleted} modules completed</span></h2>
       <div className="pf-trackbars">
         {learning.courses.map((c) => (
           <a key={c.id} href={`/learn/${c.id}`} className="pf-trackbar">
@@ -238,8 +240,8 @@ function Learning({ learning }) {
 // Contest record — separate from practice points (docs §12.4).
 function Contests({ contests }) {
   return (
-    <section className="pf-pcard">
-      <h2 className="pf-ph2"><span>Contests</span><a className="pf-link-arrow" href="/contests">Contests →</a></h2>
+    <section className="pf-psec">
+      <h2 className="pf-psec-head"><span>Contests</span><a className="pf-link-arrow" href="/contests">Open contests →</a></h2>
       <div className="pf-contest-stats">
         <div><span className="pf-meta">Played</span><b>{contests.played}</b></div>
         <div><span className="pf-meta">Contest score</span><b>{contests.score.toLocaleString()}</b></div>
@@ -284,33 +286,28 @@ function ProfileView({ username }) {
     <PlatformLayout title={data ? `${data.user.name} (@${data.user.username})` : 'Profile'}>
       <LoadState loading={!data && !error} error={error} label="Loading profile…">
         {data && (
-          <div className="pf-wrap pf-profile">
-            <aside className="pf-profile-side">
-              <IdentityCard data={data} onUserChange={onUserChange} />
-              <Badges badges={data.badges} />
-              <Skills skills={data.skills} />
-            </aside>
-            <main className="pf-profile-main">
-              <StatTiles stats={data.stats} calendar={data.calendar} />
-              <div className="pf-profile-row">
-                <SolvedCard stats={data.stats} />
-                <TrackCard byTrack={data.byTrack} />
+          <div className="pf-wrap pf-pv2">
+            <ProfileHeader data={data} onUserChange={onUserChange} />
+            <StatStrip stats={data.stats} calendar={data.calendar} />
+            <div className="pf-pgrid">
+              <div className="pf-pmain">
+                <Progress stats={data.stats} byTrack={data.byTrack} />
+                <Section title={<><b>{data.calendar.total}</b> submissions in the past year</>}
+                  meta={`${data.calendar.activeDays} active days · max streak ${data.calendar.maxStreak} · ${data.calendar.timezone}`}>
+                  <div className="pf-pframe"><ActivityCalendar days={data.calendar.days} today={data.calendar.today} /></div>
+                </Section>
+                <Section title="Points over time" meta={`${data.stats.points} total`}>
+                  <div className="pf-pframe"><PointsChart timeline={data.pointsTimeline} today={data.calendar.today} /></div>
+                </Section>
+                <Activity data={data} />
+                <Contests contests={data.contests} />
+                <Learning learning={data.learning} />
               </div>
-              <section className="pf-pcard">
-                <h2 className="pf-ph2">
-                  <span><b>{data.calendar.total}</b> submissions in the past year</span>
-                  <span className="pf-meta">Active days {data.calendar.activeDays} · Max streak {data.calendar.maxStreak} · {data.calendar.timezone}</span>
-                </h2>
-                <ActivityCalendar days={data.calendar.days} today={data.calendar.today} />
-              </section>
-              <section className="pf-pcard">
-                <h2 className="pf-ph2"><span>Points over time</span><span className="pf-meta">{data.stats.points} total</span></h2>
-                <PointsChart timeline={data.pointsTimeline} today={data.calendar.today} />
-              </section>
-              <Contests contests={data.contests} />
-              <Activity data={data} />
-              <Learning learning={data.learning} />
-            </main>
+              <aside className="pf-pside">
+                <Skills skills={data.skills} />
+                <Badges badges={data.badges} />
+              </aside>
+            </div>
           </div>
         )}
       </LoadState>

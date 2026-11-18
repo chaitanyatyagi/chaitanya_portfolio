@@ -4,6 +4,7 @@ import { useAuth } from '../auth/AuthContext.jsx';
 import { useApi, useCatalog } from '../lib/useApi.js';
 import { LoadState } from '../learn/components.jsx';
 import { PracticeTabs, Difficulty, StatusIcon } from './ui.jsx';
+import Dropdown from '../platform/Dropdown.jsx';
 
 const DIFFICULTIES = ['Easy', 'Medium', 'Hard'];
 const problemUrl = (track, p) => `/practice/${track.id}/${p.id}`;
@@ -65,6 +66,12 @@ function CodingTrack({ track, courses }) {
       && (!q || `${p.title} ${p.summary} ${p.topics.join(' ')} ${(p.patterns || []).join(' ')} ${(p.domains || []).join(' ')} ${(p.companies || []).join(' ')}`.toLowerCase().includes(q));
   });
   const solved = problems.filter((p) => p.status === 'solved').length;
+  const filtersOn = topic !== 'All' || difficulty !== 'All' || status !== 'All' || pattern !== 'All'
+    || company !== 'All' || role !== 'All' || interviewOnly || query.trim() !== '';
+  const clearFilters = () => {
+    setTopic('All'); setDifficulty('All'); setStatus('All'); setPattern('All');
+    setCompany('All'); setRole('All'); setInterviewOnly(false); setQuery('');
+  };
 
   return (
     <>
@@ -105,46 +112,47 @@ function CodingTrack({ track, courses }) {
         </aside>
 
         <div style={{ minWidth: 0 }}>
-          <div className="pf-filters">
-            <input className="pf-input" type="search" placeholder="Search problems…" value={query} onChange={(e) => setQuery(e.target.value)} aria-label="Search problems" />
-            <div className="pf-filter-group" role="group" aria-label="Difficulty">
-              {['All', ...DIFFICULTIES].map((d) => (
-                <button key={d} className={`pf-pill${difficulty === d ? ' is-active' : ''}`} onClick={() => setDifficulty(d)}>
-                  {d === 'All' ? 'All' : d}
-                </button>
-              ))}
+          <div className="pf-toolbar">
+            <label className="pf-search">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7" /><path d="M20 20l-3.5-3.5" /></svg>
+              <input type="search" placeholder={`Search ${problems.length || ''} problems by title, skill, pattern or company`} value={query} onChange={(e) => setQuery(e.target.value)} aria-label="Search problems" />
+            </label>
+            <div className="pf-toolbar-row">
+              <div className="pf-seg-tabs" role="group" aria-label="Difficulty">
+                {['All', ...DIFFICULTIES].map((d) => (
+                  <button key={d} className={difficulty === d ? 'is-active' : ''} aria-pressed={difficulty === d} onClick={() => setDifficulty(d)}>
+                    {d !== 'All' && <i className={`pf-dot-${d.toLowerCase()}`} aria-hidden="true" />}{d}
+                  </button>
+                ))}
+              </div>
+              <span className="pf-toolbar-sep" aria-hidden="true" />
+              <div className="pf-topic-mobile">
+                <Dropdown label="Topic" value={topic} onChange={setTopic} allLabel="All"
+                  options={[{ value: 'All', label: 'All topics', count: problems.length }, ...track.topics.map((t) => ({ value: t, label: t, count: counts[t] }))]} />
+              </div>
+              {allRoles.length > 0 && (
+                <Dropdown label="Role" value={role} onChange={setRole}
+                  options={[{ value: 'All', label: 'Any role' }, ...allRoles.map((r) => ({ value: r, label: r }))]} />
+              )}
+              {allCompanies.length > 0 && (
+                <Dropdown label="Company" value={company} onChange={setCompany}
+                  options={[{ value: 'All', label: 'Any company' }, ...allCompanies.map((c) => ({ value: c, label: c }))]} />
+              )}
+              {allPatterns.length > 0 && (
+                <Dropdown label="Pattern" value={pattern} onChange={setPattern}
+                  options={[{ value: 'All', label: 'Any pattern' }, ...allPatterns.map((p) => ({ value: p, label: p }))]} />
+              )}
+              <Dropdown label="Status" value={status} onChange={setStatus} align="right"
+                options={['All', 'Todo', 'Attempted', 'Solved'].map((x) => ({ value: x, label: x === 'All' ? 'Any status' : x }))} />
+              <button className={`pf-switch${interviewOnly ? ' is-on' : ''}`} role="switch" aria-checked={interviewOnly} onClick={() => setInterviewOnly((v) => !v)}>
+                <i aria-hidden="true" />Interview only
+              </button>
             </div>
-            {allRoles.length > 0 && (
-              <select className="pf-select" value={role} onChange={(e) => setRole(e.target.value)} aria-label="Role">
-                <option value="All">Any role</option>
-                {allRoles.map((r) => <option key={r} value={r}>{r}</option>)}
-              </select>
-            )}
-            <button className={`pf-pill${interviewOnly ? ' is-active' : ''}`} aria-pressed={interviewOnly} onClick={() => setInterviewOnly((v) => !v)}>Interview only</button>
-            {allCompanies.length > 0 && (
-              <select className="pf-select" value={company} onChange={(e) => setCompany(e.target.value)} aria-label="Company">
-                <option value="All">Any company</option>
-                {allCompanies.map((c) => <option key={c} value={c}>{c}</option>)}
-              </select>
-            )}
-            {allPatterns.length > 0 && (
-              <select className="pf-select" value={pattern} onChange={(e) => setPattern(e.target.value)} aria-label="Pattern">
-                <option value="All">Any pattern</option>
-                {allPatterns.map((p) => <option key={p} value={p}>{p}</option>)}
-              </select>
-            )}
-            <select className="pf-select" value={status} onChange={(e) => setStatus(e.target.value)} aria-label="Status">
-              {['All', 'Todo', 'Attempted', 'Solved'].map((s) => <option key={s} value={s}>{s === 'All' ? 'Any status' : s}</option>)}
-            </select>
           </div>
-          {/* Narrow screens: topics become a dropdown */}
-          <select className="pf-select pf-topic-select" value={topic} onChange={(e) => setTopic(e.target.value)} aria-label="Topic">
-            <option value="All">All topics ({problems.length})</option>
-            {track.topics.map((t) => <option key={t} value={t}>{t} ({counts[t]})</option>)}
-          </select>
 
           <div className="pf-results-row">
             <span>{filtered.length} of {problems.length} problems{topic !== 'All' ? ` · ${topic}` : ''}</span>
+            {filtersOn && <button className="pf-text-btn" onClick={clearFilters}>Clear filters</button>}
           </div>
 
           {list.loading ? (
@@ -158,13 +166,13 @@ function CodingTrack({ track, courses }) {
                 <a key={p.id} href={user ? problemUrl(track, p) : `/login?next=${encodeURIComponent(problemUrl(track, p))}`} className="pf-prow" role="row">
                   <StatusIcon status={p.status} />
                   <span className="pf-prow-title">
-                    <b>{p.title}{p.caseStudy && <i className="pf-case-chip">Case study · part {p.caseStudy.part}</i>}{!p.caseStudy && p.interview && <i className="pf-case-chip is-interview">Interview</i>}</b>
+                    <b>{p.title}{p.caseStudy && <i className="pf-case-chip">case study · part {p.caseStudy.part}</i>}{!p.caseStudy && p.interview && <i className="pf-case-chip is-interview">interview</i>}</b>
                     <span>{p.summary}</span>
-                    {p.companies?.length > 0 && <span className="pf-row-companies">Asked at {p.companies.join(' · ')}</span>}
+                    {p.companies?.length > 0 && <span className="pf-row-companies">Asked at {p.companies.join(', ')}</span>}
                   </span>
                   <span className="pf-prow-topics pf-hide-sm">
-                    {p.topics.slice(0, 2).map((t) => <span key={t} className="pf-chip">{t}</span>)}
-                    {p.patterns?.[0] && <span className="pf-chip pf-chip-pattern">{p.patterns[0]}</span>}
+                    <span className="pf-prow-skills">{p.topics.slice(0, 2).join(' · ')}</span>
+                    {p.patterns?.[0] && <span className="pf-prow-pattern">{p.patterns[0]}</span>}
                   </span>
                   <span className="pf-meta pf-hide-sm">{p.stats?.acceptance != null ? `${p.stats.acceptance}%` : '—'}</span>
                   <span className="pf-prow-diff"><Difficulty level={p.difficulty} /><span className="pf-meta">{p.points} pts</span></span>

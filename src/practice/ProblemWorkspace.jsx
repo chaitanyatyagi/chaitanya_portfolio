@@ -121,31 +121,46 @@ function ProblemTags({ problem, state, solved }) {
         <div><dt>Solved by</dt><dd>{s?.solvers ?? 0}</dd></div>
       </dl>
       {solved && <div className="pf-solved-flag">✓ You solved this</div>}
-      {problem.companies?.length > 0 && (
-        <div className="pf-tagrow">
-          <span className="pf-tagrow-label">Asked at</span>
-          {problem.companies.map((c) => {
-            const src = sourceFor(c);
-            return src
-              ? <a key={c} className="pf-chip pf-chip-company" href={src.url} target="_blank" rel="noreferrer" title={`Reported: ${src.label}`}>{c} ↗</a>
-              : <span key={c} className="pf-chip pf-chip-company">{c}</span>;
-          })}
-        </div>
-      )}
-      <TagRow label="Skills" items={problem.topics} />
-      <TagRow label="Patterns" items={problem.patterns} kind="pattern" />
-      <TagRow label="Domain" items={problem.domains} kind="domain" />
-      <TagRow label="Roles" items={problem.roles} />
+      <dl className="pf-facts">
+        {problem.companies?.length > 0 && (
+          <div>
+            <dt>Asked at</dt>
+            <dd>
+              {problem.companies.map((c, i) => {
+                const src = sourceFor(c);
+                return (
+                  <span key={c}>
+                    {i > 0 && <span className="pf-facts-sep">·</span>}
+                    {src
+                      ? <a href={src.url} target="_blank" rel="noreferrer" title={`Reported: ${src.label}`}>{c}<span aria-hidden="true"> ↗</span></a>
+                      : c}
+                  </span>
+                );
+              })}
+            </dd>
+          </div>
+        )}
+        <Fact label="Skills" items={problem.topics} />
+        <Fact label="Patterns" items={problem.patterns} stacked />
+        <Fact label="Domain" items={problem.domains} />
+        <Fact label="Roles" items={problem.roles} />
+      </dl>
     </div>
   );
 }
 
-function TagRow({ label, items, kind = '' }) {
+// One row of the brief's facts list: a label and plain text values.
+// Long values (patterns) stack one per line instead of wrapping into chips.
+function Fact({ label, items, stacked = false }) {
   if (!items?.length) return null;
   return (
-    <div className="pf-tagrow">
-      <span className="pf-tagrow-label">{label}</span>
-      {items.map((t) => <span key={t} className={`pf-chip${kind ? ` pf-chip-${kind}` : ''}`}>{t}</span>)}
+    <div>
+      <dt>{label}</dt>
+      <dd className={stacked ? 'is-stacked' : ''}>
+        {stacked
+          ? items.map((t) => <span key={t}>{t}</span>)
+          : items.map((t, i) => <span key={t}>{i > 0 && <span className="pf-facts-sep">·</span>}{t}</span>)}
+      </dd>
     </div>
   );
 }

@@ -19,7 +19,7 @@
 .ld-in { animation: ld-rise .9s cubic-bezier(.2, .7, .2, 1) both; }
 
 /* --- Hero ------------------------------------------------------------------------ */
-.ld-hero { padding: 80px 0 0; text-align: center; background: radial-gradient(ellipse 52% 46% at 50% 26%, var(--bg) 38%, rgba(244, 245, 242, 0) 78%); }
+.ld-hero { padding: 80px 0 0; text-align: center; background: radial-gradient(ellipse 50% 42% at 50% 24%, rgba(244, 245, 242, .92) 30%, rgba(244, 245, 242, 0) 80%); }
 .ld-pill { display: inline-flex; align-items: center; gap: 10px; font: 400 12px var(--font-mono); color: var(--ink-2); border: 1px solid var(--line-2); background: var(--surface); border-radius: 999px; padding: 6px 14px 6px 8px; }
 .ld-pill b { font-weight: 400; background: var(--accent-soft); color: var(--accent); border-radius: 999px; padding: 2px 8px; }
 .ld-sub { font-size: 19px; line-height: 1.55; color: var(--ink-2); margin: 22px auto 0; max-width: 620px; }
@@ -66,7 +66,7 @@
 .ld-verdict b { font-weight: 600; font-size: 24px; letter-spacing: -.03em; color: var(--accent); }
 
 /* --- Trust strip --------------------------------------------------------------------- */
-.ld-stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 72px; border-block: 1px solid var(--line-2); background: var(--bg); }
+.ld-stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 72px; border-block: 1px solid var(--line-2); }
 .ld-stats > div { padding: 26px 24px 24px; }
 .ld-stats > div:first-child { padding-left: 0; }
 .ld-stats > div + div { border-left: 1px solid var(--line-2); }
@@ -75,7 +75,7 @@
 
 /* --- Walkthrough --------------------------------------------------------------------- */
 .ld-walk { display: flex; flex-wrap: wrap; gap: 28px; align-items: stretch; }
-.ld-steps { flex: 1 1 300px; max-width: 380px; display: flex; flex-direction: column; border-top: 1px solid var(--line-2); background: var(--bg); }
+.ld-steps { flex: 1 1 300px; max-width: 380px; display: flex; flex-direction: column; border-top: 1px solid var(--line-2); }
 .ld-step { position: relative; text-align: left; font: inherit; color: var(--ink); background: transparent; border: none; border-bottom: 1px solid var(--line-2); padding: 20px 20px 22px; cursor: pointer; display: grid; grid-template-columns: 30px 1fr; gap: 6px 8px; transition: background .25s; }
 .ld-step:hover, .ld-step.is-on { background: var(--surface); }
 .ld-step-n { font: 12px var(--font-mono); color: var(--faint); padding-top: 3px; }
@@ -112,7 +112,7 @@
 
 /* --- Tracks table ---------------------------------------------------------------------- */
 .ld-tracks { overflow-x: auto; }
-.ld-tracks-inner { min-width: 760px; border-top: 1px solid var(--ink); background: var(--bg); }
+.ld-tracks-inner { min-width: 760px; border-top: 1px solid var(--ink); }
 .ld-trow { display: grid; grid-template-columns: 230px 110px minmax(0, 1fr) 150px 110px; gap: 16px; align-items: center; padding: 16px 12px; border-bottom: 1px solid var(--line-2); color: var(--ink); transition: background .2s; }
 .ld-trow-head { padding: 11px 12px; font: 11.5px var(--font-mono); color: var(--faint); }
 a.ld-trow:hover { background: var(--surface); }
@@ -151,7 +151,7 @@ a.ld-trow:hover .ld-go { color: var(--accent); }
 /* --- Paths + contests ------------------------------------------------------------------------- */
 .ld-duo { display: flex; flex-wrap: wrap; gap: 28px; }
 .ld-duo > div { flex: 1 1 440px; min-width: 0; display: flex; flex-direction: column; }
-.ld-paths { border-top: 1px solid var(--ink); background: var(--bg); }
+.ld-paths { border-top: 1px solid var(--ink); }
 .ld-path { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 6px 16px; padding: 18px 12px; border-bottom: 1px solid var(--line-2); color: var(--ink); transition: background .2s; }
 .ld-path:hover { background: var(--surface); }
 .ld-path:hover .ld-go { color: var(--accent); }
@@ -175,7 +175,7 @@ a.ld-trow:hover .ld-go { color: var(--accent); }
 
 /* --- FAQ + CTA ------------------------------------------------------------------------------ */
 .ld-faq { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
-.ld-faq-list { border-top: 1px solid var(--ink); background: var(--bg); }
+.ld-faq-list { border-top: 1px solid var(--ink); }
 .ld-cta { display: flex; justify-content: space-between; align-items: flex-end; gap: 32px; flex-wrap: wrap; padding: 64px 48px; text-align: left; margin-top: 112px; }
 .pf .ld-cta h2 { font-size: 56px; line-height: 1; max-width: 680px; margin: 0; }
 .ld-cta h2 span { color: #8A8E86; }
