@@ -834,23 +834,33 @@ Per-job breakdown (from grader logs), averages: Python wait 2.6 s, acquire 0.39 
 * **Contest arena** (focus mode): `PlatformLayout nav={false}` hides the site nav; the arena's own top bar shows the contest, problems lettered **A, B, C…** with points and ✓/✗/pending state, your rank and score, and a countdown with a progress line that turns amber at 10 min, red at 5 min and blinks in the last minute. Toasts announce other players' solves (diffing consecutive standings), your own solve with your new rank, and 5-minute / 1-minute warnings. A 3-2-1 countdown plays when you enter a contest that started < 60 s ago. When time runs out the page shows "Time's up", then the results: a "your rank" hero, a podium (group) and the lettered board. Toasts/overlays render outside `.pf`, so the theme tokens are also defined on `.pf-tokens`.
 * **Workspace** (`ProblemWorkspace.jsx`): draft precedence on open is *this device's unsaved copy → server draft → starter*. Autosave is debounced 1.5 s, with a `keepalive` flush on `pagehide`. Submit sends `clientToken`, retries network failures with the same token, then polls with backoff (0.5 s → 2 s) showing queue position, for up to 2 minutes.
 
-### 11.1 Visual design — "Data Arcade"
+### 11.1 Visual design — "Lineage"
 
-The platform UI is a **light, playful theme** meant to feel like a game you enjoy coming back to, not a corporate dashboard. It replaced the original dark editor-first theme on 2026-11-19. The canvas used to agree the direction is the reference for new screens.
+The platform UI is a **light, serious, product-first theme**: it should read like a tool engineers trust, with enough motion to show the product working and nothing decorative. It replaced the short-lived "Data Arcade" theme on 2026-11-19 (decision log). The design canvas used to agree the direction is the reference for new screens.
 
-* **Where it lives.** All tokens are on `.pf, .pf-tokens` at the top of `src/platform/platform.css`. Components keep their layout rules in the body of that file, and the **Data Arcade layer** at the end restyles them: outlines, shadows, fills and press feedback. Landing-only styles are in `src/landing/landing.css` (prefix `ld-`). The CodeMirror theme is in `src/practice/CodeEditor.jsx`. Legacy pages (`/blog`, `/admin`) keep their own styles.
-* **Palette.** Graph-paper ground `#F2F5FF` with a 28 px `#E1E7FA` grid, ink `#17153B` for text, outlines and shadows, and four candy fills: lime `#C8F542` (Run, Accepted, Easy, rewards), sun `#FFD43B` (Medium, contests, highlights), pink `#FF5DA8` (Hard, wrong answer, focus ring) and periwinkle `#7C93FF`. Volt blue `#3B5BFF` is the primary action and link colour.
-* **Contrast rule.** Candy colours are only ever **fills with ink text on top**; they are never text on paper. The text-colour tokens `--accent`, `--easy`, `--medium` and `--hard` are darker shades that pass 4.5:1 on white. Verdicts and difficulty always pair the colour with a word, so nothing relies on hue alone.
-* **Shape.** Every object has an ink outline (`--edge`, 2.5 px) and a hard, unblurred offset shadow (`--shadow-sm` / `--shadow` / `--shadow-lg`, 3 / 5 / 8 px). Shadow depth grows with importance. There are no soft grey shadows and no gradients. Track cards ("cartridges") have one notched corner.
-* **Type.** Bricolage Grotesque 800 with tight tracking for headings and buttons, Figtree for body text, and JetBrains Mono only for actual code, data or timers. Labels are sentence case; there are no tracked-out all-caps eyebrows.
-* **Motion is feedback.** Clickable things lift 2 px on hover and sink into their shadow on press. Accepted verdicts land as a stamp with a small overshoot. The landing console prints its result as a "ticket". The only ambient motion is the landing stack marquee and two bobbing stickers. `prefers-reduced-motion` turns all of it off.
-* **Landing page** (`src/landing/Landing.jsx`):
-  * **Hero:** an interactive sample console (SQL / Python / PySpark tabs; Run drops illustrative output and stamps it with that difficulty's real base points).
-  * **Below the hero:** a tilted stack marquee, a scoreboard of catalog stats, "Pick your player" role cards and track cartridges.
-  * **Further down:** a numbered level map (a real four-step sequence), course cards, contests and hackathon panels, the FAQ and the CTA.
-  * **Data:** every number comes from `/api/catalog`, and no stats are invented.
-* **Nav.** With seven links, the nav switches to the burger menu below 1120 px.
+* **Where it lives.** All tokens are on `.pf, .pf-tokens` at the top of `src/platform/platform.css`. Components keep their layout rules in the body of that file, and the **Lineage layer** at the end restyles them: hairline frames, pill buttons, type and calm motion. Landing-only styles are in `src/landing/landing.css` (prefix `ld-`). The CodeMirror theme is in `src/practice/CodeEditor.jsx`. Legacy pages (`/blog`, `/admin`) keep their own styles.
+* **Palette.** Paper `#F4F5F2`, white sheets `#FFFFFF` for product frames, ink `#121412`, graphite text (`--muted` `#555952`, `--faint` `#6B6F69`, both ≥ 4.5:1) and hairlines `#E4E5DF` / `#DCDDD6` / `#C6C8C0`. There is **one accent**, "pass" green `#127A4C`, used for Accepted, live and progress. Fail `#B4361C` and medium `#95600A` are status colours only, never decoration. Code colours: keyword `#2F5BD3`, function `#8A3FC1`, string `#127A4C`, comment `#8A8E86`.
+* **Type.** Geist throughout. Headlines use weight 600 with −0.045em tracking, often in **two tones**: the claim in ink, the consequence in grey (`.pf-tone`). Geist Mono handles code, data, counts and small structural labels, always in lower case with no all-caps eyebrows.
+* **Dot-grid ground.** The page background is a field of 1 px dots every 22 px (`--dots`, `--dot-size` on `.pf`). Dots belong in margins and gutters, never behind words: text-heavy lists and tables (problem list, tracks table, paths, FAQ, stats, page heads, sidebars, footer) sit on plain paper, product frames are white, and the landing hero fades the dots out behind the headline. The workspace and course reader stay plain.
+* **Structure.** Lines are 1 px hairlines, and a dark ink rule opens each list or table (tracks, paths, FAQ). Primary buttons are ink pills, secondary buttons are outlined pills, and the light pill is reserved for dark bands. There are no drop shadows except `--lift` under product frames and on hover. Sections sit 112 px apart, each about one screen, and each shows product or proof.
+* **Motion demonstrates the product.**
+  * **On load:** headlines rise out of a short blur, once.
+  * **Hero demo:** a query types itself, Run passes the examples, Submit grades the hidden tests and the panel lands on Accepted. It loops every ~15 s and pauses while the tab is hidden.
+  * **Walkthrough:** advances every 4.5 s until the visitor picks a step.
+  * **Lineage band:** submissions flow through read → write → run → grade → accepted, and hover pauses it.
+  * **Elsewhere:** hover lifts are 1–2 px. `prefers-reduced-motion` freezes every animation and shows the hero's final state.
+* **Landing page** (`src/landing/Landing.jsx`), in order:
+  1. Centred two-tone headline with two CTAs and the live demo, plus two annotation callouts on wide screens.
+  2. A strip of real catalog numbers.
+  3. A problem-first walkthrough.
+  4. The tracks table, built from the catalog with problem counts and runtimes.
+  5. A grading panel: Run in the browser, Submit on the server, hidden tests sealed, with the lineage band.
+  6. Role paths beside an example contest scoreboard.
+  7. FAQ.
+  8. A dark closing CTA.
 
+  Every number comes from `/api/catalog`. The demo output, the contest names and the lineage band are labelled or obviously illustrative.
+* **Nav.** With seven links, the nav switches to the burger menu below 1080 px.
 ---
 
 ## 12. Contests
@@ -1185,6 +1195,8 @@ These passwords are public — never create these accounts on a real deployment.
 | 2026-11-17 | 2 SQL problems added (Daily Active Users — Easy; Longest Login Streak — Hard, gaps & islands) | Contests need a choice of problems per track |
 | 2026-11-16 | Fail fast on `EADDRINUSE`: the cluster stops with a clear message instead of restarting workers forever | A second instance crash-looped with growing backoff; a busy port is a configuration problem, not a crash |
 | 2026-11-19 | **Data Arcade light theme** replaces the dark editor-first theme: graph-paper ground, ink outlines, hard offset shadows, candy fills, Bricolage Grotesque / Figtree; landing page rebuilt around an interactive Run console; light CodeMirror theme; new brand mark and favicon (§11.1) | The dark theme read as a generic dev tool; the product should feel playful and engaging for learners while staying accessible (candy colours only as fills under ink text) |
+| 2026-11-19 | **Lineage theme** replaces Data Arcade: neutral paper, Geist 600 two-tone headlines, Geist Mono labels, hairline structure, one green "pass" accent; landing rebuilt product-first (live hero demo, real catalog numbers, walkthrough, tracks table, grading panel) with tighter 112 px section rhythm (§11.1) | Arcade read as playful but not trustworthy; reviewing 12 reference sites and dev-tool landing research favoured a calm, product-first page whose motion only demonstrates the product |
+| 2026-11-19 | Dot-grid page ground for Lineage (1 px dots / 22 px), with text-heavy blocks on plain paper and a fade behind the hero (§11.1) | Adds texture and an engineering-paper feel without competing with the hairline tables; a line grid was tried and rejected because it echoed the table rules |
 
 ---
 

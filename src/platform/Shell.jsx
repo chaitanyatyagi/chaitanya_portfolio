@@ -19,14 +19,13 @@ export const NAV_ITEMS = [
   { href: '/blog', label: 'Blog' },
 ];
 
-// Brand mark: a blue key-cap with a lime prompt caret and a cursor block.
-export function BrandMark({ size = 32 }) {
+// Brand mark: three table rows of shrinking length and a green "pass" dot.
+export function BrandMark({ size = 24 }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 34 34" aria-hidden="true" style={{ display: 'block', flexShrink: 0 }}>
-      <rect x="3" y="3" width="30" height="30" rx="8" fill="#17153B" />
-      <rect x="1.25" y="1.25" width="29" height="29" rx="8" fill="#3B5BFF" stroke="#17153B" strokeWidth="2.5" />
-      <path d="M9 10l6 5.75-6 5.75" fill="none" stroke="#C8F542" strokeWidth="3.4" strokeLinecap="round" strokeLinejoin="round" />
-      <rect x="17" y="19" width="7" height="3.4" rx="1.2" fill="#FFFFFF" />
+    <svg width={size} height={size} viewBox="0 0 22 22" aria-hidden="true" style={{ display: 'block', flexShrink: 0 }}>
+      <rect x="0.5" y="0.5" width="21" height="21" rx="5" fill="#121412" />
+      <path d="M5 7h12M5 11h8M5 15h4" stroke="#FFFFFF" strokeWidth="1.6" strokeLinecap="round" />
+      <circle cx="15.5" cy="15" r="1.8" fill="#5FD39A" />
     </svg>
   );
 }
@@ -119,8 +118,8 @@ function PlatformNav() {
         <div className="pf-nav-right">
           {status === 'ready' && (user ? <UserMenu user={user} onSignOut={signOut} /> : (
             <>
-              <a href={`/login?next=${encodeURIComponent(path)}`} className="pf-btn pf-btn-ghost pf-btn-sm pf-hide-sm">Sign in</a>
-              <a href="/signup" className="pf-btn pf-btn-run pf-btn-sm pf-hide-sm">Start for free</a>
+              <a href={`/login?next=${encodeURIComponent(path)}`} className="pf-nav-link pf-hide-sm">Sign in</a>
+              <a href="/signup" className="pf-btn pf-btn-primary pf-btn-sm pf-hide-sm">Start practising</a>
             </>
           ))}
           <button className="pf-burger" aria-label="Menu" onClick={() => setOpen(!open)}>{open ? '×' : '≡'}</button>

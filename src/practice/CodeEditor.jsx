@@ -18,37 +18,37 @@ import { tags } from '@lezer/highlight';
 // trigger Run / Submit.
 // ---------------------------------------------------------------------------
 
-// Light "Data Arcade" editor theme (docs §11.1): paper-white page, ink text,
-// the same token colours as the landing-page editor and course code blocks.
+// Light "Lineage" editor theme (docs §11.1): white sheet, ink text, the same
+// token colours as the landing-page demo and course code blocks.
 const theme = EditorView.theme({
-  '&': { height: '100%', fontSize: '14px', backgroundColor: '#FBFCFF', color: '#17153B' },
-  '.cm-scroller': { fontFamily: "'JetBrains Mono', ui-monospace, monospace", lineHeight: '1.75' },
-  '.cm-content': { caretColor: '#3B5BFF', padding: '12px 0' },
-  '.cm-cursor, .cm-dropCursor': { borderLeftColor: '#3B5BFF', borderLeftWidth: '3px' },
+  '&': { height: '100%', fontSize: '13.5px', backgroundColor: '#FFFFFF', color: '#121412' },
+  '.cm-scroller': { fontFamily: "'Geist Mono', ui-monospace, monospace", lineHeight: '1.8' },
+  '.cm-content': { caretColor: '#121412', padding: '12px 0' },
+  '.cm-cursor, .cm-dropCursor': { borderLeftColor: '#121412', borderLeftWidth: '2px' },
   '&.cm-focused': { outline: 'none' },
-  '.cm-gutters': { backgroundColor: '#FBFCFF', color: '#9A98C0', border: 'none', paddingLeft: '6px' },
-  '.cm-activeLineGutter': { backgroundColor: 'transparent', color: '#17153B', fontWeight: '700' },
-  '.cm-activeLine': { backgroundColor: '#F3FFD6' },
-  '&.cm-focused .cm-selectionBackground, .cm-selectionBackground, ::selection': { backgroundColor: 'rgba(59,91,255,.18) !important' },
-  '.cm-matchingBracket': { backgroundColor: 'rgba(200,245,66,.55)', outline: '1.5px solid #17153B' },
-  '.cm-tooltip': { backgroundColor: '#FFFFFF', border: '2px solid #17153B', borderRadius: '10px', boxShadow: '3px 3px 0 #17153B' },
-  '.cm-tooltip-autocomplete > ul > li[aria-selected]': { backgroundColor: '#17153B', color: '#FFFFFF' },
-  '.cm-panels': { backgroundColor: '#F2F5FF', color: '#17153B' },
-  '.cm-panels.cm-panels-bottom': { borderTop: '2px solid #17153B' },
-  '.cm-searchMatch': { backgroundColor: 'rgba(255,212,59,.55)' },
-  '.cm-foldPlaceholder': { backgroundColor: '#F2F5FF', border: '1px solid #A9B2D8', color: '#4E4C75' },
+  '.cm-gutters': { backgroundColor: '#FFFFFF', color: '#A3A69F', border: 'none', paddingLeft: '6px' },
+  '.cm-activeLineGutter': { backgroundColor: 'transparent', color: '#121412' },
+  '.cm-activeLine': { backgroundColor: '#F7F8F5' },
+  '&.cm-focused .cm-selectionBackground, .cm-selectionBackground, ::selection': { backgroundColor: 'rgba(18,122,76,.16) !important' },
+  '.cm-matchingBracket': { backgroundColor: 'rgba(18,122,76,.12)', outline: '1px solid rgba(18,122,76,.45)' },
+  '.cm-tooltip': { backgroundColor: '#FFFFFF', border: '1px solid #DCDDD6', borderRadius: '10px', boxShadow: '0 20px 40px -24px rgba(18,20,18,.35)' },
+  '.cm-tooltip-autocomplete > ul > li[aria-selected]': { backgroundColor: '#121412', color: '#FFFFFF' },
+  '.cm-panels': { backgroundColor: '#F7F8F5', color: '#121412' },
+  '.cm-panels.cm-panels-bottom': { borderTop: '1px solid #E4E5DF' },
+  '.cm-searchMatch': { backgroundColor: 'rgba(149,96,10,.18)' },
+  '.cm-foldPlaceholder': { backgroundColor: '#F7F8F5', border: '1px solid #DCDDD6', color: '#555952' },
 }, { dark: false });
 
 const highlight = HighlightStyle.define([
-  { tag: [tags.keyword, tags.operatorKeyword, tags.modifier], color: '#3B5BFF', fontWeight: '700' },
-  { tag: [tags.string, tags.special(tags.string)], color: '#1F7A45' },
-  { tag: [tags.number, tags.bool, tags.null], color: '#A04A12' },
-  { tag: tags.comment, color: '#75739A', fontStyle: 'italic' },
-  { tag: [tags.function(tags.variableName), tags.function(tags.propertyName)], color: '#C2186E' },
-  { tag: [tags.definition(tags.variableName), tags.className], color: '#6A2BC2' },
-  { tag: [tags.typeName, tags.standard(tags.name)], color: '#6A2BC2' },
-  { tag: tags.propertyName, color: '#17153B' },
-  { tag: tags.operator, color: '#4E4C75' },
+  { tag: [tags.keyword, tags.operatorKeyword, tags.modifier], color: '#2F5BD3' },
+  { tag: [tags.string, tags.special(tags.string)], color: '#127A4C' },
+  { tag: [tags.number, tags.bool, tags.null], color: '#95600A' },
+  { tag: tags.comment, color: '#8A8E86', fontStyle: 'italic' },
+  { tag: [tags.function(tags.variableName), tags.function(tags.propertyName)], color: '#8A3FC1' },
+  { tag: [tags.definition(tags.variableName), tags.className], color: '#121412', fontWeight: '500' },
+  { tag: [tags.typeName, tags.standard(tags.name)], color: '#8A3FC1' },
+  { tag: tags.propertyName, color: '#121412' },
+  { tag: tags.operator, color: '#555952' },
 ]);
 
 function languageFor(track, schema) {
