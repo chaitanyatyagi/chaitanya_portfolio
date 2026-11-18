@@ -1,17 +1,33 @@
 {
-  "name": "chaitanya-tyagi-portfolio",
+  "name": "datadrill",
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "description": "Portfolio website for Chaitanya Tyagi — Data Engineer. React (Vite) frontend + Express backend for the AI assistant.",
+  "description": "DataDrill — data engineering learning & practice platform. React (Vite) frontend; API + grader in server/.",
   "scripts": {
-    "dev": "vite",
+    "dev": "concurrently -n api,grader,web -c green,yellow,cyan \"npm run server\" \"npm run grader\" \"npm run dev:web\"",
     "build": "vite build",
     "preview": "vite preview",
-    "server": "node server/index.js",
-    "start": "concurrently \"npm run server\" \"npm run dev\""
+    "server": "npm --prefix server start",
+    "start": "npm run dev",
+    "grader": "npm --prefix server run grader",
+    "dev:web": "vite"
   },
   "dependencies": {
+    "@codemirror/autocomplete": "^6.20.4",
+    "@codemirror/commands": "^6.11.1",
+    "@codemirror/lang-python": "^6.2.1",
+    "@codemirror/lang-sql": "^6.10.0",
+    "@codemirror/language": "^6.13.1",
+    "@codemirror/legacy-modes": "^6.5.5",
+    "@codemirror/state": "^6.7.6",
+    "@codemirror/view": "^6.43.15",
+    "@lezer/highlight": "^1.2.5",
+    "codemirror": "^6.0.2",
+    "fflate": "^0.8.3",
+    "highlight.js": "^11.12.0",
+    "just-bash": "3.6.1",
+    "marked": "^18.0.5",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },

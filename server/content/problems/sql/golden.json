@@ -1,0 +1,7652 @@
+{
+ "ab-test-summary": {
+  "hash": "8853cd8a05d68e09",
+  "columns": [
+   "control_rate",
+   "treatment_rate",
+   "lift_pct",
+   "z_score"
+  ],
+  "tests": {
+   "Example": [
+    [
+     25,
+     75,
+     200,
+     1.414
+    ]
+   ],
+   "Equal rates": [
+    [
+     50,
+     50,
+     0,
+     0
+    ]
+   ],
+   "Treatment worse": [
+    [
+     66.67,
+     33.33,
+     -50,
+     -0.816
+    ]
+   ]
+  }
+ },
+ "ad-funnel-ctr": {
+  "hash": "819119e77b442251",
+  "columns": [
+   "ad_id",
+   "impressions",
+   "clicks",
+   "carts",
+   "ctr_pct",
+   "cart_pct"
+  ],
+  "tests": {
+   "Example": [
+    [
+     2,
+     2,
+     1,
+     0,
+     50,
+     0
+    ],
+    [
+     1,
+     3,
+     1,
+     1,
+     33.33,
+     100
+    ],
+    [
+     3,
+     0,
+     1,
+     0,
+     null,
+     0
+    ]
+   ],
+   "No clicks": [
+    [
+     7,
+     2,
+     0,
+     0,
+     0,
+     null
+    ]
+   ],
+   "Thirds": [
+    [
+     8,
+     3,
+     2,
+     1,
+     66.67,
+     50
+    ]
+   ]
+  }
+ },
+ "attendance-status-pivot": {
+  "hash": "e34b76b58cc856a8",
+  "columns": [
+   "emp_id",
+   "present",
+   "absent",
+   "leave",
+   "attendance_pct"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     2,
+     1,
+     0,
+     66.7
+    ],
+    [
+     2,
+     1,
+     0,
+     1,
+     50
+    ]
+   ],
+   "All present": [
+    [
+     3,
+     1,
+     0,
+     0,
+     100
+    ]
+   ],
+   "Thirds": [
+    [
+     4,
+     1,
+     1,
+     1,
+     33.3
+    ]
+   ]
+  }
+ },
+ "best-worst-open-month": {
+  "hash": "2a49ceec9821619e",
+  "columns": [
+   "ticker",
+   "highest_month",
+   "highest_open",
+   "lowest_month",
+   "lowest_open"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "AAPL",
+     "2024-02",
+     190.5,
+     "2024-03",
+     170
+    ],
+    [
+     "NFLX",
+     "2024-02",
+     560,
+     "2024-01",
+     480
+    ]
+   ],
+   "Single month": [
+    [
+     "X",
+     "2024-05",
+     1,
+     "2024-05",
+     1
+    ]
+   ],
+   "Unordered input": [
+    [
+     "Y",
+     "2024-01",
+     9,
+     "2024-02",
+     1
+    ]
+   ]
+  }
+ },
+ "bill-of-materials": {
+  "hash": "59a7dcceaf36d2db",
+  "columns": [
+   "part",
+   "total_qty"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "bolt",
+     8
+    ],
+    [
+     "spoke",
+     64
+    ],
+    [
+     "tube",
+     3
+    ],
+    [
+     "tyre",
+     2
+    ]
+   ],
+   "Deep nesting": [
+    [
+     "c",
+     24
+    ]
+   ],
+   "Unrelated assemblies ignored": [
+    [
+     "seat",
+     1
+    ]
+   ]
+  }
+ },
+ "binge-series-30-days": {
+  "hash": "4fc348ebfbfde380",
+  "columns": [
+   "user_id",
+   "series"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     "Dark"
+    ]
+   ],
+   "Rewatching one episode doesn't count": [],
+   "Exactly 30 days apart": [
+    [
+     6,
+     "Y"
+    ]
+   ]
+  }
+ },
+ "business-days-between": {
+  "hash": "a4303d2d45a84ee2",
+  "columns": [
+   "ticket_id",
+   "business_days"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     2
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     3,
+     1
+    ]
+   ],
+   "Over a weekend only": [
+    [
+     4,
+     0
+    ]
+   ],
+   "Two full weeks": [
+    [
+     5,
+     9
+    ]
+   ]
+  }
+ },
+ "call-center-daily": {
+  "hash": "8519516ec48642f0",
+  "columns": [
+   "day",
+   "unique_callers",
+   "total_minutes"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "2024-01-01",
+     2,
+     12.5
+    ],
+    [
+     "2024-01-02",
+     1,
+     0.8
+    ]
+   ],
+   "Single call": [
+    [
+     "2024-02-01",
+     1,
+     0
+    ]
+   ],
+   "Same caller all day": [
+    [
+     "2024-03-01",
+     1,
+     2
+    ]
+   ]
+  }
+ },
+ "candidates-with-all-skills": {
+  "hash": "d83197bdfd9528d4",
+  "columns": [
+   "candidate_id"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1
+    ],
+    [
+     3
+    ]
+   ],
+   "Duplicate rows": [],
+   "Nobody qualifies": []
+  }
+ },
+ "card-launch-month": {
+  "hash": "6c5adda1a9cb1c9b",
+  "columns": [
+   "card_name",
+   "launch_month",
+   "issued"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "Blue",
+     "2024-01-01",
+     120
+    ],
+    [
+     "Gold",
+     "2024-02-01",
+     80
+    ]
+   ],
+   "Single card": [
+    [
+     "X",
+     "2023-12-01",
+     3
+    ]
+   ],
+   "Tie on issued": [
+    [
+     "A",
+     "2024-06-01",
+     9
+    ],
+    [
+     "B",
+     "2024-05-01",
+     9
+    ]
+   ]
+  }
+ },
+ "cards-issued-spread": {
+  "hash": "8588aea1210096b8",
+  "columns": [
+   "card_name",
+   "spread"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "Gold",
+     50
+    ],
+    [
+     "Blue",
+     10
+    ]
+   ],
+   "Single month": [
+    [
+     "Z",
+     0
+    ]
+   ],
+   "Tie": [
+    [
+     "A",
+     2
+    ],
+    [
+     "B",
+     2
+    ]
+   ]
+  }
+ },
+ "category-breadcrumbs": {
+  "hash": "840153cfe50f4900",
+  "columns": [
+   "path",
+   "products_in_subtree"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "Electronics",
+     4
+    ],
+    [
+     "Electronics / Laptops",
+     1
+    ],
+    [
+     "Electronics / Phones",
+     3
+    ],
+    [
+     "Electronics / Phones / Android",
+     2
+    ],
+    [
+     "Home",
+     1
+    ]
+   ],
+   "Empty categories show zero": [
+    [
+     "A",
+     0
+    ],
+    [
+     "A / B",
+     0
+    ]
+   ],
+   "Deep tree": [
+    [
+     "R",
+     3
+    ],
+    [
+     "R / S",
+     2
+    ],
+    [
+     "R / S / T",
+     2
+    ],
+    [
+     "R / S / T / U",
+     2
+    ]
+   ]
+  }
+ },
+ "cdc-apply-changes": {
+  "hash": "6f404b46f04c7dea",
+  "columns": [
+   "id",
+   "name",
+   "price"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     "pen",
+     1.5
+    ],
+    [
+     2,
+     "book",
+     12
+    ],
+    [
+     4,
+     "lamp",
+     18
+    ]
+   ],
+   "Insert then delete": [
+    [
+     1,
+     "a",
+     1
+    ]
+   ],
+   "Delete then re-insert": [
+    [
+     5,
+     "x2",
+     2
+    ]
+   ]
+  }
+ },
+ "charging-time-vs-previous-day": {
+  "hash": "df63daf92c1a30de",
+  "columns": [
+   "station_id",
+   "day",
+   "minutes",
+   "change"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     "2024-05-01",
+     75,
+     null
+    ],
+    [
+     1,
+     "2024-05-02",
+     60,
+     -15
+    ],
+    [
+     2,
+     "2024-05-02",
+     20,
+     null
+    ]
+   ],
+   "Single day": [
+    [
+     3,
+     "2024-06-01",
+     90,
+     null
+    ]
+   ],
+   "Drop in usage": [
+    [
+     4,
+     "2024-07-01",
+     120,
+     null
+    ],
+    [
+     4,
+     "2024-07-03",
+     10,
+     -110
+    ]
+   ]
+  }
+ },
+ "chart-topping-artists": {
+  "hash": "51d4348cadfef42b",
+  "columns": [
+   "artist",
+   "appearances",
+   "artist_rank"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "Asha",
+     3,
+     1
+    ],
+    [
+     "Cy",
+     2,
+     2
+    ],
+    [
+     "Bo",
+     1,
+     3
+    ],
+    [
+     "Di",
+     1,
+     3
+    ]
+   ],
+   "Only positions ≤ 10 count": [
+    [
+     "Y",
+     1,
+     1
+    ]
+   ],
+   "Many ties": [
+    [
+     "D",
+     2,
+     1
+    ],
+    [
+     "A",
+     1,
+     2
+    ],
+    [
+     "B",
+     1,
+     2
+    ],
+    [
+     "C",
+     1,
+     2
+    ]
+   ]
+  }
+ },
+ "cheapest-route": {
+  "hash": "ac99fe3376d3bbd6",
+  "columns": [
+   "route",
+   "legs",
+   "total_price"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "BLR-DXB-LHR-JFK",
+     3,
+     700
+    ]
+   ],
+   "Direct is cheapest": [
+    [
+     "BLR-JFK",
+     1,
+     500
+    ]
+   ],
+   "Four legs not allowed": [
+    [
+     "BLR-JFK",
+     1,
+     100
+    ]
+   ]
+  }
+ },
+ "cohort-retention-matrix": {
+  "hash": "4ed74861fc2a1a35",
+  "columns": [
+   "cohort",
+   "month_offset",
+   "active_users",
+   "retention_pct"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "2024-01",
+     0,
+     2,
+     100
+    ],
+    [
+     "2024-01",
+     1,
+     1,
+     50
+    ],
+    [
+     "2024-01",
+     2,
+     2,
+     100
+    ],
+    [
+     "2024-02",
+     0,
+     1,
+     100
+    ]
+   ],
+   "Across a year": [
+    [
+     "2023-12",
+     0,
+     2,
+     100
+    ],
+    [
+     "2023-12",
+     1,
+     1,
+     50
+    ]
+   ],
+   "Single cohort, many days": [
+    [
+     "2024-04",
+     0,
+     2,
+     100
+    ],
+    [
+     "2024-04",
+     2,
+     1,
+     50
+    ]
+   ]
+  }
+ },
+ "compound-savings": {
+  "hash": "f4d5e1f842775fef",
+  "columns": [
+   "account_id",
+   "month",
+   "balance"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     1,
+     1110
+    ],
+    [
+     1,
+     2,
+     1221.1
+    ],
+    [
+     1,
+     3,
+     1333.31
+    ],
+    [
+     2,
+     1,
+     550
+    ],
+    [
+     2,
+     2,
+     600
+    ]
+   ],
+   "No deposits": [
+    [
+     3,
+     1,
+     110
+    ],
+    [
+     3,
+     2,
+     121
+    ]
+   ],
+   "One month": [
+    [
+     4,
+     1,
+     10
+    ]
+   ]
+  }
+ },
+ "concurrent-sessions-peak": {
+  "hash": "a589f0f3a3608ed4",
+  "columns": [
+   "peak_concurrency",
+   "first_reached_at"
+  ],
+  "tests": {
+   "Example": [
+    [
+     3,
+     "2024-01-01 10:45:00"
+    ]
+   ],
+   "Touching sessions don't overlap": [
+    [
+     1,
+     "2024-01-01 10:00:00"
+    ]
+   ],
+   "Peak reached twice": [
+    [
+     2,
+     "2024-01-01 09:05:00"
+    ]
+   ]
+  }
+ },
+ "consecutive-free-seats": {
+  "hash": "656f20bc19a6d26a",
+  "columns": [
+   "row_label",
+   "first_seat",
+   "last_seat",
+   "size"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "A",
+     1,
+     3,
+     3
+    ],
+    [
+     "B",
+     1,
+     4,
+     4
+    ]
+   ],
+   "No long runs": [],
+   "Two runs in a row": [
+    [
+     "D",
+     1,
+     3,
+     3
+    ],
+    [
+     "D",
+     5,
+     7,
+     3
+    ]
+   ]
+  }
+ },
+ "consecutive-numbers": {
+  "hash": "c4e0976978f6b389",
+  "columns": [
+   "value"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1
+    ]
+   ],
+   "Two separate runs of three": [
+    [
+     5
+    ],
+    [
+     7
+    ]
+   ],
+   "Unordered ids, broken runs": [
+    [
+     9
+    ]
+   ]
+  }
+ },
+ "correlation-spend-visits": {
+  "hash": "a2c5f211d8a3ed3d",
+  "columns": [
+   "customers",
+   "correlation"
+  ],
+  "tests": {
+   "Example": [
+    [
+     3,
+     0.967
+    ]
+   ],
+   "Visitors who never buy": [
+    [
+     3,
+     0.866
+    ]
+   ],
+   "Perfect negative": [
+    [
+     2,
+     -1
+    ]
+   ]
+  }
+ },
+ "courier-monthly-stats": {
+  "hash": "c8550a8e72c995c3",
+  "columns": [
+   "courier_id",
+   "month",
+   "deliveries",
+   "avg_km",
+   "revenue"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     "2024-01",
+     2,
+     3.65,
+     11
+    ],
+    [
+     1,
+     "2024-02",
+     1,
+     2,
+     4
+    ],
+    [
+     2,
+     "2024-01",
+     1,
+     7.25,
+     9
+    ]
+   ],
+   "Thirds": [
+    [
+     3,
+     "2024-03",
+     3,
+     1.33,
+     3
+    ]
+   ],
+   "Single delivery": [
+    [
+     4,
+     "2024-04",
+     1,
+     9.99,
+     3.5
+    ]
+   ]
+  }
+ },
+ "cross-sell-after-anchor": {
+  "hash": "26913eaffd3b6d93",
+  "columns": [
+   "customer_id",
+   "other_spend"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     35
+    ],
+    [
+     3,
+     0
+    ]
+   ],
+   "Anchor bought twice": [
+    [
+     4,
+     1
+    ]
+   ],
+   "Nobody bought the anchor": [
+    [
+     6,
+     0
+    ]
+   ]
+  }
+ },
+ "cumulative-distinct-users": {
+  "hash": "f02655c271bde0c0",
+  "columns": [
+   "day",
+   "users_to_date"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "2024-01-01",
+     2
+    ],
+    [
+     "2024-01-02",
+     2
+    ],
+    [
+     "2024-01-03",
+     3
+    ]
+   ],
+   "A day with only returning users": [
+    [
+     "2024-02-01",
+     1
+    ],
+    [
+     "2024-02-02",
+     1
+    ],
+    [
+     "2024-02-03",
+     2
+    ]
+   ],
+   "Unordered input": [
+    [
+     "2024-03-01",
+     2
+    ],
+    [
+     "2024-03-05",
+     2
+    ]
+   ]
+  }
+ },
+ "customer-ltv-rfm": {
+  "hash": "ab3e0d7c41b6a836",
+  "columns": [
+   "customer_id",
+   "r",
+   "f",
+   "m",
+   "segment"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     3,
+     3,
+     3,
+     "champion"
+    ],
+    [
+     2,
+     1,
+     2,
+     1,
+     "at_risk"
+    ],
+    [
+     3,
+     3,
+     1,
+     1,
+     "regular"
+    ],
+    [
+     4,
+     1,
+     3,
+     3,
+     "at_risk"
+    ],
+    [
+     5,
+     2,
+     1,
+     2,
+     "regular"
+    ],
+    [
+     6,
+     2,
+     2,
+     2,
+     "regular"
+    ]
+   ],
+   "Three customers": [
+    [
+     1,
+     3,
+     1,
+     1,
+     "regular"
+    ],
+    [
+     2,
+     2,
+     2,
+     2,
+     "regular"
+    ],
+    [
+     3,
+     1,
+     3,
+     3,
+     "at_risk"
+    ]
+   ],
+   "One customer": [
+    [
+     9,
+     1,
+     1,
+     1,
+     "regular"
+    ]
+   ]
+  }
+ },
+ "customers-gone-quiet": {
+  "hash": "68dbd4356f7ce9d9",
+  "columns": [
+   "customer_id",
+   "last_message_on"
+  ],
+  "tests": {
+   "Example": [
+    [
+     2,
+     "2024-05-31"
+    ],
+    [
+     3,
+     "2024-05-01"
+    ]
+   ],
+   "Everyone active": [],
+   "Only July": [
+    [
+     5,
+     "2024-07-01"
+    ],
+    [
+     6,
+     "2024-03-03"
+    ]
+   ]
+  }
+ },
+ "customers-in-both-months": {
+  "hash": "71dd0c492ee25e31",
+  "columns": [
+   "customer_id"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1
+    ]
+   ],
+   "Cancelled April order does not count": [
+    [
+     4
+    ]
+   ],
+   "Month boundaries": [
+    [
+     9
+    ]
+   ]
+  }
+ },
+ "customers-without-orders": {
+  "hash": "28f0899872187087",
+  "columns": [
+   "customer_id",
+   "name"
+  ],
+  "tests": {
+   "Example": [
+    [
+     3,
+     "Meera"
+    ]
+   ],
+   "Only cancelled orders still count": [
+    [
+     2,
+     "B"
+    ]
+   ],
+   "Nobody ordered": [
+    [
+     3,
+     "Q"
+    ],
+    [
+     7,
+     "Z"
+    ]
+   ]
+  }
+ },
+ "daily-avg-bid": {
+  "hash": "712e7fd90f856006",
+  "columns": [
+   "campaign_id",
+   "day",
+   "bids",
+   "avg_bid"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     "2024-10-01",
+     2,
+     1.63
+    ],
+    [
+     1,
+     "2024-12-31",
+     1,
+     3
+    ],
+    [
+     2,
+     "2024-11-11",
+     1,
+     0.5
+    ]
+   ],
+   "Out of range": [
+    [
+     3,
+     "2024-10-05",
+     1,
+     2
+    ]
+   ],
+   "Thirds": [
+    [
+     4,
+     "2024-11-01",
+     3,
+     1.33
+    ]
+   ]
+  }
+ },
+ "daily-volume-local-time": {
+  "hash": "4164eb5eb1d0ad48",
+  "columns": [
+   "local_day",
+   "txns",
+   "total"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "2024-02-29",
+     1,
+     10
+    ],
+    [
+     "2024-03-01",
+     2,
+     25
+    ],
+    [
+     "2024-03-02",
+     1,
+     1
+    ]
+   ],
+   "All before 05:00 UTC": [
+    [
+     "2023-12-31",
+     2,
+     10
+    ]
+   ],
+   "Year boundary": [
+    [
+     "2024-12-31",
+     1,
+     1
+    ],
+    [
+     "2025-01-01",
+     1,
+     2
+    ]
+   ]
+  }
+ },
+ "data-quality-report": {
+  "hash": "5264733736452bf0",
+  "columns": [
+   "check_name",
+   "failures",
+   "failure_pct"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "country_invalid",
+     3,
+     60
+    ],
+    [
+     "age_out_of_range",
+     2,
+     40
+    ],
+    [
+     "email_duplicate",
+     2,
+     40
+    ],
+    [
+     "email_null",
+     1,
+     20
+    ]
+   ],
+   "Clean table": [
+    [
+     "age_out_of_range",
+     0,
+     0
+    ],
+    [
+     "country_invalid",
+     0,
+     0
+    ],
+    [
+     "email_duplicate",
+     0,
+     0
+    ],
+    [
+     "email_null",
+     0,
+     0
+    ]
+   ],
+   "Everything wrong": [
+    [
+     "age_out_of_range",
+     2,
+     100
+    ],
+    [
+     "country_invalid",
+     2,
+     100
+    ],
+    [
+     "email_null",
+     2,
+     100
+    ],
+    [
+     "email_duplicate",
+     0,
+     0
+    ]
+   ]
+  }
+ },
+ "date-spine-fill": {
+  "hash": "1a9a7112f0e7d6ec",
+  "columns": [
+   "day",
+   "orders"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "2024-01-01",
+     2
+    ],
+    [
+     "2024-01-02",
+     0
+    ],
+    [
+     "2024-01-03",
+     0
+    ],
+    [
+     "2024-01-04",
+     1
+    ],
+    [
+     "2024-01-05",
+     1
+    ]
+   ],
+   "Across months": [
+    [
+     "2024-02-28",
+     1
+    ],
+    [
+     "2024-02-29",
+     0
+    ],
+    [
+     "2024-03-01",
+     0
+    ],
+    [
+     "2024-03-02",
+     1
+    ]
+   ],
+   "Single day": [
+    [
+     "2024-06-06",
+     2
+    ]
+   ]
+  }
+ },
+ "dealer-inventory-left": {
+  "hash": "e5be3432717cae45",
+  "columns": [
+   "branch",
+   "model",
+   "stocked",
+   "sold",
+   "remaining"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "Delhi",
+     "Ranger",
+     8,
+     8,
+     0
+    ],
+    [
+     "Pune",
+     "Mustang",
+     3,
+     0,
+     3
+    ],
+    [
+     "Pune",
+     "Ranger",
+     15,
+     6,
+     9
+    ]
+   ],
+   "No sales": [
+    [
+     "X",
+     "A",
+     1,
+     0,
+     1
+    ]
+   ],
+   "Fan-out trap": [
+    [
+     "Y",
+     "B",
+     6,
+     2,
+     4
+    ]
+   ]
+  }
+ },
+ "dedupe-keep-best-record": {
+  "hash": "ee459c0d30267704",
+  "columns": [
+   "customer_key",
+   "name",
+   "email",
+   "phone"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "k1",
+     "Asha Kumar",
+     "asha@web.com",
+     "+91-2"
+    ],
+    [
+     "k2",
+     "Ravi",
+     null,
+     null
+    ]
+   ],
+   "Same source, newest name": [
+    [
+     "k3",
+     "New",
+     "o@x",
+     "9"
+    ]
+   ],
+   "Single record": [
+    [
+     "k4",
+     "Solo",
+     "s@s",
+     "1"
+    ]
+   ]
+  }
+ },
+ "department-headcount-zero": {
+  "hash": "5b40b471028c9ce0",
+  "columns": [
+   "dept_name",
+   "headcount"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "Eng",
+     2
+    ],
+    [
+     "Ops",
+     1
+    ],
+    [
+     "Legal",
+     0
+    ]
+   ],
+   "All empty": [
+    [
+     "A",
+     0
+    ],
+    [
+     "B",
+     0
+    ]
+   ],
+   "Employee in an unknown department is ignored": [
+    [
+     "A",
+     1
+    ]
+   ]
+  }
+ },
+ "departments-above-company-avg": {
+  "hash": "8d73d00838be1130",
+  "columns": [
+   "dept",
+   "dept_avg"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "eng",
+     95
+    ]
+   ],
+   "One department": [],
+   "Employee-weighted average": [
+    [
+     "small",
+     80
+    ]
+   ]
+  }
+ },
+ "difference-from-department-average": {
+  "hash": "7540044f6e78c22b",
+  "columns": [
+   "emp_id",
+   "dept",
+   "salary",
+   "dept_avg",
+   "diff"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     "eng",
+     100,
+     90,
+     10
+    ],
+    [
+     3,
+     "eng",
+     90,
+     90,
+     0
+    ],
+    [
+     2,
+     "eng",
+     80,
+     90,
+     -10
+    ],
+    [
+     4,
+     "ops",
+     50,
+     50,
+     0
+    ]
+   ],
+   "Thirds": [
+    [
+     3,
+     "a",
+     2,
+     1.33,
+     0.67
+    ],
+    [
+     1,
+     "a",
+     1,
+     1.33,
+     -0.33
+    ],
+    [
+     2,
+     "a",
+     1,
+     1.33,
+     -0.33
+    ]
+   ],
+   "Everyone equal": [
+    [
+     1,
+     "b",
+     7,
+     7,
+     0
+    ],
+    [
+     2,
+     "b",
+     7,
+     7,
+     0
+    ]
+   ]
+  }
+ },
+ "distinct-event-leaders": {
+  "hash": "0bffe17cd26dfa86",
+  "columns": [
+   "day",
+   "user_id",
+   "event_types"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "2024-01-01",
+     3,
+     3
+    ],
+    [
+     "2024-01-01",
+     1,
+     2
+    ],
+    [
+     "2024-01-01",
+     2,
+     1
+    ],
+    [
+     "2024-01-02",
+     5,
+     1
+    ]
+   ],
+   "Ties by user id": [
+    [
+     "2024-02-01",
+     6,
+     1
+    ],
+    [
+     "2024-02-01",
+     7,
+     1
+    ],
+    [
+     "2024-02-01",
+     8,
+     1
+    ]
+   ],
+   "Single user": [
+    [
+     "2024-03-01",
+     1,
+     2
+    ]
+   ]
+  }
+ },
+ "driver-monthly-rating": {
+  "hash": "5777787c7916f9ff",
+  "columns": [
+   "driver_id",
+   "month",
+   "avg_rating"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     "2024-01",
+     4.5
+    ],
+    [
+     1,
+     "2024-02",
+     3
+    ]
+   ],
+   "Nobody experienced": [],
+   "Thirds": [
+    [
+     4,
+     "2024-03",
+     4.33
+    ]
+   ]
+  }
+ },
+ "duplicate-emails": {
+  "hash": "58a85b6fb323cec5",
+  "columns": [
+   "email",
+   "accounts"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "a@x.com",
+     3
+    ],
+    [
+     "b@y.com",
+     2
+    ]
+   ],
+   "All unique": [],
+   "One big duplicate group": [
+    [
+     "z@z.io",
+     3
+    ]
+   ]
+  }
+ },
+ "dynamic-attribute-pivot": {
+  "hash": "d6f9f22ccd9102e7",
+  "columns": [
+   "product_id",
+   "color",
+   "size",
+   "brand"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     "blue",
+     "M",
+     null
+    ],
+    [
+     2,
+     null,
+     null,
+     "Acme"
+    ]
+   ],
+   "Stale value would win alphabetically": [
+    [
+     3,
+     "black",
+     null,
+     null
+    ]
+   ],
+   "Unknown attributes ignored": [
+    [
+     4,
+     null,
+     null,
+     "Zed"
+    ]
+   ]
+  }
+ },
+ "email-mean-median-mode": {
+  "hash": "e904aa11953e4cc2",
+  "columns": [
+   "mean",
+   "median",
+   "mode"
+  ],
+  "tests": {
+   "Example": [
+    [
+     36,
+     20,
+     20
+    ]
+   ],
+   "Even count": [
+    [
+     2.5,
+     2.5,
+     1
+    ]
+   ],
+   "Mode tie": [
+    [
+     7,
+     7,
+     5
+    ]
+   ]
+  }
+ },
+ "employees-earning-more-than-manager": {
+  "hash": "8cfe6bf4c7db494d",
+  "columns": [
+   "employee",
+   "salary",
+   "manager",
+   "manager_salary"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "Cy",
+     180,
+     "Bo",
+     150
+    ],
+    [
+     "Ed",
+     310,
+     "Ana",
+     300
+    ]
+   ],
+   "Equal pay is not more": [
+    [
+     "F",
+     101,
+     "M",
+     100
+    ]
+   ],
+   "Nobody out-earns": [
+    [
+     "G",
+     120,
+     "M",
+     100
+    ]
+   ]
+  }
+ },
+ "extract-utm-campaign": {
+  "hash": "8375bd30411f1c43",
+  "columns": [
+   "utm_source",
+   "utm_campaign",
+   "visits"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "google",
+     "spring",
+     2
+    ],
+    [
+     "(none)",
+     "(none)",
+     1
+    ],
+    [
+     "newsletter",
+     "(none)",
+     1
+    ]
+   ],
+   "Fragments and look-alike names": [
+    [
+     "fb",
+     "(none)",
+     1
+    ],
+    [
+     "fb",
+     "c1",
+     1
+    ]
+   ],
+   "Empty values": [
+    [
+     "(none)",
+     "z",
+     2
+    ]
+   ]
+  }
+ },
+ "favorite-artist-per-user": {
+  "hash": "ff98443920249523",
+  "columns": [
+   "user_id",
+   "artist",
+   "plays"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     "Asha",
+     2
+    ],
+    [
+     2,
+     "Asha",
+     1
+    ],
+    [
+     2,
+     "Bo",
+     1
+    ]
+   ],
+   "Single listener, single song": [
+    [
+     9,
+     "Z",
+     1
+    ]
+   ],
+   "Three-way tie": [
+    [
+     4,
+     "A",
+     1
+    ],
+    [
+     4,
+     "B",
+     1
+    ],
+    [
+     4,
+     "C",
+     1
+    ]
+   ]
+  }
+ },
+ "fibonacci-and-factorial": {
+  "hash": "4368862fa21af135",
+  "columns": [
+   "k",
+   "fib",
+   "factorial"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     2
+    ],
+    [
+     3,
+     2,
+     6
+    ],
+    [
+     4,
+     3,
+     24
+    ],
+    [
+     5,
+     5,
+     120
+    ],
+    [
+     6,
+     8,
+     720
+    ]
+   ],
+   "n = 1": [
+    [
+     1,
+     1,
+     1
+    ]
+   ],
+   "n = 15": [
+    [
+     1,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     2
+    ],
+    [
+     3,
+     2,
+     6
+    ],
+    [
+     4,
+     3,
+     24
+    ],
+    [
+     5,
+     5,
+     120
+    ],
+    [
+     6,
+     8,
+     720
+    ],
+    [
+     7,
+     13,
+     5040
+    ],
+    [
+     8,
+     21,
+     40320
+    ],
+    [
+     9,
+     34,
+     362880
+    ],
+    [
+     10,
+     55,
+     3628800
+    ],
+    [
+     11,
+     89,
+     39916800
+    ],
+    [
+     12,
+     144,
+     479001600
+    ],
+    [
+     13,
+     233,
+     6227020800
+    ],
+    [
+     14,
+     377,
+     87178291200
+    ],
+    [
+     15,
+     610,
+     1307674368000
+    ]
+   ]
+  }
+ },
+ "fifo-cost-of-goods": {
+  "hash": "044c04da4e19e9bb",
+  "columns": [
+   "sale_id",
+   "qty",
+   "cost"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     4,
+     8
+    ],
+    [
+     2,
+     8,
+     18
+    ],
+    [
+     3,
+     6,
+     21
+    ]
+   ],
+   "One sale spans three lots": [
+    [
+     1,
+     3,
+     6
+    ]
+   ],
+   "Exact lot boundaries": [
+    [
+     1,
+     5,
+     7.5
+    ],
+    [
+     2,
+     5,
+     12.5
+    ]
+   ]
+  }
+ },
+ "first-and-last-value": {
+  "hash": "8f72b24a096c87b9",
+  "columns": [
+   "ticker",
+   "trade_day",
+   "open_price",
+   "close_price",
+   "high",
+   "low"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "ACME",
+     "2024-06-03",
+     10,
+     11,
+     12,
+     10
+    ],
+    [
+     "ACME",
+     "2024-06-04",
+     11.5,
+     11.5,
+     11.5,
+     11.5
+    ],
+    [
+     "BOLT",
+     "2024-06-03",
+     50,
+     50,
+     50,
+     50
+    ]
+   ],
+   "Unordered trades": [
+    [
+     "Z",
+     "2024-01-02",
+     1,
+     3,
+     5,
+     1
+    ]
+   ],
+   "Single trade days": [
+    [
+     "A",
+     "2024-01-01",
+     2,
+     2,
+     2,
+     2
+    ],
+    [
+     "A",
+     "2024-01-02",
+     3,
+     3,
+     3,
+     3
+    ]
+   ]
+  }
+ },
+ "first-order-per-customer": {
+  "hash": "4a0c53988801b888",
+  "columns": [
+   "customer_id",
+   "order_id",
+   "order_date",
+   "amount"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     10,
+     "2024-03-01",
+     120
+    ],
+    [
+     2,
+     12,
+     "2024-03-05",
+     200
+    ],
+    [
+     4,
+     14,
+     "2024-04-02",
+     15
+    ]
+   ],
+   "Same-day tie": [
+    [
+     5,
+     8,
+     "2024-06-01",
+     2
+    ],
+    [
+     6,
+     7,
+     "2024-05-01",
+     3
+    ]
+   ],
+   "One order each": [
+    [
+     1,
+     1,
+     "2024-01-01",
+     5
+    ],
+    [
+     2,
+     2,
+     "2023-01-01",
+     6
+    ]
+   ]
+  }
+ },
+ "forward-fill-readings": {
+  "hash": "beb869eb8a0903bb",
+  "columns": [
+   "device",
+   "ts",
+   "reading",
+   "filled"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "d1",
+     "2024-01-01 00:00:00",
+     1.5,
+     1.5
+    ],
+    [
+     "d1",
+     "2024-01-01 00:01:00",
+     null,
+     1.5
+    ],
+    [
+     "d1",
+     "2024-01-01 00:02:00",
+     null,
+     1.5
+    ],
+    [
+     "d1",
+     "2024-01-01 00:03:00",
+     2,
+     2
+    ],
+    [
+     "d2",
+     "2024-01-01 00:00:00",
+     null,
+     null
+    ],
+    [
+     "d2",
+     "2024-01-01 00:01:00",
+     9,
+     9
+    ]
+   ],
+   "All NULL": [
+    [
+     "d3",
+     "2024-01-01 00:00:00",
+     null,
+     null
+    ],
+    [
+     "d3",
+     "2024-01-01 00:01:00",
+     null,
+     null
+    ]
+   ],
+   "Unordered input": [
+    [
+     "d4",
+     "2024-01-01 00:00:00",
+     4,
+     4
+    ],
+    [
+     "d4",
+     "2024-01-01 00:01:00",
+     5,
+     5
+    ],
+    [
+     "d4",
+     "2024-01-01 00:02:00",
+     null,
+     5
+    ]
+   ]
+  }
+ },
+ "frequent-error-codes": {
+  "hash": "4449726c4a0b3a1e",
+  "columns": [
+   "code",
+   "occurrences"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "E1042",
+     2
+    ],
+    [
+     "E2001",
+     2
+    ]
+   ],
+   "No codes": [],
+   "Single code": [
+    [
+     "E9999",
+     1
+    ]
+   ]
+  }
+ },
+ "gap-between-logins": {
+  "hash": "d8103485fea63c09",
+  "columns": [
+   "user_id",
+   "longest_gap_days"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     7
+    ],
+    [
+     2,
+     1
+    ]
+   ],
+   "Same-day logins collapse": [
+    [
+     4,
+     2
+    ]
+   ],
+   "Ties by user": [
+    [
+     5,
+     4
+    ],
+    [
+     6,
+     4
+    ]
+   ]
+  }
+ },
+ "gpu-model-temperature": {
+  "hash": "9b2b267426cc8818",
+  "columns": [
+   "model",
+   "avg_temp",
+   "max_temp",
+   "hot_readings"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "H100",
+     81.3,
+     88,
+     2
+    ],
+    [
+     "A10",
+     61,
+     62,
+     0
+    ]
+   ],
+   "Exactly 85 is not hot": [
+    [
+     "X",
+     85,
+     85,
+     0
+    ]
+   ],
+   "Ties on average": [
+    [
+     "A",
+     50,
+     50,
+     0
+    ],
+    [
+     "B",
+     50,
+     50,
+     0
+    ]
+   ]
+  }
+ },
+ "graph-reachability": {
+  "hash": "8a9ab0601ebd162d",
+  "columns": [
+   "reachable",
+   "min_hops"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "BLR",
+     1
+    ],
+    [
+     "BOM",
+     1
+    ],
+    [
+     "MAA",
+     2
+    ]
+   ],
+   "Self-loop and two-cycle": [
+    [
+     "GOI",
+     1
+    ],
+    [
+     "PNQ",
+     2
+    ]
+   ],
+   "Nothing reachable beyond one hop": [
+    [
+     "CCU",
+     1
+    ]
+   ]
+  }
+ },
+ "grid-islands": {
+  "hash": "7b87ea4b3c4c2c60",
+  "columns": [
+   "island_id",
+   "cells",
+   "min_row"
+  ],
+  "tests": {
+   "Example": [
+    [
+     0,
+     3,
+     0
+    ],
+    [
+     200,
+     1,
+     2
+    ],
+    [
+     202,
+     1,
+     2
+    ]
+   ],
+   "Diagonals don't connect": [
+    [
+     0,
+     1,
+     0
+    ],
+    [
+     101,
+     1,
+     1
+    ]
+   ],
+   "A U-shape is one island": [
+    [
+     0,
+     7,
+     0
+    ]
+   ]
+  }
+ },
+ "group-anagrams": {
+  "hash": "7a1325c9ea83bbc5",
+  "columns": [
+   "words",
+   "size"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "enlist,listen,silent",
+     3
+    ],
+    [
+     "act,cat",
+     2
+    ],
+    [
+     "gogole,google",
+     2
+    ]
+   ],
+   "Case and duplicates": [
+    [
+     "ate,eat,tea",
+     3
+    ]
+   ],
+   "Only one anagram pair": [
+    [
+     "xyz,zyx",
+     2
+    ]
+   ]
+  }
+ },
+ "high-value-not-fraud": {
+  "hash": "5944cfa4bbabb6fd",
+  "columns": [
+   "user_id",
+   "volume"
+  ],
+  "tests": {
+   "Example": [
+    [
+     2,
+     1200
+    ],
+    [
+     1,
+     1050
+    ]
+   ],
+   "No flags": [
+    [
+     7,
+     1000
+    ],
+    [
+     8,
+     1000
+    ]
+   ],
+   "Everything touches fraud": [
+    [
+     11,
+     1000
+    ],
+    [
+     12,
+     1000
+    ]
+   ]
+  }
+ },
+ "highest-bid-per-listing": {
+  "hash": "124c6e3c65ad5b88",
+  "columns": [
+   "listing_id",
+   "top_bid",
+   "top_bidder"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     60,
+     11
+    ],
+    [
+     2,
+     null,
+     null
+    ]
+   ],
+   "No bids anywhere": [
+    [
+     5,
+     null,
+     null
+    ]
+   ],
+   "Single bid": [
+    [
+     6,
+     1.5,
+     7
+    ]
+   ]
+  }
+ },
+ "histogram-buckets": {
+  "hash": "f4b192fe0d8f04c1",
+  "columns": [
+   "bucket_start",
+   "bucket_end",
+   "orders"
+  ],
+  "tests": {
+   "Example": [
+    [
+     0,
+     25,
+     2
+    ],
+    [
+     25,
+     50,
+     2
+    ],
+    [
+     100,
+     125,
+     1
+    ]
+   ],
+   "All in one bin": [
+    [
+     25,
+     50,
+     2
+    ]
+   ],
+   "Zero amount": [
+    [
+     0,
+     25,
+     1
+    ],
+    [
+     75,
+     100,
+     1
+    ]
+   ]
+  }
+ },
+ "idempotent-daily-aggregate": {
+  "hash": "53f64da91c596d85",
+  "columns": [
+   "day",
+   "orders",
+   "revenue"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "2024-01-01",
+     2,
+     30
+    ],
+    [
+     "2024-01-02",
+     2,
+     11
+    ],
+    [
+     "2024-01-03",
+     4,
+     40
+    ],
+    [
+     "2024-01-04",
+     1,
+     1
+    ]
+   ],
+   "Nothing new": [
+    [
+     "2024-02-01",
+     1,
+     1
+    ]
+   ],
+   "Everything recomputed": [
+    [
+     "2024-03-01",
+     1,
+     1.5
+    ]
+   ]
+  }
+ },
+ "incremental-watermark": {
+  "hash": "157ae9df3f3eaa15",
+  "columns": [
+   "event_id",
+   "payload",
+   "updated_at"
+  ],
+  "tests": {
+   "Example": [
+    [
+     2,
+     "b",
+     "2024-05-01 09:40:00"
+    ],
+    [
+     3,
+     "c2",
+     "2024-05-01 10:20:00"
+    ]
+   ],
+   "Same updated_at, later ingestion wins": [
+    [
+     9,
+     "new",
+     "2024-05-02 12:00:00"
+    ]
+   ],
+   "Exactly at the lookback edge is excluded": [
+    [
+     2,
+     "y",
+     "2024-05-03 09:00:01"
+    ]
+   ]
+  }
+ },
+ "international-calls-pct": {
+  "hash": "902882748dd0bf51",
+  "columns": [
+   "international_pct"
+  ],
+  "tests": {
+   "Example": [
+    [
+     50
+    ]
+   ],
+   "All domestic": [
+    [
+     0
+    ]
+   ],
+   "Thirds": [
+    [
+     33.3
+    ]
+   ]
+  }
+ },
+ "keyword-sentiment": {
+  "hash": "d07f93182ce6b46d",
+  "columns": [
+   "product_id",
+   "sentiment",
+   "reviews"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     "negative",
+     1
+    ],
+    [
+     1,
+     "positive",
+     2
+    ],
+    [
+     2,
+     "negative",
+     1
+    ],
+    [
+     2,
+     "neutral",
+     1
+    ]
+   ],
+   "All neutral": [
+    [
+     3,
+     "neutral",
+     1
+    ]
+   ],
+   "Upper case": [
+    [
+     4,
+     "negative",
+     1
+    ],
+    [
+     4,
+     "positive",
+     1
+    ]
+   ]
+  }
+ },
+ "laptop-vs-mobile-views": {
+  "hash": "5dcc15360caaf359",
+  "columns": [
+   "laptop_views",
+   "mobile_views"
+  ],
+  "tests": {
+   "Example": [
+    [
+     2,
+     3
+    ]
+   ],
+   "Only laptops": [
+    [
+     1,
+     0
+    ]
+   ],
+   "Only tablets": [
+    [
+     0,
+     2
+    ]
+   ]
+  }
+ },
+ "last-day-basket-size": {
+  "hash": "c8a2c5c0ec84cc4f",
+  "columns": [
+   "last_day",
+   "user_id",
+   "items"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "2024-01-02",
+     2,
+     1
+    ],
+    [
+     "2024-01-03",
+     1,
+     2
+    ]
+   ],
+   "Single purchase": [
+    [
+     "2024-02-02",
+     3,
+     1
+    ]
+   ],
+   "Latest day by date, not time": [
+    [
+     "2024-03-02",
+     4,
+     2
+    ]
+   ]
+  }
+ },
+ "last-touch-attribution": {
+  "hash": "f7148a47a1e289df",
+  "columns": [
+   "channel",
+   "purchases",
+   "revenue"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "social",
+     1,
+     50
+    ],
+    [
+     "direct",
+     1,
+     20
+    ],
+    [
+     "search",
+     1,
+     10
+    ]
+   ],
+   "Exactly 7 days still counts": [
+    [
+     "search",
+     1,
+     9
+    ],
+    [
+     "direct",
+     1,
+     1
+    ]
+   ],
+   "Click after purchase ignored": [
+    [
+     "direct",
+     1,
+     5
+    ]
+   ]
+  }
+ },
+ "last-view-per-user": {
+  "hash": "fa5e5daea0cbcfab",
+  "columns": [
+   "user_id",
+   "product_id",
+   "viewed_at"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     11,
+     "2024-01-02 10:00:00"
+    ],
+    [
+     2,
+     20,
+     "2024-01-01 09:00:00"
+    ]
+   ],
+   "Users without views": [
+    [
+     4,
+     2,
+     "2024-01-01 10:00:00"
+    ]
+   ],
+   "Same timestamp": [
+    [
+     5,
+     3,
+     "2024-01-01 10:00:00"
+    ]
+   ]
+  }
+ },
+ "latest-three-jobs": {
+  "hash": "c315db0de9f8117e",
+  "columns": [
+   "user_id",
+   "job_id",
+   "status",
+   "launched_at"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     4,
+     "succeeded",
+     "2024-01-04 10:00:00"
+    ],
+    [
+     1,
+     3,
+     "running",
+     "2024-01-03 10:00:00"
+    ],
+    [
+     1,
+     2,
+     "failed",
+     "2024-01-02 10:00:00"
+    ],
+    [
+     2,
+     5,
+     "failed",
+     "2024-01-01 10:00:00"
+    ]
+   ],
+   "Same launch time": [
+    [
+     3,
+     8,
+     "failed",
+     "2024-02-01 10:00:00"
+    ],
+    [
+     3,
+     7,
+     "running",
+     "2024-02-01 10:00:00"
+    ]
+   ],
+   "Fewer than three": [
+    [
+     4,
+     9,
+     "succeeded",
+     "2024-03-01 10:00:00"
+    ]
+   ]
+  }
+ },
+ "lexicographic-next-version": {
+  "hash": "8250ad062c385d55",
+  "columns": [
+   "version",
+   "rank"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "2.0.1",
+     1
+    ],
+    [
+     "2.0",
+     2
+    ],
+    [
+     "1.10",
+     3
+    ],
+    [
+     "1.9",
+     4
+    ],
+    [
+     "1.2",
+     5
+    ]
+   ],
+   "Equal versions tie": [
+    [
+     "3",
+     1
+    ],
+    [
+     "3.0",
+     1
+    ],
+    [
+     "3.0.0",
+     1
+    ],
+    [
+     "2.99.99",
+     4
+    ]
+   ],
+   "Four parts": [
+    [
+     "1.0.1",
+     1
+    ],
+    [
+     "1.0.0.10",
+     2
+    ],
+    [
+     "1.0.0.9",
+     3
+    ]
+   ]
+  }
+ },
+ "lexicographically-smallest-name": {
+  "hash": "e5013d4641f04919",
+  "columns": [
+   "team",
+   "first_member"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "blue",
+     "Carl"
+    ],
+    [
+     "red",
+     "adam"
+    ]
+   ],
+   "Uppercase trap": [
+    [
+     "x",
+     "alpha"
+    ]
+   ],
+   "Single members": [
+    [
+     "a",
+     "p"
+    ],
+    [
+     "b",
+     "Q"
+    ]
+   ]
+  }
+ },
+ "listened-every-album": {
+  "hash": "fe6cd94cda5ca3bf",
+  "columns": [
+   "artist",
+   "user_id"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "Asha",
+     10
+    ],
+    [
+     "Asha",
+     12
+    ]
+   ],
+   "Single-album artists are skipped": [],
+   "Two artists": [
+    [
+     "P",
+     1
+    ],
+    [
+     "Q",
+     2
+    ]
+   ]
+  }
+ },
+ "longest-common-prefix": {
+  "hash": "7c5e8662b085dc24",
+  "columns": [
+   "site",
+   "common_prefix"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "a",
+     "/blog/202"
+    ],
+    [
+     "b",
+     "/"
+    ]
+   ],
+   "One path is a prefix of another": [
+    [
+     "c",
+     "/docs"
+    ]
+   ],
+   "Single path; nothing shared": [
+    [
+     "d",
+     "/only"
+    ],
+    [
+     "e",
+     ""
+    ]
+   ]
+  }
+ },
+ "longest-server-usage": {
+  "hash": "79238be45072f010",
+  "columns": [
+   "client_id",
+   "hours"
+  ],
+  "tests": {
+   "Example": [
+    [
+     2,
+     3
+    ],
+    [
+     1,
+     2.5
+    ],
+    [
+     4,
+     0.5
+    ]
+   ],
+   "All running": [
+    [
+     7,
+     0.01
+    ]
+   ],
+   "Ties": [
+    [
+     8,
+     1
+    ],
+    [
+     9,
+     1
+    ]
+   ]
+  }
+ },
+ "management-chain-path": {
+  "hash": "a821ab9b6d5db096",
+  "columns": [
+   "emp_id",
+   "chain"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     "Ceo"
+    ],
+    [
+     2,
+     "Ceo > Vp Eng"
+    ],
+    [
+     4,
+     "Ceo > Vp Eng > Lead"
+    ],
+    [
+     5,
+     "Ceo > Vp Eng > Lead > Dev A"
+    ],
+    [
+     6,
+     "Ceo > Vp Eng > Lead > Dev B"
+    ],
+    [
+     3,
+     "Ceo > Vp Ops"
+    ],
+    [
+     7,
+     "Ceo > Vp Ops > Analyst"
+    ]
+   ],
+   "Two levels": [
+    [
+     1,
+     "Z"
+    ],
+    [
+     2,
+     "Z > Y"
+    ]
+   ],
+   "Siblings sort by name": [
+    [
+     1,
+     "Root"
+    ],
+    [
+     2,
+     "Root > Alpha"
+    ],
+    [
+     3,
+     "Root > Beta"
+    ],
+    [
+     4,
+     "Root > Beta > Child"
+    ]
+   ]
+  }
+ },
+ "mask-pii": {
+  "hash": "3c01b8c20a485863",
+  "columns": [
+   "contact_id",
+   "email_masked",
+   "phone_masked"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     "a***@mail.com",
+     "+** *****-*3210"
+    ],
+    [
+     2,
+     "b***@x.io",
+     "***-0199"
+    ]
+   ],
+   "Short phone": [
+    [
+     3,
+     "z***@z.co",
+     "1234"
+    ]
+   ],
+   "Formatted phone": [
+    [
+     4,
+     "q***@corp.com",
+     "(***) **** 0958"
+    ]
+   ]
+  }
+ },
+ "max-items-within-budget": {
+  "hash": "9e60576d34b8a03a",
+  "columns": [
+   "shopper",
+   "items_bought",
+   "spent"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "ana",
+     3,
+     37
+    ],
+    [
+     "ben",
+     2,
+     5
+    ],
+    [
+     "cy",
+     0,
+     0
+    ]
+   ],
+   "Exact budget": [
+    [
+     "d",
+     2,
+     5
+    ]
+   ],
+   "Equal prices tie by item": [
+    [
+     "e",
+     2,
+     2
+    ]
+   ]
+  }
+ },
+ "mean-from-counts": {
+  "hash": "cdd1c28c5dd3e5f9",
+  "columns": [
+   "mean_items",
+   "mode_items"
+  ],
+  "tests": {
+   "Example": [
+    [
+     2.7,
+     2
+    ]
+   ],
+   "Single bucket": [
+    [
+     7,
+     7
+    ]
+   ],
+   "Clear mode": [
+    [
+     4.6,
+     5
+    ]
+   ]
+  }
+ },
+ "merge-intervals-sql": {
+  "hash": "4938198228d3df84",
+  "columns": [
+   "resource",
+   "block_start",
+   "block_end"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "A",
+     1,
+     10
+    ],
+    [
+     "A",
+     11,
+     15
+    ],
+    [
+     "B",
+     4,
+     5
+    ]
+   ],
+   "Long interval swallows later ones": [
+    [
+     "X",
+     0,
+     100
+    ],
+    [
+     "X",
+     101,
+     102
+    ]
+   ],
+   "No overlaps": [
+    [
+     "Y",
+     1,
+     2
+    ],
+    [
+     "Y",
+     3,
+     4
+    ],
+    [
+     "Y",
+     5,
+     6
+    ]
+   ]
+  }
+ },
+ "monthly-rating-min-reviews": {
+  "hash": "d126f0f3bc558e74",
+  "columns": [
+   "month",
+   "item_id",
+   "avg_stars",
+   "reviews"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "2024-01",
+     10,
+     4.5,
+     2
+    ],
+    [
+     "2024-01",
+     11,
+     2.5,
+     2
+    ],
+    [
+     "2024-02",
+     10,
+     1.5,
+     2
+    ]
+   ],
+   "Nobody qualifies": [],
+   "Ties on average": [
+    [
+     "2024-04",
+     3,
+     4,
+     2
+    ],
+    [
+     "2024-04",
+     5,
+     4,
+     2
+    ]
+   ]
+  }
+ },
+ "most-traded-stock-monthly": {
+  "hash": "ddb072fc3259bfd8",
+  "columns": [
+   "month",
+   "ticker",
+   "trades"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "2024-01",
+     "AAA",
+     2
+    ],
+    [
+     "2024-02",
+     "BBB",
+     1
+    ],
+    [
+     "2024-02",
+     "CCC",
+     1
+    ]
+   ],
+   "Single trade": [
+    [
+     "2024-03",
+     "Z",
+     1
+    ]
+   ],
+   "Clear winner": [
+    [
+     "2024-04",
+     "X",
+     2
+    ]
+   ]
+  }
+ },
+ "moving-sum-calendar-days": {
+  "hash": "4ee543b2adb3b2e0",
+  "columns": [
+   "day",
+   "signups",
+   "rolling_7d"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "2024-01-01",
+     5,
+     5
+    ],
+    [
+     "2024-01-02",
+     3,
+     8
+    ],
+    [
+     "2024-01-07",
+     1,
+     9
+    ],
+    [
+     "2024-01-08",
+     2,
+     6
+    ],
+    [
+     "2024-01-20",
+     4,
+     4
+    ]
+   ],
+   "Single row": [
+    [
+     "2024-02-02",
+     9,
+     9
+    ]
+   ],
+   "Exactly 7 days apart drops out": [
+    [
+     "2024-03-01",
+     10,
+     10
+    ],
+    [
+     "2024-03-07",
+     1,
+     11
+    ],
+    [
+     "2024-03-08",
+     1,
+     2
+    ]
+   ]
+  }
+ },
+ "new-user-bad-experience": {
+  "hash": "03c5d44403ef094f",
+  "columns": [
+   "orders",
+   "bad_orders",
+   "bad_pct"
+  ],
+  "tests": {
+   "Example": [
+    [
+     4,
+     2,
+     50
+    ]
+   ],
+   "All fine": [
+    [
+     2,
+     0,
+     0
+    ]
+   ],
+   "Day 15 excluded": [
+    [
+     1,
+     1,
+     100
+    ]
+   ]
+  }
+ },
+ "next-purchase-within-week": {
+  "hash": "87bdb4eda085d67f",
+  "columns": [
+   "purchases",
+   "repeat_within_7d",
+   "repeat_rate"
+  ],
+  "tests": {
+   "Example": [
+    [
+     5,
+     2,
+     40
+    ]
+   ],
+   "Same-day repeat counts": [
+    [
+     2,
+     1,
+     50
+    ]
+   ],
+   "Exactly 8 days is too late": [
+    [
+     3,
+     0,
+     0
+    ]
+   ]
+  }
+ },
+ "org-chart-depth": {
+  "hash": "f3c94a69c010f6c9",
+  "columns": [
+   "emp_id",
+   "name",
+   "level"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     "Ceo",
+     0
+    ],
+    [
+     2,
+     "Vp Eng",
+     1
+    ],
+    [
+     3,
+     "Vp Ops",
+     1
+    ],
+    [
+     4,
+     "Lead",
+     2
+    ],
+    [
+     7,
+     "Analyst",
+     2
+    ],
+    [
+     5,
+     "Dev A",
+     3
+    ],
+    [
+     6,
+     "Dev B",
+     3
+    ]
+   ],
+   "Flat company": [
+    [
+     1,
+     "Boss",
+     0
+    ],
+    [
+     2,
+     "A",
+     1
+    ],
+    [
+     3,
+     "B",
+     1
+    ]
+   ],
+   "Deep chain": [
+    [
+     1,
+     "L0",
+     0
+    ],
+    [
+     2,
+     "L1",
+     1
+    ],
+    [
+     3,
+     "L2",
+     2
+    ],
+    [
+     4,
+     "L3",
+     3
+    ],
+    [
+     5,
+     "L4",
+     4
+    ]
+   ]
+  }
+ },
+ "orphan-foreign-keys": {
+  "hash": "1c629b0b48b7bb59",
+  "columns": [
+   "line_id",
+   "problem"
+  ],
+  "tests": {
+   "Example": [
+    [
+     101,
+     "missing_order"
+    ],
+    [
+     102,
+     "missing_product"
+    ],
+    [
+     103,
+     "missing_both"
+    ]
+   ],
+   "All valid": [],
+   "Empty parents": [
+    [
+     5,
+     "missing_both"
+    ]
+   ]
+  }
+ },
+ "overlapping-bookings": {
+  "hash": "a8bf50833f8cc129",
+  "columns": [
+   "room",
+   "booking_a",
+   "booking_b"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "101",
+     1,
+     2
+    ],
+    [
+     "102",
+     4,
+     5
+    ]
+   ],
+   "Back-to-back is fine": [],
+   "Identical ranges": [
+    [
+     "B",
+     1,
+     2
+    ]
+   ]
+  }
+ },
+ "overlapping-user-sessions": {
+  "hash": "84f953569a031d3b",
+  "columns": [
+   "session_id",
+   "concurrent"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     2
+    ],
+    [
+     2,
+     2
+    ],
+    [
+     3,
+     2
+    ]
+   ],
+   "Back-to-back don't overlap": [],
+   "Nested sessions": [
+    [
+     5,
+     2
+    ],
+    [
+     6,
+     1
+    ],
+    [
+     7,
+     1
+    ]
+   ]
+  }
+ },
+ "palindromes": {
+  "hash": "efc2b5c6d844adad",
+  "columns": [
+   "username"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "Anna"
+    ],
+    [
+     "level!"
+    ],
+    [
+     "race-Car"
+    ]
+   ],
+   "Digits count": [
+    [
+     "12_21"
+    ],
+    [
+     "a.a"
+    ]
+   ],
+   "Too short after cleaning": [
+    [
+     "ab.ba"
+    ]
+   ]
+  }
+ },
+ "parse-log-lines": {
+  "hash": "3ec0276a2b02dd55",
+  "columns": [
+   "level",
+   "service",
+   "lines",
+   "codes"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "ERROR",
+     "payments",
+     3,
+     "05,51"
+    ],
+    [
+     "INFO",
+     "auth",
+     1,
+     ""
+    ]
+   ],
+   "Duplicate codes": [
+    [
+     "WARN",
+     "etl_job",
+     2,
+     "7"
+    ]
+   ],
+   "Only noise": [
+    [
+     "INFO",
+     "api",
+     1,
+     ""
+    ]
+   ]
+  }
+ },
+ "partition-skew": {
+  "hash": "5594cd5c9abdaabb",
+  "columns": [
+   "customer_id",
+   "rows",
+   "share_pct",
+   "times_avg"
+  ],
+  "tests": {
+   "Example": [
+    [
+     null,
+     12,
+     54.5,
+     6
+    ]
+   ],
+   "No skew": [],
+   "One hot customer": [
+    [
+     7,
+     12,
+     52.2,
+     6.3
+    ]
+   ]
+  }
+ },
+ "pay-1-balances": {
+  "hash": "ea22d4d979248efd",
+  "columns": [
+   "account_id",
+   "txns",
+   "spend",
+   "refunds",
+   "net"
+  ],
+  "tests": {
+   "Example": [
+    [
+     4,
+     3,
+     1865,
+     0,
+     1865
+    ],
+    [
+     2,
+     2,
+     1280,
+     0,
+     1280
+    ],
+    [
+     3,
+     2,
+     760,
+     0,
+     760
+    ],
+    [
+     1,
+     5,
+     575,
+     20,
+     555
+    ]
+   ],
+   "Inactive accounts": [
+    [
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    [
+     2,
+     0,
+     0,
+     0,
+     0
+    ]
+   ],
+   "Refund larger than spend": [
+    [
+     5,
+     2,
+     10,
+     15,
+     -5
+    ]
+   ]
+  }
+ },
+ "pay-2-velocity": {
+  "hash": "aa230eaebf201185",
+  "columns": [
+   "account_id",
+   "first_alert_at"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     "2024-06-01 09:05:00"
+    ]
+   ],
+   "Refunds don't count": [],
+   "Exactly 10 minutes": [
+    [
+     2,
+     "2024-01-01 10:10:00"
+    ]
+   ]
+  }
+ },
+ "pay-3-impossible-travel": {
+  "hash": "5715b758b0a369df",
+  "columns": [
+   "txn_id",
+   "account_id",
+   "from_country",
+   "to_country",
+   "minutes_apart",
+   "risk_score"
+  ],
+  "tests": {
+   "Example": [
+    [
+     7,
+     2,
+     "IN",
+     "AE",
+     90,
+     2
+    ],
+    [
+     11,
+     4,
+     "GB",
+     "BR",
+     90,
+     2
+    ]
+   ],
+   "Two hours is plausible": [
+    [
+     3,
+     1,
+     "AE",
+     "IN",
+     119,
+     1
+    ]
+   ],
+   "Back home quickly": [
+    [
+     2,
+     3,
+     "MX",
+     "US",
+     30,
+     1
+    ]
+   ]
+  }
+ },
+ "people-you-may-know": {
+  "hash": "70eb826f19db4d90",
+  "columns": [
+   "user_id",
+   "suggested",
+   "mutual_friends"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     4,
+     2
+    ],
+    [
+     1,
+     5,
+     2
+    ],
+    [
+     2,
+     3,
+     3
+    ],
+    [
+     3,
+     2,
+     3
+    ],
+    [
+     4,
+     1,
+     2
+    ],
+    [
+     5,
+     1,
+     2
+    ]
+   ],
+   "Already friends are excluded": [
+    [
+     2,
+     4,
+     2
+    ],
+    [
+     4,
+     2,
+     2
+    ]
+   ],
+   "Edges stored in both directions": [
+    [
+     1,
+     4,
+     2
+    ],
+    [
+     2,
+     3,
+     2
+    ],
+    [
+     3,
+     2,
+     2
+    ],
+    [
+     4,
+     1,
+     2
+    ]
+   ]
+  }
+ },
+ "percent-of-total": {
+  "hash": "6c55befd7b72926b",
+  "columns": [
+   "category",
+   "revenue",
+   "pct_of_total"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "games",
+     150,
+     50
+    ],
+    [
+     "books",
+     100,
+     33.33
+    ],
+    [
+     "music",
+     50,
+     16.67
+    ]
+   ],
+   "Single category": [
+    [
+     "x",
+     10,
+     100
+    ]
+   ],
+   "Thirds": [
+    [
+     "a",
+     1,
+     33.33
+    ],
+    [
+     "b",
+     1,
+     33.33
+    ],
+    [
+     "c",
+     1,
+     33.33
+    ]
+   ]
+  }
+ },
+ "percentiles-latency": {
+  "hash": "35c7165513be6d50",
+  "columns": [
+   "endpoint",
+   "requests",
+   "p50",
+   "p90",
+   "p99"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "/a",
+     5,
+     30,
+     616,
+     961.6
+    ],
+    [
+     "/b",
+     2,
+     55,
+     59,
+     59.9
+    ]
+   ],
+   "Single request": [
+    [
+     "/c",
+     1,
+     7,
+     7,
+     7
+    ]
+   ],
+   "Ties on p99": [
+    [
+     "/x",
+     1,
+     5,
+     5,
+     5
+    ],
+    [
+     "/y",
+     1,
+     5,
+     5,
+     5
+    ]
+   ]
+  }
+ },
+ "pins-vs-previous-month": {
+  "hash": "808687a19652a1e9",
+  "columns": [
+   "month",
+   "avg_pins",
+   "change"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "2024-01",
+     1.5,
+     null
+    ],
+    [
+     "2024-02",
+     1.67,
+     0.17
+    ]
+   ],
+   "Single month": [
+    [
+     "2024-03",
+     1,
+     null
+    ]
+   ],
+   "Thirds": [
+    [
+     "2024-04",
+     1.33,
+     null
+    ],
+    [
+     "2024-05",
+     1,
+     -0.33
+    ]
+   ]
+  }
+ },
+ "pivot-quarterly-sales": {
+  "hash": "1387aef7b54b8f51",
+  "columns": [
+   "region",
+   "q1",
+   "q2",
+   "q3",
+   "q4",
+   "total"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "North",
+     100,
+     50,
+     0,
+     0,
+     150
+    ],
+    [
+     "South",
+     0,
+     0,
+     0,
+     100,
+     100
+    ]
+   ],
+   "Quarter boundaries": [
+    [
+     "E",
+     1,
+     2,
+     4,
+     8,
+     15
+    ]
+   ],
+   "Tie on total": [
+    [
+     "A",
+     0,
+     0,
+     5,
+     0,
+     5
+    ],
+    [
+     "B",
+     5,
+     0,
+     0,
+     0,
+     5
+    ]
+   ]
+  }
+ },
+ "popular-cuisine-per-city": {
+  "hash": "5a19598e22f65693",
+  "columns": [
+   "city",
+   "cuisine",
+   "orders"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "Delhi",
+     "Chinese",
+     2
+    ],
+    [
+     "Delhi",
+     "North Indian",
+     2
+    ],
+    [
+     "Pune",
+     "South Indian",
+     1
+    ]
+   ],
+   "Tie": [
+    [
+     "Goa",
+     "Cafe",
+     1
+    ],
+    [
+     "Goa",
+     "Seafood",
+     1
+    ]
+   ],
+   "Single order": [
+    [
+     "Agra",
+     "Mughlai",
+     1
+    ]
+   ]
+  }
+ },
+ "power-creators": {
+  "hash": "0ff2c6aff5968ba9",
+  "columns": [
+   "person_id",
+   "name"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     "Ana"
+    ]
+   ],
+   "Equal is not bigger": [],
+   "Unemployed people excluded": [
+    [
+     6,
+     "F"
+    ]
+   ]
+  }
+ },
+ "product-mom-growth": {
+  "hash": "ab1087afbbe36263",
+  "columns": [
+   "product",
+   "month",
+   "revenue",
+   "growth_pct"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "milk",
+     "2024-01",
+     100,
+     null
+    ],
+    [
+     "milk",
+     "2024-02",
+     120,
+     20
+    ],
+    [
+     "milk",
+     "2024-04",
+     60,
+     -50
+    ],
+    [
+     "tea",
+     "2024-01",
+     10,
+     null
+    ]
+   ],
+   "Single month": [
+    [
+     "x",
+     "2024-05",
+     5,
+     null
+    ]
+   ],
+   "Growth from many sales": [
+    [
+     "y",
+     "2024-01",
+     2,
+     null
+    ],
+    [
+     "y",
+     "2024-02",
+     3,
+     50
+    ]
+   ]
+  }
+ },
+ "products-bought-together": {
+  "hash": "b4f5a3821b167834",
+  "columns": [
+   "product_a",
+   "product_b",
+   "baskets"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "bread",
+     "milk",
+     3
+    ],
+    [
+     "eggs",
+     "milk",
+     3
+    ],
+    [
+     "bread",
+     "eggs",
+     2
+    ]
+   ],
+   "No repeated pairs": [],
+   "Ties ordered alphabetically": [
+    [
+     "a",
+     "b",
+     2
+    ],
+    [
+     "y",
+     "z",
+     2
+    ]
+   ]
+  }
+ },
+ "purchase-within-first-week": {
+  "hash": "f12b1e7170ea1911",
+  "columns": [
+   "signups",
+   "converted",
+   "conversion_pct",
+   "big_first_purchases"
+  ],
+  "tests": {
+   "Example": [
+    [
+     4,
+     2,
+     50,
+     1
+    ]
+   ],
+   "Nobody buys": [
+    [
+     1,
+     0,
+     0,
+     0
+    ]
+   ],
+   "Same-day purchase": [
+    [
+     1,
+     1,
+     100,
+     1
+    ]
+   ]
+  }
+ },
+ "quarterly-spend-per-customer": {
+  "hash": "1e6a0b90875d99c7",
+  "columns": [
+   "customer_id",
+   "quarter",
+   "txns",
+   "total"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     1,
+     2,
+     30
+    ],
+    [
+     1,
+     2,
+     1,
+     5
+    ],
+    [
+     2,
+     4,
+     1,
+     50
+    ]
+   ],
+   "Single quarter": [
+    [
+     3,
+     3,
+     2,
+     3
+    ]
+   ],
+   "Other years ignored": [
+    [
+     4,
+     2,
+     1,
+     3
+    ]
+   ]
+  }
+ },
+ "queries-histogram-with-zero": {
+  "hash": "9b28b8508e6db107",
+  "columns": [
+   "unique_queries",
+   "employees"
+  ],
+  "tests": {
+   "Example": [
+    [
+     0,
+     2
+    ],
+    [
+     2,
+     1
+    ]
+   ],
+   "Everyone active": [
+    [
+     1,
+     2
+    ]
+   ],
+   "Nobody active": [
+    [
+     0,
+     1
+    ]
+   ]
+  }
+ },
+ "quota-attainment": {
+  "hash": "cd5473de25dc8a9b",
+  "columns": [
+   "rep_id",
+   "booked",
+   "quota",
+   "attainment_pct",
+   "made_quota"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     1000,
+     1000,
+     100,
+     "yes"
+    ],
+    [
+     2,
+     450,
+     500,
+     90,
+     "no"
+    ],
+    [
+     3,
+     0,
+     800,
+     0,
+     "no"
+    ]
+   ],
+   "Overachiever": [
+    [
+     4,
+     250,
+     100,
+     250,
+     "yes"
+    ]
+   ],
+   "No deals at all": [
+    [
+     5,
+     0,
+     10,
+     0,
+     "no"
+    ],
+    [
+     6,
+     0,
+     20,
+     0,
+     "no"
+    ]
+   ]
+  }
+ },
+ "rank-vs-dense-rank": {
+  "hash": "9251d1e5cdbe4e3d",
+  "columns": [
+   "subject",
+   "student",
+   "score",
+   "row_num",
+   "rnk",
+   "dense_rnk"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "art",
+     "bob",
+     95,
+     1,
+     1,
+     1
+    ],
+    [
+     "art",
+     "cat",
+     80,
+     2,
+     2,
+     2
+    ],
+    [
+     "art",
+     "amy",
+     60,
+     3,
+     3,
+     3
+    ],
+    [
+     "math",
+     "amy",
+     90,
+     1,
+     1,
+     1
+    ],
+    [
+     "math",
+     "cat",
+     90,
+     2,
+     1,
+     1
+    ],
+    [
+     "math",
+     "bob",
+     85,
+     3,
+     3,
+     2
+    ],
+    [
+     "math",
+     "dan",
+     70,
+     4,
+     4,
+     3
+    ]
+   ],
+   "All tied": [
+    [
+     "m",
+     "w",
+     5,
+     1,
+     1,
+     1
+    ],
+    [
+     "m",
+     "x",
+     5,
+     2,
+     1,
+     1
+    ],
+    [
+     "m",
+     "y",
+     5,
+     3,
+     1,
+     1
+    ]
+   ],
+   "No ties": [
+    [
+     "s",
+     "c",
+     3,
+     1,
+     1,
+     1
+    ],
+    [
+     "s",
+     "b",
+     2,
+     2,
+     2,
+     2
+    ],
+    [
+     "s",
+     "a",
+     1,
+     3,
+     3,
+     3
+    ]
+   ]
+  }
+ },
+ "reconcile-source-target": {
+  "hash": "5e944d96966aa1f6",
+  "columns": [
+   "day",
+   "source_total",
+   "target_total",
+   "variance"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "2024-01-02",
+     7,
+     6.5,
+     -0.5
+    ],
+    [
+     "2024-01-03",
+     0,
+     2,
+     2
+    ],
+    [
+     "2024-01-04",
+     1,
+     0,
+     -1
+    ]
+   ],
+   "Float dust is not a variance": [],
+   "All matching except one": [
+    [
+     "2024-03-02",
+     2,
+     0,
+     -2
+    ]
+   ]
+  }
+ },
+ "repeat-qc-failures": {
+  "hash": "4f859d7cd9f371cd",
+  "columns": [
+   "product_id",
+   "month",
+   "failures"
+  ],
+  "tests": {
+   "Example": [
+    [
+     12,
+     "2024-01",
+     3
+    ],
+    [
+     10,
+     "2024-01",
+     2
+    ]
+   ],
+   "Passes only": [],
+   "Failures in different months": [
+    [
+     3,
+     "2024-04",
+     2
+    ]
+   ]
+  }
+ },
+ "revenue-by-city": {
+  "hash": "f864110d685ce898",
+  "columns": [
+   "city",
+   "revenue",
+   "orders"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "Delhi",
+     200,
+     1
+    ],
+    [
+     "Pune",
+     175.5,
+     3
+    ]
+   ],
+   "Unknown city and ties": [
+    [
+     "Goa",
+     10,
+     1
+    ],
+    [
+     "Unknown",
+     10,
+     1
+    ]
+   ],
+   "Everything cancelled but one": [
+    [
+     "Pune",
+     0.01,
+     1
+    ]
+   ]
+  }
+ },
+ "rideshare-1-city-revenue": {
+  "hash": "092edb0a88d6fd2c",
+  "columns": [
+   "city",
+   "requests",
+   "completed_trips",
+   "revenue",
+   "avg_fare"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "Delhi",
+     8,
+     6,
+     1730,
+     288.33
+    ],
+    [
+     "Pune",
+     8,
+     6,
+     1090,
+     181.67
+    ]
+   ],
+   "Only cancellations in a city": [
+    [
+     "Pune",
+     1,
+     1,
+     100,
+     100
+    ],
+    [
+     "Goa",
+     1,
+     0,
+     0,
+     null
+    ]
+   ],
+   "Single city": [
+    [
+     "Delhi",
+     8,
+     6,
+     1730,
+     288.33
+    ]
+   ]
+  }
+ },
+ "rideshare-2-cancellations": {
+  "hash": "8c8cb95ec2da9472",
+  "columns": [
+   "city",
+   "month",
+   "requests",
+   "cancel_rate_pct",
+   "rider_cancel_pct",
+   "driver_cancel_pct"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "Delhi",
+     "2024-01",
+     6,
+     33.3,
+     16.7,
+     16.7
+    ],
+    [
+     "Delhi",
+     "2024-02",
+     2,
+     0,
+     0,
+     0
+    ],
+    [
+     "Pune",
+     "2024-01",
+     6,
+     33.3,
+     16.7,
+     16.7
+    ],
+    [
+     "Pune",
+     "2024-02",
+     2,
+     0,
+     0,
+     0
+    ]
+   ],
+   "No cancellations": [
+    [
+     "Delhi",
+     "2024-01",
+     4,
+     0,
+     0,
+     0
+    ],
+    [
+     "Delhi",
+     "2024-02",
+     2,
+     0,
+     0,
+     0
+    ],
+    [
+     "Pune",
+     "2024-01",
+     4,
+     0,
+     0,
+     0
+    ],
+    [
+     "Pune",
+     "2024-02",
+     2,
+     0,
+     0,
+     0
+    ]
+   ],
+   "All cancelled": [
+    [
+     "Pune",
+     "2024-03",
+     2,
+     100,
+     50,
+     50
+    ]
+   ]
+  }
+ },
+ "rideshare-3-top-driver-weekly": {
+  "hash": "c8fc3f2dd269205d",
+  "columns": [
+   "city",
+   "week_start",
+   "driver",
+   "earnings",
+   "trips"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "Delhi",
+     "2024-01-01",
+     "Chirag",
+     310,
+     1
+    ],
+    [
+     "Delhi",
+     "2024-01-08",
+     "Chirag",
+     260,
+     1
+    ],
+    [
+     "Delhi",
+     "2024-01-22",
+     "Eshan",
+     400,
+     1
+    ],
+    [
+     "Delhi",
+     "2024-02-05",
+     "Chirag",
+     300,
+     1
+    ],
+    [
+     "Delhi",
+     "2024-02-19",
+     "Eshan",
+     280,
+     1
+    ],
+    [
+     "Pune",
+     "2024-01-01",
+     "Arjun",
+     220,
+     1
+    ],
+    [
+     "Pune",
+     "2024-01-08",
+     "Bela",
+     205,
+     1
+    ],
+    [
+     "Pune",
+     "2024-01-15",
+     "Arjun",
+     130,
+     1
+    ],
+    [
+     "Pune",
+     "2024-02-05",
+     "Bela",
+     175,
+     1
+    ],
+    [
+     "Pune",
+     "2024-02-19",
+     "Arjun",
+     210,
+     1
+    ]
+   ],
+   "Tie for top earner": [
+    [
+     "Pune",
+     "2024-04-01",
+     "Arjun",
+     100,
+     1
+    ],
+    [
+     "Pune",
+     "2024-04-01",
+     "Bela",
+     100,
+     1
+    ]
+   ],
+   "Sunday belongs to the previous week": [
+    [
+     "Delhi",
+     "2024-04-01",
+     "Chirag",
+     50,
+     1
+    ],
+    [
+     "Delhi",
+     "2024-04-08",
+     "Dia",
+     60,
+     1
+    ]
+   ]
+  }
+ },
+ "rideshare-4-rider-retention": {
+  "hash": "5024a3ad98ac7587",
+  "columns": [
+   "cohort",
+   "riders",
+   "retained",
+   "retention_pct"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "2024-01",
+     5,
+     3,
+     60
+    ],
+    [
+     "2024-02",
+     1,
+     0,
+     0
+    ]
+   ],
+   "Exactly 30 days counts": [
+    [
+     "2024-05",
+     2,
+     1,
+     50
+    ]
+   ],
+   "Cancelled first request doesn't start a cohort": [
+    [
+     "2024-07",
+     1,
+     1,
+     100
+    ]
+   ]
+  }
+ },
+ "rolling-retention": {
+  "hash": "bd06409da6410361",
+  "columns": [
+   "day",
+   "active_users",
+   "retained_pct"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "2024-01-01",
+     2,
+     50
+    ],
+    [
+     "2024-01-02",
+     1,
+     0
+    ],
+    [
+     "2024-01-05",
+     1,
+     0
+    ]
+   ],
+   "Exactly 7 days later": [
+    [
+     "2024-02-01",
+     1,
+     100
+    ],
+    [
+     "2024-02-08",
+     1,
+     0
+    ]
+   ],
+   "Same-day repeat isn't a return": [
+    [
+     "2024-03-01",
+     1,
+     0
+    ]
+   ]
+  }
+ },
+ "running-sales-per-product": {
+  "hash": "46af28c55adaab83",
+  "columns": [
+   "product",
+   "sale_date",
+   "amount",
+   "running_total"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "bond",
+     "2024-01-01",
+     100,
+     100
+    ],
+    [
+     "bond",
+     "2024-01-02",
+     25,
+     125
+    ],
+    [
+     "bond",
+     "2024-01-03",
+     50,
+     175
+    ],
+    [
+     "fund",
+     "2024-01-02",
+     10,
+     10
+    ]
+   ],
+   "Same-day sales": [
+    [
+     "x",
+     "2024-02-01",
+     1,
+     1
+    ],
+    [
+     "x",
+     "2024-02-01",
+     2,
+     3
+    ]
+   ],
+   "Single sale": [
+    [
+     "y",
+     "2024-03-01",
+     7,
+     7
+    ]
+   ]
+  }
+ },
+ "running-total-reset-monthly": {
+  "hash": "bff7919a3ddf6d3a",
+  "columns": [
+   "day",
+   "revenue",
+   "mtd"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "2024-01-30",
+     10,
+     10
+    ],
+    [
+     "2024-01-31",
+     5,
+     15
+    ],
+    [
+     "2024-02-01",
+     7,
+     7
+    ],
+    [
+     "2024-02-02",
+     3,
+     10
+    ]
+   ],
+   "Unordered input": [
+    [
+     "2024-03-01",
+     1,
+     1
+    ],
+    [
+     "2024-03-02",
+     2,
+     3
+    ],
+    [
+     "2024-03-03",
+     3,
+     6
+    ]
+   ],
+   "Across a year": [
+    [
+     "2023-12-31",
+     1,
+     1
+    ],
+    [
+     "2024-01-01",
+     2,
+     2
+    ],
+    [
+     "2024-01-02",
+     4,
+     6
+    ]
+   ]
+  }
+ },
+ "saas-1-mrr-snapshot": {
+  "hash": "03b2747c9d4f1788",
+  "columns": [
+   "segment",
+   "active_subscriptions",
+   "mrr"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "enterprise",
+     2,
+     1020
+    ],
+    [
+     "mid",
+     1,
+     120
+    ],
+    [
+     "smb",
+     1,
+     120
+    ]
+   ],
+   "Ends exactly on the day": [
+    [
+     "smb",
+     1,
+     10
+    ]
+   ],
+   "Everything still active": [
+    [
+     "mid",
+     2,
+     12
+    ]
+   ]
+  }
+ },
+ "saas-2-mrr-series": {
+  "hash": "a2f692a66f847c54",
+  "columns": [
+   "month",
+   "customers",
+   "mrr"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "2024-01",
+     3,
+     1000
+    ],
+    [
+     "2024-02",
+     3,
+     1070
+    ],
+    [
+     "2024-03",
+     3,
+     1260
+    ],
+    [
+     "2024-04",
+     4,
+     1380
+    ],
+    [
+     "2024-05",
+     5,
+     1310
+    ],
+    [
+     "2024-06",
+     4,
+     1190
+    ]
+   ],
+   "Nothing active": [
+    [
+     "2024-01",
+     0,
+     0
+    ],
+    [
+     "2024-02",
+     0,
+     0
+    ],
+    [
+     "2024-03",
+     0,
+     0
+    ],
+    [
+     "2024-04",
+     0,
+     0
+    ],
+    [
+     "2024-05",
+     0,
+     0
+    ],
+    [
+     "2024-06",
+     0,
+     0
+    ]
+   ],
+   "Mid-month churn misses the snapshot": [
+    [
+     "2024-01",
+     0,
+     0
+    ],
+    [
+     "2024-02",
+     1,
+     30
+    ],
+    [
+     "2024-03",
+     1,
+     30
+    ],
+    [
+     "2024-04",
+     0,
+     0
+    ],
+    [
+     "2024-05",
+     0,
+     0
+    ],
+    [
+     "2024-06",
+     0,
+     0
+    ]
+   ]
+  }
+ },
+ "saas-3-mrr-bridge": {
+  "hash": "69231dfec99e1988",
+  "columns": [
+   "month",
+   "new_mrr",
+   "expansion_mrr",
+   "contraction_mrr",
+   "churned_mrr",
+   "net_change"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "2024-02",
+     120,
+     0,
+     0,
+     -50,
+     70
+    ],
+    [
+     "2024-03",
+     0,
+     190,
+     0,
+     0,
+     190
+    ],
+    [
+     "2024-04",
+     120,
+     0,
+     0,
+     0,
+     120
+    ],
+    [
+     "2024-05",
+     50,
+     0,
+     -120,
+     0,
+     -70
+    ],
+    [
+     "2024-06",
+     0,
+     0,
+     0,
+     -120,
+     -120
+    ]
+   ],
+   "Upgrade is expansion, not new + churn": [
+    [
+     "2024-02",
+     0,
+     70,
+     0,
+     0,
+     70
+    ],
+    [
+     "2024-03",
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    [
+     "2024-04",
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    [
+     "2024-05",
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    [
+     "2024-06",
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   ],
+   "Reactivation counts as new": [
+    [
+     "2024-02",
+     0,
+     0,
+     0,
+     -100,
+     -100
+    ],
+    [
+     "2024-03",
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    [
+     "2024-04",
+     100,
+     0,
+     0,
+     0,
+     100
+    ],
+    [
+     "2024-05",
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    [
+     "2024-06",
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   ]
+  }
+ },
+ "salary-quartiles": {
+  "hash": "a80beb7799be92e0",
+  "columns": [
+   "dept",
+   "emp_id",
+   "salary",
+   "quartile"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "eng",
+     1,
+     100,
+     1
+    ],
+    [
+     "eng",
+     2,
+     90,
+     1
+    ],
+    [
+     "eng",
+     3,
+     80,
+     2
+    ],
+    [
+     "eng",
+     4,
+     70,
+     3
+    ],
+    [
+     "eng",
+     5,
+     60,
+     4
+    ],
+    [
+     "ops",
+     6,
+     50,
+     1
+    ],
+    [
+     "ops",
+     7,
+     40,
+     2
+    ]
+   ],
+   "Ties use emp_id": [
+    [
+     "x",
+     1,
+     10,
+     1
+    ],
+    [
+     "x",
+     2,
+     10,
+     2
+    ],
+    [
+     "x",
+     3,
+     10,
+     3
+    ],
+    [
+     "x",
+     4,
+     10,
+     4
+    ]
+   ],
+   "Single employee": [
+    [
+     "solo",
+     9,
+     1,
+     1
+    ]
+   ]
+  }
+ },
+ "scd2-build-history": {
+  "hash": "5602ad6865046cf0",
+  "columns": [
+   "customer_id",
+   "city",
+   "valid_from",
+   "valid_to",
+   "is_current"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     "Pune",
+     "2024-01-01",
+     "2024-01-05",
+     false
+    ],
+    [
+     1,
+     "Delhi",
+     "2024-01-05",
+     "2024-02-01",
+     false
+    ],
+    [
+     1,
+     "Pune",
+     "2024-02-01",
+     null,
+     true
+    ],
+    [
+     2,
+     "Goa",
+     "2024-01-03",
+     null,
+     true
+    ]
+   ],
+   "Never changes": [
+    [
+     3,
+     "X",
+     "2024-01-01",
+     null,
+     true
+    ]
+   ],
+   "NULL city is a value": [
+    [
+     4,
+     "A",
+     "2024-01-01",
+     "2024-01-02",
+     false
+    ],
+    [
+     4,
+     null,
+     "2024-01-02",
+     "2024-01-04",
+     false
+    ],
+    [
+     4,
+     "A",
+     "2024-01-04",
+     null,
+     true
+    ]
+   ]
+  }
+ },
+ "seat-tally": {
+  "hash": "de3038b64121970e",
+  "columns": [
+   "party",
+   "seats"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "Red",
+     2
+    ],
+    [
+     "Blue",
+     1
+    ]
+   ],
+   "Tie gives no seat": [
+    [
+     "A",
+     1
+    ]
+   ],
+   "Single constituency": [
+    [
+     "C",
+     1
+    ]
+   ]
+  }
+ },
+ "second-day-confirmation": {
+  "hash": "93b4d11f2333c3fb",
+  "columns": [
+   "user_id"
+  ],
+  "tests": {
+   "Example": [
+    [
+     2
+    ],
+    [
+     3
+    ]
+   ],
+   "Two days later is too late": [],
+   "Unconfirmed second-day text": [
+    [
+     6
+    ]
+   ]
+  }
+ },
+ "second-ride-delay": {
+  "hash": "e6f304ccf04c77b8",
+  "columns": [
+   "users",
+   "avg_delay_days"
+  ],
+  "tests": {
+   "Example": [
+    [
+     2,
+     1.5
+    ]
+   ],
+   "No second ride": [
+    [
+     1,
+     2
+    ]
+   ],
+   "Unordered rides": [
+    [
+     1,
+     4
+    ]
+   ]
+  }
+ },
+ "send-vs-open-time": {
+  "hash": "4129d6123214e08c",
+  "columns": [
+   "age_bucket",
+   "send_pct",
+   "open_pct"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "21-25",
+     50,
+     50
+    ],
+    [
+     "26-30",
+     50,
+     50
+    ]
+   ],
+   "Only sending": [
+    [
+     "31-35",
+     100,
+     0
+    ]
+   ],
+   "Thirds": [
+    [
+     "x",
+     33.33,
+     66.67
+    ]
+   ]
+  }
+ },
+ "sessionize-sql": {
+  "hash": "eb1a05f2616c0524",
+  "columns": [
+   "user_id",
+   "session_no",
+   "started_at",
+   "ended_at",
+   "clicks"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     1,
+     "2024-01-01 10:00:00",
+     "2024-01-01 10:20:00",
+     2
+    ],
+    [
+     1,
+     2,
+     "2024-01-01 11:00:00",
+     "2024-01-01 11:00:00",
+     1
+    ],
+    [
+     2,
+     1,
+     "2024-01-01 09:00:00",
+     "2024-01-01 09:00:00",
+     1
+    ]
+   ],
+   "Exactly 30 minutes stays": [
+    [
+     3,
+     1,
+     "2024-01-01 10:00:00",
+     "2024-01-01 10:30:00",
+     2
+    ],
+    [
+     3,
+     2,
+     "2024-01-01 11:00:01",
+     "2024-01-01 11:00:01",
+     1
+    ]
+   ],
+   "Unordered input": [
+    [
+     4,
+     1,
+     "2024-01-01 08:00:00",
+     "2024-01-01 08:10:00",
+     2
+    ],
+    [
+     4,
+     2,
+     "2024-01-01 12:00:00",
+     "2024-01-01 12:00:00",
+     1
+    ]
+   ]
+  }
+ },
+ "shop-1-gross-sales": {
+  "hash": "e7b9403aa7cbe1b7",
+  "columns": [
+   "category",
+   "orders",
+   "units",
+   "gross_revenue"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "electronics",
+     2,
+     2,
+     600
+    ],
+    [
+     "shoes",
+     4,
+     5,
+     480
+    ],
+    [
+     "books",
+     4,
+     7,
+     145
+    ]
+   ],
+   "Two lines of one category in one order": [
+    [
+     "books",
+     1,
+     2,
+     40
+    ]
+   ],
+   "Single item": [
+    [
+     "electronics",
+     1,
+     2,
+     600
+    ]
+   ]
+  }
+ },
+ "shop-2-return-rates": {
+  "hash": "bddf2aef16de4eba",
+  "columns": [
+   "category",
+   "units_sold",
+   "units_returned",
+   "unit_return_pct",
+   "value_return_pct"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "electronics",
+     2,
+     1,
+     50,
+     50
+    ],
+    [
+     "shoes",
+     5,
+     2,
+     40,
+     41.7
+    ],
+    [
+     "books",
+     7,
+     1,
+     14.3,
+     17.2
+    ]
+   ],
+   "Split returns don't double sales": [
+    [
+     "shoes",
+     4,
+     2,
+     50,
+     50
+    ]
+   ],
+   "No returns": [
+    [
+     "books",
+     2,
+     0,
+     0,
+     0
+    ],
+    [
+     "electronics",
+     1,
+     0,
+     0,
+     0
+    ]
+   ]
+  }
+ },
+ "shop-3-pareto-customers": {
+  "hash": "3f71cb26234a8f5d",
+  "columns": [
+   "customer_id",
+   "net_revenue",
+   "cumulative_pct",
+   "in_top_80"
+  ],
+  "tests": {
+   "Example": [
+    [
+     2,
+     300,
+     42.9,
+     true
+    ],
+    [
+     1,
+     160,
+     65.7,
+     true
+    ],
+    [
+     6,
+     120,
+     82.9,
+     true
+    ],
+    [
+     4,
+     80,
+     94.3,
+     false
+    ],
+    [
+     7,
+     25,
+     97.9,
+     false
+    ],
+    [
+     5,
+     15,
+     100,
+     false
+    ],
+    [
+     3,
+     0,
+     100,
+     false
+    ]
+   ],
+   "One customer": [
+    [
+     7,
+     15,
+     100,
+     true
+    ]
+   ],
+   "Equal customers": [
+    [
+     1,
+     15,
+     20,
+     true
+    ],
+    [
+     2,
+     15,
+     40,
+     true
+    ],
+    [
+     3,
+     15,
+     60,
+     true
+    ],
+    [
+     4,
+     15,
+     80,
+     true
+    ],
+    [
+     5,
+     15,
+     100,
+     false
+    ]
+   ]
+  }
+ },
+ "signup-funnel": {
+  "hash": "e620ea7d580a4ee0",
+  "columns": [
+   "step_no",
+   "step",
+   "users",
+   "conversion_pct"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     "visit",
+     3,
+     100
+    ],
+    [
+     2,
+     "signup",
+     2,
+     66.7
+    ],
+    [
+     3,
+     "verify",
+     1,
+     50
+    ],
+    [
+     4,
+     "purchase",
+     1,
+     100
+    ]
+   ],
+   "Out-of-order steps don't count": [
+    [
+     1,
+     "visit",
+     1,
+     100
+    ],
+    [
+     2,
+     "signup",
+     1,
+     100
+    ],
+    [
+     3,
+     "verify",
+     0,
+     0
+    ],
+    [
+     4,
+     "purchase",
+     0,
+     0
+    ]
+   ],
+   "Repeated events use the first time": [
+    [
+     1,
+     "visit",
+     2,
+     100
+    ],
+    [
+     2,
+     "signup",
+     1,
+     50
+    ],
+    [
+     3,
+     "verify",
+     0,
+     0
+    ],
+    [
+     4,
+     "purchase",
+     0,
+     0
+    ]
+   ]
+  }
+ },
+ "sku-parsing": {
+  "hash": "c59f1a423f429ce4",
+  "columns": [
+   "department",
+   "size",
+   "units"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "APP",
+     "XL",
+     1
+    ],
+    [
+     "GRO",
+     "L",
+     8
+    ],
+    [
+     "GRO",
+     "M",
+     2
+    ]
+   ],
+   "All malformed": [],
+   "Lower-case is malformed": [
+    [
+     "TOY",
+     "S",
+     2
+    ]
+   ]
+  }
+ },
+ "split-tags-count": {
+  "hash": "097ce8934b361c41",
+  "columns": [
+   "tag",
+   "posts"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "spark",
+     2
+    ],
+    [
+     "sql",
+     2
+    ],
+    [
+     "dbt",
+     1
+    ],
+    [
+     "etl",
+     1
+    ]
+   ],
+   "Repeated tag in one post": [
+    [
+     "a",
+     1
+    ],
+    [
+     "b",
+     1
+    ]
+   ],
+   "Trailing commas": [
+    [
+     "x",
+     2
+    ],
+    [
+     "y",
+     1
+    ]
+   ]
+  }
+ },
+ "stale-unfulfilled-orders": {
+  "hash": "f1c73c0cf216269f",
+  "columns": [
+   "customer_id",
+   "email",
+   "stale_orders",
+   "oldest_order_date"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     "a@x.com",
+     2,
+     "2024-06-01"
+    ],
+    [
+     2,
+     "b@x.com",
+     1,
+     "2024-06-14"
+    ]
+   ],
+   "Exactly 15 days is not stale": [],
+   "Everything fulfilled": [
+    [
+     6,
+     "f@x.com",
+     1,
+     "2024-01-01"
+    ]
+   ]
+  }
+ },
+ "stickiness-dau-mau": {
+  "hash": "5e12742b7141729d",
+  "columns": [
+   "day",
+   "dau",
+   "mau",
+   "stickiness_pct"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "2024-01-01",
+     2,
+     2,
+     100
+    ],
+    [
+     "2024-01-15",
+     1,
+     2,
+     50
+    ],
+    [
+     "2024-01-31",
+     2,
+     2,
+     100
+    ]
+   ],
+   "Window drops old users": [
+    [
+     "2024-03-01",
+     1,
+     1,
+     100
+    ],
+    [
+     "2024-03-31",
+     1,
+     1,
+     100
+    ]
+   ],
+   "Same user every day": [
+    [
+     "2024-04-01",
+     1,
+     1,
+     100
+    ],
+    [
+     "2024-04-02",
+     1,
+     1,
+     100
+    ]
+   ]
+  }
+ },
+ "subscription-length-per-product": {
+  "hash": "590378810c661358",
+  "columns": [
+   "product",
+   "subscriptions",
+   "avg_days"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "Design",
+     2,
+     30
+    ],
+    [
+     "Video",
+     1,
+     10
+    ]
+   ],
+   "All active": [
+    [
+     "X",
+     1,
+     1
+    ]
+   ],
+   "Same-day cancel": [
+    [
+     "Y",
+     2,
+     1
+    ]
+   ]
+  }
+ },
+ "sudoku-validator": {
+  "hash": "733ceb6f3e3229eb",
+  "columns": [
+   "unit",
+   "idx"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "box",
+     0
+    ],
+    [
+     "col",
+     0
+    ],
+    [
+     "row",
+     0
+    ]
+   ],
+   "Valid grid": [],
+   "Swapped rows break boxes only": [
+    [
+     "box",
+     0
+    ],
+    [
+     "box",
+     1
+    ],
+    [
+     "box",
+     2
+    ],
+    [
+     "box",
+     3
+    ],
+    [
+     "box",
+     4
+    ],
+    [
+     "box",
+     5
+    ]
+   ]
+  }
+ },
+ "swapped-delivery-items": {
+  "hash": "ebc07a5b855b1a92",
+  "columns": [
+   "order_id",
+   "item"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     "biryani"
+    ],
+    [
+     2,
+     "naan"
+    ],
+    [
+     3,
+     "dosa"
+    ],
+    [
+     4,
+     "lassi"
+    ],
+    [
+     5,
+     "idli"
+    ]
+   ],
+   "Even count": [
+    [
+     1,
+     "b"
+    ],
+    [
+     2,
+     "a"
+    ]
+   ],
+   "Single order": [
+    [
+     1,
+     "solo"
+    ]
+   ]
+  }
+ },
+ "team-size-under-manager": {
+  "hash": "7959bd49a95e8b7b",
+  "columns": [
+   "name",
+   "direct_reports",
+   "total_reports"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "Ceo",
+     2,
+     6
+    ],
+    [
+     "Vp Eng",
+     1,
+     3
+    ],
+    [
+     "Lead",
+     2,
+     2
+    ],
+    [
+     "Vp Ops",
+     1,
+     1
+    ]
+   ],
+   "Chain": [
+    [
+     "A",
+     1,
+     2
+    ],
+    [
+     "B",
+     1,
+     1
+    ]
+   ],
+   "Ties by name": [
+    [
+     "Root",
+     2,
+     4
+    ],
+    [
+     "Ma",
+     1,
+     1
+    ],
+    [
+     "Mx",
+     1,
+     1
+    ]
+   ]
+  }
+ },
+ "three-topping-combos": {
+  "hash": "7970fc204c11aa6e",
+  "columns": [
+   "pizza",
+   "total_cost"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "Chicken,Pepperoni,Sausage",
+     1.75
+    ],
+    [
+     "Chicken,Onion,Sausage",
+     1.35
+    ],
+    [
+     "Onion,Pepperoni,Sausage",
+     1.3
+    ],
+    [
+     "Chicken,Onion,Pepperoni",
+     1.15
+    ]
+   ],
+   "Exactly three": [
+    [
+     "a,b,c",
+     6
+    ]
+   ],
+   "Ties on cost": [
+    [
+     "w,x,y",
+     3
+    ],
+    [
+     "w,x,z",
+     3
+    ],
+    [
+     "w,y,z",
+     3
+    ],
+    [
+     "x,y,z",
+     3
+    ]
+   ]
+  }
+ },
+ "ticket-close-time-monthly": {
+  "hash": "d93910d162e63a0c",
+  "columns": [
+   "month",
+   "tickets",
+   "avg_hours"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "2024-01",
+     2,
+     13.8
+    ],
+    [
+     "2024-02",
+     1,
+     0.8
+    ]
+   ],
+   "All open": [
+    [
+     "2024-03",
+     1,
+     1
+    ]
+   ],
+   "Across midnight": [
+    [
+     "2024-04",
+     1,
+     2
+    ]
+   ]
+  }
+ },
+ "tiered-sales-points": {
+  "hash": "573fbc771f3645e0",
+  "columns": [
+   "rep",
+   "deals",
+   "points",
+   "big_deal_pct"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "ana",
+     2,
+     11,
+     90.9
+    ],
+    [
+     "bo",
+     3,
+     7,
+     0
+    ]
+   ],
+   "Boundary": [
+    [
+     "cy",
+     1,
+     10,
+     100
+    ]
+   ],
+   "Small deals only": [
+    [
+     "di",
+     2,
+     2,
+     0
+    ]
+   ]
+  }
+ },
+ "time-zone-local-hour": {
+  "hash": "d3acbfc3aef78699",
+  "columns": [
+   "local_hour",
+   "orders"
+  ],
+  "tests": {
+   "Example": [
+    [
+     9,
+     3
+    ],
+    [
+     19,
+     1
+    ]
+   ],
+   "Wraps past midnight": [
+    [
+     1,
+     1
+    ]
+   ],
+   "Negative offset into the previous day": [
+    [
+     1,
+     1
+    ],
+    [
+     21,
+     1
+    ]
+   ]
+  }
+ },
+ "top-cities-completed-trades": {
+  "hash": "50957907d56002a9",
+  "columns": [
+   "city",
+   "completed_orders"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "Austin",
+     2
+    ],
+    [
+     "Denver",
+     2
+    ],
+    [
+     "Boston",
+     1
+    ]
+   ],
+   "Fewer than 3 cities": [
+    [
+     "X",
+     1
+    ]
+   ],
+   "Cancelled only": [
+    [
+     "Z",
+     1
+    ]
+   ]
+  }
+ },
+ "top-item-per-store": {
+  "hash": "d561a4feb01e150e",
+  "columns": [
+   "store_id",
+   "item",
+   "units"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     "milk",
+     4
+    ],
+    [
+     2,
+     "apples",
+     5
+    ]
+   ],
+   "Tie goes to the first name": [
+    [
+     3,
+     "kiwi",
+     2
+    ]
+   ],
+   "Single item": [
+    [
+     4,
+     "rice",
+     1
+    ]
+   ]
+  }
+ },
+ "top-n-with-ties-limit": {
+  "hash": "37bce2906121fe98",
+  "columns": [
+   "category",
+   "product",
+   "total_spend",
+   "rnk"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "home",
+     "lamp",
+     30,
+     1
+    ],
+    [
+     "tech",
+     "laptop",
+     900,
+     1
+    ],
+    [
+     "tech",
+     "phone",
+     500,
+     2
+    ],
+    [
+     "tech",
+     "cable",
+     50,
+     3
+    ],
+    [
+     "tech",
+     "mouse",
+     50,
+     3
+    ]
+   ],
+   "Tie for first": [
+    [
+     "x",
+     "a",
+     10,
+     1
+    ],
+    [
+     "x",
+     "b",
+     10,
+     1
+    ],
+    [
+     "x",
+     "c",
+     5,
+     3
+    ]
+   ],
+   "Other years ignored": [
+    [
+     "y",
+     "q",
+     1,
+     1
+    ]
+   ]
+  }
+ },
+ "top-three-salaries": {
+  "hash": "147c63fcd6e362b8",
+  "columns": [
+   "dept",
+   "name",
+   "salary"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "eng",
+     "Ana",
+     300
+    ],
+    [
+     "eng",
+     "Bo",
+     250
+    ],
+    [
+     "eng",
+     "Cy",
+     250
+    ],
+    [
+     "eng",
+     "Di",
+     200
+    ],
+    [
+     "ops",
+     "Fa",
+     90
+    ]
+   ],
+   "Fewer than three salaries": [
+    [
+     "a",
+     "X",
+     1
+    ],
+    [
+     "a",
+     "Y",
+     1
+    ]
+   ],
+   "Two departments": [
+    [
+     "p",
+     "A",
+     5
+    ],
+    [
+     "p",
+     "B",
+     4
+    ],
+    [
+     "p",
+     "C",
+     3
+    ],
+    [
+     "q",
+     "E",
+     9
+    ]
+   ]
+  }
+ },
+ "top-traders-monthly": {
+  "hash": "aae846123cd3db6a",
+  "columns": [
+   "month",
+   "customer_id",
+   "traded"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "2024-01",
+     1,
+     350
+    ],
+    [
+     "2024-01",
+     2,
+     300
+    ],
+    [
+     "2024-02",
+     3,
+     10
+    ]
+   ],
+   "Ties": [
+    [
+     "2024-03",
+     7,
+     5
+    ],
+    [
+     "2024-03",
+     8,
+     5
+    ]
+   ],
+   "Single trader": [
+    [
+     "2024-04",
+     4,
+     1
+    ]
+   ]
+  }
+ },
+ "two-way-payment-pairs": {
+  "hash": "39d06a1c0f0e3913",
+  "columns": [
+   "user_a",
+   "user_b"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     2
+    ],
+    [
+     3,
+     4
+    ]
+   ],
+   "One-way only": [],
+   "Self-payments ignored": [
+    [
+     8,
+     9
+    ]
+   ]
+  }
+ },
+ "uncategorised-calls": {
+  "hash": "e159c40cb3158dc3",
+  "columns": [
+   "uncategorised_pct"
+  ],
+  "tests": {
+   "Example": [
+    [
+     50
+    ]
+   ],
+   "Fully categorised": [
+    [
+     0
+    ]
+   ],
+   "Thirds": [
+    [
+     33.3
+    ]
+   ]
+  }
+ },
+ "unfinished-parts": {
+  "hash": "170b022a6c753732",
+  "columns": [
+   "part",
+   "assembly_step"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "bumper",
+     2
+    ],
+    [
+     "door",
+     1
+    ]
+   ],
+   "All finished": [],
+   "Everything open": [
+    [
+     "a",
+     1
+    ],
+    [
+     "b",
+     2
+    ]
+   ]
+  }
+ },
+ "unpivot-survey": {
+  "hash": "1fc497a99fed8c4f",
+  "columns": [
+   "question",
+   "answers",
+   "avg_score"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "speed",
+     3,
+     4
+    ],
+    [
+     "support",
+     2,
+     3
+    ],
+    [
+     "price",
+     2,
+     2.5
+    ]
+   ],
+   "Ties": [
+    [
+     "price",
+     1,
+     2
+    ],
+    [
+     "speed",
+     1,
+     2
+    ],
+    [
+     "support",
+     1,
+     2
+    ]
+   ],
+   "A question nobody answered": [
+    [
+     "speed",
+     2,
+     3
+    ],
+    [
+     "support",
+     2,
+     3
+    ],
+    [
+     "price",
+     0,
+     null
+    ]
+   ]
+  }
+ },
+ "unprofitable-drugs": {
+  "hash": "b4e75c2068699e53",
+  "columns": [
+   "manufacturer",
+   "drugs",
+   "total_loss"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "Acme",
+     1,
+     50
+    ],
+    [
+     "Biox",
+     2,
+     32
+    ]
+   ],
+   "Everyone profitable": [],
+   "Break-even is not a loss": [
+    [
+     "Y",
+     1,
+     1
+    ]
+   ]
+  }
+ },
+ "vacant-nights": {
+  "hash": "6e480c85062943fc",
+  "columns": [
+   "active_listings",
+   "avg_vacant_nights"
+  ],
+  "tests": {
+   "Example": [
+    [
+     2,
+     355.5
+    ]
+   ],
+   "Never booked": [
+    [
+     1,
+     366
+    ]
+   ],
+   "Booking outside the year": [
+    [
+     1,
+     364
+    ]
+   ]
+  }
+ },
+ "validate-emails-regex": {
+  "hash": "7c2a699287ddbac9",
+  "columns": [
+   "user_id",
+   "email"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     "asha@mail.com"
+    ],
+    [
+     4,
+     "r.k+tag@data-co.co.uk"
+    ]
+   ],
+   "Spaces and long TLDs": [
+    [
+     2,
+     "ok@x.travel"
+    ],
+    [
+     3,
+     "ok2@x.museum"
+    ],
+    [
+     4,
+     "a_b%c@ex.org"
+    ]
+   ],
+   "All valid": [
+    [
+     1,
+     "A1@B2.COM"
+    ],
+    [
+     2,
+     "z@z.zz"
+    ]
+   ]
+  }
+ },
+ "vip-watchers": {
+  "hash": "0c5edc9a01fe2fa9",
+  "columns": [
+   "user_id",
+   "hours"
+  ],
+  "tests": {
+   "Example": [
+    [
+     2,
+     5
+    ],
+    [
+     1,
+     3.5
+    ],
+    [
+     3,
+     1
+    ]
+   ],
+   "Ties on hours": [
+    [
+     6,
+     1
+    ],
+    [
+     7,
+     1
+    ],
+    [
+     8,
+     1
+    ]
+   ],
+   "Other months ignored": [
+    [
+     2,
+     0.2
+    ]
+   ]
+  }
+ },
+ "volume-change-per-stock": {
+  "hash": "fe9fbfabceb3112f",
+  "columns": [
+   "ticker",
+   "trade_date",
+   "volume",
+   "pct_change"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "AAA",
+     "2024-01-02",
+     100,
+     null
+    ],
+    [
+     "AAA",
+     "2024-01-03",
+     150,
+     50
+    ],
+    [
+     "AAA",
+     "2024-01-04",
+     120,
+     -20
+    ],
+    [
+     "BBB",
+     "2024-01-02",
+     40,
+     null
+    ]
+   ],
+   "Unordered input": [
+    [
+     "C",
+     "2024-01-02",
+     20,
+     null
+    ],
+    [
+     "C",
+     "2024-01-03",
+     30,
+     50
+    ]
+   ],
+   "Drop to zero": [
+    [
+     "D",
+     "2024-01-02",
+     10,
+     null
+    ],
+    [
+     "D",
+     "2024-01-03",
+     0,
+     -100
+    ]
+   ]
+  }
+ },
+ "weekly-active-users": {
+  "hash": "b500ae8608f16579",
+  "columns": [
+   "week_start",
+   "wau"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "2024-01-01",
+     2
+    ],
+    [
+     "2024-01-08",
+     2
+    ]
+   ],
+   "Week spanning a year": [
+    [
+     "2024-12-30",
+     2
+    ]
+   ],
+   "Same user many times": [
+    [
+     "2024-05-06",
+     1
+    ]
+   ]
+  }
+ },
+ "weekly-touch-streak": {
+  "hash": "44f0f44c11bba7f6",
+  "columns": [
+   "email"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "ana@x.com"
+    ]
+   ],
+   "Several touches in one week count once": [],
+   "Streak across a year": [
+    [
+     "ed@x.com"
+    ]
+   ]
+  }
+ },
+ "whale-cardholders": {
+  "hash": "e322da2f94211237",
+  "columns": [
+   "customer_id",
+   "big_txns",
+   "big_total"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     3,
+     18000
+    ],
+    [
+     3,
+     3,
+     15000
+    ]
+   ],
+   "Nobody qualifies": [],
+   "Tie on total": [
+    [
+     4,
+     3,
+     15000
+    ],
+    [
+     5,
+     3,
+     15000
+    ]
+   ]
+  }
+ },
+ "z-score-outliers": {
+  "hash": "527ca21d148311d6",
+  "columns": [
+   "order_id",
+   "store_id",
+   "amount",
+   "z"
+  ],
+  "tests": {
+   "Example": [
+    [
+     10,
+     1,
+     60,
+     3
+    ]
+   ],
+   "Constant store": [
+    [
+     12,
+     4,
+     50,
+     3
+    ]
+   ],
+   "Low outlier": [
+    [
+     10,
+     5,
+     1,
+     -3
+    ]
+   ]
+  }
+ }
+}

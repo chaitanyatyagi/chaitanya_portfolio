@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { theme as t } from '../data.js';
 import { useContent } from '../ContentContext.jsx';
 import Reveal from './Reveal.jsx';
+import { SectionHeader } from './ui.jsx';
 
 const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 const DAY_HEADS = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
@@ -98,13 +99,7 @@ export default function Scheduler() {
     <section id="connect" style={{ background: t.ink, color: t.bg, padding: '84px var(--px)' }}>
       <div style={{ maxWidth: 1180, margin: '0 auto' }}>
         <Reveal>
-          <div style={{ fontFamily: t.fontMono, fontSize: 12, letterSpacing: '.14em', textTransform: 'uppercase', color: t.accent, marginBottom: 16 }}>// 1:1 connect</div>
-          <h2 style={{ fontFamily: t.fontDisplay, fontWeight: 600, fontSize: 34, letterSpacing: '-.02em', margin: '0 0 12px' }}>
-            {scheduler.heading}
-          </h2>
-          <p style={{ fontSize: 16, color: '#a9a296', margin: '0 0 40px', maxWidth: '56ch' }}>
-            {scheduler.description}
-          </p>
+          <SectionHeader kicker="// 1:1 connect" no="05" heading={scheduler.heading} description={scheduler.description} dark />
         </Reveal>
         <div className="grid-collapse" style={{ display: 'grid', gridTemplateColumns: '1.3fr 1fr', gap: 20 }}>
           {/* Calendar */}

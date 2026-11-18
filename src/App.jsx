@@ -4,10 +4,10 @@ import Hero from './components/Hero.jsx';
 import About from './components/About.jsx';
 import Experience from './components/Experience.jsx';
 import Projects from './components/Projects.jsx';
-import KnowledgeBase from './components/KnowledgeBase.jsx';
-import Course from './components/Course.jsx';
-import Chatbot from './components/Chatbot.jsx';
+import GuideSection from './components/GuideSection.jsx';
 import Scheduler from './components/Scheduler.jsx';
+import BlogSection from './components/BlogSection.jsx';
+import Chatbot from './components/Chatbot.jsx';
 import Footer from './components/Footer.jsx';
 
 export default function App() {
@@ -20,10 +20,10 @@ export default function App() {
         <About />
         <Experience />
         <Projects />
-        <KnowledgeBase />
-        <Course />
-        <Chatbot />
+        <GuideSection />
         <Scheduler />
+        <BlogSection />
+        <Chatbot />
         <Footer />
       </div>
     </ContentProvider>

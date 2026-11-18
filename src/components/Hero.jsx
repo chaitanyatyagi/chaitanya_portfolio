@@ -1,14 +1,6 @@
 import { theme as t } from '../data.js';
 import { useContent, Accent } from '../ContentContext.jsx';
-
-const Kicker = ({ text }) => (
-  <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 26, animation: 'floatUp .6s ease both' }}>
-    <span style={{ width: 7, height: 7, borderRadius: '50%', background: t.accent, animation: 'pulseDot 2s ease-in-out infinite' }} />
-    <span style={{ fontFamily: t.fontMono, fontSize: 12.5, letterSpacing: '.14em', textTransform: 'uppercase', color: t.faint }}>
-      {text}
-    </span>
-  </div>
-);
+import { Kicker } from './ui.jsx';
 
 export default function Hero() {
   const { hero } = useContent();
@@ -16,7 +8,7 @@ export default function Hero() {
 
   return (
     <header style={{ padding: '96px var(--px) 88px', maxWidth: 1180, margin: '0 auto' }}>
-      <Kicker text={hero.kicker} />
+      <Kicker text={hero.kicker} tone="faint" style={{ marginBottom: 26, animation: 'floatUp .6s ease both' }} />
       <h1 style={{
         fontFamily: t.fontDisplay, fontWeight: 600, fontSize: 'clamp(40px,6.4vw,78px)',
         lineHeight: 1.02, letterSpacing: '-.03em', margin: '0 0 26px', maxWidth: '16ch',

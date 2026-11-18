@@ -1,0 +1,167 @@
+// Pack 1 — foundations: filtering, aggregation, joins, set logic, NULLs.
+import { sql, md, dl } from './define.js';
+
+const DE_DA = ['Data Engineer', 'Data Analyst', 'Analytics Engineer'];
+const shop = {
+  customers: 'customer_id INTEGER Primary key, name VARCHAR Customer name, city VARCHAR City (nullable), signup_date DATE Signup day',
+  orders: 'order_id INTEGER Primary key, customer_id INTEGER Buyer, amount DOUBLE Order value, status VARCHAR placed / shipped / cancelled, order_date DATE Order day',
+};
+const C = [[1, 'Asha', 'Pune', '2024-01-05'], [2, 'Ravi', 'Delhi', '2024-02-10'], [3, 'Meera', null, '2024-03-01'], [4, 'Kabir', 'Pune', '2024-03-15']];
+const O = [[10, 1, 120.0, 'shipped', '2024-03-01'], [11, 1, 80.0, 'cancelled', '2024-03-02'], [12, 2, 200.0, 'placed', '2024-03-05'], [13, 1, 40.5, 'shipped', '2024-04-01'], [14, 4, 15.0, 'shipped', '2024-04-02']];
+
+export default {
+  problems: [
+    sql({
+      id: 'customers-without-orders', title: 'Customers Who Never Ordered', difficulty: 'Easy',
+      topics: ['Joins', 'NULL Handling'], patterns: ['Anti-join (LEFT JOIN … IS NULL / NOT EXISTS)'], domains: ['E-commerce / Sales'], interview: true, roles: DE_DA,
+      summary: 'List signed-up customers with no orders at all.',
+      description: md('Return the `customer_id` and `name` of customers with **no rows** in `orders` (cancelled orders still count as orders). Order by `customer_id`.'),
+      hints: ['LEFT JOIN orders and keep rows where the order side is NULL — or NOT EXISTS.'],
+      schema: shop,
+      solution: `SELECT c.customer_id, c.name\nFROM customers c\nWHERE NOT EXISTS (SELECT 1 FROM orders o WHERE o.customer_id = c.customer_id)\nORDER BY c.customer_id;\n`,
+      explanation: 'An anti-join keeps left rows with no match. NOT EXISTS is NULL-safe and states the intent directly.',
+      tests: [
+        { name: 'Example', tables: { customers: C, orders: O } },
+        { name: 'Only cancelled orders still count', hidden: true, tables: { customers: [[1, 'A', 'X', '2024-01-01'], [2, 'B', 'Y', '2024-01-01']], orders: [[1, 1, 5.0, 'cancelled', '2024-01-02']] } },
+        { name: 'Nobody ordered', hidden: true, tables: { customers: [[7, 'Z', null, '2024-01-01'], [3, 'Q', 'P', '2024-01-01']], orders: [] } },
+      ],
+    }),
+    sql({
+      id: 'revenue-by-city', title: 'Revenue by City (with Unknowns)', difficulty: 'Easy',
+      topics: ['Aggregation', 'Joins', 'NULL Handling'], patterns: ['Filter → join → aggregate', 'COALESCE for missing labels'], domains: ['E-commerce / Sales'], interview: true, roles: DE_DA,
+      summary: 'Sum non-cancelled revenue per customer city; missing cities become "Unknown".',
+      description: md('For orders that are **not cancelled**, sum `amount` by the customer\'s `city`. Customers with no city are reported as `Unknown`.', '', 'Return `city`, `revenue` (rounded to 2), `orders`, ordered by `revenue` descending, then `city`.'),
+      hints: ['Filter status before aggregating.', 'COALESCE(city, \'Unknown\').'],
+      schema: shop,
+      solution: `SELECT COALESCE(c.city, 'Unknown') AS city, ROUND(SUM(o.amount), 2) AS revenue, COUNT(*) AS orders\nFROM orders o JOIN customers c USING (customer_id)\nWHERE o.status <> 'cancelled'\nGROUP BY 1\nORDER BY revenue DESC, city;\n`,
+      explanation: 'Filter rows first (WHERE), then aggregate. COALESCE gives NULL cities a label so they form one group instead of disappearing from reports.',
+      tests: [
+        { name: 'Example', tables: { customers: C, orders: O } },
+        { name: 'Unknown city and ties', hidden: true, tables: { customers: [[1, 'A', null, '2024-01-01'], [2, 'B', 'Goa', '2024-01-01']], orders: [[1, 1, 10.0, 'placed', '2024-01-02'], [2, 2, 10.0, 'shipped', '2024-01-02']] } },
+        { name: 'Everything cancelled but one', hidden: true, tables: { customers: [[1, 'A', 'Pune', '2024-01-01']], orders: [[1, 1, 9.99, 'cancelled', '2024-01-02'], [2, 1, 0.01, 'placed', '2024-01-02']] } },
+      ],
+    }),
+    sql({
+      id: 'first-order-per-customer', title: 'Each Customer\'s First Order', difficulty: 'Easy',
+      topics: ['Window Functions', 'Ranking'], patterns: ['Top-1 per group (ROW_NUMBER)'], domains: ['E-commerce / Sales'], interview: true, roles: DE_DA,
+      summary: 'The earliest order of every customer, ties broken by order_id.',
+      description: md('Return each customer\'s **first** order: `customer_id`, `order_id`, `order_date`, `amount`. Earliest `order_date` wins; on a tie the smaller `order_id`. Order by `customer_id`.'),
+      hints: ['ROW_NUMBER() OVER (PARTITION BY customer_id ORDER BY order_date, order_id) = 1.'],
+      schema: shop,
+      solution: `SELECT customer_id, order_id, order_date, amount\nFROM orders\nQUALIFY ROW_NUMBER() OVER (PARTITION BY customer_id ORDER BY order_date, order_id) = 1\nORDER BY customer_id;\n`,
+      explanation: 'ROW_NUMBER with a deterministic tie-breaker returns exactly one row per customer. QUALIFY filters on a window function without a subquery (DuckDB, Snowflake, BigQuery).',
+      tests: [
+        { name: 'Example', tables: { customers: C, orders: O } },
+        { name: 'Same-day tie', hidden: true, tables: { customers: [], orders: [[9, 5, 1.0, 'placed', '2024-06-01'], [8, 5, 2.0, 'placed', '2024-06-01'], [7, 6, 3.0, 'placed', '2024-05-01']] } },
+        { name: 'One order each', hidden: true, tables: { customers: [], orders: [[1, 1, 5.0, 'placed', '2024-01-01'], [2, 2, 6.0, 'placed', '2023-01-01']] } },
+      ],
+    }),
+    sql({
+      id: 'customers-in-both-months', title: 'Bought in March and April', difficulty: 'Easy',
+      topics: ['Set Operations', 'Date & Time'], patterns: ['Set intersection (INTERSECT)'], domains: ['E-commerce / Sales'], roles: DE_DA,
+      summary: 'Customers with a non-cancelled order in both March and April 2024.',
+      description: md('Return the `customer_id`s that placed a non-cancelled order in **March 2024 and in April 2024**, ordered ascending.'),
+      hints: ['Two SELECTs and INTERSECT — or GROUP BY customer with COUNT(DISTINCT month) = 2.'],
+      schema: shop,
+      solution: `SELECT customer_id FROM orders WHERE status <> 'cancelled' AND order_date >= DATE '2024-03-01' AND order_date < DATE '2024-04-01'\nINTERSECT\nSELECT customer_id FROM orders WHERE status <> 'cancelled' AND order_date >= DATE '2024-04-01' AND order_date < DATE '2024-05-01'\nORDER BY customer_id;\n`,
+      explanation: 'INTERSECT returns rows present in both inputs (de-duplicated). EXCEPT and UNION are its siblings for "only in A" and "in either".',
+      tests: [
+        { name: 'Example', tables: { customers: C, orders: O } },
+        { name: 'Cancelled April order does not count', hidden: true, tables: { customers: [], orders: [[1, 3, 5.0, 'placed', '2024-03-31'], [2, 3, 5.0, 'cancelled', '2024-04-01'], [3, 4, 1.0, 'placed', '2024-03-01'], [4, 4, 1.0, 'shipped', '2024-04-30']] } },
+        { name: 'Month boundaries', hidden: true, tables: { customers: [], orders: [[1, 8, 1.0, 'placed', '2024-02-29'], [2, 8, 1.0, 'placed', '2024-05-01'], [3, 9, 1.0, 'placed', '2024-03-15'], [4, 9, 1.0, 'placed', '2024-04-15']] } },
+      ],
+    }),
+    sql({
+      id: 'products-bought-together', title: 'Products Bought Together', difficulty: 'Medium',
+      topics: ['Joins', 'Aggregation'], patterns: ['Self-join for pairs (a < b)', 'Market-basket pairs'], domains: ['Retail'], interview: true, roles: ['Data Analyst', 'Data Scientist', 'Data Engineer'],
+      companies: ['Walmart'], sources: [{ company: 'Walmart', label: 'SparkPlayground — Walmart "Grocery Basket Pairs"', url: 'https://www.sparkplayground.com/pyspark-coding-interview-questions' }],
+      summary: 'Count how often each pair of products appears in the same basket.',
+      description: md('`basket_items` lists the products in each basket (a product appears at most once per basket).', '', 'Return every product pair bought together in **at least 2 baskets**: `product_a`, `product_b` (alphabetically, `product_a < product_b`), `baskets`. Order by `baskets` descending, then `product_a`, `product_b`.'),
+      hints: ['Self-join basket_items on basket_id.', 'Keep a.product < b.product so each pair appears once, not twice (and never paired with itself).'],
+      schema: { basket_items: 'basket_id INTEGER Basket, product VARCHAR Product name' },
+      solution: `SELECT a.product AS product_a, b.product AS product_b, COUNT(*) AS baskets\nFROM basket_items a JOIN basket_items b ON a.basket_id = b.basket_id AND a.product < b.product\nGROUP BY 1, 2\nHAVING COUNT(*) >= 2\nORDER BY baskets DESC, product_a, product_b;\n`,
+      explanation: 'A self-join on the basket produces all pairs inside it; the inequality a < b removes self-pairs and mirror duplicates. This is the core of market-basket analysis (support counting).',
+      tests: [
+        { name: 'Example', tables: { basket_items: [[1, 'bread'], [1, 'milk'], [1, 'eggs'], [2, 'bread'], [2, 'milk'], [3, 'milk'], [3, 'eggs'], [4, 'bread'], [4, 'milk'], [4, 'eggs']] } },
+        { name: 'No repeated pairs', hidden: true, tables: { basket_items: [[1, 'a'], [1, 'b'], [2, 'c'], [2, 'd']] } },
+        { name: 'Ties ordered alphabetically', hidden: true, tables: { basket_items: [[1, 'z'], [1, 'y'], [2, 'y'], [2, 'z'], [3, 'a'], [3, 'b'], [4, 'b'], [4, 'a']] } },
+      ],
+    }),
+    sql({
+      id: 'employees-earning-more-than-manager', title: 'Earning More Than Their Manager', difficulty: 'Easy',
+      topics: ['Joins'], patterns: ['Self-join (employee ↔ manager)'], domains: ['HR / People analytics'], interview: true, roles: DE_DA,
+      companies: ['American Express', 'Mastercard', 'Ford'], sources: [dl('American Express', 'american-express', 'employees earning more than managers'), dl('Mastercard', 'mastercard', 'employees paid more than their manager'), dl('Ford', 'ford', 'employees earning more than their boss')],
+      summary: 'Classic self-join: employees paid more than their direct manager.',
+      description: md('`employees.manager_id` points at another employee (NULL for the CEO). Return `employee`, `salary`, `manager`, `manager_salary` for employees who earn **strictly more** than their direct manager. Order by `employee`.'),
+      hints: ['Join employees to itself: e.manager_id = m.emp_id.'],
+      schema: { employees: 'emp_id INTEGER Primary key, name VARCHAR Name, salary INTEGER Salary, manager_id INTEGER Manager (NULL for the CEO)' },
+      solution: `SELECT e.name AS employee, e.salary, m.name AS manager, m.salary AS manager_salary\nFROM employees e JOIN employees m ON e.manager_id = m.emp_id\nWHERE e.salary > m.salary\nORDER BY employee;\n`,
+      explanation: 'Joining a table to itself under two aliases lets each row meet its manager row. The inner join also drops the CEO, who has no manager.',
+      tests: [
+        { name: 'Example', tables: { employees: [[1, 'Ana', 300, null], [2, 'Bo', 150, 1], [3, 'Cy', 180, 2], [4, 'Di', 120, 2], [5, 'Ed', 310, 1]] } },
+        { name: 'Equal pay is not more', hidden: true, tables: { employees: [[1, 'M', 100, null], [2, 'E', 100, 1], [3, 'F', 101, 1]] } },
+        { name: 'Nobody out-earns', hidden: true, tables: { employees: [[1, 'M', 100, null], [2, 'E', 90, 1], [3, 'G', 120, 1]] } },
+      ],
+    }),
+    sql({
+      id: 'duplicate-emails', title: 'Duplicate Accounts by Email', difficulty: 'Easy',
+      topics: ['Aggregation', 'String Functions', 'Deduplication'], patterns: ['Normalize then GROUP BY … HAVING'], domains: ['Data quality'], interview: true, roles: ['Data Engineer', 'Analytics Engineer'],
+      summary: 'Find emails used by more than one account — case and whitespace ignored.',
+      description: md('Sign-ups store emails as typed. Treat emails as equal **ignoring case and surrounding spaces**.', '', 'Return `email` (normalised: trimmed, lower case) and `accounts` for every email used by 2+ accounts, ordered by `accounts` descending, then `email`.'),
+      hints: ['lower(trim(email)).', 'GROUP BY the normalised value, HAVING COUNT(*) > 1.'],
+      schema: { accounts: 'account_id INTEGER Primary key, email VARCHAR As typed' },
+      solution: `SELECT lower(trim(email)) AS email, COUNT(*) AS accounts\nFROM accounts\nGROUP BY 1\nHAVING COUNT(*) > 1\nORDER BY accounts DESC, email;\n`,
+      explanation: 'Normalise first, then group — otherwise "A@x.com " and "a@x.com" look different. HAVING filters groups after aggregation.',
+      tests: [
+        { name: 'Example', tables: { accounts: [[1, 'a@x.com'], [2, 'A@X.com '], [3, 'b@y.com'], [4, ' a@x.com'], [5, 'B@y.com']] } },
+        { name: 'All unique', hidden: true, tables: { accounts: [[1, 'p@q.com'], [2, 'r@s.com'], [3, 'P@Q.co']] } },
+        { name: 'One big duplicate group', hidden: true, tables: { accounts: [[1, 'z@z.io'], [2, 'Z@Z.IO'], [3, 'z@z.io  '], [4, 'q@q.io']] } },
+      ],
+    }),
+    sql({
+      id: 'percent-of-total', title: 'Category Share of Revenue', difficulty: 'Easy',
+      topics: ['Window Functions', 'Aggregation'], patterns: ['Percent of total (SUM OVER ())'], domains: ['E-commerce / Sales'], interview: true, roles: ['Data Analyst', 'Analytics Engineer', 'Data Scientist'],
+      summary: 'Each category\'s revenue and its percentage of the grand total.',
+      description: md('Return `category`, `revenue` and `pct_of_total` (100 × revenue ÷ total revenue, rounded to 2) from `sales`, ordered by `revenue` descending, then `category`.'),
+      hints: ['Aggregate per category, then SUM(revenue) OVER () is the grand total on every row.'],
+      schema: { sales: 'sale_id INTEGER Primary key, category VARCHAR Category, amount DOUBLE Amount' },
+      solution: `SELECT category, SUM(amount) AS revenue,\n       ROUND(100.0 * SUM(amount) / SUM(SUM(amount)) OVER (), 2) AS pct_of_total\nFROM sales\nGROUP BY category\nORDER BY revenue DESC, category;\n`,
+      explanation: 'A window over an aggregate (SUM(SUM(x)) OVER ()) adds the grand total to every grouped row in one pass — no second query or join.',
+      tests: [
+        { name: 'Example', tables: { sales: [[1, 'books', 50.0], [2, 'games', 150.0], [3, 'books', 50.0], [4, 'music', 50.0]] } },
+        { name: 'Single category', hidden: true, tables: { sales: [[1, 'x', 3.0], [2, 'x', 7.0]] } },
+        { name: 'Thirds', hidden: true, tables: { sales: [[1, 'a', 1.0], [2, 'b', 1.0], [3, 'c', 1.0]] } },
+      ],
+    }),
+    sql({
+      id: 'consecutive-numbers', title: 'Three in a Row', difficulty: 'Medium',
+      topics: ['Window Functions', 'Gaps & Islands'], patterns: ['Compare with neighbours (LAG/LEAD)'], domains: ['IoT / Sensors'], interview: true, roles: DE_DA,
+      summary: 'Values that appear at least three times consecutively in a log.',
+      description: md('`readings` is ordered by `id`. Return every distinct `value` that appears in **at least three consecutive rows**, ordered by `value`.'),
+      hints: ['LAG(value, 1) and LAG(value, 2) give the two previous rows.', 'Gaps-and-islands also works and handles "N in a row" generally.'],
+      schema: { readings: 'id INTEGER Row order, value INTEGER Reading' },
+      solution: `WITH w AS (\n  SELECT value, LAG(value, 1) OVER (ORDER BY id) AS p1, LAG(value, 2) OVER (ORDER BY id) AS p2\n  FROM readings\n)\nSELECT DISTINCT value FROM w WHERE value = p1 AND value = p2 ORDER BY value;\n`,
+      explanation: 'Each row compares itself with the two before it. For "at least N in a row" with large N, label runs with ROW_NUMBER differences (gaps & islands) and count run lengths instead.',
+      tests: [
+        { name: 'Example', tables: { readings: [[1, 1], [2, 1], [3, 1], [4, 2], [5, 1], [6, 2], [7, 2]] } },
+        { name: 'Two separate runs of three', hidden: true, tables: { readings: [[1, 5], [2, 5], [3, 5], [4, 7], [5, 7], [6, 7], [7, 7]] } },
+        { name: 'Unordered ids, broken runs', hidden: true, tables: { readings: [[3, 9], [1, 9], [2, 4], [4, 9], [5, 9], [6, 9]] } },
+      ],
+    }),
+    sql({
+      id: 'department-headcount-zero', title: 'Headcount Including Empty Departments', difficulty: 'Easy',
+      topics: ['Joins', 'Aggregation', 'NULL Handling'], patterns: ['LEFT JOIN + COUNT(column) for zero groups'], domains: ['HR / People analytics'], interview: true, roles: DE_DA,
+      summary: 'Count employees per department, showing 0 for empty ones.',
+      description: md('Return every department\'s `dept_name` and `headcount` — including departments with **no employees** (0). Order by `headcount` descending, then `dept_name`.'),
+      hints: ['Start FROM departments and LEFT JOIN employees.', 'COUNT(e.emp_id) counts only matches; COUNT(*) would count 1 for an empty department.'],
+      schema: { departments: 'dept_id INTEGER Primary key, dept_name VARCHAR Name', employees: 'emp_id INTEGER Primary key, dept_id INTEGER Department' },
+      solution: `SELECT d.dept_name, COUNT(e.emp_id) AS headcount\nFROM departments d LEFT JOIN employees e ON e.dept_id = d.dept_id\nGROUP BY d.dept_name\nORDER BY headcount DESC, d.dept_name;\n`,
+      explanation: 'The LEFT JOIN keeps empty departments as one row with NULL employee columns. COUNT(column) skips NULLs, giving 0 — COUNT(*) would wrongly give 1.',
+      tests: [
+        { name: 'Example', tables: { departments: [[1, 'Eng'], [2, 'Ops'], [3, 'Legal']], employees: [[1, 1], [2, 1], [3, 2]] } },
+        { name: 'All empty', hidden: true, tables: { departments: [[1, 'A'], [2, 'B']], employees: [] } },
+        { name: 'Employee in an unknown department is ignored', hidden: true, tables: { departments: [[1, 'A']], employees: [[1, 9], [2, 1]] } },
+      ],
+    }),
+  ],
+};

@@ -1,6 +1,7 @@
 import { theme as t } from '../data.js';
 import { useContent } from '../ContentContext.jsx';
 import Reveal from './Reveal.jsx';
+import { Kicker } from './ui.jsx';
 
 const Fact = ({ k, a, b }) => (
   <div>
@@ -16,10 +17,10 @@ export default function About() {
   const { about } = useContent();
 
   return (
-    <section id="about" style={{ background: t.bgAlt, borderTop: `1px solid ${t.line}`, borderBottom: `1px solid ${t.line}`, padding: '80px var(--px)' }}>
+    <section id="about" style={{ background: t.bgAlt, borderTop: `1px solid ${t.line}`, borderBottom: `1px solid ${t.line}`, padding: '84px var(--px)' }}>
       <div className="grid-collapse" style={{ maxWidth: 1180, margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1.15fr', gap: 64, alignItems: 'start' }}>
         <Reveal>
-          <div style={{ fontFamily: t.fontMono, fontSize: 12, letterSpacing: '.14em', textTransform: 'uppercase', color: t.accent, marginBottom: 16 }}>// about</div>
+          <Kicker text="// about" no="01" />
           <h2 style={{ fontFamily: t.fontDisplay, fontWeight: 600, fontSize: 34, lineHeight: 1.12, letterSpacing: '-.02em', margin: '0 0 20px' }}>
             {about.heading}
           </h2>

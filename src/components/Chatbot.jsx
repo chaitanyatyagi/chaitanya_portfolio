@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import { theme as t } from '../data.js';
 import { useContent } from '../ContentContext.jsx';
 import Reveal from './Reveal.jsx';
+import { SectionHeader } from './ui.jsx';
 
 export default function Chatbot() {
   const { chatbot } = useContent();
@@ -59,20 +60,16 @@ export default function Chatbot() {
   return (
     <section id="chatbot" style={{ padding: '84px var(--px)', maxWidth: 1180, margin: '0 auto' }}>
       <Reveal>
-        <div style={{ textAlign: 'center', marginBottom: 40 }}>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12, marginBottom: 16, flexWrap: 'wrap' }}>
-            <span style={{ fontFamily: t.fontMono, fontSize: 12, letterSpacing: '.14em', textTransform: 'uppercase', color: t.accent }}>{chatbot.kicker}</span>
-            {comingSoon && chatbot.badge && (
-              <span style={{ fontFamily: t.fontMono, fontSize: 11, color: t.faint, background: '#fff', border: `1px solid ${t.line}`, padding: '4px 10px', borderRadius: 20 }}>{chatbot.badge}</span>
-            )}
-          </div>
-          <h2 style={{ fontFamily: t.fontDisplay, fontWeight: 600, fontSize: 34, letterSpacing: '-.02em', margin: '0 0 12px' }}>
-            {chatbot.heading}
-          </h2>
-          <p style={{ fontSize: 16, color: t.muted, margin: '0 auto', maxWidth: '56ch' }}>
-            {chatbot.description}
-          </p>
-        </div>
+        <SectionHeader
+          kicker={chatbot.kicker}
+          no="07"
+          center
+          heading={chatbot.heading}
+          description={chatbot.description}
+          after={comingSoon && chatbot.badge ? (
+            <span style={{ fontFamily: t.fontMono, fontSize: 11, color: t.faint, background: '#fff', border: `1px solid ${t.line}`, padding: '4px 10px', borderRadius: 20 }}>{chatbot.badge}</span>
+          ) : null}
+        />
       </Reveal>
 
       <Reveal delay={120}>

@@ -6,7 +6,7 @@ export default function Footer() {
 
   return (
     <footer style={{ padding: '72px var(--px) 40px', maxWidth: 1180, margin: '0 auto' }}>
-      <div className="grid-collapse" style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr 1fr', gap: 40, paddingBottom: 40, borderBottom: `1px solid ${t.line}` }}>
+      <div className="grid-collapse" style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr 1fr', gap: 40, paddingBottom: 40, borderBottom: '1.5px dashed #d8d2c6' }}>
         <div>
           <h3 style={{ fontFamily: t.fontDisplay, fontWeight: 600, fontSize: 26, letterSpacing: '-.02em', margin: '0 0 12px', maxWidth: '16ch' }}>
             {footer.headline}
@@ -33,7 +33,10 @@ export default function Footer() {
       </div>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: 24, fontFamily: t.fontMono, fontSize: 12, color: t.fainter, flexWrap: 'wrap', gap: 10 }}>
         <span>{footer.copyright}</span>
-        <span>{footer.tagline}</span>
+        <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
+          <span style={{ width: 6, height: 6, borderRadius: '50%', background: t.accent, animation: 'pulseDot 2s ease-in-out infinite', flexShrink: 0 }} />
+          {footer.tagline}
+        </span>
       </div>
     </footer>
   );

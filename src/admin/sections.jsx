@@ -192,60 +192,36 @@ export function ProjectsEditor({ content, setSection }) {
   );
 }
 
-export function KnowledgeEditor({ content, setSection }) {
-  const knowledge = content.knowledge;
-  const set = (patch) => setSection('knowledge', patch);
+export function GuideEditor({ content, setSection }) {
+  const guide = content.guide || {};
+  const blog = content.blog || {};
   return (
     <>
       <div style={S.card}>
-        <h3 style={S.sectionTitle}>Knowledge Base</h3>
-        <Field label="Heading" value={knowledge.heading} onChange={(v) => set({ heading: v })} />
-        <Field label="Description" textarea rows={3} value={knowledge.description} onChange={(v) => set({ description: v })} />
-        <Field label="GitHub URL" value={knowledge.githubUrl} onChange={(v) => set({ githubUrl: v })} />
-        <Field label="GitHub button label" value={knowledge.githubLabel} onChange={(v) => set({ githubLabel: v })} />
-        <Field label="'More coming' strip under the chapters (empty to hide)" value={knowledge.moreText} onChange={(v) => set({ moreText: v })} />
+        <h3 style={S.sectionTitle}>Guide — home section</h3>
+        <div style={{ fontSize: 13, color: t.faint, lineHeight: 1.55, marginBottom: 16 }}>
+          These fields control the home-page highlight only. The guide's chapters and notes live in
+          code (<code>src/guide/content/*.md</code>) — add a markdown file there to add a chapter.
+        </div>
+        <Field label="Heading" value={guide.heading} onChange={(v) => setSection('guide', { heading: v })} />
+        <Field label="Description" textarea rows={3} value={guide.description} onChange={(v) => setSection('guide', { description: v })} />
+        <Field label="Open-guide button label" value={guide.ctaLabel} onChange={(v) => setSection('guide', { ctaLabel: v })} />
+        <Field label="'Growing' strip suffix (after the live chapter counts)" value={guide.moreText} onChange={(v) => setSection('guide', { moreText: v })} />
       </div>
-      <ListEditor
-        title="Chapters"
-        items={knowledge.chapters}
-        fields={[
-          { key: 'num', label: 'Number (e.g. 01)' },
-          { key: 'title', label: 'Title' },
-          { key: 'patterns', label: 'Patterns line' },
-        ]}
-        onChange={(chapters) => set({ chapters })}
-        addLabel="+ Add chapter"
-      />
-    </>
-  );
-}
-
-export function CourseEditor({ content, setSection }) {
-  const course = content.course;
-  const set = (patch) => setSection('course', patch);
-  return (
-    <>
       <div style={S.card}>
-        <h3 style={S.sectionTitle}>Course</h3>
-        <Field label="Badge (empty to hide)" value={course.badge} onChange={(v) => set({ badge: v })} />
-        <Field label="Heading" value={course.heading} onChange={(v) => set({ heading: v })} />
-        <Field label="Description" textarea rows={3} value={course.description} onChange={(v) => set({ description: v })} />
-        <Field label="'More coming' line under the modules (empty to hide)" value={course.moreText} onChange={(v) => set({ moreText: v })} />
-        <Field label="Q&A preview — question" value={course.qaQuestion} onChange={(v) => set({ qaQuestion: v })} />
-        <Field label="Q&A preview — answer" textarea rows={3} value={course.qaAnswer} onChange={(v) => set({ qaAnswer: v })} />
-        <Field label="Q&A footer line" value={course.qaMore} onChange={(v) => set({ qaMore: v })} />
+        <h3 style={S.sectionTitle}>Course notify strip</h3>
+        <Field label="Heading" value={guide.notifyHeading} onChange={(v) => setSection('guide', { notifyHeading: v })} />
+        <Field label="Text" textarea rows={3} value={guide.notifyText} onChange={(v) => setSection('guide', { notifyText: v })} />
       </div>
-      <ListEditor
-        title="Modules"
-        items={course.modules}
-        fields={[
-          { key: 'no', label: 'Number (e.g. 01)' },
-          { key: 'title', label: 'Title' },
-          { key: 'meta', label: 'Meta (e.g. 12 lessons)' },
-        ]}
-        onChange={(modules) => set({ modules })}
-        addLabel="+ Add module"
-      />
+      <div style={S.card}>
+        <h3 style={S.sectionTitle}>Blog — home section copy</h3>
+        <div style={{ fontSize: 13, color: t.faint, lineHeight: 1.55, marginBottom: 16 }}>
+          Posts themselves are managed in the <strong>Blogs</strong> tab.
+        </div>
+        <Field label="Heading" value={blog.heading} onChange={(v) => setSection('blog', { heading: v })} />
+        <Field label="Description" textarea rows={2} value={blog.description} onChange={(v) => setSection('blog', { description: v })} />
+        <Field label="Empty-state text (shown while there are no posts)" value={blog.emptyText} onChange={(v) => setSection('blog', { emptyText: v })} />
+      </div>
     </>
   );
 }

@@ -1,19 +1,45 @@
 {
-  "name": "portfolio-server",
+  "name": "datadrill-server",
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "description": "Express backend for the portfolio AI assistant (proxies to Anthropic Claude).",
-  "main": "index.js",
+  "description": "DataDrill API (Express + PostgreSQL), grader service (Pyodide sandboxes) and the legacy portfolio CMS (MongoDB).",
+  "main": "src/cluster.js",
   "scripts": {
-    "start": "node index.js",
-    "sync-content": "node syncContent.js"
+    "start": "node src/cluster.js",
+    "dev": "WEB_CONCURRENCY=1 node --watch src/cluster.js",
+    "grader": "node grader/index.js",
+    "grader:prepare": "node grader/prepare.js",
+    "migrate": "node scripts/migrate.js",
+    "seed": "node scripts/seed.js",
+    "make-admin": "node scripts/make-admin.js",
+    "seed:test-users": "node scripts/seed-test-users.js",
+    "verify:problems": "node scripts/verify-problems.js",
+    "problems:freeze": "node scripts/freeze-expected.js",
+    "test": "NODE_ENV=test node --test --test-concurrency=1 'test/*.test.js'",
+    "loadtest": "node scripts/loadtest.js",
+    "cms:sync-content": "node legacy/syncContent.js"
   },
   "dependencies": {
+    "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
+    "helmet": "^8.3.0",
     "jsonwebtoken": "^9.0.3",
-    "mongoose": "^9.7.4"
+    "just-bash": "3.6.1",
+    "marked": "^18.2.0",
+    "mongoose": "^9.7.4",
+    "nodemailer": "^9.0.3",
+    "pg": "^8.23.1",
+    "pino": "^9.14.0",
+    "pyodide": "314.0.8",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "autocannon": "^8.0.0"
+  },
+  "engines": {
+    "node": ">=22.13"
   }
 }

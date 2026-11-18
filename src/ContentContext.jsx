@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from 'react';
-import { defaultContent } from '../server/defaultContent.js';
+import { defaultContent } from '../server/legacy/defaultContent.js';
 
 // Site content lives in MongoDB (edited via /admin). The static defaults
 // render instantly and are swapped for live content once the API responds —

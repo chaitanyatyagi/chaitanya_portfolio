@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { theme as t } from '../data.js';
 import { useContent } from '../ContentContext.jsx';
+import Logo from './Logo.jsx';
 
 export default function Nav() {
   const { meta, nav, links } = useContent();
@@ -19,11 +20,7 @@ export default function Nav() {
         padding: '16px var(--px)',
       }}>
         <a href="#top" style={{ display: 'flex', alignItems: 'center', gap: 11, textDecoration: 'none' }}>
-          <span style={{
-            display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-            width: 34, height: 34, background: t.ink, borderRadius: 9,
-            fontFamily: t.fontDisplay, fontWeight: 700, color: t.bg, fontSize: 16,
-          }}>{meta.logoLetter}</span>
+          <Logo />
           <span style={{ fontFamily: t.fontDisplay, fontWeight: 600, fontSize: 16, letterSpacing: '-.01em' }}>
             {meta.siteName}
           </span>

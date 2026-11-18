@@ -69,11 +69,72 @@ a { color: inherit; }
 /* --- Projects ------------------------------------------------------------ */
 .project-card:hover .project-link { color: #ff6b35 !important; }
 
-/* --- Responsive --------------------------------------------------------- */
-@media (max-width: 1024px) {
-  .chapters-grid { grid-template-columns: repeat(3, 1fr) !important; }
+/* --- Prose (guide notes + blog posts) ------------------------------------ */
+.prose { font-size: 15.5px; line-height: 1.75; color: #3a352e; }
+.prose > :first-child { margin-top: 0; }
+
+.prose h1 {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-weight: 600; font-size: 32px; letter-spacing: -.02em; line-height: 1.15;
+  color: #1a1714; margin: 0 0 18px;
+}
+.prose h2 {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-weight: 600; font-size: 23px; letter-spacing: -.015em; color: #1a1714;
+  margin: 44px 0 14px; padding-top: 28px; border-top: 1px solid #e6e1d7;
+  scroll-margin-top: 90px;
+}
+.prose h3 {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-weight: 600; font-size: 17.5px; color: #1a1714; margin: 28px 0 10px;
+  scroll-margin-top: 90px;
+}
+.prose p { margin: 0 0 16px; }
+.prose ul, .prose ol { margin: 0 0 16px; padding-left: 24px; }
+.prose li { margin-bottom: 7px; }
+.prose li > p { margin-bottom: 6px; }
+.prose a { color: #ff6b35; }
+.prose strong { color: #1a1714; font-weight: 600; }
+.prose hr { border: none; border-top: 1px solid #e6e1d7; margin: 32px 0; }
+
+.prose code {
+  font-family: 'JetBrains Mono', monospace; font-size: 13px;
+  background: #f2efe8; border: 1px solid #e6e1d7; border-radius: 5px;
+  padding: 1.5px 6px; color: #b34a1e; white-space: nowrap;
+}
+.prose pre {
+  background: #231f1a; color: #e8e2d6; border-radius: 12px;
+  padding: 18px 20px; margin: 0 0 18px; overflow-x: auto;
+  font-size: 13px; line-height: 1.65;
+}
+.prose pre code {
+  background: none; border: none; padding: 0; color: inherit;
+  font-size: inherit; white-space: pre;
 }
 
+.prose table {
+  width: 100%; border-collapse: collapse; margin: 0 0 20px;
+  font-size: 14px; display: block; overflow-x: auto;
+}
+.prose th {
+  font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: .08em;
+  text-transform: uppercase; color: #8a8377; text-align: left;
+  padding: 9px 14px 9px 0; border-bottom: 2px solid #e6e1d7; white-space: nowrap;
+}
+.prose td {
+  padding: 10px 14px 10px 0; border-bottom: 1px solid #eee7db;
+  line-height: 1.55; vertical-align: top; min-width: 110px;
+}
+.prose td code, .prose th code { white-space: nowrap; }
+
+.prose blockquote {
+  margin: 0 0 18px; padding: 14px 18px;
+  background: #fff1ea; border-left: 3px solid #ff6b35; border-radius: 0 10px 10px 0;
+  color: #4a453e;
+}
+.prose blockquote p:last-child { margin-bottom: 0; }
+
+/* --- Responsive --------------------------------------------------------- */
 @media (max-width: 900px) {
   :root { --px: 24px; }
   .grid-collapse { grid-template-columns: 1fr !important; }
@@ -83,12 +144,14 @@ a { color: inherit; }
   .nav-links { display: none !important; }
   .nav-burger { display: flex !important; }
   .stats-grid { grid-template-columns: repeat(2, 1fr) !important; }
-  .chapters-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  .guide-layout { grid-template-columns: 1fr !important; gap: 0 !important; }
+  .guide-sidebar { display: none !important; }
+  .guide-menu-btn { display: inline-flex !important; }
+  .guide-back { display: none !important; }
 }
 
 @media (max-width: 560px) {
   :root { --px: 18px; }
   .nav-resume { display: none !important; }
-  .chapters-grid { grid-template-columns: 1fr !important; }
   h2 { font-size: 28px !important; }
 }

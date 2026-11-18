@@ -1,6 +1,7 @@
 import { theme as t } from '../data.js';
 import { useContent } from '../ContentContext.jsx';
 import Reveal from './Reveal.jsx';
+import { SectionHeader } from './ui.jsx';
 
 // Timeline of self-contained job cards. Each card: header (company/role/period),
 // optional summary + badge, a 2-col grid of tagged highlights, and a stack row.
@@ -10,12 +11,9 @@ export default function Experience() {
   const jobs = experience.jobs || [];
 
   return (
-    <section id="work" style={{ padding: '80px var(--px)', maxWidth: 1180, margin: '0 auto' }}>
+    <section id="work" style={{ padding: '84px var(--px)', maxWidth: 1180, margin: '0 auto' }}>
       <Reveal>
-        <div style={{ fontFamily: t.fontMono, fontSize: 12, letterSpacing: '.14em', textTransform: 'uppercase', color: t.accent, marginBottom: 16 }}>// experience</div>
-        <h2 style={{ fontFamily: t.fontDisplay, fontWeight: 600, fontSize: 34, letterSpacing: '-.02em', margin: '0 0 44px' }}>
-          {experience.heading}
-        </h2>
+        <SectionHeader kicker="// experience" no="02" heading={experience.heading} gap={44} />
       </Reveal>
 
       {jobs.map((job, ji) => (
@@ -27,7 +25,7 @@ export default function Experience() {
               boxShadow: '0 0 0 4px #ffe3d6',
             }} />
             {ji < jobs.length - 1 && (
-              <span style={{ width: 2, flex: 1, background: t.line, marginTop: 10 }} />
+              <span style={{ width: 2, flex: 1, marginTop: 10, background: 'repeating-linear-gradient(180deg, #d8d2c6 0 4px, transparent 4px 8px)' }} />
             )}
           </div>
 

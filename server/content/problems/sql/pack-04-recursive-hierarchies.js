@@ -1,0 +1,146 @@
+// Pack 4 — recursion and hierarchies: org charts, paths, bill of materials,
+// graph reachability, shortest paths, series generation.
+import { sql, md } from './define.js';
+
+const DE = ['Data Engineer', 'Analytics Engineer'];
+const ALL = ['Data Engineer', 'Data Analyst', 'Data Scientist', 'Analytics Engineer'];
+const org = { employees: 'emp_id INTEGER Primary key, name VARCHAR Name, manager_id INTEGER Manager (NULL for the CEO)' };
+const ORG = [[1, 'Ceo', null], [2, 'Vp Eng', 1], [3, 'Vp Ops', 1], [4, 'Lead', 2], [5, 'Dev A', 4], [6, 'Dev B', 4], [7, 'Analyst', 3]];
+
+export default {
+  problems: [
+    sql({
+      id: 'org-chart-depth', title: 'Org Chart Levels', difficulty: 'Medium',
+      topics: ['Recursive CTEs', 'Hierarchies & Graphs'], patterns: ['Recursive CTE: walk a hierarchy top-down'], domains: ['HR / People analytics'], interview: true, roles: ALL,
+      summary: 'Every employee\'s level below the CEO (CEO = 0).',
+      description: md('Return `emp_id`, `name`, `level` where the CEO (no manager) is level 0, their reports level 1, and so on. Order by `level`, `emp_id`.'),
+      hints: ['WITH RECURSIVE: the anchor selects the CEO; the recursive step joins employees whose manager is in the previous level.'],
+      schema: org,
+      solution: `WITH RECURSIVE tree AS (\n  SELECT emp_id, name, 0 AS level FROM employees WHERE manager_id IS NULL\n  UNION ALL\n  SELECT e.emp_id, e.name, t.level + 1 FROM employees e JOIN tree t ON e.manager_id = t.emp_id\n)\nSELECT emp_id, name, level FROM tree ORDER BY level, emp_id;\n`,
+      explanation: 'A recursive CTE has an anchor (the roots) and a recursive member that joins the next layer to rows already found; it repeats until a step adds nothing. The same shape walks folders, categories and dependency trees.',
+      tests: [
+        { name: 'Example', tables: { employees: ORG } },
+        { name: 'Flat company', hidden: true, tables: { employees: [[1, 'Boss', null], [2, 'A', 1], [3, 'B', 1]] } },
+        { name: 'Deep chain', hidden: true, tables: { employees: [[1, 'L0', null], [2, 'L1', 1], [3, 'L2', 2], [4, 'L3', 3], [5, 'L4', 4]] } },
+      ],
+    }),
+    sql({
+      id: 'management-chain-path', title: 'Management Chain as a Path', difficulty: 'Medium',
+      topics: ['Recursive CTEs', 'Hierarchies & Graphs', 'String Functions'], patterns: ['Accumulate a path while recursing'], domains: ['HR / People analytics'], interview: true, roles: DE,
+      summary: 'Build "Ceo > Vp Eng > Lead > Dev A" for every employee.',
+      description: md('Return `emp_id` and `chain`: names from the CEO down to the employee joined with ` > `. Order by `chain`.'),
+      hints: ['Carry a text column in the recursion: parent.chain || \' > \' || child.name.'],
+      schema: org,
+      solution: `WITH RECURSIVE t AS (\n  SELECT emp_id, name AS chain FROM employees WHERE manager_id IS NULL\n  UNION ALL\n  SELECT e.emp_id, t.chain || ' > ' || e.name FROM employees e JOIN t ON e.manager_id = t.emp_id\n)\nSELECT emp_id, chain FROM t ORDER BY chain;\n`,
+      explanation: 'Columns computed in the recursive step can accumulate state — here the path from the root. Ordering by the path itself lists the tree depth-first, like a folder view.',
+      tests: [
+        { name: 'Example', tables: { employees: ORG } },
+        { name: 'Two levels', hidden: true, tables: { employees: [[1, 'Z', null], [2, 'Y', 1]] } },
+        { name: 'Siblings sort by name', hidden: true, tables: { employees: [[1, 'Root', null], [3, 'Beta', 1], [2, 'Alpha', 1], [4, 'Child', 3]] } },
+      ],
+    }),
+    sql({
+      id: 'team-size-under-manager', title: 'Total Reports Under Each Manager', difficulty: 'Hard',
+      topics: ['Recursive CTEs', 'Hierarchies & Graphs', 'Aggregation'], patterns: ['Recursive ancestor pairs (transitive closure)'], domains: ['HR / People analytics'], interview: true, roles: DE,
+      companies: ['Google'], sources: [{ company: 'Google', label: 'DataLemur — Google "Senior Managers"', url: 'https://datalemur.com/questions' }],
+      summary: 'Count direct and indirect reports of every manager.',
+      description: md('For every employee who manages anyone, return `name`, `direct_reports` and `total_reports` (everyone below them, at any depth). Order by `total_reports` descending, then `name`.'),
+      hints: ['Recursively build (manager, report) pairs: start from direct pairs, then extend each pair by the report\'s own reports.', 'Count pairs per manager; direct ones are the depth-1 pairs.'],
+      schema: org,
+      solution: `WITH RECURSIVE pairs AS (\n  SELECT manager_id AS boss, emp_id AS report, 1 AS depth FROM employees WHERE manager_id IS NOT NULL\n  UNION ALL\n  SELECT p.boss, e.emp_id, p.depth + 1 FROM pairs p JOIN employees e ON e.manager_id = p.report\n)\nSELECT m.name, COUNT(*) FILTER (WHERE depth = 1) AS direct_reports, COUNT(*) AS total_reports\nFROM pairs JOIN employees m ON m.emp_id = pairs.boss\nGROUP BY m.name\nORDER BY total_reports DESC, m.name;\n`,
+      explanation: 'The recursion computes the transitive closure of "manages" — every (ancestor, descendant) pair. Aggregating closure rows answers subtree questions (team size, total salary budget under a VP) in one query.',
+      tests: [
+        { name: 'Example', tables: { employees: ORG } },
+        { name: 'Chain', hidden: true, tables: { employees: [[1, 'A', null], [2, 'B', 1], [3, 'C', 2]] } },
+        { name: 'Ties by name', hidden: true, tables: { employees: [[1, 'Root', null], [2, 'Mx', 1], [3, 'Ma', 1], [4, 'x1', 2], [5, 'a1', 3]] } },
+      ],
+    }),
+    sql({
+      id: 'bill-of-materials', title: 'Explode a Bill of Materials', difficulty: 'Hard',
+      topics: ['Recursive CTEs', 'Hierarchies & Graphs', 'Aggregation'], patterns: ['Recursive multiplication down a tree (BOM explosion)'], domains: ['Manufacturing'], interview: true, roles: DE,
+      summary: 'How many of each raw part does one finished product need?',
+      description: md('`components(parent, child, qty)` says one `parent` contains `qty` units of `child`. Parts that never appear as a parent are **raw parts**.', '', 'For one unit of `bike`, return each raw `part` and `total_qty` (quantities multiply down the tree and add up across branches). Order by `part`.'),
+      hints: ['Recurse from the bike carrying a running multiplier: child qty × parent multiplier.', 'Raw parts: child NOT IN (SELECT parent …). Sum at the end — the same part can appear on several branches.'],
+      schema: { components: 'parent VARCHAR Assembly, child VARCHAR Sub-part, qty INTEGER Units per parent' },
+      solution: `WITH RECURSIVE need AS (\n  SELECT child AS part, qty AS units FROM components WHERE parent = 'bike'\n  UNION ALL\n  SELECT c.child, n.units * c.qty FROM need n JOIN components c ON c.parent = n.part\n)\nSELECT part, SUM(units) AS total_qty\nFROM need\nWHERE part NOT IN (SELECT parent FROM components)\nGROUP BY part\nORDER BY part;\n`,
+      explanation: 'Bill-of-materials explosion is recursion with a multiplier: each level multiplies the quantity by the parent\'s count. The same shape answers "total cost of an assembly" or "all transitive dependencies of a package".',
+      tests: [
+        { name: 'Example', tables: { components: [['bike', 'wheel', 2], ['bike', 'frame', 1], ['wheel', 'spoke', 32], ['wheel', 'tyre', 1], ['frame', 'tube', 3], ['frame', 'bolt', 4], ['wheel', 'bolt', 2]] } },
+        { name: 'Deep nesting', hidden: true, tables: { components: [['bike', 'a', 2], ['a', 'b', 3], ['b', 'c', 4]] } },
+        { name: 'Unrelated assemblies ignored', hidden: true, tables: { components: [['bike', 'seat', 1], ['car', 'seat', 5], ['car', 'engine', 1]] } },
+      ],
+    }),
+    sql({
+      id: 'graph-reachability', title: 'Which Airports Can You Reach?', difficulty: 'Hard',
+      topics: ['Recursive CTEs', 'Hierarchies & Graphs'], patterns: ['Graph traversal with cycle protection (UNION, not UNION ALL)'], domains: ['Travel / Hospitality'], interview: true, roles: ['Data Engineer', 'Data Scientist'],
+      companies: ['Amazon'], sources: [{ company: 'Amazon', label: 'SparkPlayground — Amazon "Connected Airports"', url: 'https://www.sparkplayground.com/pyspark-coding-interview-questions' }],
+      summary: 'All airports reachable from DEL with any number of connections — the route graph has cycles.',
+      description: md('`flights(src, dst)` are one-way routes; the network contains **cycles**. Return every airport `reachable` from `DEL` with one or more flights, and `min_hops` (fewest flights needed). Exclude `DEL` itself. Order by `min_hops`, then `reachable`.'),
+      hints: ['A naive recursive CTE loops forever on a cycle.', 'Cap the depth (e.g. hops < number of airports) or carry a visited path and stop when the next airport is already in it.'],
+      schema: { flights: 'src VARCHAR From, dst VARCHAR To' },
+      solution: `WITH RECURSIVE walk(airport, hops, path) AS (\n  SELECT dst, 1, ['DEL', dst] FROM flights WHERE src = 'DEL'\n  UNION ALL\n  SELECT f.dst, w.hops + 1, list_append(w.path, f.dst)\n  FROM walk w JOIN flights f ON f.src = w.airport\n  WHERE NOT list_contains(w.path, f.dst)\n)\nSELECT airport AS reachable, MIN(hops) AS min_hops\nFROM walk WHERE airport <> 'DEL'\nGROUP BY airport\nORDER BY min_hops, reachable;\n`,
+      explanation: 'Carrying the visited path and refusing to revisit a node guarantees termination on cyclic graphs; MIN(hops) then gives the shortest number of legs (breadth-first distance). For big graphs a depth cap or engine-specific USING KEY / CYCLE clauses keep it tractable.',
+      tests: [
+        { name: 'Example', tables: { flights: [['DEL', 'BOM'], ['BOM', 'BLR'], ['BLR', 'DEL'], ['DEL', 'BLR'], ['BLR', 'MAA'], ['HYD', 'DEL']] } },
+        { name: 'Self-loop and two-cycle', hidden: true, tables: { flights: [['DEL', 'DEL'], ['DEL', 'GOI'], ['GOI', 'DEL'], ['GOI', 'PNQ']] } },
+        { name: 'Nothing reachable beyond one hop', hidden: true, tables: { flights: [['DEL', 'CCU'], ['IXC', 'DEL']] } },
+      ],
+    }),
+    sql({
+      id: 'cheapest-route', title: 'Cheapest Route with at Most Two Stops', difficulty: 'Hard',
+      topics: ['Recursive CTEs', 'Hierarchies & Graphs', 'Aggregation'], patterns: ['Bounded-depth path search', 'arg_min over paths'], domains: ['Travel / Hospitality'], interview: true, roles: ['Data Engineer', 'Data Scientist'],
+      summary: 'Find the cheapest itinerary from A to B using at most 3 flights.',
+      description: md('`fares(src, dst, price)`. Find the cheapest way from `BLR` to `JFK` using **at most 3 flights** (2 stops), never visiting an airport twice.', '', 'Return `route` (airports joined with `-`), `legs`, `total_price`. If several routes tie on price, prefer fewer legs, then the alphabetically first route. Return one row.'),
+      hints: ['Recurse while legs < 3, carrying the route list and running price.', 'Filter to routes ending at JFK, then ORDER BY total_price, legs, route LIMIT 1.'],
+      schema: { fares: 'src VARCHAR From, dst VARCHAR To, price INTEGER Fare' },
+      solution: `WITH RECURSIVE r(airport, route, legs, total_price) AS (\n  SELECT dst, ['BLR', dst], 1, price FROM fares WHERE src = 'BLR'\n  UNION ALL\n  SELECT f.dst, list_append(r.route, f.dst), r.legs + 1, r.total_price + f.price\n  FROM r JOIN fares f ON f.src = r.airport\n  WHERE r.legs < 3 AND r.airport <> 'JFK' AND NOT list_contains(r.route, f.dst)\n)\nSELECT array_to_string(route, '-') AS route, legs, total_price\nFROM r WHERE airport = 'JFK'\nORDER BY total_price, legs, route\nLIMIT 1;\n`,
+      explanation: 'Bounding the depth turns an open-ended graph search into a finite enumeration of paths, which SQL handles well for small fan-out. Stopping expansion once the destination is reached avoids useless longer paths through it.',
+      tests: [
+        { name: 'Example', tables: { fares: [['BLR', 'JFK', 900], ['BLR', 'DXB', 300], ['DXB', 'JFK', 500], ['BLR', 'DEL', 100], ['DEL', 'LHR', 300], ['LHR', 'JFK', 350], ['DXB', 'LHR', 50]] } },
+        { name: 'Direct is cheapest', hidden: true, tables: { fares: [['BLR', 'JFK', 500], ['BLR', 'X', 300], ['X', 'JFK', 300]] } },
+        { name: 'Four legs not allowed', hidden: true, tables: { fares: [['BLR', 'A', 1], ['A', 'B', 1], ['B', 'C', 1], ['C', 'JFK', 1], ['BLR', 'JFK', 100]] } },
+      ],
+    }),
+    sql({
+      id: 'date-spine-fill', title: 'Fill Missing Days with Zero', difficulty: 'Medium',
+      topics: ['Recursive CTEs', 'Date & Time', 'Joins'], patterns: ['Date spine (generate_series / recursive)', 'LEFT JOIN onto a spine'], domains: ['Product analytics'], interview: true, roles: ALL,
+      summary: 'Build a continuous calendar and report 0 for days without orders.',
+      description: md('`orders` only has rows for days with orders. Return **every** day from the first to the last order date with `orders` (0 when none), ordered by `day`.'),
+      hints: ['generate_series(min_day, max_day, INTERVAL 1 DAY) — or a recursive CTE adding a day at a time.', 'LEFT JOIN the counts onto that spine; COALESCE(…, 0).'],
+      schema: { orders: 'order_id INTEGER Primary key, order_date DATE Day' },
+      solution: `WITH RECURSIVE spine(day) AS (\n  SELECT MIN(order_date) FROM orders\n  UNION ALL\n  SELECT day + 1 FROM spine WHERE day < (SELECT MAX(order_date) FROM orders)\n),\ncounts AS (SELECT order_date AS day, COUNT(*) AS n FROM orders GROUP BY 1)\nSELECT s.day, COALESCE(c.n, 0) AS orders\nFROM spine s LEFT JOIN counts c USING (day)\nWHERE s.day IS NOT NULL\nORDER BY s.day;\n`,
+      explanation: 'Reports must show quiet days, but GROUP BY only produces days that exist. A date spine (recursive CTE or generate_series) supplies every day; the LEFT JOIN brings counts in and COALESCE turns gaps into 0.',
+      tests: [
+        { name: 'Example', tables: { orders: [[1, '2024-01-01'], [2, '2024-01-01'], [3, '2024-01-04'], [4, '2024-01-05']] } },
+        { name: 'Across months', hidden: true, tables: { orders: [[1, '2024-02-28'], [2, '2024-03-02']] } },
+        { name: 'Single day', hidden: true, tables: { orders: [[1, '2024-06-06'], [2, '2024-06-06']] } },
+      ],
+    }),
+    sql({
+      id: 'category-breadcrumbs', title: 'Category Breadcrumbs and Leaf Products', difficulty: 'Hard',
+      topics: ['Recursive CTEs', 'Hierarchies & Graphs', 'Aggregation', 'Joins'], patterns: ['Roll up a tree bottom-up', 'Adjacency list → paths'], domains: ['E-commerce / Sales'], interview: true, roles: ALL,
+      summary: 'Total product count under every category, including its sub-categories.',
+      description: md('`categories(id, name, parent_id)` is a tree; `products(product_id, category_id)` sit on any node.', '', 'For every category return `path` (root → category names joined by ` / `) and `products_in_subtree` (products on it or any descendant). Order by `path`.'),
+      hints: ['Build (ancestor, descendant) pairs including each node with itself.', 'Join products on the descendant and count per ancestor; build the path with a second recursion (or carry it along).'],
+      schema: { categories: 'id INTEGER Primary key, name VARCHAR Name, parent_id INTEGER Parent (NULL for roots)', products: 'product_id INTEGER Primary key, category_id INTEGER Category' },
+      solution: `WITH RECURSIVE paths(id, path) AS (\n  SELECT id, name FROM categories WHERE parent_id IS NULL\n  UNION ALL\n  SELECT c.id, p.path || ' / ' || c.name FROM categories c JOIN paths p ON c.parent_id = p.id\n),\nclosure(anc, des) AS (\n  SELECT id, id FROM categories\n  UNION ALL\n  SELECT cl.anc, c.id FROM closure cl JOIN categories c ON c.parent_id = cl.des\n)\nSELECT p.path, COUNT(pr.product_id) AS products_in_subtree\nFROM paths p\nJOIN closure cl ON cl.anc = p.id\nLEFT JOIN products pr ON pr.category_id = cl.des\nGROUP BY p.path\nORDER BY p.path;\n`,
+      explanation: 'Two recursions: one builds human-readable paths top-down, the other the closure table (every ancestor–descendant pair, including self). Joining facts to descendants and grouping by ancestor rolls numbers up the tree — the basis of hierarchical reporting.',
+      tests: [
+        { name: 'Example', tables: { categories: [[1, 'Electronics', null], [2, 'Phones', 1], [3, 'Laptops', 1], [4, 'Android', 2], [5, 'Home', null]], products: [[10, 4], [11, 4], [12, 2], [13, 3], [14, 5]] } },
+        { name: 'Empty categories show zero', hidden: true, tables: { categories: [[1, 'A', null], [2, 'B', 1]], products: [] } },
+        { name: 'Deep tree', hidden: true, tables: { categories: [[1, 'R', null], [2, 'S', 1], [3, 'T', 2], [4, 'U', 3]], products: [[1, 4], [2, 4], [3, 1]] } },
+      ],
+    }),
+    sql({
+      id: 'fibonacci-and-factorial', title: 'Number Series with Recursion', difficulty: 'Easy',
+      topics: ['Recursive CTEs'], patterns: ['Recursive CTE carrying two values'], domains: ['Mathematics'], roles: ALL,
+      summary: 'Generate the first n Fibonacci numbers and factorials with one recursive CTE.',
+      description: md('`params` has one row with `n`. Return `k` from 1 to `n` with `fib` (1, 1, 2, 3, 5 …) and `factorial` (k!). Order by `k`.'),
+      hints: ['Carry (k, a, b, f) — the current Fibonacci pair and the factorial — in each recursive step.'],
+      schema: { params: 'n INTEGER How many terms' },
+      solution: `WITH RECURSIVE s(k, fib, nxt, factorial) AS (\n  SELECT 1, 1::BIGINT, 1::BIGINT, 1::BIGINT\n  UNION ALL\n  SELECT k + 1, nxt, fib + nxt, factorial * (k + 1) FROM s WHERE k < (SELECT n FROM params)\n)\nSELECT k, fib, factorial FROM s ORDER BY k;\n`,
+      explanation: 'A recursive CTE can carry several state columns; each step derives the next state from the previous one. BIGINT avoids overflow for larger n.',
+      tests: [{ name: 'Example', tables: { params: [[6]] } }, { name: 'n = 1', hidden: true, tables: { params: [[1]] } }, { name: 'n = 15', hidden: true, tables: { params: [[15]] } }],
+    }),
+  ],
+};

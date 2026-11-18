@@ -1,6 +1,7 @@
 import { theme as t } from '../data.js';
 import { useContent } from '../ContentContext.jsx';
 import Reveal from './Reveal.jsx';
+import { SectionHeader } from './ui.jsx';
 
 export default function Projects() {
   const { projects } = useContent();
@@ -9,13 +10,7 @@ export default function Projects() {
     <section id="projects" style={{ background: t.ink, color: t.bg, padding: '84px var(--px)' }}>
       <div style={{ maxWidth: 1180, margin: '0 auto' }}>
         <Reveal>
-          <div style={{ fontFamily: t.fontMono, fontSize: 12, letterSpacing: '.14em', textTransform: 'uppercase', color: t.accent, marginBottom: 16 }}>// featured projects</div>
-          <h2 style={{ fontFamily: t.fontDisplay, fontWeight: 600, fontSize: 34, letterSpacing: '-.02em', margin: '0 0 12px' }}>
-            {projects.heading}
-          </h2>
-          <p style={{ fontSize: 16, color: '#a9a296', margin: '0 0 44px', maxWidth: '56ch' }}>
-            {projects.description}
-          </p>
+          <SectionHeader kicker="// featured projects" no="03" heading={projects.heading} description={projects.description} dark gap={44} />
         </Reveal>
         <div className="grid-collapse" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20 }}>
           {(projects.items || []).map((p, i) => (

@@ -1,0 +1,130 @@
+// Pack 5 — pivot / unpivot and date & time.
+import { sql, md } from './define.js';
+
+const ALL = ['Data Engineer', 'Data Analyst', 'Data Scientist', 'Analytics Engineer'];
+const DA = ['Data Analyst', 'Analytics Engineer'];
+
+export default {
+  problems: [
+    sql({
+      id: 'pivot-quarterly-sales', title: 'Pivot Sales by Quarter', difficulty: 'Medium',
+      topics: ['Pivoting', 'Conditional Logic', 'Date & Time'], patterns: ['Pivot with conditional aggregation', 'PIVOT clause'], domains: ['E-commerce / Sales'], interview: true, roles: DA,
+      summary: 'One row per region with Q1–Q4 revenue columns.',
+      description: md('Turn `sales` (one row per sale) into one row per `region` with columns `q1`, `q2`, `q3`, `q4` = 2024 revenue in that quarter (0 when none) and `total`. Order by `total` descending, then `region`.'),
+      hints: ['SUM(CASE WHEN quarter(sale_date) = 1 THEN amount ELSE 0 END) AS q1 …', 'DuckDB also has PIVOT … ON … USING SUM(…).'],
+      schema: { sales: 'sale_id INTEGER Primary key, region VARCHAR Region, amount DOUBLE Amount, sale_date DATE Day' },
+      solution: `SELECT region,\n  SUM(CASE WHEN quarter(sale_date) = 1 THEN amount ELSE 0 END) AS q1,\n  SUM(CASE WHEN quarter(sale_date) = 2 THEN amount ELSE 0 END) AS q2,\n  SUM(CASE WHEN quarter(sale_date) = 3 THEN amount ELSE 0 END) AS q3,\n  SUM(CASE WHEN quarter(sale_date) = 4 THEN amount ELSE 0 END) AS q4,\n  SUM(amount) AS total\nFROM sales\nWHERE sale_date >= DATE '2024-01-01' AND sale_date < DATE '2025-01-01'\nGROUP BY region\nORDER BY total DESC, region;\n`,
+      explanation: 'Conditional aggregation is the portable pivot: one SUM(CASE …) per output column. Engine PIVOT syntax is shorter but varies; when the column set is known up front, CASE is clearest.',
+      tests: [
+        { name: 'Example', tables: { sales: [[1, 'North', 100.0, '2024-01-10'], [2, 'North', 50.0, '2024-05-10'], [3, 'South', 80.0, '2024-11-01'], [4, 'South', 20.0, '2024-12-31'], [5, 'North', 999.0, '2023-12-31']] } },
+        { name: 'Quarter boundaries', hidden: true, tables: { sales: [[1, 'E', 1.0, '2024-03-31'], [2, 'E', 2.0, '2024-04-01'], [3, 'E', 4.0, '2024-09-30'], [4, 'E', 8.0, '2024-10-01']] } },
+        { name: 'Tie on total', hidden: true, tables: { sales: [[1, 'B', 5.0, '2024-02-02'], [2, 'A', 5.0, '2024-08-08']] } },
+      ],
+    }),
+    sql({
+      id: 'unpivot-survey', title: 'Unpivot Survey Answers', difficulty: 'Medium',
+      topics: ['Pivoting', 'Aggregation'], patterns: ['Unpivot (UNION ALL / UNPIVOT)', 'Long format for analysis'], domains: ['Research / Surveys'], interview: true, roles: ['Data Analyst', 'Data Scientist', 'Data Engineer'],
+      summary: 'Turn one-column-per-question survey data into long format and average each question.',
+      description: md('`responses` has one row per respondent and a column per question (`q_speed`, `q_price`, `q_support`; scores 1–5, NULL = skipped).', '', 'Return `question` (without the `q_` prefix), `answers` (non-NULL count) and `avg_score` (rounded to 2), ordered by `avg_score` descending, then `question`.'),
+      hints: ['UNPIVOT responses ON q_speed, q_price, q_support INTO NAME question VALUE score — or three SELECTs with UNION ALL.', 'UNPIVOT drops NULLs by default.'],
+      schema: { responses: 'respondent_id INTEGER Respondent, q_speed INTEGER 1–5 (nullable), q_price INTEGER 1–5 (nullable), q_support INTEGER 1–5 (nullable)' },
+      solution: `WITH long AS (\n  SELECT 'speed' AS question, q_speed AS score FROM responses\n  UNION ALL SELECT 'price', q_price FROM responses\n  UNION ALL SELECT 'support', q_support FROM responses\n)\nSELECT question, COUNT(score) AS answers, ROUND(AVG(score), 2) AS avg_score\nFROM long\nGROUP BY question\nORDER BY avg_score DESC NULLS LAST, question;\n`,
+      explanation: 'Wide tables are convenient for entry but awkward for analysis; unpivoting to (entity, attribute, value) makes every question a group. COUNT(column) and AVG skip NULLs, so skipped answers don\'t drag averages down.',
+      tests: [
+        { name: 'Example', tables: { responses: [[1, 5, 3, 4], [2, 4, null, 2], [3, 3, 2, null]] } },
+        { name: 'Ties', hidden: true, tables: { responses: [[1, 2, 2, 2]] } },
+        { name: 'A question nobody answered', hidden: true, tables: { responses: [[1, 5, null, 1], [2, 1, null, 5]] } },
+      ],
+    }),
+    sql({
+      id: 'dynamic-attribute-pivot', title: 'Pivot an EAV Table', difficulty: 'Hard',
+      topics: ['Pivoting', 'Aggregation', 'Data Quality'], patterns: ['Entity–attribute–value → columns', 'Latest value per attribute'], domains: ['Product catalog'], interview: true, roles: ['Data Engineer', 'Analytics Engineer'],
+      summary: 'Flatten an entity-attribute-value history into one current row per product.',
+      description: md('`product_attributes(product_id, attr, value, updated_at)` stores attributes as rows, with history. Return one row per product with the **latest** `color`, `size` and `brand` (NULL when never set). Order by `product_id`.'),
+      hints: ['First keep the latest row per (product_id, attr).', 'Then MAX(value) FILTER (WHERE attr = \'color\') … per product.'],
+      schema: { product_attributes: 'product_id INTEGER Product, attr VARCHAR Attribute name, value VARCHAR Value, updated_at TIMESTAMP When set' },
+      solution: `WITH latest AS (\n  SELECT product_id, attr, value\n  FROM product_attributes\n  QUALIFY ROW_NUMBER() OVER (PARTITION BY product_id, attr ORDER BY updated_at DESC) = 1\n)\nSELECT product_id,\n  MAX(value) FILTER (WHERE attr = 'color') AS color,\n  MAX(value) FILTER (WHERE attr = 'size')  AS size,\n  MAX(value) FILTER (WHERE attr = 'brand') AS brand\nFROM latest\nGROUP BY product_id\nORDER BY product_id;\n`,
+      explanation: 'EAV tables trade schema flexibility for query pain. Deduplicate to the current value per attribute first (otherwise MAX picks an alphabetically larger stale value), then pivot with filtered aggregates.',
+      tests: [
+        { name: 'Example', tables: { product_attributes: [[1, 'color', 'red', '2024-01-01 00:00:00'], [1, 'color', 'blue', '2024-02-01 00:00:00'], [1, 'size', 'M', '2024-01-01 00:00:00'], [2, 'brand', 'Acme', '2024-01-05 00:00:00']] } },
+        { name: 'Stale value would win alphabetically', hidden: true, tables: { product_attributes: [[3, 'color', 'yellow', '2024-01-01 00:00:00'], [3, 'color', 'black', '2024-03-01 00:00:00']] } },
+        { name: 'Unknown attributes ignored', hidden: true, tables: { product_attributes: [[4, 'weight', '2kg', '2024-01-01 00:00:00'], [4, 'brand', 'Zed', '2024-01-01 00:00:00']] } },
+      ],
+    }),
+    sql({
+      id: 'weekly-active-users', title: 'Weekly Active Users (ISO Weeks)', difficulty: 'Medium',
+      topics: ['Date & Time', 'Aggregation'], patterns: ['Truncate to week (Monday start)', 'Distinct count per period'], domains: ['Product analytics'], interview: true, roles: ALL,
+      summary: 'Distinct active users per week, weeks starting Monday.',
+      description: md('Return `week_start` (the Monday of the week) and `wau` — distinct users with any event that week — ordered by `week_start`.'),
+      hints: ['date_trunc(\'week\', ts) truncates to Monday in DuckDB/Postgres.'],
+      schema: { events: 'user_id INTEGER User, event_ts TIMESTAMP When' },
+      solution: `SELECT CAST(date_trunc('week', event_ts) AS DATE) AS week_start, COUNT(DISTINCT user_id) AS wau\nFROM events\nGROUP BY 1\nORDER BY 1;\n`,
+      explanation: 'Truncating timestamps to the week start buckets events; COUNT(DISTINCT) counts each user once per week. Know your engine\'s week start — some default to Sunday.',
+      tests: [
+        { name: 'Example', tables: { events: [[1, '2024-01-01 09:00:00'], [2, '2024-01-03 09:00:00'], [1, '2024-01-07 23:59:59'], [1, '2024-01-08 00:00:00'], [3, '2024-01-10 10:00:00']] } },
+        { name: 'Week spanning a year', hidden: true, tables: { events: [[1, '2024-12-30 10:00:00'], [2, '2025-01-02 10:00:00'], [1, '2025-01-05 10:00:00']] } },
+        { name: 'Same user many times', hidden: true, tables: { events: [[9, '2024-05-06 01:00:00'], [9, '2024-05-07 01:00:00'], [9, '2024-05-12 01:00:00']] } },
+      ],
+    }),
+    sql({
+      id: 'business-days-between', title: 'Business Days to Resolve a Ticket', difficulty: 'Hard',
+      topics: ['Date & Time', 'Joins', 'Aggregation'], patterns: ['Count working days with a calendar spine', 'Exclude holidays'], domains: ['Customer support'], interview: true, roles: ALL,
+      summary: 'Count Mon–Fri non-holiday days between opening and resolving each ticket.',
+      description: md('For each ticket, `business_days` = number of **Monday–Friday days that aren\'t in `holidays`** strictly after `opened_on` up to and including `resolved_on` (same-day resolution = 0). Return `ticket_id`, `business_days`, ordered by `ticket_id`.'),
+      hints: ['Build one calendar spanning all tickets (generate_series from the earliest open to the latest resolve) and range-join it to each ticket — the warehouse dim_date pattern.', 'isodow(day) between 1 and 5 is Monday–Friday; exclude days found in holidays.'],
+      schema: { tickets: 'ticket_id INTEGER Primary key, opened_on DATE Opened, resolved_on DATE Resolved', holidays: 'day DATE Public holiday' },
+      solution: `WITH cal AS (\n  SELECT d::DATE AS day\n  FROM generate_series((SELECT MIN(opened_on) FROM tickets), (SELECT MAX(resolved_on) FROM tickets), INTERVAL 1 DAY) AS g(d)\n)\nSELECT t.ticket_id, COUNT(c.day) AS business_days\nFROM tickets t\nLEFT JOIN cal c\n  ON c.day > t.opened_on AND c.day <= t.resolved_on\n AND isodow(c.day) BETWEEN 1 AND 5\n AND c.day NOT IN (SELECT day FROM holidays)\nGROUP BY t.ticket_id\nORDER BY t.ticket_id;\n`,
+      explanation: 'Date arithmetic can\'t know about weekends and holidays, but a calendar can: one shared spine of days, range-joined to each ticket, filtered to working days. In a warehouse this is a dim_date table with an is_business_day flag. (A per-ticket lateral generate_series also works in principle, but this DuckDB build drops rows after an empty series — another reason to prefer one spine.)',
+      tests: [
+        { name: 'Example', tables: { tickets: [[1, '2024-06-07', '2024-06-11'], [2, '2024-06-10', '2024-06-10'], [3, '2024-06-14', '2024-06-18']], holidays: [['2024-06-17']] } },
+        { name: 'Over a weekend only', hidden: true, tables: { tickets: [[4, '2024-06-21', '2024-06-23']], holidays: [] } },
+        { name: 'Two full weeks', hidden: true, tables: { tickets: [[5, '2024-07-01', '2024-07-15']], holidays: [['2024-07-04']] } },
+      ],
+    }),
+    sql({
+      id: 'overlapping-bookings', title: 'Double-Booked Rooms', difficulty: 'Medium',
+      topics: ['Joins', 'Date & Time'], patterns: ['Interval overlap (a.start < b.end AND b.start < a.end)'], domains: ['Travel / Hospitality'], interview: true, roles: ALL,
+      summary: 'Find pairs of bookings for the same room whose time ranges overlap.',
+      description: md('Bookings are half-open ranges `[check_in, check_out)` — a check-out on the same day as another check-in is **not** an overlap.', '', 'Return `room`, `booking_a`, `booking_b` (`booking_a < booking_b`) for every overlapping pair, ordered by `room`, `booking_a`, `booking_b`.'),
+      hints: ['Two ranges overlap when a.start < b.end AND b.start < a.end.', 'Self-join on room with a.booking_id < b.booking_id.'],
+      schema: { bookings: 'booking_id INTEGER Primary key, room VARCHAR Room, check_in DATE In, check_out DATE Out' },
+      solution: `SELECT a.room, a.booking_id AS booking_a, b.booking_id AS booking_b\nFROM bookings a JOIN bookings b\n  ON a.room = b.room AND a.booking_id < b.booking_id\n AND a.check_in < b.check_out AND b.check_in < a.check_out\nORDER BY a.room, booking_a, booking_b;\n`,
+      explanation: 'The overlap test for half-open intervals is two strict comparisons. Writing it as "starts inside the other" misses the case where one booking contains the other.',
+      tests: [
+        { name: 'Example', tables: { bookings: [[1, '101', '2024-05-01', '2024-05-04'], [2, '101', '2024-05-03', '2024-05-05'], [3, '101', '2024-05-05', '2024-05-06'], [4, '102', '2024-05-01', '2024-05-10'], [5, '102', '2024-05-02', '2024-05-03']] } },
+        { name: 'Back-to-back is fine', hidden: true, tables: { bookings: [[1, 'A', '2024-01-01', '2024-01-02'], [2, 'A', '2024-01-02', '2024-01-03']] } },
+        { name: 'Identical ranges', hidden: true, tables: { bookings: [[2, 'B', '2024-02-01', '2024-02-05'], [1, 'B', '2024-02-01', '2024-02-05']] } },
+      ],
+    }),
+    sql({
+      id: 'concurrent-sessions-peak', title: 'Peak Concurrent Sessions', difficulty: 'Hard',
+      topics: ['Window Functions', 'Date & Time', 'Running Totals'], patterns: ['Event sweep: +1 at start, −1 at end, running sum'], domains: ['Streaming / Media'], interview: true, roles: ['Data Engineer', 'Data Scientist'],
+      summary: 'The maximum number of sessions open at the same time, and when it first happened.',
+      description: md('Sessions are `[started_at, ended_at)`. Return one row: `peak_concurrency` and `first_reached_at` (the earliest moment the peak was reached).'),
+      hints: ['Turn each session into two events: (started_at, +1) and (ended_at, −1).', 'Running SUM ordered by time — process −1 before +1 at the same instant (half-open ranges).'],
+      schema: { sessions: 'session_id INTEGER Primary key, started_at TIMESTAMP Start, ended_at TIMESTAMP End' },
+      solution: `WITH ev AS (\n  SELECT started_at AS ts, 1 AS delta FROM sessions\n  UNION ALL\n  SELECT ended_at, -1 FROM sessions\n),\nrun AS (\n  SELECT ts, SUM(delta) OVER (ORDER BY ts, delta ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) AS open_now FROM ev\n)\nSELECT open_now AS peak_concurrency, MIN(ts) AS first_reached_at\nFROM run\nWHERE open_now = (SELECT MAX(open_now) FROM run)\nGROUP BY open_now;\n`,
+      explanation: 'The sweep-line trick: every start adds one, every end subtracts one; the running sum is the number of open sessions. Ordering −1 before +1 at equal timestamps implements half-open intervals (an end and a start at the same instant don\'t overlap).',
+      tests: [
+        { name: 'Example', tables: { sessions: [[1, '2024-01-01 10:00:00', '2024-01-01 11:00:00'], [2, '2024-01-01 10:30:00', '2024-01-01 12:00:00'], [3, '2024-01-01 10:45:00', '2024-01-01 10:50:00'], [4, '2024-01-01 11:00:00', '2024-01-01 11:30:00']] } },
+        { name: 'Touching sessions don\'t overlap', hidden: true, tables: { sessions: [[1, '2024-01-01 10:00:00', '2024-01-01 11:00:00'], [2, '2024-01-01 11:00:00', '2024-01-01 12:00:00']] } },
+        { name: 'Peak reached twice', hidden: true, tables: { sessions: [[1, '2024-01-01 09:00:00', '2024-01-01 09:10:00'], [2, '2024-01-01 09:05:00', '2024-01-01 09:20:00'], [3, '2024-01-01 09:30:00', '2024-01-01 09:40:00'], [4, '2024-01-01 09:35:00', '2024-01-01 09:50:00']] } },
+      ],
+    }),
+    sql({
+      id: 'time-zone-local-hour', title: 'Orders by Local Hour', difficulty: 'Medium',
+      topics: ['Date & Time', 'Aggregation', 'Joins'], patterns: ['UTC → local time with an offset table'], domains: ['E-commerce / Sales'], interview: true, roles: ALL,
+      summary: 'Timestamps are UTC; report the order count by the store\'s local hour.',
+      description: md('`orders.ordered_at` is in **UTC**. Each store has a fixed `utc_offset_minutes` (e.g. 330 for India). Return `local_hour` (0–23 in the store\'s local time) and `orders`, ordered by `local_hour`.'),
+      hints: ['ordered_at + INTERVAL (offset) MINUTE gives local time.', 'hour(…) extracts the hour.'],
+      schema: { orders: 'order_id INTEGER Primary key, store_id INTEGER Store, ordered_at TIMESTAMP UTC time', stores: 'store_id INTEGER Primary key, utc_offset_minutes INTEGER Offset from UTC' },
+      solution: `SELECT hour(o.ordered_at + to_minutes(s.utc_offset_minutes)) AS local_hour, COUNT(*) AS orders\nFROM orders o JOIN stores s USING (store_id)\nGROUP BY 1\nORDER BY 1;\n`,
+      explanation: 'Store timestamps in UTC and convert at query time. Fixed offsets are a simplification — with daylight saving you\'d use a time zone name (AT TIME ZONE) so the offset changes with the date.',
+      tests: [
+        { name: 'Example', tables: { orders: [[1, 1, '2024-05-01 03:30:00'], [2, 1, '2024-05-01 04:10:00'], [3, 2, '2024-05-01 13:00:00'], [4, 2, '2024-05-01 23:30:00']], stores: [[1, 330], [2, -240]] } },
+        { name: 'Wraps past midnight', hidden: true, tables: { orders: [[1, 3, '2024-05-01 20:00:00']], stores: [[3, 300]] } },
+        { name: 'Negative offset into the previous day', hidden: true, tables: { orders: [[1, 4, '2024-05-02 02:00:00'], [2, 4, '2024-05-02 06:30:00']], stores: [[4, -300]] } },
+      ],
+    }),
+  ],
+};
