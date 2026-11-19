@@ -83,23 +83,28 @@ const SINGLE_FILE = [
   latestRecordPerKey,
 ];
 
-// ---- SQL packs (content/problems/sql/pack-*.js, loaded automatically) -------------
-// Each pack exports { problems: [sql({...}), …], caseStudies?: [...] }. Expected
-// outputs are attached from sql/golden.json (see sql/define.js).
+// ---- Packs (content/problems/<track>/pack-*.js, loaded automatically) -------------
+// Each pack exports { problems: [sql({...}) | python({...}), …], caseStudies?: [...] }.
+// Expected outputs are attached from <track>/golden.json (see sql/define.js,
+// python/define.js); `npm run problems:freeze` writes them.
+export const PACK_TRACKS = ['sql', 'python'];
 const here = path.dirname(fileURLToPath(import.meta.url));
-const packDir = path.join(here, 'sql');
-const golden = JSON.parse(readFileSync(path.join(packDir, 'golden.json'), 'utf8'));
+export const goldenPath = (track) => path.join(here, track, 'golden.json');
+const golden = {};
 const packs = [];
-for (const f of readdirSync(packDir).filter((n) => /^pack-.+\.js$/.test(n)).sort()) {
-  packs.push({ file: f, ...(await import(`./sql/${f}`)).default });
+for (const track of PACK_TRACKS) {
+  golden[track] = JSON.parse(readFileSync(goldenPath(track), 'utf8'));
+  for (const f of readdirSync(path.join(here, track)).filter((n) => /^pack-.+\.js$/.test(n)).sort()) {
+    packs.push({ file: `${track}/${f}`, ...(await import(`./${track}/${f}`)).default });
+  }
 }
 
 function withGolden(p) {
-  const g = golden[p.id];
+  const g = golden[p.track]?.[p.id];
   return {
     ...p,
-    outputColumns: p.outputColumns || g?.columns,
-    tests: p.tests.map((t) => (t.expected === undefined && g?.tests?.[t.name] !== undefined ? { ...t, expected: g.tests[t.name] } : t)),
+    ...(p.track === 'sql' ? { outputColumns: p.outputColumns || g?.columns } : {}),
+    tests: p.tests.map((t) => (t.expected === undefined && g?.tests && t.name in g.tests ? { ...t, expected: g.tests[t.name] } : t)),
   };
 }
 

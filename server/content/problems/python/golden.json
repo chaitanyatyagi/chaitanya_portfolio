@@ -1,0 +1,8602 @@
+{
+ "abstract-readers": {
+  "hash": "6176856e1f9bcdf5",
+  "tests": {
+   "CSV": [
+    {
+     "id": "1",
+     "name": "Ana"
+    },
+    {
+     "id": "2",
+     "name": "Raj"
+    }
+   ],
+   "Incomplete subclass": "TypeError",
+   "JSON lines": [
+    {
+     "a": 1
+    },
+    {
+     "b": 2
+    }
+   ],
+   "Empty text": []
+  }
+ },
+ "activity-rank": {
+  "hash": "98646e3da5542692",
+  "tests": {
+   "Example": [
+    [
+     "a",
+     2,
+     1
+    ],
+    [
+     "c",
+     2,
+     2
+    ],
+    [
+     "b",
+     1,
+     3
+    ]
+   ],
+   "No emails": [],
+   "All tied": [
+    [
+     "y",
+     1,
+     1
+    ],
+    [
+     "z",
+     1,
+     2
+    ]
+   ],
+   "Single sender": [
+    [
+     "solo",
+     2,
+     1
+    ]
+   ]
+  }
+ },
+ "add-months-clamp": {
+  "hash": "633e7f9f238510ab",
+  "tests": {
+   "Example": [
+    "2024-02-29",
+    "2023-02-28",
+    "2023-12-15"
+   ],
+   "Zero months": [
+    "2024-05-05"
+   ],
+   "Across years": [
+    "2025-02-28",
+    "2025-02-28"
+   ],
+   "Large negative": [
+    "2022-02-28"
+   ]
+  }
+ },
+ "all-subsets": {
+  "hash": "d12e63dd5ea2dad9",
+  "tests": {
+   "Example": [
+    [],
+    [
+     "a"
+    ],
+    [
+     "b"
+    ],
+    [
+     "c"
+    ],
+    [
+     "a",
+     "b"
+    ],
+    [
+     "a",
+     "c"
+    ],
+    [
+     "b",
+     "c"
+    ],
+    [
+     "a",
+     "b",
+     "c"
+    ]
+   ],
+   "Empty": [
+    []
+   ],
+   "One flag": [
+    [],
+    [
+     "x"
+    ]
+   ],
+   "Order follows input": [
+    [],
+    [
+     "z"
+    ],
+    [
+     "a"
+    ],
+    [
+     "z",
+     "a"
+    ]
+   ]
+  }
+ },
+ "arithmetic-evaluator": {
+  "hash": "cb2b40fd7362e24a",
+  "tests": {
+   "Example": 6.5,
+   "Division by zero": "error",
+   "Left associativity": 3,
+   "Unary minus": 10,
+   "Unbalanced parentheses": "error",
+   "Invalid character": "error",
+   "Decimals": 5.5
+  }
+ },
+ "assertion-checks": {
+  "hash": "c29f55415b94a3fd",
+  "tests": {
+   "Example": [
+    "bad status",
+    "duplicate ids",
+    "total mismatch"
+   ],
+   "Clean batch": [],
+   "Empty batch": [
+    "empty batch"
+   ],
+   "Rounding tolerance": []
+  }
+ },
+ "at-most-two-odd-fares": {
+  "hash": "94e0054134256a5d",
+  "tests": {
+   "Example": 5,
+   "k = 0": 2,
+   "All odd": 2,
+   "Empty": 0
+  }
+ },
+ "badge-log-mismatches": {
+  "hash": "a78bd7c200ea8529",
+  "tests": {
+   "Example": [
+    [
+     "ana",
+     "raj"
+    ],
+    [
+     "li"
+    ]
+   ],
+   "Clean log": [
+    [],
+    []
+   ],
+   "Empty": [
+    [],
+    []
+   ],
+   "Double entry, single exit": [
+    [
+     "b"
+    ],
+    [
+     "b"
+    ]
+   ]
+  }
+ },
+ "balanced-brackets": {
+  "hash": "42c7143baffb1ea5",
+  "tests": {
+   "Example": true,
+   "Crossed": false,
+   "Unclosed": false,
+   "Closer first": false,
+   "No brackets": true
+  }
+ },
+ "bank-account-class": {
+  "hash": "4fd835cf79c66c5c",
+  "tests": {
+   "Example": [
+    [
+     true,
+     true,
+     false
+    ],
+    30,
+    "ana"
+   ],
+   "Non-positive amounts refused": [
+    [
+     false,
+     false,
+     false
+    ],
+    0,
+    "raj"
+   ],
+   "Withdraw everything": [
+    [
+     true,
+     true,
+     false
+    ],
+    0,
+    "li"
+   ],
+   "No operations": [
+    [],
+    0,
+    "zoe"
+   ]
+  }
+ },
+ "barrier-phases": {
+  "hash": "e4f88f6ac189479e",
+  "tests": {
+   "Example": [
+    [
+     [
+      "w1",
+      "w2",
+      "w3"
+     ]
+    ],
+    [],
+    [
+     "w4",
+     "w5"
+    ]
+   ],
+   "Abort breaks waiting workers": [
+    [],
+    [
+     "a",
+     "b"
+    ],
+    []
+   ],
+   "Several generations": [
+    [
+     [
+      "a",
+      "b"
+     ],
+     [
+      "c",
+      "d"
+     ],
+     [
+      "e",
+      "f"
+     ]
+    ],
+    [],
+    []
+   ],
+   "One party trips immediately": [
+    [
+     [
+      "x"
+     ],
+     [
+      "y"
+     ]
+    ],
+    [],
+    []
+   ]
+  }
+ },
+ "base-13-conversion": {
+  "hash": "dc2c892a59e39a1b",
+  "tests": {
+   "Example": "BC9",
+   "Single digit": "C",
+   "Zero": "0",
+   "Negative": "-11",
+   "Power of the base": "100"
+  }
+ },
+ "batched-generator": {
+  "hash": "319b8b485a5ceb86",
+  "tests": {
+   "Example": [
+    [
+     1,
+     2
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     5
+    ]
+   ],
+   "Exact multiple": [
+    [
+     "a",
+     "b"
+    ],
+    [
+     "c",
+     "d"
+    ]
+   ],
+   "Empty": [],
+   "Size larger than input": [
+    [
+     1,
+     2
+    ]
+   ]
+  }
+ },
+ "bigram-continuations": {
+  "hash": "c20dc34a36f90c50",
+  "tests": {
+   "Example": "replace brake pad replace",
+   "Unknown start": "z",
+   "Loops are capped": "a b a b a b",
+   "Ties alphabetical, stops at dead end": "go home go home go"
+  }
+ },
+ "booking-lead-time": {
+  "hash": "81b90fe78f59a172",
+  "tests": {
+   "Example": {
+    "h1": 6,
+    "h2": 0
+   },
+   "Impossible rows dropped": {},
+   "Across a leap day": {
+    "x": 2
+   },
+   "Empty": {}
+  }
+ },
+ "bounded-producer-consumer": {
+  "hash": "0b39a26c0fe6ef1c",
+  "tests": {
+   "Reject when full": [
+    [
+     1
+    ],
+    1,
+    [
+     2,
+     4
+    ]
+   ],
+   "Drop oldest": [
+    [
+     2,
+     3,
+     null
+    ],
+    1,
+    []
+   ],
+   "Get from empty": [
+    [
+     null
+    ],
+    0,
+    []
+   ],
+   "Capacity one": [
+    [],
+    2,
+    [
+     "c"
+    ]
+   ]
+  }
+ },
+ "build-request-url": {
+  "hash": "7d221ded770f9dbd",
+  "tests": {
+   "Example": "https://api.x.io/v1/orders?limit=50",
+   "No segments, no params": "https://h.io",
+   "Params sorted by name": "https://h.io/a?b=x&m=True&z=1",
+   "Only None params": "https://h.io/x"
+  }
+ },
+ "built-in-class-attributes": {
+  "hash": "4b0d9546a8d0a1a3",
+  "tests": {
+   "Base class": [
+    {
+     "name": "Source",
+     "doc": "Base class for data sources.",
+     "bases": [
+      "object"
+     ],
+     "methods": [
+      "read"
+     ],
+     "class_vars": [
+      "retries"
+     ]
+    }
+   ],
+   "Subclass": [
+    {
+     "name": "S3Source",
+     "doc": "Reads objects from S3.",
+     "bases": [
+      "Source"
+     ],
+     "methods": [
+      "list_keys",
+      "read"
+     ],
+     "class_vars": [
+      "bucket",
+      "region"
+     ]
+    }
+   ],
+   "Empty subclass": [
+    {
+     "name": "Undocumented",
+     "doc": null,
+     "bases": [
+      "S3Source"
+     ],
+     "methods": [],
+     "class_vars": []
+    }
+   ],
+   "Several at once": [
+    {
+     "name": "Undocumented",
+     "doc": null,
+     "bases": [
+      "S3Source"
+     ],
+     "methods": [],
+     "class_vars": []
+    },
+    {
+     "name": "Source",
+     "doc": "Base class for data sources.",
+     "bases": [
+      "object"
+     ],
+     "methods": [
+      "read"
+     ],
+     "class_vars": [
+      "retries"
+     ]
+    }
+   ]
+  }
+ },
+ "business-days-count": {
+  "hash": "c43bc31491414c71",
+  "tests": {
+   "Example": 9,
+   "End before start": 0,
+   "Weekend only": 0,
+   "Holiday on a weekend is ignored": 5,
+   "Long range": 262
+  }
+ },
+ "c3-linearization": {
+  "hash": "274f5663dedf778c",
+  "tests": {
+   "Diamond": [
+    "D",
+    "B",
+    "C",
+    "A"
+   ],
+   "Single class": [
+    "A"
+   ],
+   "Classic textbook hierarchy": [
+    "Z",
+    "K1",
+    "K2",
+    "K3",
+    "D",
+    "A",
+    "B",
+    "C",
+    "E",
+    "O"
+   ],
+   "Inconsistent order": "TypeError",
+   "Multilevel chain": [
+    "C",
+    "B",
+    "A"
+   ]
+  }
+ },
+ "callable-objects": {
+  "hash": "069ca0d177ef4f88",
+  "tests": {
+   "Example": [
+    [
+     false,
+     false,
+     true
+    ],
+    3,
+    2,
+    true
+   ],
+   "Inclusive": [
+    [
+     true,
+     false
+    ],
+    2,
+    1,
+    true
+   ],
+   "No values": [
+    [],
+    0,
+    0,
+    true
+   ],
+   "Negative limit": [
+    [
+     false,
+     true,
+     false
+    ],
+    3,
+    2,
+    true
+   ]
+  }
+ },
+ "camel-to-snake": {
+  "hash": "67188382ed512d85",
+  "tests": {
+   "Example": [
+    "user_id",
+    "http_status_code",
+    "created_at2",
+    "already_snake"
+   ],
+   "Single word": [
+    "name"
+   ],
+   "Digits before capitals": [
+    "ip_v4_address",
+    "sha256_hash"
+   ],
+   "Acronym at the end": [
+    "parse_json",
+    "get_http_response_code"
+   ]
+  }
+ },
+ "card-holds-expiry": {
+  "hash": "aae6fe5a71b6d350",
+  "tests": {
+   "Example": [
+    1000,
+    749.5,
+    800,
+    1000
+   ],
+   "No holds": [
+    500
+   ],
+   "Expiry instant excluded": [
+    60,
+    100
+   ],
+   "Release after expiry changes nothing": [
+    90,
+    100
+   ]
+  }
+ },
+ "catering-sales-report": {
+  "hash": "96115af64cc4c26c",
+  "tests": {
+   "Example": [
+    [
+     "samosa",
+     16,
+     24
+    ],
+    [
+     "thali",
+     2,
+     24
+    ],
+    [
+     "lassi",
+     4,
+     9
+    ]
+   ],
+   "Single line": [
+    [
+     "tea",
+     1,
+     0.99
+    ]
+   ],
+   "Empty": [],
+   "Revenue ties sorted by item": [
+    [
+     "a",
+     5,
+     5
+    ],
+    [
+     "b",
+     1,
+     5
+    ]
+   ]
+  }
+ },
+ "centered-banner": {
+  "hash": "64fcd82703d35af1",
+  "tests": {
+   "Example": [
+    "+------+",
+    "| ETL  |",
+    "| done |",
+    "+------+"
+   ],
+   "Even split": [
+    "+----+",
+    "| ab |",
+    "|abcd|",
+    "+----+"
+   ],
+   "No lines": [
+    "+----+",
+    "+----+"
+   ],
+   "Empty line": [
+    "+---+",
+    "|   |",
+    "| x |",
+    "+---+"
+   ],
+   "Wide padding": [
+    "+----------+",
+    "|   data   |",
+    "+----------+"
+   ]
+  }
+ },
+ "char-counts-in-order": {
+  "hash": "138bc5b6a284846a",
+  "tests": {
+   "Example": "b1a3n2",
+   "All distinct": "a1b1c1",
+   "Empty string": "",
+   "Spaces and case count separately": "A1a2 1",
+   "Long run": "z12"
+  }
+ },
+ "chunked-csv-aggregation": {
+  "hash": "3b74d0f2af5aabae",
+  "tests": {
+   "Example": [
+    3,
+    {
+     "E": [
+      1,
+      1
+     ],
+     "N": [
+      30,
+      15
+     ],
+     "S": [
+      12,
+      6
+     ]
+    }
+   ],
+   "One chunk": [
+    1,
+    {
+     "X": [
+      1.5,
+      1.5
+     ]
+    }
+   ],
+   "Header only": [
+    0,
+    {}
+   ],
+   "Uneven chunks": [
+    2,
+    {
+     "A": [
+      6,
+      2
+     ]
+    }
+   ]
+  }
+ },
+ "cidr-contains": {
+  "hash": "d91b9dae7dc63ce8",
+  "tests": {
+   "Example": [
+    "allow",
+    "deny",
+    "log"
+   ],
+   "No rules": [
+    "deny"
+   ],
+   "Host route": [
+    "allow",
+    "deny"
+   ],
+   "Base with host bits set": [
+    "allow",
+    "deny"
+   ]
+  }
+ },
+ "cities-above-national-average": {
+  "hash": "05585947d0c4f4eb",
+  "tests": {
+   "Example": [
+    "C"
+   ],
+   "Empty": [],
+   "Weighting matters": [
+    "tiny"
+   ],
+   "Nobody above when all equal": []
+  }
+ },
+ "class-vs-instance-variables": {
+  "hash": "f26ad9a0c42fdad9",
+  "tests": {
+   "Example": [
+    [
+     1,
+     "load",
+     [
+      "daily"
+     ]
+    ],
+    [
+     2,
+     "clean",
+     [
+      "pii"
+     ]
+    ],
+    2
+   ],
+   "Tags stay separate": [
+    [
+     1,
+     "a",
+     [
+      "x",
+      "y"
+     ]
+    ],
+    [
+     2,
+     "b",
+     []
+    ],
+    [
+     3,
+     "c",
+     []
+    ],
+    3
+   ],
+   "No jobs": [
+    0
+   ],
+   "One job, no tags": [
+    [
+     1,
+     "solo",
+     []
+    ],
+    1
+   ]
+  }
+ },
+ "classmethod-constructor": {
+  "hash": "19f033469472ae75",
+  "tests": {
+   "Example": [
+    [
+     "Ana Lee",
+     "DATA",
+     120000
+    ],
+    [
+     "Raj",
+     "OPS",
+     95000
+    ]
+   ],
+   "Invalid salary": [
+    "invalid",
+    "invalid"
+   ],
+   "Wrong number of fields": [
+    "invalid"
+   ],
+   "Bool salary rejected": [
+    "invalid"
+   ],
+   "Float salary truncated": [
+    [
+     "Zoe",
+     "ENG",
+     1000
+    ]
+   ]
+  }
+ },
+ "coin-change-min": {
+  "hash": "333472dbf90e7bfc",
+  "tests": {
+   "Example": 3,
+   "Impossible": -1,
+   "Greedy would fail": 2,
+   "Zero amount": 0
+  }
+ },
+ "collapse-repeated-pings": {
+  "hash": "ee6cddde3b88fa96",
+  "tests": {
+   "Example": [
+    [
+     "OK",
+     2
+    ],
+    [
+     "BUSY",
+     1
+    ],
+    [
+     "OK",
+     1
+    ]
+   ],
+   "No repeats": [
+    [
+     "A",
+     1
+    ],
+    [
+     "B",
+     1
+    ],
+    [
+     "C",
+     1
+    ]
+   ],
+   "Empty stream": [],
+   "One long run": [
+    [
+     "OK",
+     4
+    ]
+   ],
+   "Alternating": [
+    [
+     "A",
+     2
+    ],
+    [
+     "B",
+     2
+    ],
+    [
+     "A",
+     2
+    ]
+   ]
+  }
+ },
+ "collatz-steps": {
+  "hash": "d98bc51d53869726",
+  "tests": {
+   "Example": [
+    8,
+    16,
+    0
+   ],
+   "Power of two": [
+    4
+   ],
+   "Famous long one": [
+    111
+   ],
+   "Empty": []
+  }
+ },
+ "commit-rollback-transfer": {
+  "hash": "58c7aa45493ea299",
+  "tests": {
+   "Example": [
+    [
+     true,
+     false,
+     false
+    ],
+    [
+     [
+      "a",
+      70
+     ],
+     [
+      "b",
+      80
+     ],
+     [
+      "c",
+      0
+     ]
+    ]
+   ],
+   "Non-positive amount": [
+    [
+     false
+    ],
+    [
+     [
+      "a",
+      100
+     ],
+     [
+      "b",
+      50
+     ],
+     [
+      "c",
+      0
+     ]
+    ]
+   ],
+   "Exact balance": [
+    [
+     true,
+     true
+    ],
+    [
+     [
+      "a",
+      150
+     ],
+     [
+      "b",
+      0
+     ],
+     [
+      "c",
+      0
+     ]
+    ]
+   ],
+   "Unknown source": [
+    [
+     false
+    ],
+    [
+     [
+      "a",
+      100
+     ],
+     [
+      "b",
+      50
+     ],
+     [
+      "c",
+      0
+     ]
+    ]
+   ]
+  }
+ },
+ "common-directory-prefix": {
+  "hash": "ec3b0d4400731a7b",
+  "tests": {
+   "Example": "/lake/raw",
+   "Similar names are different directories": "/data",
+   "Only the root is shared": "/",
+   "Single path": "/srv/logs",
+   "Empty list": "",
+   "One path is shallower": "/lake"
+  }
+ },
+ "compose-pipeline": {
+  "hash": "992a43804072a286",
+  "tests": {
+   "Example": [
+    {
+     "qty": 2,
+     "price": 3.5,
+     "total": 7
+    }
+   ],
+   "No steps is identity": [
+    {
+     "a": 1
+    }
+   ],
+   "Order matters": [
+    {
+     "qty": 2,
+     "price": 1,
+     "total": 0
+    }
+   ],
+   "Many records": [
+    {},
+    {
+     "b": 1
+    }
+   ]
+  }
+ },
+ "consecutive-login-days": {
+  "hash": "00bbf2de3195b05e",
+  "tests": {
+   "Example": [
+    [
+     "ana",
+     3
+    ]
+   ],
+   "Same day twice is one day": [],
+   "Year boundary": [
+    [
+     "zoe",
+     2
+    ]
+   ],
+   "k = 1 includes everyone active": [
+    [
+     "a",
+     1
+    ],
+    [
+     "b",
+     1
+    ]
+   ]
+  }
+ },
+ "contains-duplicate": {
+  "hash": "de5681eab5efc581",
+  "tests": {
+   "Example": true,
+   "All unique": false,
+   "Empty batch": false,
+   "Case matters": false,
+   "Repeat at the end": true
+  }
+ },
+ "context-manager-dunders": {
+  "hash": "1043254ed1a15c1d",
+  "tests": {
+   "Example": [
+    {
+     "a": 7,
+     "b": 7
+    },
+    [
+     "commit",
+     "rollback KeyError"
+    ]
+   ],
+   "Unexpected error propagates": [
+    {
+     "x": 1
+    },
+    [
+     "rollback TypeError",
+     "caller saw TypeError"
+    ]
+   ],
+   "All good": [
+    {
+     "k": 2
+    },
+    [
+     "commit",
+     "commit"
+    ]
+   ],
+   "Partial batch fully rolled back": [
+    {
+     "a": 1,
+     "b": 1
+    },
+    [
+     "rollback KeyError"
+    ]
+   ]
+  }
+ },
+ "coroutine-running-stats": {
+  "hash": "6eee480fbe5e8e97",
+  "tests": {
+   "Example": [
+    [
+     1,
+     10,
+     10
+    ],
+    [
+     2,
+     15,
+     20
+    ],
+    [
+     3,
+     30,
+     60
+    ]
+   ],
+   "Reset in the middle": [
+    [
+     1,
+     5,
+     5
+    ],
+    [
+     0,
+     null,
+     null
+    ],
+    [
+     1,
+     1,
+     1
+    ]
+   ],
+   "Negative values": [
+    [
+     1,
+     -3,
+     -3
+    ],
+    [
+     2,
+     -2,
+     -1
+    ]
+   ],
+   "Nothing sent": []
+  }
+ },
+ "count-set-bits": {
+  "hash": "dedb8a8abeb0b85c",
+  "tests": {
+   "Example": [
+    [
+     true,
+     false
+    ],
+    40,
+    2
+   ],
+   "Nothing set": [
+    [
+     false
+    ],
+    0,
+    0
+   ],
+   "Toggle twice": [
+    [
+     false
+    ],
+    0,
+    0
+   ],
+   "High bit": [
+    [
+     true
+    ],
+    1099511627776,
+    1
+   ]
+  }
+ },
+ "count-target-pairs": {
+  "hash": "5209124bd77359ad",
+  "tests": {
+   "Example": 3,
+   "Nothing pairs": 0,
+   "Single five cannot pair with itself": 0,
+   "Many duplicates count once": 1,
+   "Negatives": 3,
+   "Empty list": 0
+  }
+ },
+ "count-valid-card-sets": {
+  "hash": "329fec8ec6d34b23",
+  "tests": {
+   "Example": 1,
+   "Too few cards": 0,
+   "Identical cards form a set": 1,
+   "Two the same, one different is invalid": 0,
+   "Several sets": 2
+  }
+ },
+ "countdown-iterator": {
+  "hash": "b4d0a2ff3b3f15ad",
+  "tests": {
+   "Example": [
+    [
+     3,
+     2,
+     1,
+     0
+    ],
+    [],
+    true
+   ],
+   "Step of two": [
+    [
+     5,
+     3,
+     1
+    ],
+    [],
+    true
+   ],
+   "Starts below zero": [
+    [],
+    [],
+    true
+   ],
+   "Zero": [
+    [
+     0
+    ],
+    [],
+    true
+   ]
+  }
+ },
+ "counter-closure": {
+  "hash": "40f3d62240796a20",
+  "tests": {
+   "Example": [
+    [
+     100,
+     110,
+     120
+    ],
+    [
+     100
+    ]
+   ],
+   "Counters are independent": [
+    [
+     0,
+     1,
+     2,
+     3
+    ],
+    [
+     0,
+     1
+    ]
+   ],
+   "Negative step": [
+    [
+     5,
+     3,
+     1,
+     -1
+    ],
+    []
+   ],
+   "No calls": [
+    [],
+    []
+   ]
+  }
+ },
+ "country-rollup": {
+  "hash": "50ec5b2a93b924ac",
+  "tests": {
+   "Example": [
+    [
+     "India",
+     2
+    ],
+    [
+     "United States",
+     2
+    ],
+    [
+     "Brazil",
+     1
+    ]
+   ],
+   "One country": [
+    [
+     "Chile",
+     1
+    ]
+   ],
+   "All blank": [],
+   "Ties sorted by name": [
+    [
+     "A",
+     1
+    ],
+    [
+     "B",
+     1
+    ],
+    [
+     "C",
+     1
+    ]
+   ]
+  }
+ },
+ "csv-module-quoting": {
+  "hash": "f6d25f52ca376554",
+  "tests": {
+   "Example": [
+    [
+     {
+      "id": "1",
+      "name": "Lee, Ana",
+      "city": "Pune"
+     },
+     {
+      "id": "2",
+      "name": "Say \"hi\"",
+      "city": "Goa"
+     }
+    ],
+    1
+   ],
+   "Simple file": [
+    [
+     {
+      "a": "1",
+      "b": "2"
+     }
+    ],
+    0
+   ],
+   "Header only": [
+    [],
+    0
+   ],
+   "Embedded newline": [
+    [
+     {
+      "id": "7",
+      "note": "line one\nline two"
+     }
+    ],
+    1
+   ]
+  }
+ },
+ "csv-to-ldjson-chunks": {
+  "hash": "bd8e052feb7b945c",
+  "tests": {
+   "Example": [
+    "{\"id\":1,\"price\":9.5,\"name\":\"tea\"}\n{\"id\":2,\"price\":null,\"name\":\"cake\"}\n",
+    "{\"id\":3,\"price\":10,\"name\":\"bun\"}\n"
+   ],
+   "Single chunk": [
+    "{\"a\":\"x\"}\n"
+   ],
+   "Header only": [],
+   "Leading zeros and exponents become numbers": [
+    "{\"code\":7,\"qty\":1000.0}\n",
+    "{\"code\":\"abc\",\"qty\":-4}\n"
+   ]
+  }
+ },
+ "cursor-description-dicts": {
+  "hash": "e2a2504ff576ca78",
+  "tests": {
+   "Example": {
+    "columns": [
+     "name",
+     "salary"
+    ],
+    "rows": [
+     {
+      "name": "Ana",
+      "salary": 120
+     },
+     {
+      "name": "Raj",
+      "salary": 100
+     }
+    ]
+   },
+   "Aliases become keys": {
+    "columns": [
+     "dept",
+     "headcount"
+    ],
+    "rows": [
+     {
+      "dept": "data",
+      "headcount": 2
+     },
+     {
+      "dept": "ops",
+      "headcount": 1
+     }
+    ]
+   },
+   "No rows": {
+    "columns": [
+     "id",
+     "name",
+     "dept",
+     "salary"
+    ],
+    "rows": []
+   },
+   "Expressions get their alias": {
+    "columns": [
+     "top",
+     "low"
+    ],
+    "rows": [
+     {
+      "top": 120,
+      "low": 90
+     }
+    ]
+   }
+  }
+ },
+ "custom-collection-dunders": {
+  "hash": "fe20552dfafc4232",
+  "tests": {
+   "Example": [
+    3,
+    [
+     "b",
+     "c"
+    ],
+    true,
+    "b"
+   ],
+   "Probe missing": [
+    1,
+    [],
+    false,
+    "x"
+   ],
+   "All duplicates": [
+    1,
+    [],
+    true,
+    "1"
+   ],
+   "Order is kept across both batches": [
+    4,
+    [
+     "y",
+     "x",
+     "w"
+    ],
+    false,
+    "x"
+   ]
+  }
+ },
+ "custom-exception-hierarchy": {
+  "hash": "f0105b7ff999853e",
+  "tests": {
+   "Example": [
+    [
+     1
+    ],
+    [
+     [
+      "MissingField",
+      "id",
+      2
+     ],
+     [
+      "BadType",
+      "amount",
+      3
+     ],
+     [
+      "OutOfRange",
+      "amount",
+      4
+     ]
+    ],
+    3
+   ],
+   "All valid": [
+    [
+     "a",
+     "b"
+    ],
+    [],
+    0
+   ],
+   "Bool amount": [
+    [],
+    [
+     [
+      "BadType",
+      "amount",
+      1
+     ]
+    ],
+    1
+   ],
+   "Missing amount": [
+    [],
+    [
+     [
+      "MissingField",
+      "amount",
+      1
+     ]
+    ],
+    1
+   ],
+   "Empty": [
+    [],
+    [],
+    0
+   ]
+  }
+ },
+ "daemon-threads-exit": {
+  "hash": "e6a0a62decc5942d",
+  "tests": {
+   "Example": [
+    8,
+    [
+     "cache",
+     "writer"
+    ],
+    [
+     "heartbeat"
+    ]
+   ],
+   "Only daemons": [
+    2,
+    [],
+    [
+     "d"
+    ]
+   ],
+   "Daemon finishing exactly at exit": [
+    4,
+    [
+     "d"
+    ],
+    []
+   ],
+   "No threads": [
+    1,
+    [],
+    []
+   ]
+  }
+ },
+ "dag-task-order": {
+  "hash": "54827549a7e39cdf",
+  "tests": {
+   "Example": [
+    "extract",
+    "clean",
+    "dim",
+    "fact",
+    "report"
+   ],
+   "Cycle": [
+    "CYCLE",
+    "a",
+    "b"
+   ],
+   "Independent tasks alphabetical": [
+    "a",
+    "m",
+    "z"
+   ],
+   "Downstream of a cycle": [
+    "CYCLE",
+    "a",
+    "b",
+    "c"
+   ]
+  }
+ },
+ "days-at-number-one": {
+  "hash": "43fe37224a9dfcb9",
+  "tests": {
+   "Example": [
+    [
+     "A",
+     2
+    ],
+    [
+     "B",
+     1
+    ]
+   ],
+   "No number ones": [],
+   "Two tracks at #1 the same day": [
+    [
+     "x",
+     1
+    ],
+    [
+     "y",
+     1
+    ]
+   ],
+   "Ranking ties by name": [
+    [
+     "a",
+     1
+    ],
+    [
+     "b",
+     1
+    ]
+   ]
+  }
+ },
+ "dbapi-create-insert-fetch": {
+  "hash": "e5eddf26f821cd09",
+  "tests": {
+   "Example": [
+    [
+     "ana",
+     75.25
+    ],
+    [
+     "li",
+     75.25
+    ]
+   ],
+   "Nobody qualifies": [],
+   "No rows": [],
+   "Ties by name": [
+    [
+     "a",
+     10
+    ],
+    [
+     "b",
+     10
+    ]
+   ]
+  }
+ },
+ "deadlock-detection": {
+  "hash": "64c685e4fd150097",
+  "tests": {
+   "Two-thread deadlock": [
+    "A",
+    "B"
+   ],
+   "Just waiting, no cycle": [],
+   "Three-way cycle plus a bystander": [
+    "A",
+    "B",
+    "C"
+   ],
+   "Waiting on a free lock": []
+  }
+ },
+ "decorator-stacking-order": {
+  "hash": "b2dd3a498255ca0f",
+  "tests": {
+   "Two decorators": [
+    "apply inner",
+    "apply outer",
+    "call",
+    "enter outer",
+    "enter inner",
+    "body",
+    "exit inner",
+    "exit outer"
+   ],
+   "One decorator": [
+    "apply only",
+    "call",
+    "enter only",
+    "body",
+    "exit only"
+   ],
+   "Three decorators": [
+    "apply log",
+    "apply cache",
+    "apply auth",
+    "call",
+    "enter auth",
+    "enter cache",
+    "enter log",
+    "body",
+    "exit log",
+    "exit cache",
+    "exit auth"
+   ],
+   "No decorators": [
+    "call",
+    "body"
+   ]
+  }
+ },
+ "dedupe-keep-first-spelling": {
+  "hash": "e34fcf6840a16ecb",
+  "tests": {
+   "Example": [
+    "SQL",
+    "Python",
+    "Spark"
+   ],
+   "No duplicates": [
+    "a",
+    "b"
+   ],
+   "Empty": [],
+   "Casefold keeps first spelling": [
+    "dbt"
+   ]
+  }
+ },
+ "diamond-super-order": {
+  "hash": "afac60aa1edc10f9",
+  "tests": {
+   "Diamond": [
+    [
+     "LoadStep",
+     "Retrying",
+     "Logged",
+     "Step"
+    ]
+   ],
+   "Single mixin": [
+    [
+     "Retrying",
+     "Step"
+    ]
+   ],
+   "Other mixin": [
+    [
+     "Logged",
+     "Step"
+    ]
+   ],
+   "All three": [
+    [
+     "Logged",
+     "Step"
+    ],
+    [
+     "LoadStep",
+     "Retrying",
+     "Logged",
+     "Step"
+    ],
+    [
+     "Retrying",
+     "Step"
+    ]
+   ]
+  }
+ },
+ "digit-math-primitives": {
+  "hash": "347a988cc8db7d78",
+  "tests": {
+   "Example": [
+    [
+     12321,
+     9,
+     true
+    ],
+    [
+     21,
+     3,
+     false
+    ],
+    [
+     7,
+     7,
+     true
+    ]
+   ],
+   "Zero": [
+    [
+     0,
+     0,
+     true
+    ]
+   ],
+   "Large": [
+    [
+     123456789,
+     45,
+     false
+    ]
+   ],
+   "Single digits and palindromes": [
+    [
+     5,
+     5,
+     true
+    ],
+    [
+     1001,
+     2,
+     true
+    ],
+    [
+     1,
+     1,
+     false
+    ]
+   ]
+  }
+ },
+ "dispatch-table": {
+  "hash": "e50799403521c1fd",
+  "tests": {
+   "Example": "hello world",
+   "Digits only": "919876",
+   "Unknown step": "unknown step: reverse",
+   "No steps": " raw "
+  }
+ },
+ "disputed-fare-legs": {
+  "hash": "61871aa5fba7790e",
+  "tests": {
+   "Example": [
+    "L2",
+    "L3"
+   ],
+   "No explanation": [],
+   "Same amount twice": [
+    "x",
+    "y"
+   ],
+   "Ties on billing time use ids": [
+    "a",
+    "b"
+   ]
+  }
+ },
+ "doubling-types": {
+  "hash": "8cd39d854523ce44",
+  "tests": {
+   "Example": [
+    "int",
+    "str",
+    "int",
+    "TypeError"
+   ],
+   "Containers": [
+    "list",
+    "TypeError"
+   ],
+   "Floats stay floats": [
+    "float",
+    "int"
+   ],
+   "Empty": []
+  }
+ },
+ "dummy-etl-pipeline": {
+  "hash": "9e76e72798a1f92f",
+  "tests": {
+   "Example": "order_id,country,amount_usd\n1,DE,11.0\n2,IN,12.0\n",
+   "Empty": "order_id,country,amount_usd\n",
+   "Unknown currency dropped": "order_id,country,amount_usd\n",
+   "Duplicates keep the first and sort by id": "order_id,country,amount_usd\n4,DE,3.85\n5,US,2.0\n"
+  }
+ },
+ "dynamic-filter-builder": {
+  "hash": "9f573d84b6d9b967",
+  "tests": {
+   "Example": [
+    "SELECT id FROM orders WHERE status = ? AND amount > ? ORDER BY id",
+    [
+     "paid",
+     20
+    ],
+    [
+     1,
+     3
+    ]
+   ],
+   "IN list": [
+    "SELECT id FROM orders WHERE country IN (?, ?) ORDER BY id",
+    [
+     "US",
+     "DE"
+    ],
+    [
+     2,
+     3,
+     5
+    ]
+   ],
+   "Injection via column name": "rejected",
+   "No filters": [
+    "SELECT id FROM orders ORDER BY id",
+    [],
+    [
+     1,
+     2,
+     3,
+     4,
+     5
+    ]
+   ],
+   "Empty IN and LIKE": [
+    "SELECT id FROM orders WHERE 1 = 0 ORDER BY id",
+    [],
+    []
+   ],
+   "LIKE pattern": [
+    "SELECT id FROM orders WHERE status LIKE ? AND country != ? ORDER BY id",
+    [
+     "pa%",
+     "IN"
+    ],
+    [
+     3,
+     5
+    ]
+   ]
+  }
+ },
+ "eafp-nested-lookup": {
+  "hash": "a4ee125f2f75c248",
+  "tests": {
+   "Example": [
+    9.5,
+    null,
+    null
+   ],
+   "Wrong container type": [
+    "n/a",
+    "n/a"
+   ],
+   "Empty path returns the document": [
+    {
+     "k": 1
+    }
+   ],
+   "Falsy values are real values": [
+    0,
+    false
+   ]
+  }
+ },
+ "edit-distance": {
+  "hash": "b00879eb2f56c476",
+  "tests": {
+   "Example": 3,
+   "Same": 0,
+   "Empty side": 3,
+   "Transposition costs two": 2
+  }
+ },
+ "email-domains": {
+  "hash": "b020bb7153fe470d",
+  "tests": {
+   "Example": [
+    "corp.io",
+    "mail.com"
+   ],
+   "Invalid addresses ignored": [],
+   "Empty": [],
+   "Whitespace around addresses": [
+    "y.org"
+   ]
+  }
+ },
+ "enforce-types-decorator": {
+  "hash": "6497afbb5676baed",
+  "tests": {
+   "Example": [
+    "loaded 10 rows into orders",
+    "rows must be int, got str"
+   ],
+   "Keyword arguments": [
+    "would load 3 rows into users"
+   ],
+   "bool is not an int": [
+    "rows must be int, got bool"
+   ],
+   "Missing argument": [
+    "missing a required argument: 'rows'"
+   ],
+   "Wrong table type": [
+    "table must be str, got int"
+   ]
+  }
+ },
+ "epoch-time-module": {
+  "hash": "a8e72fae5ca827a9",
+  "tests": {
+   "Example": [
+    [
+     "1970-01-01 00:00:00",
+     "Thu"
+    ],
+    [
+     "2023-11-14 22:13:20",
+     "Tue"
+    ],
+    [
+     "2023-11-14 22:13:20",
+     "Tue"
+    ]
+   ],
+   "Fractional seconds": [
+    [
+     "1970-01-01 23:59:59",
+     "Thu"
+    ]
+   ],
+   "Leap year day": [
+    [
+     "2024-02-29 00:00:00",
+     "Thu"
+    ]
+   ],
+   "Milliseconds with a fraction": [
+    [
+     "2023-11-14 22:13:20",
+     "Tue"
+    ]
+   ]
+  }
+ },
+ "eq-hash-dedupe": {
+  "hash": "a02a916376516216",
+  "tests": {
+   "Example": [
+    2,
+    [
+     "Ana",
+     "Raj"
+    ],
+    false
+   ],
+   "All different": [
+    2,
+    [
+     "A",
+     "B"
+    ],
+    false
+   ],
+   "Empty": [
+    0,
+    [],
+    null
+   ],
+   "Many duplicates": [
+    1,
+    [
+     "1"
+    ],
+    false
+   ]
+  }
+ },
+ "error-budget-abort": {
+  "hash": "1547ccf547307a17",
+  "tests": {
+   "Within budget": [
+    "ok",
+    12,
+    1
+   ],
+   "Aborts": [
+    "aborted",
+    3,
+    2
+   ],
+   "Minimum sample protects early failures": [
+    "ok",
+    3,
+    1
+   ],
+   "Empty": [
+    "ok",
+    0,
+    0
+   ]
+  }
+ },
+ "etl-logging-summary": {
+  "hash": "8ca0769982a24482",
+  "tests": {
+   "Example": [
+    "WARNING row 2: bad amount",
+    "WARNING row 3: bad amount",
+    "WARNING row 4: bad currency",
+    "INFO loaded 2 rows, rejected 3, total EUR=10.5 USD=3.0"
+   ],
+   "All good": [
+    "INFO loaded 1 rows, rejected 0, total INR=1.0"
+   ],
+   "Header only": [
+    "INFO loaded 0 rows, rejected 0, total "
+   ],
+   "Rounding totals": [
+    "INFO loaded 2 rows, rejected 0, total USD=0.3"
+   ]
+  }
+ },
+ "event-time-watermark": {
+  "hash": "5de64695a606af0a",
+  "tests": {
+   "Example": [
+    {
+     "0": 1,
+     "60": 2,
+     "120": 1,
+     "180": 1
+    },
+    1
+   ],
+   "Generous lateness keeps everything": [
+    {
+     "0": 1,
+     "60": 1
+    },
+    0
+   ],
+   "Empty": [
+    {},
+    0
+   ],
+   "Exactly at the boundary": [
+    {
+     "60": 1
+    },
+    1
+   ]
+  }
+ },
+ "exception-chaining": {
+  "hash": "7ba6418439ba2373",
+  "tests": {
+   "Example": [
+    [
+     1,
+     2,
+     3
+    ],
+    [
+     "bad json",
+     "JSONDecodeError"
+    ],
+    [
+     "no rows",
+     "KeyError"
+    ],
+    [
+     "bad row",
+     "ValueError"
+    ]
+   ],
+   "Empty rows": [
+    []
+   ],
+   "Null row": [
+    [
+     "bad row",
+     "TypeError"
+    ]
+   ],
+   "Floats truncate": [
+    [
+     1,
+     -2
+    ]
+   ]
+  }
+ },
+ "exception-hierarchy-paths": {
+  "hash": "9e4b92a183ef9700",
+  "tests": {
+   "Example": [
+    [
+     [
+      "KeyError",
+      "LookupError",
+      "Exception",
+      "BaseException"
+     ],
+     true,
+     true,
+     false
+    ],
+    [
+     [
+      "ZeroDivisionError",
+      "ArithmeticError",
+      "Exception",
+      "BaseException"
+     ],
+     true,
+     false,
+     true
+    ],
+    [
+     [
+      "KeyboardInterrupt",
+      "BaseException"
+     ],
+     false,
+     false,
+     false
+    ]
+   ],
+   "Unknown name": [
+    "unknown",
+    "unknown"
+   ],
+   "Deep hierarchies": [
+    [
+     [
+      "FileNotFoundError",
+      "OSError",
+      "Exception",
+      "BaseException"
+     ],
+     true,
+     false,
+     false
+    ],
+    [
+     [
+      "UnicodeDecodeError",
+      "UnicodeError",
+      "ValueError",
+      "Exception",
+      "BaseException"
+     ],
+     true,
+     false,
+     false
+    ]
+   ],
+   "Base classes": [
+    [
+     [
+      "Exception",
+      "BaseException"
+     ],
+     true,
+     false,
+     false
+    ],
+    [
+     [
+      "BaseException"
+     ],
+     false,
+     false,
+     false
+    ]
+   ]
+  }
+ },
+ "extract-emails": {
+  "hash": "260c0722f8ac037b",
+  "tests": {
+   "Example": [
+    "ana.lee@corp.com",
+    "support@help.io"
+   ],
+   "None": [],
+   "Plus addressing and subdomains": [
+    "x+tag@mail.eu.example.org",
+    "y@z.co"
+   ],
+   "Underscores and hyphens": [
+    "first_last@my-corp.com"
+   ]
+  }
+ },
+ "failed-login-alerts": {
+  "hash": "4c869cc8d70230d5",
+  "tests": {
+   "Example": [
+    "u1"
+   ],
+   "Successes don't count": [],
+   "Inclusive boundary": [
+    "b"
+   ],
+   "Just outside": []
+  }
+ },
+ "fault-tolerant-pipe-file": {
+  "hash": "c62e3cba1af1582d",
+  "tests": {
+   "Example": [
+    [
+     [
+      "tea",
+      3,
+      2.5
+     ]
+    ],
+    {
+     "count": 1,
+     "fields": 1,
+     "name": 1,
+     "negative": 1,
+     "price": 1
+    }
+   ],
+   "All good": [
+    [
+     [
+      "a",
+      1,
+      1
+     ],
+     [
+      "b",
+      0,
+      0
+     ]
+    ],
+    {}
+   ],
+   "Empty": [
+    [],
+    {}
+   ],
+   "Extra fields": [
+    [
+     [
+      "b",
+      1,
+      1
+     ]
+    ],
+    {
+     "fields": 1
+    }
+   ],
+   "Spaces around fields": [
+    [
+     [
+      "x",
+      7,
+      0.5
+     ]
+    ],
+    {}
+   ]
+  }
+ },
+ "fee-rollup": {
+  "hash": "d93f978af3930ac8",
+  "tests": {
+   "Example": {
+    "m1": {
+     "EUR": 0.88,
+     "USD": 4.95
+    }
+   },
+   "No transactions": {},
+   "Only refunds": {},
+   "Several merchants sorted": {
+    "alpha": {
+     "USD": 0.6
+    },
+    "zeta": {
+     "USD": 0.6
+    }
+   }
+  }
+ },
+ "fetchmany-batches": {
+  "hash": "cf89636acf8ba64e",
+  "tests": {
+   "Example": [
+    [
+     3,
+     3,
+     1
+    ],
+    [
+     12,
+     30,
+     14
+    ],
+    null
+   ],
+   "Exact multiple": [
+    [
+     2,
+     2
+    ],
+    [
+     6,
+     14
+    ],
+    null
+   ],
+   "Empty table": [
+    [],
+    [],
+    null
+   ],
+   "Batch larger than table": [
+    [
+     3
+    ],
+    [
+     12
+    ],
+    null
+   ]
+  }
+ },
+ "fibonacci-generator": {
+  "hash": "96f7c8b964f6a4b9",
+  "tests": {
+   "First ten": [
+    0,
+    1,
+    1,
+    2,
+    3,
+    5,
+    8,
+    13,
+    21,
+    34
+   ],
+   "Skip some": [
+    55,
+    89,
+    144
+   ],
+   "Take none": [],
+   "Further along": [
+    12586269025,
+    20365011074
+   ]
+  }
+ },
+ "file-modes-append": {
+  "hash": "471e51acc595cbf4",
+  "tests": {
+   "Example": [
+    "batch,rows",
+    "b1,100",
+    "b2,250"
+   ],
+   "File already exists": [
+    "exists"
+   ],
+   "No batches": [
+    "batch,rows"
+   ],
+   "Single batch": [
+    "batch,rows",
+    "only,0"
+   ]
+  }
+ },
+ "filter-jobs-by-status": {
+  "hash": "f92e23382cda41f4",
+  "tests": {
+   "Example": {
+    "a": "FAILED",
+    "c": "Retry"
+   },
+   "Nothing wanted": {},
+   "Everything matches": {
+    "x": "OK",
+    "y": "ok"
+   },
+   "Empty jobs": {}
+  }
+ },
+ "filter-map-email-pipeline": {
+  "hash": "8cb25d0787c46f5c",
+  "tests": {
+   "Example": [
+    "ana@corp.com",
+    "li@corp.com"
+   ],
+   "No matches": [],
+   "No at-sign": [
+    "corp.com"
+   ],
+   "Several domains": [
+    "x@a.io",
+    "z@c.io"
+   ]
+  }
+ },
+ "filter-valid-events": {
+  "hash": "e220ba789b831e60",
+  "tests": {
+   "Example": [
+    {
+     "user": "a",
+     "ts": 5,
+     "type": "click"
+    }
+   ],
+   "Missing keys": [],
+   "Bool timestamp rejected": [],
+   "Type not allowed": []
+  }
+ },
+ "first-duplicate-order": {
+  "hash": "6c5279899cd20afa",
+  "tests": {
+   "Example": [
+    1,
+    3
+   ],
+   "No duplicates": [],
+   "Empty": [],
+   "Adjacent duplicate": [
+    0,
+    1
+   ],
+   "Triple occurrence": [
+    0,
+    2
+   ]
+  }
+ },
+ "first-last-position": {
+  "hash": "97745d2729d6e88e",
+  "tests": {
+   "Example": [
+    3,
+    4
+   ],
+   "Missing": [
+    -1,
+    -1
+   ],
+   "Empty": [
+    -1,
+    -1
+   ],
+   "All the same": [
+    0,
+    2
+   ]
+  }
+ },
+ "first-repeated-character": {
+  "hash": "86d3553c51a42800",
+  "tests": {
+   "Example": "b",
+   "No repeats": "",
+   "Empty string": "",
+   "Immediate repeat": "z",
+   "Case-sensitive": "a"
+  }
+ },
+ "first-unique-character": {
+  "hash": "00b238751e3414ec",
+  "tests": {
+   "Example": 2,
+   "Everything repeats": -1,
+   "Empty string": -1,
+   "First character": 0,
+   "Last character": 4
+  }
+ },
+ "fizzbuzz-sum": {
+  "hash": "7f084e06a653bfb6",
+  "tests": {
+   "Example": 23,
+   "Small": 0,
+   "Larger": 233168,
+   "Ten million": 23333331666668
+  }
+ },
+ "flatten-line-items": {
+  "hash": "c6a2ad724b78ff85",
+  "tests": {
+   "Example": [
+    [
+     [
+      1,
+      "t1",
+      "a",
+      2,
+      3.5
+     ],
+     [
+      1,
+      "t1",
+      "b",
+      1,
+      10
+     ]
+    ],
+    1
+   ],
+   "Invalid JSON": [
+    [],
+    -1
+   ],
+   "Item missing a field": [
+    [],
+    1
+   ],
+   "No line items is fine": [
+    [],
+    0
+   ],
+   "line_items not a list": [
+    [],
+    2
+   ]
+  }
+ },
+ "flatten-nested-feed": {
+  "hash": "52a16c9133a7d43d",
+  "tests": {
+   "Example": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    "six"
+   ],
+   "Already flat": [
+    "a",
+    "b"
+   ],
+   "Empty lists vanish": [
+    1
+   ],
+   "Deep nesting": [
+    7
+   ],
+   "Empty": []
+  }
+ },
+ "flatten-order-lines": {
+  "hash": "faacd9831d409f8c",
+  "tests": {
+   "Example": [
+    [
+     1,
+     "A"
+    ],
+    [
+     2,
+     "C"
+    ]
+   ],
+   "No lines": [],
+   "Empty": [],
+   "Negative quantities dropped": [
+    [
+     3,
+     "S"
+    ]
+   ]
+  }
+ },
+ "format-exception-info": {
+  "hash": "df4fe84289369944",
+  "tests": {
+   "Error inside a function": [
+    "KeyError",
+    "'qty'",
+    "load",
+    4
+   ],
+   "No error": "ok",
+   "Module-level error": [
+    "ZeroDivisionError",
+    "division by zero",
+    "<module>",
+    2
+   ],
+   "Nested calls": [
+    "ValueError",
+    "bad config",
+    "inner",
+    2
+   ]
+  }
+ },
+ "gc-unreachable-cycles": {
+  "hash": "05397ef25390ff7a",
+  "tests": {
+   "Example": [
+    "a",
+    "b"
+   ],
+   "Everything reachable": [],
+   "No roots": [
+    "a",
+    "b"
+   ],
+   "Self loop": [
+    "s"
+   ]
+  }
+ },
+ "generator-pipeline": {
+  "hash": "79ddade6069a0924",
+  "tests": {
+   "Example": [
+    [
+     "/c",
+     120
+    ],
+    [
+     "/b",
+     90
+    ]
+   ],
+   "No errors": [],
+   "Ties by path": [
+    [
+     "/a",
+     50
+    ],
+    [
+     "/z",
+     50
+    ]
+   ],
+   "Non-numeric fields skipped": [
+    [
+     "/z",
+     1
+    ]
+   ]
+  }
+ },
+ "getattr-setattr-patch": {
+  "hash": "850652d9f1ff57a6",
+  "tests": {
+   "Example": [
+    [
+     "set name",
+     "set tier",
+     "skip email (unknown)",
+     "skip upgrade (method)",
+     "skip _score (private)"
+    ],
+    {
+     "name": "Ana Lee",
+     "tier": "pro",
+     "_score": 10
+    }
+   ],
+   "Empty patch": [
+    [],
+    {
+     "name": "Ana",
+     "tier": "free",
+     "_score": 10
+    }
+   ],
+   "Only unknown keys": [
+    [
+     "skip age (unknown)"
+    ],
+    {
+     "name": "Ana",
+     "tier": "free",
+     "_score": 10
+    }
+   ],
+   "Private and method keys never change the object": [
+    [
+     "skip _score (private)",
+     "skip upgrade (method)"
+    ],
+    {
+     "name": "Ana",
+     "tier": "free",
+     "_score": 10
+    }
+   ]
+  }
+ },
+ "global-run-counter": {
+  "hash": "da3a225c982b4c6b",
+  "tests": {
+   "Three runs": [
+    1,
+    2,
+    3
+   ],
+   "One run": [
+    1
+   ],
+   "Counter resets between cases": [
+    1,
+    2
+   ],
+   "Zero runs": []
+  }
+ },
+ "globals-registry-lookup": {
+  "hash": "724f005bd39908dd",
+  "tests": {
+   "Example": [
+    1234,
+    "EU",
+    "x"
+   ],
+   "Unknown transform": [
+    "no transform reverse"
+   ],
+   "Non-callable global is not a transform": [
+    "no transform RUNS"
+   ],
+   "Empty": []
+  }
+ },
+ "grade-buckets": {
+  "hash": "7231af8bc9af70fd",
+  "tests": {
+   "Example": [
+    "A",
+    "B",
+    "C",
+    "F"
+   ],
+   "Missing score": [
+    "N/A",
+    "A"
+   ],
+   "Boundaries": [
+    "A",
+    "B",
+    "B",
+    "C",
+    "C",
+    "F"
+   ],
+   "Empty": []
+  }
+ },
+ "grid-shortest-path": {
+  "hash": "bd91110e92e34836",
+  "tests": {
+   "Example": 4,
+   "Blocked": -1,
+   "Single cell": 0,
+   "Start blocked": -1
+  }
+ },
+ "group-anagram-codes": {
+  "hash": "cfbf8a6791197239",
+  "tests": {
+   "Example": [
+    [
+     "ate",
+     "tea",
+     "eat"
+    ],
+    [
+     "bat",
+     "tab"
+    ]
+   ],
+   "No anagrams": [
+    [
+     "a"
+    ],
+    [
+     "b"
+    ]
+   ],
+   "Empty list": [],
+   "Duplicates stay": [
+    [
+     "ab",
+     "ba",
+     "ab"
+    ]
+   ],
+   "Case-sensitive": [
+    [
+     "Ab",
+     "bA"
+    ],
+    [
+     "ab"
+    ]
+   ],
+   "Empty strings group together": [
+    [
+     "",
+     ""
+    ],
+    [
+     "x"
+    ]
+   ]
+  }
+ },
+ "groupby-sessions": {
+  "hash": "fd91a07f7a86efa3",
+  "tests": {
+   "Example": [
+    [
+     "r1",
+     3,
+     "start",
+     "end"
+    ],
+    [
+     "r2",
+     1,
+     "start",
+     "start"
+    ],
+    [
+     "r1",
+     1,
+     "retry",
+     "retry"
+    ]
+   ],
+   "Single line": [
+    [
+     "x",
+     1,
+     "only",
+     "only"
+    ]
+   ],
+   "Empty": [],
+   "A returning ID starts a new group": [
+    [
+     "a",
+     1,
+     "1",
+     "1"
+    ],
+    [
+     "b",
+     1,
+     "2",
+     "2"
+    ],
+    [
+     "a",
+     2,
+     "3",
+     "4"
+    ]
+   ]
+  }
+ },
+ "highest-paid-titles": {
+  "hash": "5271db336b6e424a",
+  "tests": {
+   "Example": [
+    "Lead",
+    "Manager"
+   ],
+   "No workers": [],
+   "Top earner without a title": [],
+   "Duplicate titles collapse": [
+    "Eng",
+    "Lead"
+   ]
+  }
+ },
+ "hit-counter-window": {
+  "hash": "ddf220b939660074",
+  "tests": {
+   "Example": [
+    3,
+    4,
+    3
+   ],
+   "Many hits at once": [
+    3
+   ],
+   "Window boundary": [
+    1,
+    0
+   ],
+   "Long gap empties the window": [
+    0
+   ]
+  }
+ },
+ "humanize-duration": {
+  "hash": "8d77b76f3ede4120",
+  "tests": {
+   "Example": [
+    "1d 2h 3m 4s",
+    "1m",
+    "1h"
+   ],
+   "Zero": [
+    "0s"
+   ],
+   "Exactly one day": [
+    "1d"
+   ],
+   "Minutes and seconds": [
+    "1m 1s",
+    "59m 59s"
+   ]
+  }
+ },
+ "id-reconciliation": {
+  "hash": "618eab602d09a06f",
+  "tests": {
+   "Example": {
+    "missing": [
+     "a"
+    ],
+    "extra": [
+     "d"
+    ],
+    "matched": 2
+   },
+   "Perfect match": {
+    "missing": [],
+    "extra": [],
+    "matched": 2
+   },
+   "Duplicates do not inflate matched": {
+    "missing": [
+     "b"
+    ],
+    "extra": [],
+    "matched": 1
+   },
+   "Empty target": {
+    "missing": [
+     "p",
+     "q"
+    ],
+    "extra": [],
+    "matched": 0
+   },
+   "Both empty": {
+    "missing": [],
+    "extra": [],
+    "matched": 0
+   }
+  }
+ },
+ "idempotent-event-apply": {
+  "hash": "9a3de20c56cfe23f",
+  "tests": {
+   "Example": [
+    {
+     "acct1": 70,
+     "acct2": 50
+    },
+    1,
+    1
+   ],
+   "No duplicates": [
+    {
+     "x": 1
+    },
+    0,
+    0
+   ],
+   "Empty": [
+    {},
+    0,
+    0
+   ],
+   "Same payload many times": [
+    {
+     "z": 5
+    },
+    2,
+    0
+   ]
+  }
+ },
+ "iife-config": {
+  "hash": "f764838fb2bd295f",
+  "tests": {
+   "Example": {
+    "workers": 7,
+    "debug": true,
+    "buckets": [
+     "raw",
+     "curated"
+    ]
+   },
+   "Explicit workers": {
+    "workers": 3,
+    "debug": false,
+    "buckets": []
+   },
+   "Nothing set": {
+    "workers": 1,
+    "debug": false,
+    "buckets": []
+   },
+   "Debug off": {
+    "workers": 1,
+    "debug": false,
+    "buckets": []
+   }
+  }
+ },
+ "implement-deepcopy": {
+  "hash": "a92097ba569bf839",
+  "tests": {
+   "Nested structure": [
+    true,
+    true,
+    [
+     4,
+     5
+    ]
+   ],
+   "Shared references stay shared": [
+    true,
+    true,
+    true
+   ],
+   "Self-referencing list": [
+    true,
+    true,
+    1
+   ],
+   "Scalars pass through": [
+    5,
+    "x",
+    null
+   ]
+  }
+ },
+ "insert-json-records": {
+  "hash": "cdaadd7eab9f6620",
+  "tests": {
+   "Example": [
+    2,
+    [
+     [
+      "A1",
+      "Tea",
+      2.5,
+      "hot,drink"
+     ],
+     [
+      "B2",
+      null,
+      1,
+      null
+     ]
+    ]
+   ],
+   "Duplicate sku rolls back": [
+    "IntegrityError",
+    []
+   ],
+   "Empty array": [
+    0,
+    []
+   ],
+   "Tags not a list": [
+    1,
+    [
+     [
+      "Z",
+      null,
+      null,
+      null
+     ]
+    ]
+   ]
+  }
+ },
+ "insufficient-funds-exception": {
+  "hash": "359cf9b27ad5d6bb",
+  "tests": {
+   "Example": [
+    20,
+    [
+     "need 10 more (balance 70)"
+    ]
+   ],
+   "Exact balance": [
+    0,
+    [
+     "need 0.01 more (balance 0)"
+    ]
+   ],
+   "No payments": [
+    5,
+    []
+   ],
+   "Decimals": [
+    0.75,
+    [
+     "need 0.25 more (balance 0.75)"
+    ]
+   ]
+  }
+ },
+ "integer-to-roman": {
+  "hash": "9cf658bc89f4f5ad",
+  "tests": {
+   "Example": "MCMXCIV",
+   "Small": "III",
+   "Largest": "MMMCMXCIX",
+   "Fourteen": "XIV",
+   "Hundreds": "CD"
+  }
+ },
+ "interval-lookup-bisect": {
+  "hash": "de659d1e9a165091",
+  "tests": {
+   "Example": [
+    "us",
+    null,
+    "eu",
+    "in",
+    null
+   ],
+   "No ranges": [
+    null
+   ],
+   "Boundaries": [
+    "one",
+    "many",
+    "many",
+    null
+   ],
+   "Gap between ranges": [
+    null,
+    "b",
+    "b",
+    null
+   ]
+  }
+ },
+ "invert-mapping": {
+  "hash": "8782a5b814827bd9",
+  "tests": {
+   "Example": {
+    "core": [
+     "ingest",
+     "load"
+    ],
+    "qa": [
+     "dq"
+    ]
+   },
+   "Unique values": {
+    "1": [
+     "a"
+    ],
+    "2": [
+     "b"
+    ]
+   },
+   "Empty": {},
+   "Everything to one team": {
+    "t": [
+     "x",
+     "y",
+     "z"
+    ]
+   }
+  }
+ },
+ "is-anagram": {
+  "hash": "416d29ecdb4440e7",
+  "tests": {
+   "Example": true,
+   "Different counts": false,
+   "Both empty": true,
+   "Punctuation counts": false,
+   "Spaces only differ": true
+  }
+ },
+ "isinstance-dispatch": {
+  "hash": "2cf69e03f42dbd8d",
+  "tests": {
+   "Example": [
+    [
+     "Box",
+     6,
+     true
+    ],
+    [
+     "Cube",
+     8,
+     true
+    ],
+    [
+     "Cylinder",
+     3.14,
+     false
+    ],
+    [
+     "Sphere",
+     null,
+     false
+    ]
+   ],
+   "Single cylinder": [
+    [
+     "Cylinder",
+     6.28,
+     false
+    ]
+   ],
+   "Empty": [],
+   "Decimal box": [
+    [
+     "Box",
+     0.12,
+     true
+    ]
+   ]
+  }
+ },
+ "json-custom-encoder": {
+  "hash": "782a412b79f0a6cc",
+  "tests": {
+   "Rich record": "{\"id\": 1, \"placed\": \"2024-03-05T14:30:00\", \"ship_by\": \"2024-03-09\", \"tags\": [\"express\", \"gift\"], \"total\": \"19.990\"}",
+   "Plain record": "{\"a\": 1, \"b\": [1, 2]}",
+   "Unknown type": "TypeError",
+   "Empty record": "{}"
+  }
+ },
+ "json-max-depth": {
+  "hash": "acc22abfdea9c4e4",
+  "tests": {
+   "Example": 4,
+   "Scalar": 0,
+   "Empty containers": 2,
+   "List of lists": 3
+  }
+ },
+ "json-mixin": {
+  "hash": "523505f2b83ac8be",
+  "tests": {
+   "Order": [
+    "Order",
+    "{\"order_id\": \"o-9\", \"total\": 12.5}",
+    true
+   ],
+   "User with default": [
+    "User",
+    "{\"active\": true, \"email\": \"a@x.io\", \"name\": \"Ana\"}",
+    true
+   ],
+   "Inactive user": [
+    "User",
+    "{\"active\": false, \"email\": \"r@x.io\", \"name\": \"Raj\"}",
+    true
+   ],
+   "Private attributes are not serialised": [
+    "Order",
+    "{\"order_id\": \"o-1\", \"total\": 0}",
+    true
+   ]
+  }
+ },
+ "json-object-hook": {
+  "hash": "7bcbe76c7c12d7a3",
+  "tests": {
+   "Example": [
+    [
+     "created_at",
+     "datetime",
+     "2024-05-01 10:00:00"
+    ],
+    [
+     "due_on",
+     "date",
+     "2024-05-31"
+    ],
+    [
+     "id",
+     "int",
+     "7"
+    ],
+    [
+     "net_amount",
+     "Decimal",
+     "12.50"
+    ]
+   ],
+   "Nothing to convert": [
+    [
+     "count_amount",
+     "int",
+     "3"
+    ],
+    [
+     "name",
+     "str",
+     "x"
+    ]
+   ],
+   "Nested objects": [
+    [
+     "order",
+     "dict",
+     "{'paid_at': datetime.datetime(2024, 1, 2, 3, 4, 5)}"
+    ],
+    [
+     "z",
+     "NoneType",
+     "None"
+    ]
+   ],
+   "Non-string values untouched": [
+    [
+     "x_at",
+     "int",
+     "5"
+    ],
+    [
+     "y_on",
+     "NoneType",
+     "None"
+    ],
+    [
+     "z_amount",
+     "float",
+     "1.5"
+    ]
+   ]
+  }
+ },
+ "json-path-extract": {
+  "hash": "5cd26aa71fe8bf26",
+  "tests": {
+   "Example": [
+    "B",
+    "x",
+    7
+   ],
+   "Missing paths": [
+    null,
+    null,
+    null
+   ],
+   "Top-level array": [
+    2
+   ],
+   "Null values exist": [
+    null,
+    false
+   ]
+  }
+ },
+ "k-radius-average": {
+  "hash": "c96de1228762c001",
+  "tests": {
+   "Example": [
+    -1,
+    -1,
+    -1,
+    5,
+    4,
+    4,
+    -1,
+    -1,
+    -1
+   ],
+   "Radius zero": [
+    5,
+    6
+   ],
+   "Window never fits": [
+    -1,
+    -1,
+    -1
+   ],
+   "Single element": [
+    9
+   ]
+  }
+ },
+ "key-value-findall": {
+  "hash": "a0654c3074031e4b",
+  "tests": {
+   "Example": {
+    "level": "warn",
+    "user": "Ana Lee",
+    "latency_ms": "35",
+    "path": "/api"
+   },
+   "No pairs": {},
+   "Empty quoted value and overwrite": {
+    "a": "2",
+    "note": ""
+   },
+   "Values with symbols": {
+    "url": "https://x.io/a?b=c",
+    "status": "200"
+   }
+  }
+ },
+ "keyword-only-dsn": {
+  "hash": "9e4b2899b4e62511",
+  "tests": {
+   "Defaults": "postgres://etl@db.local:5432/sales?sslmode=require",
+   "Overrides": "postgres://admin@db.local:6432/sales?sslmode=disable",
+   "Extra options sorted": "postgres://etl@h:5432/d?sslmode=require&application_name=etl&connect_timeout=5",
+   "ssl off with extras": "postgres://etl@h:5432/d?sslmode=disable&target_session_attrs=read-write"
+  }
+ },
+ "kth-first-seen-id": {
+  "hash": "4f63f1332734af09",
+  "tests": {
+   "Example": "u7",
+   "First visitor": "a",
+   "Not enough distinct visitors": "",
+   "Empty stream": ""
+  }
+ },
+ "kth-largest-heap": {
+  "hash": "7875e62dcff8ebb1",
+  "tests": {
+   "Example": 5,
+   "Duplicates count": 3,
+   "Too few values": null,
+   "First largest": 9
+  }
+ },
+ "lambda-conditional-classify": {
+  "hash": "cc0778988a3fe9bf",
+  "tests": {
+   "Example": [
+    "refund",
+    "micro",
+    "regular",
+    "large"
+   ],
+   "Boundaries": [
+    "micro",
+    "regular",
+    "large"
+   ],
+   "Empty": [],
+   "Threshold below one": [
+    "micro",
+    "refund",
+    "large"
+   ]
+  }
+ },
+ "largest-concatenation": {
+  "hash": "229680e68baead7f",
+  "tests": {
+   "Example": "9534330",
+   "Two numbers": "210",
+   "All zeros": "0",
+   "Single": "7",
+   "Equal prefixes": "12121",
+   "Empty": ""
+  }
+ },
+ "largest-odd-prefix": {
+  "hash": "9136ac9897897b2c",
+  "tests": {
+   "Example": "5",
+   "Whole string is odd": "35427",
+   "No odd digits": "",
+   "Empty string": "",
+   "Odd digit in the middle": "1035"
+  }
+ },
+ "lazy-take-from-infinite": {
+  "hash": "41736019f92e8c7b",
+  "tests": {
+   "Example": [
+    [
+     4,
+     16,
+     36
+    ],
+    6
+   ],
+   "Every square matches": [
+    [
+     1,
+     4
+    ],
+    2
+   ],
+   "Take none": [
+    [],
+    0
+   ],
+   "Sparse matches": [
+    [
+     9,
+     36
+    ],
+    6
+   ]
+  }
+ },
+ "legb-resolver": {
+  "hash": "3288fb63717c1352",
+  "tests": {
+   "Example": [
+    [
+     "local",
+     1
+    ],
+    [
+     "enclosing:0",
+     2
+    ],
+    [
+     "builtins",
+     "builtin"
+    ],
+    [
+     "NameError",
+     null
+    ]
+   ],
+   "Global shadows builtins": [
+    [
+     "global",
+     "mine"
+    ]
+   ],
+   "Outer enclosing scope": [
+    [
+     "enclosing:1",
+     "outer"
+    ]
+   ],
+   "None is a value": [
+    [
+     "local",
+     null
+    ]
+   ]
+  }
+ },
+ "line-diff-lcs": {
+  "hash": "236cc06426ff1737",
+  "tests": {
+   "Example": [
+    "  a",
+    "- b",
+    "  c",
+    "  d",
+    "+ e"
+   ],
+   "Identical": [
+    "  x"
+   ],
+   "Everything changed": [
+    "- p",
+    "- q",
+    "+ r"
+   ],
+   "Empty old file": [
+    "+ n1",
+    "+ n2"
+   ]
+  }
+ },
+ "lock-protected-counter": {
+  "hash": "17ec1c78c251b8cf",
+  "tests": {
+   "Example": [
+    8,
+    8,
+    0,
+    true
+   ],
+   "Invalid adds release the lock": [
+    "ValueError",
+    "ValueError",
+    2,
+    true
+   ],
+   "Reset empty": [
+    0,
+    true
+   ],
+   "Bool is not an int here": [
+    "ValueError",
+    0,
+    true
+   ]
+  }
+ },
+ "log-aggregation-text": {
+  "hash": "084741ec1a66d01b",
+  "tests": {
+   "Example": {
+    "levels": {
+     "ERROR": 3,
+     "INFO": 1
+    },
+    "error_services": [
+     "orders",
+     "payments"
+    ],
+    "peak_error_hour": "2024-05-01 13"
+   },
+   "No errors": {
+    "levels": {
+     "INFO": 1
+    },
+    "error_services": [],
+    "peak_error_hour": null
+   },
+   "Empty log": {
+    "levels": {},
+    "error_services": [],
+    "peak_error_hour": null
+   },
+   "Tie goes to the earlier hour": {
+    "levels": {
+     "ERROR": 2
+    },
+    "error_services": [
+     "a",
+     "b"
+    ],
+    "peak_error_hour": "2024-01-01 08"
+   }
+  }
+ },
+ "log-calls-decorator": {
+  "hash": "6fcbb7bc56491e18",
+  "tests": {
+   "Example": [
+    "scale(3) -> 6",
+    "scale('ab', factor=3) -> 'ababab'"
+   ],
+   "Error is logged and re-raised": [
+    "scale(None) raised TypeError"
+   ],
+   "Keyword only": [
+    "scale(x=1.5, factor=4) -> 6.0"
+   ],
+   "No calls": []
+  }
+ },
+ "log-exception-details": {
+  "hash": "cf8461d7611c6682",
+  "tests": {
+   "Example": [
+    2,
+    [
+     "ZeroDivisionError",
+     "KeyError"
+    ],
+    2
+   ],
+   "No failures": [
+    0,
+    [],
+    0
+   ],
+   "Type error": [
+    1,
+    [
+     "TypeError"
+    ],
+    1
+   ],
+   "Every kind": [
+    3,
+    [
+     "TypeError",
+     "ZeroDivisionError",
+     "KeyError"
+    ],
+    3
+   ]
+  }
+ },
+ "logger-with-format": {
+  "hash": "d4696745788a96d5",
+  "tests": {
+   "Example": [
+    "INFO etl.load: loaded 10 rows",
+    "ERROR etl.load: disk full"
+   ],
+   "Warnings and above": [
+    "WARNING etl.load: slow query"
+   ],
+   "Debug shows everything": [
+    "DEBUG etl.load: x",
+    "CRITICAL etl.load: y"
+   ],
+   "Nothing logged": []
+  }
+ },
+ "logging-levels-filter": {
+  "hash": "c6e9ca6ad4e21fca",
+  "tests": {
+   "Example": {
+    "console": [
+     "INFO:i",
+     "ERROR:e",
+     "CRITICAL:c"
+    ],
+    "alerts": [
+     "ERROR:e",
+     "CRITICAL:c"
+    ]
+   },
+   "Logger level wins": {
+    "console": [
+     "ERROR:shown"
+    ],
+    "alerts": [
+     "ERROR:shown"
+    ]
+   },
+   "Nothing to alert": {
+    "console": [
+     "WARNING:w"
+    ],
+    "alerts": []
+   },
+   "Console stricter than alerts": {
+    "console": [
+     "ERROR:e"
+    ],
+    "alerts": [
+     "WARNING:w",
+     "ERROR:e"
+    ]
+   }
+  }
+ },
+ "longest-consecutive-days": {
+  "hash": "f6f02ad2ec618dd9",
+  "tests": {
+   "Example": 4,
+   "No streaks": 1,
+   "Empty": 0,
+   "Negative days": 3,
+   "All duplicates": 1
+  }
+ },
+ "longest-increasing-subsequence": {
+  "hash": "b4a231bbdd62fec3",
+  "tests": {
+   "Example": 4,
+   "All equal": 1,
+   "Empty": 0,
+   "Decreasing then rising": 4
+  }
+ },
+ "longest-unique-session": {
+  "hash": "801909aa813e3ea4",
+  "tests": {
+   "Example": 5,
+   "All the same": 1,
+   "Empty": 0,
+   "Old repeat outside the window": 2
+  }
+ },
+ "lowest-common-manager": {
+  "hash": "a463dfeee6e85d95",
+  "tests": {
+   "Example": [
+    "vp",
+    "ceo",
+    "m1"
+   ],
+   "Same person": [
+    "a"
+   ],
+   "CEO with anyone": [
+    "ceo"
+   ],
+   "Deep chain": [
+    "b",
+    "b"
+   ]
+  }
+ },
+ "lru-cache-class": {
+  "hash": "bf98d760d17f7704",
+  "tests": {
+   "Example": [
+    1,
+    -1,
+    3
+   ],
+   "Update refreshes recency": [
+    -1,
+    9
+   ],
+   "Capacity one": [
+    -1,
+    2
+   ],
+   "Miss on empty": [
+    -1
+   ]
+  }
+ },
+ "lru-cache-decorator": {
+  "hash": "cf72544018e8d0af",
+  "tests": {
+   "Example": [
+    [
+     1,
+     4,
+     1,
+     9,
+     4
+    ],
+    [
+     "miss (1,)",
+     "miss (2,)",
+     "hit (1,)",
+     "miss (3,)",
+     "evict (2,)",
+     "miss (2,)",
+     "evict (1,)"
+    ]
+   ],
+   "Everything fits": [
+    [
+     16,
+     16,
+     16
+    ],
+    [
+     "miss (4,)",
+     "hit (4,)",
+     "hit (4,)"
+    ]
+   ],
+   "Size one": [
+    [
+     1,
+     4,
+     1
+    ],
+    [
+     "miss (1,)",
+     "miss (2,)",
+     "evict (1,)",
+     "miss (1,)",
+     "evict (2,)"
+    ]
+   ],
+   "Recency, not insertion order": [
+    [
+     1,
+     4,
+     1,
+     9,
+     1,
+     4
+    ],
+    [
+     "miss (1,)",
+     "miss (2,)",
+     "hit (1,)",
+     "miss (3,)",
+     "evict (2,)",
+     "hit (1,)",
+     "miss (2,)",
+     "evict (3,)"
+    ]
+   ]
+  }
+ },
+ "main-guard-simulator": {
+  "hash": "9ff71b6bc95d64c8",
+  "tests": {
+   "Imported": [
+    "loading etl_job"
+   ],
+   "Run as a script": [
+    "loading __main__",
+    "running job"
+   ],
+   "Functions defined but not called": [],
+   "Script calls main": [
+    "main"
+   ]
+  }
+ },
+ "map-normalise-prices": {
+  "hash": "8caf658b3145010f",
+  "tests": {
+   "Example": [
+    18,
+    5.5,
+    3
+   ],
+   "Shortest list wins": [
+    2
+   ],
+   "Empty": [],
+   "Full discount": [
+    0
+   ]
+  }
+ },
+ "mask-except-character": {
+  "hash": "2e40e64f69662e86",
+  "tests": {
+   "Example": [
+    "*",
+    "-",
+    "*",
+    "-",
+    "*"
+   ],
+   "Nothing kept": [
+    "#",
+    "#"
+   ],
+   "Empty list": [],
+   "Everything kept": [
+    "x",
+    "x"
+   ],
+   "Case-sensitive": [
+    "?",
+    "a"
+   ]
+  }
+ },
+ "mask-pii-sub-function": {
+  "hash": "5ee3d4345698e5ec",
+  "tests": {
+   "Example": [
+    "user a***@corp.com paid with **** 1234 today",
+    2
+   ],
+   "Nothing to redact": [
+    "order 12345 shipped",
+    0
+   ],
+   "Dashes and multiple emails": [
+    "cards **** 0004, x***@y.io and Z***@Mail.co",
+    3
+   ],
+   "Short digit runs are not cards": [
+    "pin 1234 and phone 9876543210",
+    0
+   ]
+  }
+ },
+ "match-search-fullmatch": {
+  "hash": "3886fa5d4dde9888",
+  "tests": {
+   "Example": [
+    [
+     true,
+     true,
+     false
+    ],
+    [
+     false,
+     true,
+     false
+    ],
+    [
+     true,
+     true,
+     true
+    ]
+   ],
+   "Empty pattern": [
+    [
+     true,
+     true,
+     false
+    ]
+   ],
+   "Anchors": [
+    [
+     true,
+     true,
+     true
+    ],
+    [
+     false,
+     true,
+     false
+    ]
+   ],
+   "Nothing matches": [
+    [
+     false,
+     false,
+     false
+    ]
+   ]
+  }
+ },
+ "matrix-matmul": {
+  "hash": "99d906355ddf8a41",
+  "tests": {
+   "Example": [
+    [
+     [
+      19,
+      22
+     ],
+     [
+      43,
+      50
+     ]
+    ],
+    [
+     [
+      19,
+      43
+     ],
+     [
+      22,
+      50
+     ]
+    ],
+    true
+   ],
+   "Shape mismatch": "ValueError",
+   "Row times column": [
+    [
+     [
+      -2
+     ]
+    ],
+    [
+     [
+      -2
+     ]
+    ],
+    true
+   ],
+   "Identity": [
+    [
+     [
+      9,
+      8
+     ],
+     [
+      7,
+      6
+     ]
+    ],
+    [
+     [
+      9,
+      7
+     ],
+     [
+      8,
+      6
+     ]
+    ],
+    true
+   ]
+  }
+ },
+ "max-average-subarray": {
+  "hash": "e9d4bd857153d52c",
+  "tests": {
+   "Example": 12.75,
+   "Window of one": 5,
+   "All negative": -1.5,
+   "Whole list": 3
+  }
+ },
+ "max-product-of-three": {
+  "hash": "47793125b637eb1d",
+  "tests": {
+   "Example": 300,
+   "All positive": 24,
+   "All negative": -24,
+   "Exactly three": 0,
+   "Zeros help": 0
+  }
+ },
+ "max-subarray-kadane": {
+  "hash": "2b33bc3fc996ddbf",
+  "tests": {
+   "Example": [
+    6,
+    3,
+    6
+   ],
+   "All negative": [
+    -1,
+    1,
+    1
+   ],
+   "Single day": [
+    7,
+    0,
+    0
+   ],
+   "Zeros do not extend the best": [
+    3,
+    0,
+    0
+   ]
+  }
+ },
+ "max-substring-occurrences": {
+  "hash": "7dc94a77019a01af",
+  "tests": {
+   "Example": 2,
+   "Overlaps count": 2,
+   "Too short": 0,
+   "Too many letters": 0
+  }
+ },
+ "max-window-throughput": {
+  "hash": "d2ec72e5c76287ad",
+  "tests": {
+   "Example": [
+    4,
+    16
+   ],
+   "Too few minutes": [],
+   "Tie keeps the earliest": [
+    0,
+    5
+   ],
+   "Whole list": [
+    0,
+    6
+   ]
+  }
+ },
+ "meeting-room-assignment": {
+  "hash": "5f188333c06c2279",
+  "tests": {
+   "Example": 0,
+   "Three rooms": 1,
+   "Single room": 0,
+   "No meetings": 0
+  }
+ },
+ "memoised-fibonacci": {
+  "hash": "c6e7bd6aa7fb6412",
+  "tests": {
+   "Example": [
+    55,
+    11
+   ],
+   "Zero": [
+    0,
+    1
+   ],
+   "One": [
+    1,
+    1
+   ],
+   "Large n stays fast": [
+    190392490709135,
+    71
+   ]
+  }
+ },
+ "memoize-decorator": {
+  "hash": "dfbbad9d56f8f53c",
+  "tests": {
+   "Example": [
+    [
+     "IN-2024-rate",
+     "US-2024-rate",
+     "IN-2024-rate"
+    ],
+    1,
+    2,
+    "lookup"
+   ],
+   "All misses": [
+    [
+     "a-1-rate",
+     "b-2-rate"
+    ],
+    0,
+    2,
+    "lookup"
+   ],
+   "Repeated calls": [
+    [
+     "x-1-rate",
+     "x-1-rate",
+     "x-1-rate",
+     "y-1-rate"
+    ],
+    2,
+    2,
+    "lookup"
+   ],
+   "No calls": [
+    [],
+    0,
+    0,
+    "lookup"
+   ]
+  }
+ },
+ "merge-sku-quantities": {
+  "hash": "65433b2294deecca",
+  "tests": {
+   "Example": [
+    [
+     "X1",
+     5
+    ]
+   ],
+   "Disjoint feeds": [
+    [
+     "A",
+     2
+    ],
+    [
+     "B",
+     1
+    ]
+   ],
+   "Both empty": [],
+   "Repeats inside one feed": [
+    [
+     "K",
+     3
+    ]
+   ],
+   "Negative totals are kept": [
+    [
+     "R",
+     -2
+    ]
+   ]
+  }
+ },
+ "merge-sorted-streams": {
+  "hash": "517fb639328cadb5",
+  "tests": {
+   "Example": [
+    [
+     1,
+     0,
+     "a"
+    ],
+    [
+     2,
+     1,
+     "x"
+    ],
+    [
+     3,
+     2,
+     "m"
+    ],
+    [
+     5,
+     0,
+     "b"
+    ],
+    [
+     5,
+     1,
+     "y"
+    ]
+   ],
+   "One stream": [
+    [
+     1,
+     0,
+     "only"
+    ]
+   ],
+   "Empty streams": [
+    [
+     1,
+     1,
+     "a"
+    ]
+   ],
+   "No streams": []
+  }
+ },
+ "merge-two-sorted-lists": {
+  "hash": "a18c0c781fe84d86",
+  "tests": {
+   "Example": [
+    1,
+    2,
+    4,
+    4,
+    9,
+    10,
+    11
+   ],
+   "One empty": [
+    3,
+    5
+   ],
+   "Both empty": [],
+   "All of a first": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "Duplicates across lists": [
+    1,
+    1,
+    1
+   ]
+  }
+ },
+ "min-amplitude": {
+  "hash": "179564a31e2aec9b",
+  "tests": {
+   "Example": 1,
+   "Few readings": 0,
+   "Outliers on one side": 2,
+   "Duplicates": 0
+  }
+ },
+ "min-max-mean-tuple": {
+  "hash": "d219b0ba94389522",
+  "tests": {
+   "Example": [
+    "bun",
+    "cake",
+    2.58
+   ],
+   "Ties broken by name": [
+    "a",
+    "c",
+    2
+   ],
+   "Single item": [
+    "only",
+    "only",
+    9.99
+   ],
+   "Average rounds to two places": [
+    "a",
+    "b",
+    1.67
+   ]
+  }
+ },
+ "min-route-transfers": {
+  "hash": "a104e180230e5ff3",
+  "tests": {
+   "Example": 2,
+   "Unreachable": -1,
+   "Same stop": 0,
+   "Single route": 1
+  }
+ },
+ "minimum-platforms": {
+  "hash": "753ee493ec54264e",
+  "tests": {
+   "Example": 3,
+   "Touching intervals still conflict": 2,
+   "No trains": 0,
+   "Nested": 2
+  }
+ },
+ "mirror-symmetric-tree": {
+  "hash": "1a59b320ba8790c1",
+  "tests": {
+   "Example": true,
+   "Asymmetric": false,
+   "Empty tree": true,
+   "Single node": true
+  }
+ },
+ "missing-number": {
+  "hash": "c66ab9841476ff57",
+  "tests": {
+   "Example": 2,
+   "Missing zero": 0,
+   "Missing the last": 3,
+   "Empty — only 0 could be missing": 0,
+   "Longer": 8
+  }
+ },
+ "module-search-path": {
+  "hash": "c0251792a1cf7586",
+  "tests": {
+   "Example": [
+    "/opt/libs/etl/load.py",
+    "/site/requests/__init__.py",
+    "/app/json.py",
+    "ModuleNotFoundError"
+   ],
+   "Package beats module in the same directory": [
+    "/d/util/__init__.py"
+   ],
+   "Sub-package without __init__": [
+    "ModuleNotFoundError"
+   ],
+   "Dotted name into a plain module fails": [
+    "ModuleNotFoundError"
+   ]
+  }
+ },
+ "money-operator-overloading": {
+  "hash": "8da71af211f799dd",
+  "tests": {
+   "Example": [
+    "12.50 EUR",
+    "3.55 EUR",
+    "29.97 USD"
+   ],
+   "Currency mismatch": [
+    "ValueError",
+    "ValueError"
+   ],
+   "Floats are exact in cents": [
+    "0.30 EUR",
+    false
+   ],
+   "Negative results": [
+    "-1.50 GBP",
+    "9.99 GBP"
+   ],
+   "Bad multiplier": [
+    "TypeError"
+   ]
+  }
+ },
+ "monthly-crosstab": {
+  "hash": "0bcc3626cfb7efaa",
+  "tests": {
+   "Example": {
+    "ana": {
+     "jan": 150,
+     "feb": 0,
+     "mar": 0,
+     "apr": 0,
+     "may": 0,
+     "jun": 0,
+     "jul": 0,
+     "aug": 0,
+     "sep": 0,
+     "oct": 0,
+     "nov": 0,
+     "dec": 0
+    },
+    "raj": {
+     "jan": 0,
+     "feb": 0,
+     "mar": 75,
+     "apr": 0,
+     "may": 0,
+     "jun": 0,
+     "jul": 0,
+     "aug": 0,
+     "sep": 0,
+     "oct": 0,
+     "nov": 0,
+     "dec": 0
+    }
+   },
+   "No sales": {},
+   "December and amounts with decimals": {
+    "zed": {
+     "jan": 0,
+     "feb": 0,
+     "mar": 0,
+     "apr": 0,
+     "may": 0,
+     "jun": 0,
+     "jul": 0,
+     "aug": 0,
+     "sep": 0,
+     "oct": 0,
+     "nov": 0,
+     "dec": 10.75
+    }
+   },
+   "Employees sorted by name": {
+    "amy": {
+     "jan": 0,
+     "feb": 0,
+     "mar": 0,
+     "apr": 0,
+     "may": 0,
+     "jun": 0,
+     "jul": 2,
+     "aug": 0,
+     "sep": 0,
+     "oct": 0,
+     "nov": 0,
+     "dec": 0
+    },
+    "zoe": {
+     "jan": 0,
+     "feb": 0,
+     "mar": 0,
+     "apr": 0,
+     "may": 0,
+     "jun": 1,
+     "jul": 0,
+     "aug": 0,
+     "sep": 0,
+     "oct": 0,
+     "nov": 0,
+     "dec": 0
+    }
+   }
+  }
+ },
+ "multi-key-hotel-sort": {
+  "hash": "e2d7d4257b2a72a2",
+  "tests": {
+   "Example": [
+    "Central",
+    "Palm",
+    "Sea View"
+   ],
+   "Price breaks rating ties": [
+    "A",
+    "B"
+   ],
+   "Name breaks the last tie": [
+    "Alpha",
+    "Zeta"
+   ],
+   "Empty": []
+  }
+ },
+ "multilevel-super-chain": {
+  "hash": "f322ff08ce953715",
+  "tests": {
+   "Deepest class": [
+    [
+     [
+      "Source",
+      "FileSource",
+      "CsvSource"
+     ],
+     [
+      "Source",
+      "FileSource",
+      "CsvSource"
+     ],
+     [
+      "CsvSource",
+      "FileSource",
+      "Source",
+      "object"
+     ]
+    ]
+   ],
+   "Base class": [
+    [
+     [
+      "Source"
+     ],
+     [
+      "Source"
+     ],
+     [
+      "Source",
+      "object"
+     ]
+    ]
+   ],
+   "Middle class": [
+    [
+     [
+      "Source",
+      "FileSource"
+     ],
+     [
+      "Source",
+      "FileSource"
+     ],
+     [
+      "FileSource",
+      "Source",
+      "object"
+     ]
+    ]
+   ],
+   "Each class builds independently": [
+    [
+     [
+      "Source",
+      "FileSource",
+      "CsvSource"
+     ],
+     [
+      "Source",
+      "FileSource",
+      "CsvSource"
+     ],
+     [
+      "CsvSource",
+      "FileSource",
+      "Source",
+      "object"
+     ]
+    ],
+    [
+     [
+      "Source"
+     ],
+     [
+      "Source"
+     ],
+     [
+      "Source",
+      "object"
+     ]
+    ],
+    [
+     [
+      "Source",
+      "FileSource"
+     ],
+     [
+      "Source",
+      "FileSource"
+     ],
+     [
+      "FileSource",
+      "Source",
+      "object"
+     ]
+    ]
+   ]
+  }
+ },
+ "mutable-default-argument": {
+  "hash": "7a321664a4fa7c02",
+  "tests": {
+   "Two independent calls": [
+    [
+     "a"
+    ],
+    [
+     "b"
+    ]
+   ],
+   "Passing a list appends to it": [
+    [
+     "w",
+     "x"
+    ]
+   ],
+   "Empty list passed explicitly": [
+    [
+     "a"
+    ],
+    [
+     "b"
+    ]
+   ],
+   "Many calls": [
+    [
+     "1"
+    ],
+    [
+     "2"
+    ],
+    [
+     "0",
+     "3"
+    ],
+    [
+     "4"
+    ]
+   ]
+  }
+ },
+ "mutual-recursion-even-odd": {
+  "hash": "b90b8cdd1b505cbd",
+  "tests": {
+   "Example": [
+    [
+     true,
+     false
+    ],
+    [
+     false,
+     true
+    ],
+    [
+     true,
+     false
+    ],
+    [
+     false,
+     true
+    ]
+   ],
+   "Single": [
+    [
+     true,
+     false
+    ]
+   ],
+   "Empty": [],
+   "Larger numbers": [
+    [
+     false,
+     true
+    ],
+    [
+     true,
+     false
+    ]
+   ]
+  }
+ },
+ "name-mangling-encapsulation": {
+  "hash": "2e1b19d347566091",
+  "tests": {
+   "Example": [
+    "********wxyz",
+    true,
+    "******en99",
+    false,
+    true
+   ],
+   "Rotation refused": [
+    "********oken",
+    false,
+    "********oken",
+    false,
+    true
+   ],
+   "Short token is fully shown": [
+    "abc",
+    true,
+    "******ough",
+    false,
+    true
+   ],
+   "Exactly four characters": [
+    "wxyz",
+    true,
+    "****5678",
+    false,
+    true
+   ]
+  }
+ },
+ "nested-class-order": {
+  "hash": "4b50d82dbb4f6c65",
+  "tests": {
+   "Example": [
+    "o-1",
+    [
+     "A",
+     "B"
+    ],
+    17,
+    "Order.Line"
+   ],
+   "Non-positive quantities ignored": [
+    "o-2",
+    [],
+    0,
+    null
+   ],
+   "Single line": [
+    "o-3",
+    [
+     "Z"
+    ],
+    0.3,
+    "Order.Line"
+   ],
+   "Empty order": [
+    "o-4",
+    [],
+    0,
+    null
+   ]
+  }
+ },
+ "nested-helper-function": {
+  "hash": "df349b7ad862473f",
+  "tests": {
+   "Example": [
+    "+919876543210",
+    "+442079460958",
+    "+919876543210"
+   ],
+   "International prefix": [
+    "+442079460958"
+   ],
+   "Too short": [
+    null
+   ],
+   "Empty list": []
+  }
+ },
+ "nested-lambda-multipliers": {
+  "hash": "62a10aa9402c232e",
+  "tests": {
+   "Example": [
+    [
+     16.09,
+     2.5
+    ],
+    [
+     2,
+     3,
+     4
+    ]
+   ],
+   "No pairs": [
+    [],
+    [
+     1
+    ]
+   ],
+   "Negative factors": [
+    [
+     -5
+    ],
+    [
+     -2,
+     0.5
+    ]
+   ],
+   "No factors": [
+    [
+     4
+    ],
+    []
+   ]
+  }
+ },
+ "next-greater-element": {
+  "hash": "a0099181b68f2c83",
+  "tests": {
+   "Example": [
+    5,
+    25,
+    25,
+    -1
+   ],
+   "Decreasing": [
+    -1,
+    12,
+    12,
+    -1
+   ],
+   "Duplicates": [
+    3,
+    3,
+    -1
+   ],
+   "Empty": []
+  }
+ },
+ "nightly-snapshot-diff": {
+  "hash": "cbe926d49652629e",
+  "tests": {
+   "Example": {
+    "inserted": [
+     3
+    ],
+    "deleted": [
+     2
+    ],
+    "updated": [
+     [
+      1,
+      "tier",
+      "free",
+      "pro"
+     ]
+    ]
+   },
+   "No changes": {
+    "inserted": [],
+    "deleted": [],
+    "updated": []
+   },
+   "Field added and removed": {
+    "inserted": [],
+    "deleted": [],
+    "updated": [
+     [
+      5,
+      "a",
+      1,
+      null
+     ],
+     [
+      5,
+      "b",
+      null,
+      2
+     ]
+    ]
+   },
+   "Duplicate key": {
+    "error": "duplicate id 1"
+   }
+  }
+ },
+ "nth-missing-id": {
+  "hash": "a5ee529f86c4d91e",
+  "tests": {
+   "Example": 9,
+   "Nothing missing before the end": 6,
+   "Empty list": 3,
+   "Missing at the start": 4
+  }
+ },
+ "number-the-lines": {
+  "hash": "634a7f9a9409d9c5",
+  "tests": {
+   "Example": [
+    " 9: select",
+    "10: from t"
+   ],
+   "From one": [
+    "1: a",
+    "2: b"
+   ],
+   "Only blanks": [],
+   "Whitespace inside is kept": [
+    "5:   indented  "
+   ],
+   "Crossing into three digits": [
+    " 98: a",
+    " 99: b",
+    "100: c"
+   ]
+  }
+ },
+ "number-to-words": {
+  "hash": "c2c9671eedffc40a",
+  "tests": {
+   "Example": "three hundred forty-two",
+   "Zero": "zero",
+   "Thousands with teens": "one hundred twenty thousand fifteen",
+   "Round thousands": "seven thousand",
+   "Largest": "nine hundred ninety-nine thousand nine hundred ninety-nine",
+   "Exact tens": "ninety"
+  }
+ },
+ "order-queue-simulation": {
+  "hash": "596bba5c6e8b8840",
+  "tests": {
+   "Example": [
+    [
+     9,
+     1,
+     "idle"
+    ],
+    []
+   ],
+   "Empty kitchen": [
+    [
+     "idle"
+    ],
+    []
+   ],
+   "Cancel unknown": [
+    [],
+    [
+     1
+    ]
+   ],
+   "Rush into an empty queue": [
+    [
+     7
+    ],
+    [
+     8
+    ]
+   ]
+  }
+ },
+ "ordered-intersection": {
+  "hash": "01c01ff3c179087f",
+  "tests": {
+   "Example": [
+    4,
+    9,
+    9,
+    4
+   ],
+   "Nothing in common": [],
+   "Duplicates limited by the shorter side": [
+    1,
+    1
+   ],
+   "Empty side": [],
+   "Order follows the first list": [
+    3,
+    2,
+    1
+   ]
+  }
+ },
+ "paginate-api": {
+  "hash": "66543b553a3645be",
+  "tests": {
+   "Example": [
+    [
+     "a",
+     "b",
+     "c"
+    ],
+    2
+   ],
+   "Limit beyond the data": [
+    [
+     "a",
+     "b"
+    ],
+    2
+   ],
+   "Limit zero fetches nothing": [
+    [],
+    0
+   ],
+   "Empty middle page": [
+    [
+     "a",
+     "b"
+    ],
+    3
+   ]
+  }
+ },
+ "pairs-divisible-by-k": {
+  "hash": "22f04336963138d1",
+  "tests": {
+   "Example": 6,
+   "k = 1 pairs everything": 3,
+   "No pairs": 0,
+   "Zeros": 3,
+   "Remainder halves": 2,
+   "Single fare": 0
+  }
+ },
+ "parameterized-query-injection": {
+  "hash": "e4f26ef356d2930e",
+  "tests": {
+   "Normal lookup": [
+    "Ana"
+   ],
+   "Injection attempt": [],
+   "Apostrophe in a real address": [
+    "O'Neil"
+   ],
+   "No match": []
+  }
+ },
+ "parse-access-log-named-groups": {
+  "hash": "24368cca80287827",
+  "tests": {
+   "Example": [
+    {
+     "ip": "203.0.113.9",
+     "time": "10/Oct/2024:13:55:36 +0000",
+     "method": "GET",
+     "path": "/api/orders",
+     "status": 200,
+     "bytes": 2326
+    }
+   ],
+   "Dash for bytes": [
+    {
+     "ip": "10.0.0.1",
+     "time": "01/Jan/2024:00:00:00 +0000",
+     "method": "POST",
+     "path": "/login",
+     "status": 302,
+     "bytes": 0
+    }
+   ],
+   "Empty": [],
+   "Bad status code": []
+  }
+ },
+ "parse-mixed-date-formats": {
+  "hash": "bcd2e6003fea3a68",
+  "tests": {
+   "Example": [
+    "2024-03-05",
+    "2024-03-05",
+    "2024-03-05",
+    "2024-03-05",
+    "2024-03-05"
+   ],
+   "Invalid values": [
+    null,
+    null,
+    null
+   ],
+   "Spaces trimmed": [
+    "2023-12-31"
+   ],
+   "Leap day": [
+    "2024-02-29",
+    null
+   ]
+  }
+ },
+ "parse-valid-ints": {
+  "hash": "dd0a274fc94e4672",
+  "tests": {
+   "Example": [
+    12,
+    7
+   ],
+   "Zero is kept": [
+    0,
+    0
+   ],
+   "Empty": [],
+   "Nothing parses": []
+  }
+ },
+ "partial-tax-calculators": {
+  "hash": "45e0cb071d5ec29a",
+  "tests": {
+   "Example": [
+    118,
+    21.39,
+    1357
+   ],
+   "Single line": [
+    0
+   ],
+   "Many lines": [
+    109,
+    0.59,
+    11.8
+   ],
+   "Rounding to whole yen": [
+    0,
+    2
+   ]
+  }
+ },
+ "pascals-triangle-row": {
+  "hash": "2cf27eeac29b45e1",
+  "tests": {
+   "Example": [
+    [
+     1
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     1,
+     2,
+     1
+    ],
+    [
+     1,
+     3,
+     3,
+     1
+    ],
+    [
+     1,
+     4,
+     6,
+     4,
+     1
+    ]
+   ],
+   "Zero rows": [],
+   "One row": [
+    [
+     1
+    ]
+   ],
+   "Ten rows": [
+    [
+     1
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     1,
+     2,
+     1
+    ],
+    [
+     1,
+     3,
+     3,
+     1
+    ],
+    [
+     1,
+     4,
+     6,
+     4,
+     1
+    ],
+    [
+     1,
+     5,
+     10,
+     10,
+     5,
+     1
+    ],
+    [
+     1,
+     6,
+     15,
+     20,
+     15,
+     6,
+     1
+    ],
+    [
+     1,
+     7,
+     21,
+     35,
+     35,
+     21,
+     7,
+     1
+    ],
+    [
+     1,
+     8,
+     28,
+     56,
+     70,
+     56,
+     28,
+     8,
+     1
+    ],
+    [
+     1,
+     9,
+     36,
+     84,
+     126,
+     126,
+     84,
+     36,
+     9,
+     1
+    ]
+   ]
+  }
+ },
+ "password-policy-lookaheads": {
+  "hash": "594475044ace985d",
+  "tests": {
+   "Example": [
+    true,
+    false,
+    false,
+    false
+   ],
+   "Whitespace not allowed": [
+    false
+   ],
+   "Exactly ten characters": [
+    true
+   ],
+   "Too long": [
+    false
+   ]
+  }
+ },
+ "payroll-inheritance": {
+  "hash": "970d78a4a95091a8",
+  "tests": {
+   "Example": [
+    [
+     "Employee",
+     "Ana",
+     10000
+    ],
+    [
+     "Manager",
+     "Raj",
+     15300
+    ],
+    [
+     "Contractor",
+     "Li",
+     12800
+    ],
+    [
+     "Intern",
+     "Zoe",
+     2000
+    ]
+   ],
+   "Manager with no reports": [
+    [
+     "Manager",
+     "M",
+     1000
+    ]
+   ],
+   "Fractional pay": [
+    [
+     "Employee",
+     "E",
+     8333.33
+    ]
+   ],
+   "Empty": []
+  }
+ },
+ "pearson-correlation": {
+  "hash": "dba2158f52a277a6",
+  "tests": {
+   "Example": 0.7746,
+   "Perfect negative": -1,
+   "Constant series": null,
+   "Two points": 1
+  }
+ },
+ "pickle-getstate": {
+  "hash": "f919bf0eda8eda6c",
+  "tests": {
+   "Example": [
+    "fx",
+    {
+     "USD": 1,
+     "EUR": 0.92
+    },
+    3,
+    0,
+    0.92
+   ],
+   "No warm-up": [
+    "empty",
+    {
+     "a": 1
+    },
+    0,
+    0,
+    null
+   ],
+   "Repeated keys": [
+    "k",
+    {
+     "x": 9
+    },
+    1,
+    0,
+    9
+   ],
+   "Unknown key caches None": [
+    "m",
+    {
+     "a": 1
+    },
+    1,
+    0,
+    null
+   ]
+  }
+ },
+ "pip-requirements-check": {
+  "hash": "38b4be475d5b0521",
+  "tests": {
+   "Example": {
+    "missing": [
+     "pyyaml"
+    ],
+    "conflicts": [
+     [
+      "numpy",
+      "1.27.0",
+      "~=1.26.0"
+     ],
+     [
+      "requests",
+      "2.32.0",
+      "==2.31.0"
+     ]
+    ]
+   },
+   "Name normalisation": {
+    "missing": [],
+    "conflicts": []
+   },
+   "Not-equal and padding": {
+    "missing": [],
+    "conflicts": [
+     [
+      "urllib3",
+      "2.0",
+      "!=2.0.0"
+     ]
+    ]
+   },
+   "Compatible release with two parts": {
+    "missing": [],
+    "conflicts": []
+   }
+  }
+ },
+ "precision-recall": {
+  "hash": "305ee3fcf5ce4bcc",
+  "tests": {
+   "Example": [
+    0.6667,
+    0.6667,
+    0.6667
+   ],
+   "Nothing predicted": [
+    null,
+    0,
+    null
+   ],
+   "Perfect": [
+    1,
+    1,
+    1
+   ],
+   "No positives at all": [
+    null,
+    null,
+    null
+   ]
+  }
+ },
+ "prefix-autocomplete": {
+  "hash": "7b769c66e52d9bb9",
+  "tests": {
+   "Example": [
+    [
+     "spark sql",
+     "spark",
+     "spark ui"
+    ],
+    [
+     "sql"
+    ],
+    []
+   ],
+   "Empty history": [
+    []
+   ],
+   "Ties alphabetical": [
+    [
+     "a",
+     "ab"
+    ]
+   ],
+   "Prefix normalised": [
+    [
+     "etl jobs"
+    ]
+   ]
+  }
+ },
+ "price-index": {
+  "hash": "3479209b82e08150",
+  "tests": {
+   "Example": {
+    "A": 11.8,
+    "C": 2.94
+   },
+   "No tax": {
+    "Z": 3
+   },
+   "Nothing active": {},
+   "Duplicate SKU — last wins": {
+    "A": 3
+   }
+  }
+ },
+ "property-validation": {
+  "hash": "9919920b649ff21b",
+  "tests": {
+   "Example": [
+    [
+     20,
+     68
+    ],
+    [
+     100,
+     212
+    ],
+    "ValueError",
+    "AttributeError"
+   ],
+   "Freezing point": [
+    [
+     0,
+     32
+    ]
+   ],
+   "Absolute zero is allowed": [
+    [
+     10,
+     50
+    ],
+    [
+     -273.15,
+     -459.7
+    ]
+   ],
+   "Negative temperatures": [
+    [
+     -40,
+     -40
+    ],
+    [
+     -10.5,
+     13.1
+    ]
+   ]
+  }
+ },
+ "quantile-calculator": {
+  "hash": "3df2080de62b8f69",
+  "tests": {
+   "Example": [
+    15,
+    35,
+    48,
+    50
+   ],
+   "Single sample": [
+    7
+   ],
+   "Empty": [
+    null
+   ],
+   "Unsorted input": [
+    1.75,
+    3.25
+   ]
+  }
+ },
+ "race-condition-lost-updates": {
+  "hash": "0b26bfc3bcf080e4",
+  "tests": {
+   "Interleaved without a lock": [
+    1,
+    1
+   ],
+   "Same schedule with a lock": [
+    2,
+    0
+   ],
+   "Serial schedule loses nothing": [
+    4,
+    0
+   ],
+   "Many lost updates": [
+    3,
+    3
+   ],
+   "Lock with a hostile schedule": [
+    6,
+    0
+   ]
+  }
+ },
+ "raise-validation-errors": {
+  "hash": "1ed40668548c3a26",
+  "tests": {
+   "Example": [
+    35,
+    "TypeError: year must be an int",
+    "ValueError: year in the future",
+    "ValueError: implausible age"
+   ],
+   "Same year": [
+    0
+   ],
+   "Bool rejected": [
+    "TypeError: year must be an int"
+   ],
+   "Boundary of plausibility": [
+    130,
+    "ValueError: implausible age"
+   ]
+  }
+ },
+ "rate-limit-decorator": {
+  "hash": "714c99036626dce0",
+  "tests": {
+   "Example": [
+    "ok 0",
+    "ok 1",
+    "rate limited",
+    "ok 3",
+    "ok 4",
+    "rate limited"
+   ],
+   "Limit of one": [
+    "ok 0",
+    "rate limited",
+    "ok 2"
+   ],
+   "Burst then quiet": [
+    "ok 0",
+    "ok 1",
+    "ok 2",
+    "rate limited",
+    "ok 4",
+    "ok 5"
+   ],
+   "No calls": [],
+   "Rejected calls do not extend the window": [
+    "ok 0",
+    "rate limited",
+    "rate limited",
+    "ok 3",
+    "rate limited"
+   ]
+  }
+ },
+ "reconcile-vendor-pulls": {
+  "hash": "51c69a32668fd03b",
+  "tests": {
+   "Example": [
+    {
+     "part_id": "p1",
+     "price": 12,
+     "stock": 5,
+     "updated_at": "2024-01-03"
+    },
+    {
+     "part_id": "p2",
+     "price": 3,
+     "updated_at": "2024-01-01"
+    }
+   ],
+   "Older pull arriving later loses": [
+    {
+     "part_id": "x",
+     "updated_at": "2024-05-02",
+     "v": "new"
+    }
+   ],
+   "Same timestamp — later pull wins": [
+    {
+     "part_id": "a",
+     "updated_at": "t",
+     "v": 2
+    }
+   ],
+   "No pulls": []
+  }
+ },
+ "recursive-factorial": {
+  "hash": "8a8a4492781f3db7",
+  "tests": {
+   "Example": 120,
+   "Zero": 1,
+   "Negative": -1,
+   "Larger": 355687428096000,
+   "One": 1
+  }
+ },
+ "recursive-prime-check": {
+  "hash": "90ef29a81ca73907",
+  "tests": {
+   "Example": true,
+   "Composite": false,
+   "Two": true,
+   "One is not prime": false,
+   "Square of a prime": false,
+   "Larger prime": true
+  }
+ },
+ "redacting-log-filter": {
+  "hash": "c322460ca42d5a80",
+  "tests": {
+   "Example": [
+    "login user=ana password=***",
+    "GET /x?token=***&page=2"
+   ],
+   "Nothing secret": [
+    "loaded 5 rows"
+   ],
+   "Case-insensitive keys": [
+    "API_KEY=*** Password=***"
+   ],
+   "Only healthchecks": []
+  }
+ },
+ "reduce-longest-streak": {
+  "hash": "e07e76d42225280f",
+  "tests": {
+   "Example": 5,
+   "Flat prices break streaks": 1,
+   "Empty": 0,
+   "Strictly decreasing": 1,
+   "All rising": 4
+  }
+ },
+ "reduce-merge-dicts": {
+  "hash": "d10189270e29ad96",
+  "tests": {
+   "Example": {
+    "a": 5,
+    "b": 5,
+    "c": 1
+   },
+   "Single partition": {
+    "x": 1
+   },
+   "No partitions": {},
+   "Empty partitions": {
+    "z": 2
+   }
+  }
+ },
+ "reentrant-lock-semantics": {
+  "hash": "aaf6b1691274c096",
+  "tests": {
+   "Re-entry": [
+    "acquired",
+    "acquired",
+    "blocked",
+    "released",
+    "released",
+    "acquired",
+    [
+     "B",
+     1
+    ]
+   ],
+   "Plain lock self-deadlock": [
+    "acquired",
+    "deadlock",
+    [
+     "A",
+     1
+    ]
+   ],
+   "Release by non-owner": [
+    "acquired",
+    "error",
+    [
+     "A",
+     1
+    ]
+   ],
+   "Release when free": [
+    "error",
+    [
+     null,
+     0
+    ]
+   ]
+  }
+ },
+ "reference-counting": {
+  "hash": "efa71eb5d75fe603",
+  "tests": {
+   "Example": [
+    "a",
+    "b"
+   ],
+   "Rebinding frees the old object": [
+    "a"
+   ],
+   "A cycle is never freed": [],
+   "Two names, one object": [
+    "o"
+   ],
+   "Dropping from a container": [
+    "item"
+   ]
+  }
+ },
+ "register-class-decorator": {
+  "hash": "a84877f6df5387ae",
+  "tests": {
+   "CSV": [
+    "<CsvReader csv>",
+    [
+     [
+      "a",
+      "b"
+     ],
+     [
+      "1",
+      "2"
+     ]
+    ]
+   ],
+   "Unknown format": [
+    "unknown format",
+    null
+   ],
+   "TSV": [
+    "<TsvReader tsv>",
+    [
+     [
+      "x",
+      "y"
+     ]
+    ]
+   ],
+   "Blank lines skipped": [
+    "<CsvReader csv>",
+    [
+     [
+      "k",
+      "v"
+     ]
+    ]
+   ]
+  }
+ },
+ "relative-import-resolution": {
+  "hash": "25fb6726f210f4e7",
+  "tests": {
+   "From a module": [
+    "etl.jobs.helpers",
+    "etl.config",
+    "ImportError",
+    "etl.jobs"
+   ],
+   "From a package __init__": [
+    "etl.jobs.daily",
+    "etl.io"
+   ],
+   "Beyond the top level": [
+    "ImportError"
+   ],
+   "Top-level module has no package": [
+    "ImportError"
+   ]
+  }
+ },
+ "repeat-decorator": {
+  "hash": "a6dcb2acdbb6b78c",
+  "tests": {
+   "Example": [
+    12,
+    14,
+    16
+   ],
+   "Zero repeats": [],
+   "Once": [
+    0
+   ],
+   "Five times": [
+    2,
+    4,
+    6,
+    8,
+    10
+   ]
+  }
+ },
+ "restaurant-recommendations": {
+  "hash": "a153f48170245590",
+  "tests": {
+   "Example": [
+    "taco bay",
+    "pho 1"
+   ],
+   "No friends": [],
+   "Duplicate likes count once": [
+    "x"
+   ],
+   "Already liked is excluded and k limits": [
+    "c"
+   ]
+  }
+ },
+ "resumable-etl-checkpoint": {
+  "hash": "53ec91aefb7f1467",
+  "tests": {
+   "Example": [
+    2,
+    60,
+    [
+     "f2"
+    ]
+   ],
+   "No crashes": [
+    1,
+    3,
+    []
+   ],
+   "Crash on the last file": [
+    2,
+    5,
+    [
+     "a"
+    ]
+   ],
+   "Several crashes": [
+    3,
+    6,
+    [
+     "a",
+     "c"
+    ]
+   ]
+  }
+ },
+ "retry-decorator": {
+  "hash": "7f350b016c6d6153",
+  "tests": {
+   "Succeeds on the third attempt": [
+    "ok",
+    3,
+    [
+     0.5,
+     1
+    ]
+   ],
+   "Non-retryable error escapes at once": [
+    "ValueError",
+    1,
+    []
+   ],
+   "Gives up after the last attempt": [
+    "TimeoutError",
+    3,
+    [
+     0.5,
+     1
+    ]
+   ],
+   "No failures": [
+    "ok",
+    1,
+    []
+   ],
+   "Single attempt": [
+    "TimeoutError",
+    1,
+    []
+   ]
+  }
+ },
+ "reusable-iterable": {
+  "hash": "462ae790f63302b1",
+  "tests": {
+   "Example": [
+    [
+     "s3://lake/orders/dt=2024-01-01",
+     "s3://lake/orders/dt=2024-01-02"
+    ],
+    [
+     "s3://lake/orders/dt=2024-01-01",
+     "s3://lake/orders/dt=2024-01-02"
+    ],
+    2,
+    true
+   ],
+   "Probe not present": [
+    [
+     "raw/dt=d1"
+    ],
+    [
+     "raw/dt=d1"
+    ],
+    1,
+    false
+   ],
+   "Empty": [
+    [],
+    [],
+    0,
+    false
+   ],
+   "Prefix without a trailing slash": [
+    [
+     "gs://b/dt=x",
+     "gs://b/dt=y"
+    ],
+    [
+     "gs://b/dt=x",
+     "gs://b/dt=y"
+    ],
+    2,
+    true
+   ]
+  }
+ },
+ "reverse-each-word": {
+  "hash": "0f102e08d660fbae",
+  "tests": {
+   "Example": "lte  boj ko",
+   "One word": "enilepip",
+   "Leading and trailing spaces": "  a cb  ",
+   "Empty string": "",
+   "Punctuation stays inside the word": ",ih !ereht"
+  }
+ },
+ "reverse-string-no-slicing": {
+  "hash": "906f8b34f05c06fc",
+  "tests": {
+   "Example": "enilepip",
+   "Palindrome": "level",
+   "Empty": "",
+   "Unicode": "☕ evïan"
+  }
+ },
+ "reverse-word-order": {
+  "hash": "fc185aef4a381e45",
+  "tests": {
+   "Example": "sales daily load",
+   "Single word": "orders",
+   "Empty query": "",
+   "Only whitespace": "",
+   "Tabs and newlines between words": "week this sellers top"
+  }
+ },
+ "roman-to-integer": {
+  "hash": "bc3c710b5256e8ec",
+  "tests": {
+   "Example": 1994,
+   "Simple": 3,
+   "Subtractive four": 4,
+   "Largest": 3999,
+   "Forty-nine": 49
+  }
+ },
+ "rotate-matrix": {
+  "hash": "ab1efaf80c08b98e",
+  "tests": {
+   "Example": [
+    [
+     3,
+     1
+    ],
+    [
+     4,
+     2
+    ]
+   ],
+   "Full turn": [
+    [
+     1,
+     2
+    ],
+    [
+     3,
+     4
+    ]
+   ],
+   "Three by three twice": [
+    [
+     9,
+     8,
+     7
+    ],
+    [
+     6,
+     5,
+     4
+    ],
+    [
+     3,
+     2,
+     1
+    ]
+   ],
+   "Many turns": [
+    [
+     2,
+     4
+    ],
+    [
+     1,
+     3
+    ]
+   ]
+  }
+ },
+ "round-robin-assignment": {
+  "hash": "7360fdccee937f4b",
+  "tests": {
+   "Example": {
+    "a": [
+     "t1",
+     "t3"
+    ],
+    "b": [
+     "t2",
+     "t4"
+    ],
+    "unassigned": [
+     "t5"
+    ]
+   },
+   "Plenty of room": {
+    "w1": [
+     "x"
+    ],
+    "w2": [
+     "y"
+    ],
+    "w3": []
+   },
+   "No workers": {
+    "unassigned": [
+     "t"
+    ]
+   },
+   "Zero capacity": {
+    "a": [],
+    "unassigned": [
+     "t1"
+    ]
+   }
+  }
+ },
+ "running-average-closure": {
+  "hash": "3454551c0eac2bb7",
+  "tests": {
+   "Example": [
+    10,
+    15,
+    20
+   ],
+   "Single value": [
+    7
+   ],
+   "Decimals": [
+    1,
+    1.5,
+    1.667
+   ],
+   "Empty": []
+  }
+ },
+ "running-median": {
+  "hash": "b26f812fa3afd647",
+  "tests": {
+   "Example": [
+    5,
+    10,
+    5,
+    4
+   ],
+   "Single value": [
+    7
+   ],
+   "Sorted input": [
+    1,
+    1.5,
+    2,
+    2.5,
+    3
+   ],
+   "Duplicates and negatives": [
+    -1,
+    -1,
+    -1,
+    1.5
+   ]
+  }
+ },
+ "safe-divide-report": {
+  "hash": "11e24ac7c7f72387",
+  "tests": {
+   "Example": [
+    2.5,
+    "divide by zero",
+    1.5,
+    "not a number",
+    "missing"
+   ],
+   "All good": [
+    0.333
+   ],
+   "Zero numerator is fine": [
+    0
+   ],
+   "Float zero": [
+    "divide by zero"
+   ],
+   "Empty": []
+  }
+ },
+ "scd-type-2-python": {
+  "hash": "da3717eebe0b2d30",
+  "tests": {
+   "Example": [
+    {
+     "id": 1,
+     "city": "Pune",
+     "valid_from": "2024-01-01",
+     "valid_to": "2024-06-01",
+     "current": false
+    },
+    {
+     "id": 1,
+     "city": "Mumbai",
+     "valid_from": "2024-06-01",
+     "valid_to": null,
+     "current": true
+    },
+    {
+     "id": 2,
+     "city": "Goa",
+     "valid_from": "2024-01-01",
+     "valid_to": null,
+     "current": true
+    },
+    {
+     "id": 3,
+     "city": "Delhi",
+     "valid_from": "2024-06-01",
+     "valid_to": null,
+     "current": true
+    }
+   ],
+   "Empty history": [
+    {
+     "id": 9,
+     "city": "X",
+     "valid_from": "2024-01-01",
+     "valid_to": null,
+     "current": true
+    }
+   ],
+   "Second change keeps older history": [
+    {
+     "id": 1,
+     "city": "A",
+     "valid_from": "2023-01-01",
+     "valid_to": "2024-01-01",
+     "current": false
+    },
+    {
+     "id": 1,
+     "city": "B",
+     "valid_from": "2024-01-01",
+     "valid_to": "2024-07-01",
+     "current": false
+    },
+    {
+     "id": 1,
+     "city": "C",
+     "valid_from": "2024-07-01",
+     "valid_to": null,
+     "current": true
+    }
+   ],
+   "Missing ids are left alone": [
+    {
+     "id": 4,
+     "city": "K",
+     "valid_from": "2024-01-01",
+     "valid_to": null,
+     "current": true
+    }
+   ]
+  }
+ },
+ "schema-tolerant-parsing": {
+  "hash": "e88f78c27c71501a",
+  "tests": {
+   "Example": [
+    [
+     [
+      "7",
+      "click",
+      1700000000
+     ],
+     [
+      "u2",
+      "view",
+      1700000000
+     ],
+     [
+      "u3",
+      "buy",
+      1700000001
+     ]
+    ],
+    2
+   ],
+   "Empty": [
+    [],
+    0
+   ],
+   "Bad timestamp is rejected": [
+    [],
+    1
+   ],
+   "Ties sorted by user": [
+    [
+     [
+      "a",
+      "e",
+      5
+     ],
+     [
+      "b",
+      "e",
+      5
+     ]
+    ],
+    0
+   ]
+  }
+ },
+ "score-range-difference": {
+  "hash": "71dfc11b80de0f5e",
+  "tests": {
+   "Example": 175,
+   "One student": 0,
+   "All equal": 0,
+   "All missing scores": 3
+  }
+ },
+ "semaphore-job-slots": {
+  "hash": "8bf1124e6ea9cd81",
+  "tests": {
+   "Example": [
+    [
+     "a",
+     0,
+     5
+    ],
+    [
+     "b",
+     0,
+     3
+    ],
+    [
+     "c",
+     3,
+     5
+    ],
+    [
+     "d",
+     5,
+     6
+    ],
+    2
+   ],
+   "Enough slots": [
+    [
+     "x",
+     0,
+     4
+    ],
+    [
+     "y",
+     1,
+     5
+    ],
+    0
+   ],
+   "Single slot queue": [
+    [
+     "p",
+     0,
+     2
+    ],
+    [
+     "q",
+     2,
+     4
+    ],
+    [
+     "r",
+     4,
+     6
+    ],
+    2
+   ],
+   "Freed exactly on arrival": [
+    [
+     "a",
+     0,
+     3
+    ],
+    [
+     "b",
+     3,
+     4
+    ],
+    0
+   ]
+  }
+ },
+ "sentence-palindrome": {
+  "hash": "4b54e9278b1e4010",
+  "tests": {
+   "Example": true,
+   "Not a palindrome": false,
+   "Digits count": true,
+   "No letters at all": true,
+   "Case only differs": true,
+   "Almost": false
+  }
+ },
+ "shallow-vs-deep-copy": {
+  "hash": "13bd2643b223c51b",
+  "tests": {
+   "Example": [
+    {
+     "env": "dev",
+     "db": {
+      "host": "dev-db",
+      "pool": 2
+     },
+     "tags": [
+      "etl"
+     ]
+    },
+    {
+     "env": "prod",
+     "db": {
+      "host": "localhost",
+      "pool": 5
+     },
+     "tags": [
+      "etl"
+     ]
+    },
+    {
+     "env": "base",
+     "db": {
+      "host": "localhost",
+      "pool": 5
+     },
+     "tags": [
+      "etl"
+     ]
+    }
+   ],
+   "No changes": [
+    {
+     "env": "dev",
+     "db": {
+      "host": "localhost",
+      "pool": 5
+     },
+     "tags": [
+      "etl"
+     ]
+    },
+    {
+     "env": "prod",
+     "db": {
+      "host": "localhost",
+      "pool": 5
+     },
+     "tags": [
+      "etl"
+     ]
+    },
+    {
+     "env": "base",
+     "db": {
+      "host": "localhost",
+      "pool": 5
+     },
+     "tags": [
+      "etl"
+     ]
+    }
+   ],
+   "New key in a section": [
+    {
+     "env": "dev",
+     "db": {
+      "host": "localhost",
+      "pool": 5,
+      "ssl": true
+     },
+     "tags": [
+      "etl"
+     ]
+    },
+    {
+     "env": "prod",
+     "db": {
+      "host": "localhost",
+      "pool": 5
+     },
+     "tags": [
+      "etl"
+     ]
+    },
+    {
+     "env": "base",
+     "db": {
+      "host": "localhost",
+      "pool": 5
+     },
+     "tags": [
+      "etl"
+     ]
+    }
+   ],
+   "Several sections": [
+    {
+     "env": "dev",
+     "db": {
+      "host": "x",
+      "pool": 1
+     },
+     "tags": [
+      "etl"
+     ]
+    },
+    {
+     "env": "prod",
+     "db": {
+      "host": "localhost",
+      "pool": 5
+     },
+     "tags": [
+      "etl"
+     ]
+    },
+    {
+     "env": "base",
+     "db": {
+      "host": "localhost",
+      "pool": 5
+     },
+     "tags": [
+      "etl"
+     ]
+    }
+   ]
+  }
+ },
+ "shortest-palindrome-append": {
+  "hash": "d707283f7fa0b2b6",
+  "tests": {
+   "Example": 1,
+   "Needs three": 3,
+   "Already a palindrome": 0,
+   "Empty string": 0,
+   "All different": 3,
+   "Repeated letters": 5
+  }
+ },
+ "signed-collisions": {
+  "hash": "7bbdf44e7abad5be",
+  "tests": {
+   "Example": [
+    5,
+    10
+   ],
+   "Equal sizes": [],
+   "Left-mover wins all": [
+    -10
+   ],
+   "Moving apart": [
+    -2,
+    -1,
+    1,
+    2
+   ]
+  }
+ },
+ "signups-by-weekday": {
+  "hash": "8a535c28e6082aa5",
+  "tests": {
+   "Example": [
+    [
+     "Monday",
+     2
+    ],
+    [
+     "Tuesday",
+     1
+    ],
+    [
+     "Wednesday",
+     0
+    ],
+    [
+     "Thursday",
+     0
+    ],
+    [
+     "Friday",
+     0
+    ],
+    [
+     "Saturday",
+     0
+    ],
+    [
+     "Sunday",
+     1
+    ]
+   ],
+   "No signups": [
+    [
+     "Monday",
+     0
+    ],
+    [
+     "Tuesday",
+     0
+    ],
+    [
+     "Wednesday",
+     0
+    ],
+    [
+     "Thursday",
+     0
+    ],
+    [
+     "Friday",
+     0
+    ],
+    [
+     "Saturday",
+     0
+    ],
+    [
+     "Sunday",
+     0
+    ]
+   ],
+   "Dates without times": [
+    [
+     "Monday",
+     0
+    ],
+    [
+     "Tuesday",
+     0
+    ],
+    [
+     "Wednesday",
+     2
+    ],
+    [
+     "Thursday",
+     0
+    ],
+    [
+     "Friday",
+     0
+    ],
+    [
+     "Saturday",
+     0
+    ],
+    [
+     "Sunday",
+     0
+    ]
+   ],
+   "A full week": [
+    [
+     "Monday",
+     1
+    ],
+    [
+     "Tuesday",
+     1
+    ],
+    [
+     "Wednesday",
+     1
+    ],
+    [
+     "Thursday",
+     1
+    ],
+    [
+     "Friday",
+     1
+    ],
+    [
+     "Saturday",
+     1
+    ],
+    [
+     "Sunday",
+     1
+    ]
+   ]
+  }
+ },
+ "singledispatch-overloading": {
+  "hash": "3387c8ee342f1a53",
+  "tests": {
+   "Example": [
+    500,
+    250,
+    123450,
+    150,
+    0
+   ],
+   "Unsupported types": [
+    "TypeError",
+    "TypeError"
+   ],
+   "Euro strings and negatives": [
+    -310,
+    -200
+   ],
+   "Nested lists": [
+    600
+   ]
+  }
+ },
+ "singleton-config": {
+  "hash": "ceb134fa115f797e",
+  "tests": {
+   "Example": [
+    true,
+    {
+     "env": "prod",
+     "workers": 4
+    },
+    1
+   ],
+   "Single call": [
+    true,
+    {},
+    1
+   ],
+   "Many calls": [
+    true,
+    {
+     "a": 1
+    },
+    1
+   ],
+   "First settings win": [
+    true,
+    {
+     "env": "qa"
+    },
+    1
+   ]
+  }
+ },
+ "sliding-window-generator": {
+  "hash": "dda8c7645a97b2e7",
+  "tests": {
+   "Example": [
+    2,
+    3,
+    4
+   ],
+   "Window of one": [
+    5,
+    7
+   ],
+   "Fewer readings than k": [],
+   "Decimals": [
+    0.15,
+    0.25,
+    0.35
+   ]
+  }
+ },
+ "smallest-multiple-lcm": {
+  "hash": "eedfdceeaf48b990",
+  "tests": {
+   "Example": 2520,
+   "One": 1,
+   "Twenty": 232792560,
+   "Thirty": 2329089562800
+  }
+ },
+ "smart-division-decorator": {
+  "hash": "d9828bc7042b3768",
+  "tests": {
+   "Example": [
+    4,
+    3
+   ],
+   "Zero divisor": [
+    "undefined",
+    "undefined"
+   ],
+   "Negative numbers": [
+    -0.5,
+    -0.5
+   ],
+   "Equal values": [
+    1
+   ]
+  }
+ },
+ "sort-objects-in-list": {
+  "hash": "f65823b66d44b17c",
+  "tests": {
+   "Example": [
+    "C",
+    "A",
+    "D"
+   ],
+   "Nothing in stock": [],
+   "Price ties by SKU": [
+    "a",
+    "z"
+   ],
+   "Empty": []
+  }
+ },
+ "sort-with-lambda-keys": {
+  "hash": "ddcf97f96d2ce1c5",
+  "tests": {
+   "Example": [
+    "big.parquet",
+    "A.csv",
+    "b.csv"
+   ],
+   "Single file": [
+    "x"
+   ],
+   "Case-insensitive names": [
+    "A",
+    "a2",
+    "b"
+   ],
+   "Empty": []
+  }
+ },
+ "spam-share-by-day": {
+  "hash": "e09bc265a459ad43",
+  "tests": {
+   "Example": [
+    [
+     "2024-01-01",
+     50
+    ],
+    [
+     "2024-01-02",
+     0
+    ]
+   ],
+   "Nothing viewed": [],
+   "Case and spaces": [
+    [
+     "d",
+     33.3
+    ]
+   ],
+   "Several days sorted": [
+    [
+     "2024-02-01",
+     0
+    ],
+    [
+     "2024-02-02",
+     100
+    ]
+   ]
+  }
+ },
+ "sparse-matrix-vector": {
+  "hash": "2ac6972d455ff51e",
+  "tests": {
+   "Example": [
+    6,
+    0,
+    -2
+   ],
+   "Empty matrix": [
+    0,
+    0
+   ],
+   "Repeated row": [
+    0,
+    15
+   ],
+   "Negative values": [
+    -3,
+    -6
+   ]
+  }
+ },
+ "spiral-order": {
+  "hash": "9b0d9c6339d668a8",
+  "tests": {
+   "Example": [
+    1,
+    2,
+    3,
+    6,
+    9,
+    8,
+    7,
+    4,
+    5
+   ],
+   "Wide": [
+    1,
+    2,
+    3,
+    4,
+    8,
+    7,
+    6,
+    5
+   ],
+   "Single column": [
+    1,
+    2,
+    3
+   ],
+   "Empty": []
+  }
+ },
+ "sql-table-extractor": {
+  "hash": "284dddee17153e9e",
+  "tests": {
+   "Example": [
+    "dim.customers",
+    "sales.orders"
+   ],
+   "Subquery": [
+    "items"
+   ],
+   "Several CTEs and joins": [
+    "raw.events",
+    "t1",
+    "t2"
+   ],
+   "Duplicates": [
+    "t"
+   ]
+  }
+ },
+ "squares-of-even-readings": {
+  "hash": "c041901a498a01e9",
+  "tests": {
+   "Example": [
+    4,
+    16
+   ],
+   "No evens": [],
+   "Negatives are even too": [
+    4,
+    0
+   ],
+   "Empty": []
+  }
+ },
+ "star-import-all": {
+  "hash": "ae7cd1e46e5691b7",
+  "tests": {
+   "No __all__": [
+    "load",
+    "Client",
+    "VERSION"
+   ],
+   "With __all__": [
+    "Client",
+    "_retry"
+   ],
+   "Missing name in __all__": [
+    "AttributeError",
+    "b"
+   ],
+   "Empty __all__": []
+  }
+ },
+ "status-enum-constants": {
+  "hash": "8a8ce2d69ab9890d",
+  "tests": {
+   "Example": [
+    [
+     "RUNNING",
+     2,
+     false
+    ],
+    [
+     "SUCCEEDED",
+     3,
+     true
+    ],
+    [
+     "FAILED",
+     4,
+     true
+    ],
+    "invalid",
+    [
+     "QUEUED",
+     1,
+     false
+    ],
+    "FAILED"
+   ],
+   "Nothing valid": [
+    "invalid",
+    "invalid",
+    null
+   ],
+   "Case-insensitive names": [
+    [
+     "QUEUED",
+     1,
+     false
+    ],
+    [
+     "QUEUED",
+     1,
+     false
+    ],
+    "QUEUED"
+   ],
+   "Bool is not a number": [
+    "invalid",
+    null
+   ]
+  }
+ },
+ "stock-profit-one-trade": {
+  "hash": "901fdfc40362ed6e",
+  "tests": {
+   "Example": 5,
+   "Falling": 0,
+   "Empty": 0,
+   "Single day": 0
+  }
+ },
+ "stock-profit-unlimited": {
+  "hash": "017d02a66495cb21",
+  "tests": {
+   "Example": 7,
+   "Steady rise": 4,
+   "Falling": 0,
+   "Flat": 0
+  }
+ },
+ "stock-purchase-totals": {
+  "hash": "32bcaadabc7f0bf7",
+  "tests": {
+   "Example": {
+    "AAPL": [
+     15,
+     2860
+    ]
+   },
+   "Only sells": {},
+   "Empty": {},
+   "Several tickers sorted": {
+    "GOOG": [
+     2,
+     300
+    ],
+    "MSFT": [
+     2,
+     800
+    ]
+   }
+  }
+ },
+ "stock-span": {
+  "hash": "564d60689e30bd4a",
+  "tests": {
+   "Example": [
+    1,
+    1,
+    1,
+    2,
+    1,
+    4,
+    6
+   ],
+   "Rising": [
+    1,
+    2,
+    3
+   ],
+   "Equal prices": [
+    1,
+    2,
+    3
+   ],
+   "Empty": []
+  }
+ },
+ "str-vs-repr": {
+  "hash": "bb3a981f351ea04f",
+  "tests": {
+   "Example": [
+    [
+     "orders: OK (1,234 rows)",
+     "Run(job='orders', status='ok', rows=1234)"
+    ],
+    "[Run(job='orders', status='ok', rows=1234)]"
+   ],
+   "Two runs": [
+    [
+     "a: FAILED (0 rows)",
+     "Run(job='a', status='failed', rows=0)"
+    ],
+    [
+     "it's: OK (1,000,000 rows)",
+     "Run(job=\"it's\", status='ok', rows=1000000)"
+    ],
+    "[Run(job='a', status='failed', rows=0), Run(job=\"it's\", status='ok', rows=1000000)]"
+   ],
+   "Empty": [
+    "[]"
+   ],
+   "Zero rows and long names": [
+    [
+     "nightly_orders_backfill: RUNNING (0 rows)",
+     "Run(job='nightly_orders_backfill', status='running', rows=0)"
+    ],
+    "[Run(job='nightly_orders_backfill', status='running', rows=0)]"
+   ]
+  }
+ },
+ "stream-joiner": {
+  "hash": "112db3e3c56fbd15",
+  "tests": {
+   "Example": [
+    [
+     7,
+     "a",
+     6
+    ]
+   ],
+   "No clicks": [],
+   "Window boundary inclusive": [
+    [
+     10,
+     "x",
+     0
+    ]
+   ],
+   "Several matches": [
+    [
+     3,
+     "x",
+     1
+    ],
+    [
+     3,
+     "x",
+     2
+    ]
+   ]
+  }
+ },
+ "streaming-group-totals": {
+  "hash": "ac038803831516c9",
+  "tests": {
+   "Example": [
+    [
+     "a",
+     12,
+     2
+    ],
+    [
+     "b",
+     1,
+     1
+    ],
+    [
+     "c",
+     5,
+     2
+    ]
+   ],
+   "Unsorted input": [
+    "error",
+    "unsorted input at a"
+   ],
+   "Empty": [],
+   "Single key": [
+    [
+     "k",
+     0,
+     2
+    ]
+   ]
+  }
+ },
+ "streaming-top-k": {
+  "hash": "9ddfb9db6e4d0598",
+  "tests": {
+   "Example": [
+    "b",
+    "d",
+    "a"
+   ],
+   "Ties keep the earlier trade": [
+    "x"
+   ],
+   "k = 0": [],
+   "k larger than stream": [
+    "b",
+    "a"
+   ]
+  }
+ },
+ "string-permutations": {
+  "hash": "6af31fc59e55b54b",
+  "tests": {
+   "Example": [
+    "aab",
+    "aba",
+    "baa"
+   ],
+   "All distinct": [
+    "abc",
+    "acb",
+    "bac",
+    "bca",
+    "cab",
+    "cba"
+   ],
+   "Empty": [
+    ""
+   ],
+   "All the same": [
+    "zzz"
+   ]
+  }
+ },
+ "subarray-with-target-sum": {
+  "hash": "ea015b8cd1596d90",
+  "tests": {
+   "Example": [
+    2,
+    4
+   ],
+   "Not found": [],
+   "Single element": [
+    1,
+    1
+   ],
+   "Zeros inside": [
+    0,
+    3
+   ]
+  }
+ },
+ "sum-nested-amounts": {
+  "hash": "7231fcd1745aea9e",
+  "tests": {
+   "Example": 13.75,
+   "Key absent": 0,
+   "Booleans and strings skipped": 5,
+   "Top-level list": 3
+  }
+ },
+ "sum-numbers-in-text": {
+  "hash": "dfc2235b8715da86",
+  "tests": {
+   "Example": 112,
+   "No numbers": 0,
+   "Decimals split": 78,
+   "Hyphen as a range": -10
+  }
+ },
+ "thread-lifecycle": {
+  "hash": "0ccbfd6ae87c45d4",
+  "tests": {
+   "Example": {
+    "worker": "terminated",
+    "bad": "invalid terminated->runnable"
+   },
+   "Never started": {
+    "idle": "new"
+   },
+   "Skipped runnable": {
+    "t": "invalid new->running"
+   },
+   "Preempted several times": {
+    "t": "runnable"
+   }
+  }
+ },
+ "threads-vs-gil": {
+  "hash": "a924509b4ed2cef3",
+  "tests": {
+   "I/O bound": [
+    6,
+    3,
+    3,
+    "threads"
+   ],
+   "CPU bound": [
+    8,
+    8,
+    4,
+    "processes"
+   ],
+   "Mixed": [
+    11,
+    5,
+    6,
+    "threads"
+   ],
+   "Single worker": [
+    3,
+    3,
+    3,
+    "threads"
+   ]
+  }
+ },
+ "tiered-shipping-cost": {
+  "hash": "2cb17a3d6e484e10",
+  "tests": {
+   "Example": [
+    6,
+    17,
+    30
+   ],
+   "Single open band": [
+    15
+   ],
+   "Exactly on a boundary": [
+    10,
+    0
+   ],
+   "Unsorted tiers with fractions": [
+    7.5,
+    34.25,
+    10
+   ]
+  }
+ },
+ "timer-firing-order": {
+  "hash": "811ba45a6083d29e",
+  "tests": {
+   "Example": [
+    [
+     "ping",
+     2
+    ],
+    [
+     "retry",
+     5
+    ]
+   ],
+   "Cancel after firing does nothing": [
+    [
+     "a",
+     1
+    ]
+   ],
+   "Cancel at the exact fire time is too late": [
+    [
+     "a",
+     2
+    ]
+   ],
+   "Ties by start order": [
+    [
+     "b",
+     2
+    ],
+    [
+     "a",
+     2
+    ]
+   ]
+  }
+ },
+ "timing-decorator": {
+  "hash": "9bde5c64747442ce",
+  "tests": {
+   "Example": [
+    [
+     "loaded 0",
+     "loaded 1"
+    ],
+    [
+     [
+      "load",
+      3
+     ],
+     [
+      "load",
+      5
+     ]
+    ],
+    "load",
+    "Load one batch."
+   ],
+   "Zero-length call": [
+    [
+     "loaded 0"
+    ],
+    [
+     [
+      "load",
+      0
+     ]
+    ],
+    "load",
+    "Load one batch."
+   ],
+   "Many calls": [
+    [
+     "loaded 0",
+     "loaded 1",
+     "loaded 2",
+     "loaded 3"
+    ],
+    [
+     [
+      "load",
+      1
+     ],
+     [
+      "load",
+      2
+     ],
+     [
+      "load",
+      3
+     ],
+     [
+      "load",
+      4
+     ]
+    ],
+    "load",
+    "Load one batch."
+   ],
+   "No calls": [
+    [],
+    [],
+    "load",
+    "Load one batch."
+   ]
+  }
+ },
+ "top-distance-riders": {
+  "hash": "b3365db5256ca3ee",
+  "tests": {
+   "Example": [
+    [
+     "a",
+     12.5
+    ],
+    [
+     "c",
+     12.5
+    ]
+   ],
+   "Tie at the cutoff": [
+    [
+     "x",
+     5
+    ],
+    [
+     "y",
+     5
+    ]
+   ],
+   "n larger than riders": [
+    [
+     "p",
+     1
+    ]
+   ],
+   "n = 0": []
+  }
+ },
+ "top-earner-per-department": {
+  "hash": "9283053ab08626cf",
+  "tests": {
+   "Example": {
+    "Data": "Raj",
+    "Ops": "Li"
+   },
+   "Tie goes to the first name alphabetically": {
+    "BI": "Amy"
+   },
+   "Empty": {},
+   "Many departments": {
+    "x": "d",
+    "y": "b",
+    "z": "a"
+   }
+  }
+ },
+ "top-k-frequent-integers": {
+  "hash": "0e9008469348e5a2",
+  "tests": {
+   "Example": [
+    2,
+    1
+   ],
+   "Ties by value": [
+    3,
+    5
+   ],
+   "k beyond distinct values": [
+    1
+   ],
+   "Empty": []
+  }
+ },
+ "top-k-words": {
+  "hash": "a61dcf05d04dc02b",
+  "tests": {
+   "Example": [
+    [
+     "a",
+     3
+    ],
+    [
+     "b",
+     2
+    ]
+   ],
+   "Ties broken alphabetically": [
+    [
+     "x",
+     1
+    ],
+    [
+     "y",
+     1
+    ]
+   ],
+   "k larger than vocabulary": [
+    [
+     "two",
+     2
+    ],
+    [
+     "one",
+     1
+    ]
+   ],
+   "Empty text": [],
+   "Case-sensitive words": [
+    [
+     "go",
+     2
+    ],
+    [
+     "GO",
+     1
+    ]
+   ],
+   "k = 0": []
+  }
+ },
+ "top-manager-resolution": {
+  "hash": "9f089f26b2d76fab",
+  "tests": {
+   "Example": {
+    "ceo": "ceo",
+    "cto": "cto",
+    "dev": "cto",
+    "ic": "ceo",
+    "mgr": "ceo",
+    "vp": "ceo"
+   },
+   "Single pair": {
+    "a": "a",
+    "b": "a"
+   },
+   "Cycle": {
+    "a": "CYCLE",
+    "b": "CYCLE",
+    "c": "CYCLE",
+    "d": "CYCLE"
+   },
+   "Empty": {},
+   "Self-manager is a cycle": {
+    "x": "CYCLE",
+    "y": "CYCLE"
+   }
+  }
+ },
+ "tower-of-hanoi-moves": {
+  "hash": "c2f6d16e3036c0f5",
+  "tests": {
+   "Two disks": [
+    [
+     "A",
+     "B"
+    ],
+    [
+     "A",
+     "C"
+    ],
+    [
+     "B",
+     "C"
+    ]
+   ],
+   "Zero disks": [],
+   "Three disks": [
+    [
+     "A",
+     "C"
+    ],
+    [
+     "A",
+     "B"
+    ],
+    [
+     "C",
+     "B"
+    ],
+    [
+     "A",
+     "C"
+    ],
+    [
+     "B",
+     "A"
+    ],
+    [
+     "B",
+     "C"
+    ],
+    [
+     "A",
+     "C"
+    ]
+   ],
+   "Move count for five": [
+    [
+     "A",
+     "C"
+    ],
+    [
+     "A",
+     "B"
+    ],
+    [
+     "C",
+     "B"
+    ],
+    [
+     "A",
+     "C"
+    ],
+    [
+     "B",
+     "A"
+    ],
+    [
+     "B",
+     "C"
+    ],
+    [
+     "A",
+     "C"
+    ],
+    [
+     "A",
+     "B"
+    ],
+    [
+     "C",
+     "B"
+    ],
+    [
+     "C",
+     "A"
+    ],
+    [
+     "B",
+     "A"
+    ],
+    [
+     "C",
+     "B"
+    ],
+    [
+     "A",
+     "C"
+    ],
+    [
+     "A",
+     "B"
+    ],
+    [
+     "C",
+     "B"
+    ],
+    [
+     "A",
+     "C"
+    ],
+    [
+     "B",
+     "A"
+    ],
+    [
+     "B",
+     "C"
+    ],
+    [
+     "A",
+     "C"
+    ],
+    [
+     "B",
+     "A"
+    ],
+    [
+     "C",
+     "B"
+    ],
+    [
+     "C",
+     "A"
+    ],
+    [
+     "B",
+     "A"
+    ],
+    [
+     "B",
+     "C"
+    ],
+    [
+     "A",
+     "C"
+    ],
+    [
+     "A",
+     "B"
+    ],
+    [
+     "C",
+     "B"
+    ],
+    [
+     "A",
+     "C"
+    ],
+    [
+     "B",
+     "A"
+    ],
+    [
+     "B",
+     "C"
+    ],
+    [
+     "A",
+     "C"
+    ]
+   ]
+  }
+ },
+ "trailing-zeros-factorial": {
+  "hash": "9fa6ce1669f70252",
+  "tests": {
+   "Example": 6,
+   "Small": 0,
+   "Zero": 0,
+   "Huge": 249999998,
+   "Hundred": 24
+  }
+ },
+ "transactional-kv-store": {
+  "hash": "4ebef24ef355612d",
+  "tests": {
+   "Example": [
+    "10",
+    "20",
+    "10",
+    "NO TRANSACTION"
+   ],
+   "Counts": [
+    2,
+    1,
+    "NULL"
+   ],
+   "Nested transactions": [
+    1,
+    "1",
+    "NULL"
+   ],
+   "Commit closes everything": [
+    "NULL",
+    "NO TRANSACTION",
+    "NO TRANSACTION"
+   ],
+   "Rollback restores deleted keys and counts": [
+    1,
+    "5",
+    "NULL",
+    1
+   ]
+  }
+ },
+ "transpose-matrix": {
+  "hash": "b3cb0cd2771357b9",
+  "tests": {
+   "Example": [
+    [
+     1,
+     4
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     3,
+     6
+    ]
+   ],
+   "Single row": [
+    [
+     "a"
+    ],
+    [
+     "b"
+    ]
+   ],
+   "Empty": [],
+   "Single column": [
+    [
+     1,
+     2,
+     3
+    ]
+   ]
+  }
+ },
+ "triangular-sum": {
+  "hash": "bc2db69f93fb7f6f",
+  "tests": {
+   "Example": 8,
+   "Single digit": 7,
+   "Two digits": 8,
+   "Longer": 0
+  }
+ },
+ "trip-destination-counts": {
+  "hash": "b073ac14766e4980",
+  "tests": {
+   "Example": {
+    "u1": 2,
+    "u2": 1
+   },
+   "Empty": {},
+   "Single user many visits": {
+    "z": 1
+   },
+   "Users sorted": {
+    "a": 2,
+    "b": 1
+   }
+  }
+ },
+ "try-except-else-finally-trace": {
+  "hash": "7ace3ab0d38f2f78",
+  "tests": {
+   "All four paths": [
+    [
+     "no error",
+     [
+      "try",
+      "else",
+      "finally"
+     ]
+    ],
+    [
+     "handled",
+     [
+      "try",
+      "except",
+      "finally"
+     ]
+    ],
+    [
+     "KeyError",
+     [
+      "try",
+      "finally"
+     ]
+    ],
+    [
+     "from try",
+     [
+      "try",
+      "finally"
+     ]
+    ]
+   ],
+   "Only success": [
+    [
+     "no error",
+     [
+      "try",
+      "else",
+      "finally"
+     ]
+    ]
+   ],
+   "Uncaught error": [
+    [
+     "KeyError",
+     [
+      "try",
+      "finally"
+     ]
+    ]
+   ],
+   "Early return": [
+    [
+     "from try",
+     [
+      "try",
+      "finally"
+     ]
+    ],
+    [
+     "handled",
+     [
+      "try",
+      "except",
+      "finally"
+     ]
+    ]
+   ]
+  }
+ },
+ "two-sum-indices": {
+  "hash": "f19d7e2146b36c85",
+  "tests": {
+   "Example": [
+    1,
+    2
+   ],
+   "No pair": [],
+   "Same value twice": [
+    0,
+    2
+   ],
+   "Element cannot pair with itself": [],
+   "Negative amounts": [
+    0,
+    2
+   ],
+   "Earliest second index wins": [
+    0,
+    1
+   ]
+  }
+ },
+ "union-find-components": {
+  "hash": "ddea7967e900a45f",
+  "tests": {
+   "Example": [
+    [
+     "a",
+     "b",
+     "e"
+    ],
+    [
+     "c"
+    ],
+    [
+     "f"
+    ]
+   ],
+   "All separate": [
+    [
+     "x"
+    ],
+    [
+     "y"
+    ]
+   ],
+   "Empty": [],
+   "Chain through devices": [
+    [
+     "a",
+     "b",
+     "c",
+     "d"
+    ]
+   ]
+  }
+ },
+ "upsert-on-conflict": {
+  "hash": "e1a2b315fe473448",
+  "tests": {
+   "Example": [
+    [
+     "A",
+     12,
+     2
+    ],
+    [
+     "B",
+     5,
+     3
+    ],
+    [
+     "C",
+     7,
+     1
+    ]
+   ],
+   "Replay is a no-op": [
+    [
+     "A",
+     10,
+     5
+    ]
+   ],
+   "Empty table": [
+    [
+     "Z",
+     2,
+     2
+    ]
+   ],
+   "Out-of-order changes": [
+    [
+     "K",
+     3,
+     3
+    ]
+   ]
+  }
+ },
+ "utc-to-local-offsets": {
+  "hash": "2c458649dc49cfd7",
+  "tests": {
+   "Example": {
+    "blr": {
+     "2024-03-01": 1,
+     "2024-03-02": 1
+    },
+    "nyc": {
+     "2024-03-01": 1
+    }
+   },
+   "UTC store": {
+    "ldn": {
+     "2024-01-01": 1
+    }
+   },
+   "Half-hour negative offset": {
+    "stj": {
+     "2024-05-31": 1
+    }
+   },
+   "Same local day from different UTC days": {
+    "tyo": {
+     "2024-01-02": 2
+    }
+   }
+  }
+ },
+ "validate-ipv4": {
+  "hash": "8c78474f53d6a8e2",
+  "tests": {
+   "Valid address": true,
+   "Leading zero": false,
+   "Out of range": false,
+   "Too few parts": false,
+   "Trailing dot": false,
+   "Space inside": false,
+   "Zeros are fine": true,
+   "Superscript digit": false
+  }
+ },
+ "validate-phone-numbers": {
+  "hash": "f8294487861c583f",
+  "tests": {
+   "Example": [
+    true,
+    true,
+    true,
+    false
+   ],
+   "Spaces around are fine": [
+    true
+   ],
+   "Too many digits": [
+    false,
+    false
+   ],
+   "Missing space after country code": [
+    false
+   ]
+  }
+ },
+ "validator-factory": {
+  "hash": "2a1f12c97ffca292",
+  "tests": {
+   "Example": [
+    [],
+    [
+     "age",
+     "email",
+     "tier"
+    ]
+   ],
+   "Missing values pass value checks": [
+    []
+   ],
+   "len_max": [
+    [
+     "code"
+    ],
+    []
+   ],
+   "No rules": [
+    []
+   ]
+  }
+ },
+ "varargs-summary": {
+  "hash": "1469dc0fead4d3de",
+  "tests": {
+   "Example": {
+    "count": 5,
+    "min": 1,
+    "max": 5,
+    "mean": 2.8
+   },
+   "No values": {
+    "count": 0,
+    "min": null,
+    "max": null,
+    "mean": null
+   },
+   "Rounding digits": {
+    "count": 3,
+    "min": 1,
+    "max": 2,
+    "mean": 1.667
+   },
+   "Single value": {
+    "count": 1,
+    "min": 7.5,
+    "max": 7.5,
+    "mean": 8
+   }
+  }
+ },
+ "vector-magic-methods": {
+  "hash": "4e25420ffa72cb5c",
+  "tests": {
+   "Example": [
+    "Vec(3, 0)",
+    9,
+    "Vec(0, -8)",
+    true
+   ],
+   "Round trip": [
+    "Vec(0, 0)",
+    2.828,
+    "Vec(-2, -2)",
+    false
+   ],
+   "Single point": [
+    "Vec(0, 0)",
+    0,
+    null,
+    false
+   ],
+   "Negative coordinates": [
+    "Vec(-3, 4)",
+    5,
+    "Vec(-6, 8)",
+    true
+   ]
+  }
+ },
+ "version-total-ordering": {
+  "hash": "e21d80afa2904851",
+  "tests": {
+   "Example": [
+    [
+     "1.0.0",
+     "2.9.3",
+     "2.10.0-rc.1",
+     "2.10.0"
+    ],
+    "2.10.0",
+    true
+   ],
+   "Pre-release ordering": [
+    [
+     "1.0.0-alpha",
+     "1.0.0-alpha.2",
+     "1.0.0-alpha.10",
+     "1.0.0-beta"
+    ],
+    "1.0.0-beta",
+    true
+   ],
+   "Equal versions": [
+    [
+     "3.1.4",
+     "3.1.4"
+    ],
+    "3.1.4",
+    true
+   ],
+   "Numbers before words": [
+    [
+     "1.0.0-1",
+     "1.0.0-rc"
+    ],
+    "1.0.0-rc",
+    true
+   ]
+  }
+ },
+ "viewers-turned-streamers": {
+  "hash": "68dc64da1b5a33cf",
+  "tests": {
+   "Example": [
+    [
+     "a",
+     2
+    ]
+   ],
+   "Nobody converted": [],
+   "Unsorted input": [
+    [
+     "z",
+     1
+    ]
+   ],
+   "Ranking by streamer sessions": [
+    [
+     "b",
+     2
+    ],
+    [
+     "a",
+     1
+    ]
+   ]
+  }
+ },
+ "watermark-incremental-load": {
+  "hash": "6a6802e6d466cd97",
+  "tests": {
+   "Example": [
+    [
+     {
+      "id": 1,
+      "updated_at": 95,
+      "value": "late"
+     },
+     {
+      "id": 2,
+      "updated_at": 120,
+      "value": "new"
+     }
+    ],
+    120,
+    2
+   ],
+   "Re-run writes nothing": [
+    [
+     {
+      "id": 1,
+      "updated_at": 100,
+      "value": "x"
+     }
+    ],
+    100,
+    0
+   ],
+   "Empty source": [
+    [],
+    0,
+    0
+   ],
+   "Older source row ignored": [
+    [
+     {
+      "id": 7,
+      "updated_at": 105,
+      "value": "fresh"
+     }
+    ],
+    105,
+    0
+   ]
+  }
+ },
+ "word-census": {
+  "hash": "24401fea2722393f",
+  "tests": {
+   "Example": {
+    "the": 2,
+    "plan": 2
+   },
+   "One word": {
+    "hello": 1
+   },
+   "Empty text": {},
+   "Inner punctuation is kept": {
+    "don't": 2,
+    "stop": 1
+   },
+   "Punctuation-only tokens are skipped": {
+    "a": 1,
+    "b": 1
+   }
+  }
+ },
+ "word-search-grid": {
+  "hash": "df558c4d6ec64e7e",
+  "tests": {
+   "Example": [
+    true,
+    true,
+    false
+   ],
+   "Single cell": [
+    true,
+    false
+   ],
+   "Snake path": [
+    true,
+    false
+   ],
+   "Cell reuse is not allowed": [
+    false,
+    true
+   ]
+  }
+ },
+ "words-by-length": {
+  "hash": "5414b4b7c93ece75",
+  "tests": {
+   "Example": {
+    "3": [
+     "dbt",
+     "etl",
+     "sql"
+    ],
+    "5": [
+     "kafka",
+     "spark"
+    ]
+   },
+   "Single word": {
+    "1": [
+     "x"
+    ]
+   },
+   "Empty": {},
+   "Case folds duplicates together": {
+    "4": [
+     "data",
+     "lake"
+    ]
+   }
+  }
+ },
+ "yield-from-tree-paths": {
+  "hash": "4b784c828fa7dcc5",
+  "tests": {
+   "Example": [
+    [
+     "raw/2024/a.csv",
+     10
+    ],
+    [
+     "raw/2024/b.csv",
+     300
+    ]
+   ],
+   "Empty folder": [],
+   "Everything": [
+    [
+     "a/c",
+     2
+    ],
+    [
+     "b",
+     1
+    ]
+   ],
+   "Nothing big enough": []
+  }
+ }
+}

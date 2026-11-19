@@ -1,6 +1,6 @@
 # DataDrill — Question Bank Research & Backlog
 
-> Last updated: 2026-11-18 (company packs) · Companion to `docs/ARCHITECTURE.md` §8.12 (tags) and §13 (content pipeline).
+> Last updated: 2026-11-20 (Python packs) · Companion to `docs/ARCHITECTURE.md` §8.12 (tags) and §13 (content pipeline).
 
 This file records **what interviewers actually ask**, where that was reported, and which of those question *types* DataDrill already covers. Problems in DataDrill are **original** — new scenarios, data and wording written for this site. We never copy another site's statement, data or solution. A **company tag** is added only when a public source attributes that question type to the company, and the source URL is stored with the problem (`sources`), shown as the "Asked at" link, and enforced by `npm run verify:problems`.
 
@@ -18,9 +18,19 @@ This file records **what interviewers actually ask**, where that was reported, a
 | [DEV — Walmart DE questions](https://dev.to/gowthampotureddi/walmart-data-engineering-interview-questions-mem), [GfG — Flipkart DE interview](https://www.geeksforgeeks.org/flipkart-interview-experience-for-data-engineer-1/), [Interview Query — Reddit DE guide](https://www.interviewquery.com/interview-guides/reddit-data-engineer) | Interview experiences / guides | Walmart SKU parsing, Reddit rolling retention; Flipkart (modelling + ETL, no specific queries published) |
 | [gitgood — 50 Bash questions](https://gitgood.dev/blog/top-50-bash-shell-scripting-interview-questions-2026), [hyring — shell questions](https://hyring.com/jobseeker-toolkit/interview-questions/technical/shell-scripting), [Substack — 50 Bash questions](https://arvindverma021.substack.com/p/top-50-bash-scripting-interview-questions) | Log parsing, top-N IPs, awk group-bys, sort/uniq, CSV processing | Shell types (sources name no companies, so Shell has no company tags) |
 
+| [DEV — 28 company DE guides](https://dev.to/gowthampotureddi) (Meta, Amazon, Uber, Airbnb, Microsoft, Google, Netflix, Databricks, Walmart, Stripe, Lyft, PayPal, Intuit, Cisco, Figma, Rivian, Bloomberg, Robinhood, Snowflake, Tesla, Roblox, Agoda, ByteDance, Atlassian, Oracle, Salesforce, Exodus Point, Techpath) | Each guide's "Python interview question on …" sections name the question type | Python types + company tags (`python/sources.js` → `dev()`) |
+| [DataLemur — Python questions](https://datalemur.com/python-interview-questions) | ~50 algorithm questions, each with a company (Capital One, Microsoft, Amazon, Spotify, Google, Bloomberg, TikTok, Apple, Palantir, Tesla, Workday, Uber, Salesforce, Adobe, Walmart, Databricks, D.E. Shaw, AQR, Akuna Capital…) | `dlp()` |
+| [datadriven.io — 415 Python DE questions](https://datadriven.io/python-interview-questions) | 20 worked questions, one per company (Meta, Netflix, Goldman Sachs, Nintendo, Visa, Notion, JPMorgan, LinkedIn, Salesforce, Coinbase, Capital One, Booking.com, Palantir, Lyft, DoorDash, Citadel, Amazon, Google, Uber, Airbnb) + concept frequencies (dicts 36 %, lists 48 %…) | `ddp()`; topic weighting |
+| StrataScratch Python posts ([top 30](https://www.stratascratch.com/blog/top-30-python-interview-questions-and-answers), [data science](https://www.stratascratch.com/blog/python-data-science-interview-questions), [coding](https://www.stratascratch.com/blog/python-coding-interview-questions)) | Company-titled questions (Noom, Twitch, Google, DoorDash, Zillow, Lyft, Meta, Spotify, Box…) | `ss()` |
+| [DataVidhya company guides](https://datavidhya.com/blog/microsoft-data-engineering-interview-guide/) | Sample Python round tasks (Microsoft: flatten nested `line_items` JSON) | `dv()` |
+| GeeksforGeeks DE interview experiences (Paytm, EY, Amazon, Bajaj Finserv, Tiger Analytics, Deloitte, Accenture, Virtusa, Goldman Sachs, Morgan Stanley, Flipkart, LTIMindtree, Infosys, Sigmoid, Cognizant) | Concrete Python questions asked (anagrams, reverse words, git diff, running median, file handling, large CSVs, dummy ETL…) | `gfg()` |
+| [Preplaced — JPMorgan DE interview](https://www.preplaced.in/blog/data-engineer-interview-experience-jp-morgan-chase) | Singleton class, decorators, replace characters in a list | `jpm()` |
+| [Let's Data Science — company problem lists](https://letsdatascience.com/problems/companies) | Company-labelled Python problems (Target, Wayfair, Pinterest, Instacart, Shopify, Etsy, Snap, Verizon, FedEx, Reddit) | `lds()` — only where the type matches |
+| [Advanced Python playlist (181 videos)](https://www.youtube.com/playlist?list=PLI4OVrCFuY556CXnJal2pVbzhz0TOxwd_) | **Video titles only**, used as the syllabus checklist (see §2 "Python syllabus coverage") | Topic coverage of the Python track |
+
 LinkedIn posts and Medium write-ups were also searched; several Medium articles (e.g. "Amazon PySpark questions", "Most asked Amazon DE questions 2025") returned 403 to our fetcher, so nothing from them is used as a source.
 
-## 2. Coverage — what's in the bank (198 problems; SQL 178; 75 companies)
+## 2. Coverage — what's in the bank (499 problems; SQL 178, Python 306; 104 companies)
 
 | Track | Problem (DataDrill, original) | Reported question type it covers | Company tags (source) |
 |---|---|---|---|
@@ -84,9 +94,63 @@ LinkedIn posts and Medium write-ups were also searched; several Medium articles 
 
 All outputs were generated by the reference solutions (`npm run problems:freeze`) and reviewed by hand; problems marked with a company carry their public source.
 
-### Companies represented (75)
+### Python packs (301 problems, `server/content/problems/python/`)
 
-Accenture, Adobe, Airbnb, Alibaba, Amazon, American Express, Bloomberg, Capital One, Cargill, Cisco, CVS Health, Databricks, Dell, Deloitte, Discover, Docusign, DoorDash, eBay, EPAM, Ernst & Young, Etsy, Ford, Goldman Sachs, Google, HiLabs, HPE, IBM, Infosys, Instacart, Intel, Intuit, JPMorgan, Juniper Networks, KPMG, LinkedIn, Lyft, Mastercard, McKinsey, Meta, Microsoft, Morgan Stanley, Nasdaq, Netflix, New York Times, Nielsen, NVIDIA, Oracle, PayPal, Paytm, Pinterest, Progressive, Reddit, Robinhood, Salesforce, Shopify, Snapchat, Snowflake, Spotify, Stripe, Target, TCS, Tesla, The Trade Desk, Tiger Analytics, TikTok, Twilio, Twitter (X), Uber, UnitedHealth, Verizon, VISA, Walmart, Wayfair, Workday, Zomato.
+| Pack | Problems | What it covers |
+|---|---|---|
+| 1 · Strings | 22 | split/join, palindromes, anagrams, counting, IPv4 validation, Roman numerals, base conversion, number → words, enumerate, segment-wise path prefixes |
+| 2 · Collections | 22 | two-sum family, set algebra, dict-as-GROUP-BY, inversion, missing number, longest consecutive, multi-key sorting, merge of sorted lists |
+| 3 · Comprehensions | 10 | list/dict/set comprehensions, chained `for`, if-elif-else expressions, walrus, type semantics of operators |
+| 4 · Functions & scope | 12 | `*args`/`**kwargs`, keyword-only, mutable defaults, multiple returns, functions as objects, nested functions, `global`, LEGB, `globals()`, `__name__ == "__main__"`, composition |
+| 5 · Lambdas & higher-order | 12 | sort keys, filter, map (many iterables), reduce, `partial`, nested lambdas & late binding, function factories, `cmp_to_key`, IIFE |
+| 6 · Recursion | 15 | factorial, primes, memoised Fibonacci, mutual recursion, nested JSON, subsets, permutations, Collatz, Pascal, trailing zeros, Hanoi, cycle-safe manager chains |
+| 7 · Closures & decorators | 13 | `nonlocal`, memoize, timing + `wraps`, retry with backoff, stacking order, type enforcement, rate limiter, class decorators, decorator factories, LRU |
+| 8 · Generators & iterators | 14 | iterator protocol, reusable iterables, batching, windows, infinite generators, pipelines, control-break streams, k-way merge, pagination, `send()`, `cycle`, `yield from`, `groupby`, laziness |
+| 9 · OOP | 16 | classes, class vs instance variables, classmethod/staticmethod, properties, name mangling, isinstance, getattr/setattr, class attributes, nested classes, `__call__`, ABCs, singleton, transactional KV store, LRU, hit counter |
+| 10 · Inheritance & magic methods | 14 | super chains, C3 MRO (implemented), cooperative diamonds, operator overloading, total_ordering, `__eq__`/`__hash__`, sequence protocol, `__str__` vs `__repr__`, singledispatch, mixins, `@`, context managers |
+| 11 · Exceptions | 12 | specific excepts, try/except/else/finally flow, custom hierarchies, `raise … from`, hierarchy introspection, quarantine loaders, traceback reporting, EAFP, asserts, error budgets |
+| 12 · Files & serialisation | 12 | JSON flatten/path/encode/decode hooks, pickle `__getstate__`, csv module, CSV → JSON Lines, schema-tolerant parsing, reconciling pulls, Enum constants, file modes, log aggregation |
+| 13 · Regex | 11 | match/search/fullmatch, findall, named groups, lookaheads, `sub` with functions, SQL table extraction, arithmetic evaluator |
+| 14 · Datetime | 11 | date diffs, weekdays, login streaks, alert windows, business days, durations, mixed formats, UTC offsets, month arithmetic, `time` module, expiring holds |
+| 15 · Logging | 5 | logger setup without duplicates, level routing, ETL summaries, `logger.exception`, redaction filters |
+| 16 · Concurrency | 11 | race conditions, Lock, RLock, semaphores, producer/consumer, lifecycle, Barrier, Timer, daemon threads, deadlock detection, GIL cost model |
+| 17 · DB-API (sqlite3) | 8 | connect/execute/fetch, injection-safe parameters, commit/rollback, fetchmany, JSON inserts, upserts, `cursor.description`, dynamic filters |
+| 18 · Memory & modules | 8 | shallow vs deep copy, deepcopy with memo, reference counting, cycle GC, `sys.path`, `__all__`, relative imports, pip specifiers |
+| 19 · Arrays & search | 17 | sliding windows, prefix sums, Kadane, two pointers, top-k, binary search (bounds, k-th missing, interval lookup), autocomplete |
+| 20 · Stacks, heaps & graphs | 18 | brackets, collisions, monotonic stacks, queues, streaming top-k, running median, platforms, meeting rooms, BFS, union-find, topological sort, trees, LCS diff, word search |
+| 21 · DP, math & matrices | 15 | coin change, stock profit, edit distance, LIS, CIDR bit masks, bit flags, digit math, LCM, sparse matrices, spiral, rotation, Pearson, precision/recall, percentiles |
+| 22 · Data engineering | 22 | snapshot diffs, stream joins, watermarks, idempotency, fee rollups, tiered pricing, checkpoints, SCD2, incremental loads, chunked aggregation, ETL, analytics over records |
+
+Every expected value was produced by the reference solution (`npm run problems:freeze -- --show`) and reviewed.
+
+#### Python syllabus coverage (playlist titles → packs)
+
+| Playlist section (video titles) | Covered in |
+|---|---|
+| pip, PYTHONPATH, virtual environments, packages, `__init__.py`, `__all__` | Pack 18 (module search path, star imports, relative imports, requirements check) |
+| enumerate, list/dict comprehensions, if-elif-else in comprehensions | Packs 1, 3 |
+| Shallow vs deep copy, memory management, reference counting | Pack 18 |
+| Functions: scope, local/global, return, function objects, nested functions, positional/keyword/default/mutable-default/variable-length arguments | Pack 4 |
+| Lambda (sorted, nested, if-else), IIFE, first-class & higher-order functions, filter, map, reduce, partial | Pack 5 |
+| Recursion (factorial, prime, direct/indirect, Fibonacci) | Pack 6 |
+| Namespaces, nonlocal / LEGB, closures, decorators (multiple, examples, smart division), class decorators, globals(), `__main__` | Packs 4, 7 |
+| OOP: classes, constructors, self, class members, built-in class functions/attributes, isinstance, instance/class/static methods, getters & setters, `@property`, `__call__`, abstraction, nested classes, storing objects in lists, destructors | Packs 9, 18 (object lifetime) |
+| Inheritance (single, multi-level, hierarchical, multiple, hybrid), constructor overriding, super, MRO, encapsulation, polymorphism, operator & comparison overloading, method overloading, magic methods | Pack 10 |
+| Exception handling: hierarchy, raise, user-defined exceptions, printing exception info, excepthook, best practices | Pack 11 |
+| Pickling, JSON, constants | Pack 12 |
+| Multithreading: threads, main thread, join, race conditions, Lock, RLock, Semaphore, exceptions, lifecycle, thread communication (Condition, Queue), daemon threads, Timer, Barrier | Pack 16 |
+| Logging: levels, formatting, logger objects, exception details | Pack 15 |
+| Iterators, generators (Fibonacci, chaining) | Pack 8 |
+| Python ↔ MySQL (connect, cursor, execute, commit/rollback, fetchone/many/all, parameterised queries, inserting JSON) | Pack 17 (DB-API on sqlite3 — same API) |
+| time, datetime, timedelta | Pack 14 |
+| Regex (compile, search functions, character classes) | Pack 13 |
+| Disadvantages of Python / why Python is slow, MVT vs MVC | Pack 16 (GIL cost model); MVT/MVC is a web-framework topic, not coded |
+
+### Companies represented (104 across all tracks; 76 on the Python track)
+
+**SQL track companies (75):** Accenture, Adobe, Airbnb, Alibaba, Amazon, American Express, Bloomberg, Capital One, Cargill, Cisco, CVS Health, Databricks, Dell, Deloitte, Discover, Docusign, DoorDash, eBay, EPAM, Ernst & Young, Etsy, Ford, Goldman Sachs, Google, HiLabs, HPE, IBM, Infosys, Instacart, Intel, Intuit, JPMorgan, Juniper Networks, KPMG, LinkedIn, Lyft, Mastercard, McKinsey, Meta, Microsoft, Morgan Stanley, Nasdaq, Netflix, New York Times, Nielsen, NVIDIA, Oracle, PayPal, Paytm, Pinterest, Progressive, Reddit, Robinhood, Salesforce, Shopify, Snapchat, Snowflake, Spotify, Stripe, Target, TCS, Tesla, The Trade Desk, Tiger Analytics, TikTok, Twilio, Twitter (X), Uber, UnitedHealth, Verizon, VISA, Walmart, Wayfair, Workday, Zomato.
+
+**Python track companies (76):** Accenture, Adobe, Agoda, Airbnb, Akuna Capital, Amazon, Apple, AQR, Atlassian, Bajaj Finserv, Bloomberg, Booking.com, Box, ByteDance, Capital One, Cisco, Citadel, Cognizant, Coinbase, D.E. Shaw, Databricks, Deloitte, DoorDash, Ernst & Young, Etsy, Exodus Point, FedEx, Figma, Flipkart, Goldman Sachs, Google, Infosys, Instacart, Intuit, JPMorgan, LinkedIn, LTIMindtree, Lyft, Meta, Microsoft, Morgan Stanley, Netflix, Nielsen, Nintendo, Noom, Notion, Oracle, Palantir, PayPal, Paytm, Pinterest, Reddit, Rivian, Robinhood, Roblox, Salesforce, Shopify, Sigmoid, Snapchat, Snowflake, Spotify, Stripe, Target, Techpath, Tesla, Tiger Analytics, TikTok, Twitch, Uber, Verizon, Virtusa, VISA, Walmart, Wayfair, Workday, Zillow.
 
 Every tag links to the page that reports it (shown as "Asked at …" in the problem brief). A company appears on a problem only when its page reports that question *type*; the problem itself is written from scratch.
 
@@ -108,8 +172,6 @@ Ordered roughly by how often they're reported. "Source" is where the attribution
 | pandas | Avg earnings by weekday × hour | DoorDash (StrataScratch) |
 | pandas | User growth rate month vs month | Salesforce (StrataScratch) |
 | pandas | Year-over-year churn | Uber (StrataScratch) |
-| Python | Streaming aggregation over an iterator (generators) | (DEV datadriven, no company) |
-| Python | Backfill-safe incremental load | (DEV datadriven, no company) |
 | Shell | jq over JSON logs; sed-based cleanup; exit-code handling scripts | (shell interview lists, no company) |
 
 **Process to add one:** write an original scenario → add tests (≥1 visible, ≥2 hidden, including edge cases) → reference solution → tag with the track taxonomy, a pattern and a domain → add a company only with a source → `npm run verify:problems` → `npm run seed`.

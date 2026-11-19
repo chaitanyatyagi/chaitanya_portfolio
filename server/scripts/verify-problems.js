@@ -6,7 +6,8 @@
 //     tag backed by a public source, ≥1 visible + ≥2 hidden tests, table rows
 //     that match the schema / output columns, python entry + signature.
 // Uses the same harness, packages and wheels as the grader's sandboxes.
-//   npm run verify:problems      (run before `npm run seed` / publishing)
+//   npm run verify:problems                      (run before `npm run seed` / publishing)
+//   npm run verify:problems -- --track python    solutions/starters of one track only
 // ---------------------------------------------------------------------------
 import { readFileSync, readdirSync } from 'node:fs';
 import path from 'node:path';
@@ -16,7 +17,7 @@ import { SANDBOX_PACKAGES } from '../grader/packages.js';
 import { buildPayload } from '../../shared/grader/payload.js';
 import { runShell } from '../../shared/grader/shell.js';
 import { Bash } from 'just-bash';
-import { PROBLEMS, RAW_PACK_PROBLEMS, CASE_STUDIES } from '../content/problems/index.js';
+import { PROBLEMS, RAW_PACK_PROBLEMS, CASE_STUDIES, PACK_TRACKS, goldenPath } from '../content/problems/index.js';
 import { ROLES, goldenHash } from '../content/problems/sql/define.js';
 
 const py = await loadPyodide();
@@ -76,6 +77,8 @@ function audit(problem, track) {
   if (problem.track === 'python') {
     need(problem.entry && problem.signature?.startsWith(`${problem.entry}(`), 'python needs entry + matching signature');
     for (const t of tests) need(Array.isArray(t.args), `test "${t.name}" needs args`);
+    // A function that returns nothing must not pass: some test has to expect a value.
+    need(tests.some((t) => t.expected != null), 'every test expects None — add a case that returns a value');
   }
   if (problem.track === 'pyspark' || problem.track === 'pandas') need(problem.entry && problem.signature, 'needs entry + signature');
   if (problem.track === 'shell') for (const t of tests) need(t.files && typeof t.expected === 'string', `test "${t.name}" needs files and a text expected`);
@@ -101,9 +104,9 @@ for (const f of files) {
 if (files.length !== singleFile.length) { failures += 1; console.log(`✗ ${files.length} problem files but ${singleFile.length} registered`); }
 
 // Packs: golden outputs present and current; case studies consistent.
-const goldenFile = JSON.parse(readFileSync(path.join(problemDir, 'sql', 'golden.json'), 'utf8'));
+const goldenFiles = Object.fromEntries(PACK_TRACKS.map((t) => [t, JSON.parse(readFileSync(goldenPath(t), 'utf8'))]));
 for (const p of RAW_PACK_PROBLEMS) {
-  if (goldenFile[p.id]?.hash !== goldenHash(p)) { failures += 1; console.log(`✗ ${p.id}: golden outputs missing or stale — run npm run problems:freeze and review the diff`); }
+  if (goldenFiles[p.track]?.[p.id]?.hash !== goldenHash(p)) { failures += 1; console.log(`✗ ${p.id}: golden outputs missing or stale — run npm run problems:freeze and review the diff`); }
 }
 for (const cs of CASE_STUDIES) {
   const parts = PROBLEMS.filter((p) => p.caseStudy?.id === cs.id).map((p) => p.caseStudy.part).sort((a, b) => a - b);
@@ -111,9 +114,11 @@ for (const cs of CASE_STUDIES) {
   if (!cs.title || !cs.brief || !cs.summary) { failures += 1; console.log(`✗ case study ${cs.id}: needs title, summary and brief`); }
 }
 
+const onlyTrack = process.argv.includes('--track') ? process.argv[process.argv.indexOf('--track') + 1] : null;
 const ids = new Set();
 const summary = {};
 for (const problem of PROBLEMS) {
+  if (onlyTrack && problem.track !== onlyTrack) { ids.add(problem.id); continue; }
   const track = TRACKS.find((t) => t.id === problem.track);
   const errs = track ? audit(problem, track) : ['unknown track'];
   if (ids.has(problem.id)) errs.push('duplicate id');

@@ -30,11 +30,22 @@ export const TRACKS = [
   },
   {
     id: 'python', title: 'Python', short: 'Python', kind: 'editor', status: 'live', icon: 'python', course: null,
-    blurb: 'Data wrangling, parsing, dedup and file-processing problems — the DE flavour of Python.',
+    blurb: 'Core Python in depth — functions, closures, decorators, generators, OOP, exceptions — plus the parsing, streaming and DSA problems data interviews ask.',
     topics: [
+      // language core
       'Strings', 'Lists & Tuples', 'Dicts & Sets', 'Sorting', 'Comprehensions', 'Functions & Lambdas',
-      'Generators & Iterators', 'Parsing (CSV / JSON)', 'Data Wrangling', 'Datetime', 'Error Handling',
-      'OOP', 'Intervals & Sessions', 'Recursion',
+      'Arguments & Scope', 'Higher-Order Functions', 'Closures & Decorators', 'Generators & Iterators',
+      'Recursion', 'Copying & Mutability', 'Modules & Packages',
+      // object-oriented Python
+      'OOP', 'Inheritance & MRO', 'Magic Methods',
+      // standard library & runtime
+      'Error Handling', 'Parsing (CSV / JSON)', 'Serialization', 'Regular Expressions', 'Datetime', 'Logging',
+      'Concurrency', 'Database Access (DB-API)', 'Collections & itertools',
+      // data engineering
+      'Data Wrangling', 'Intervals & Sessions', 'Streaming & State',
+      // algorithms interviews ask
+      'Hash Maps & Counting', 'Two Pointers & Sliding Window', 'Stacks & Queues', 'Heaps', 'Binary Search',
+      'Graphs (BFS / DFS)', 'Trees', 'Dynamic Programming', 'Math & Bits', 'Matrices',
     ],
   },
   {

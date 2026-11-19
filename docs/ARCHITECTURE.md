@@ -4,7 +4,7 @@
 >
 > **Maintenance rule.** This document is part of the code. Any change that adds or alters behaviour — a new endpoint, table, track, config knob, failure mode or design decision — updates the relevant section **and** adds a line to the [Decision log](#19-decision-log) in the same change. If the doc and the code disagree, that is a bug.
 >
-> Last updated: 2026-11-19
+> Last updated: 2026-11-20
 
 ---
 
@@ -218,8 +218,9 @@ portfolio-react/
     │   └── wheels/               ← pinned sqlframe/sqlglot/prettytable wheels
     ├── migrations/*.sql          ← schema, applied in order, never edited after release
     ├── content/                  ← SEED SOURCE: courses.js + courses/*.md, tracks.js,
-    │                                challenges.js, problems/*.js, docs.js (docs manifest)
-    ├── scripts/                  ← migrate, seed, make-admin, seed-test-users, verify-problems, loadtest
+    │                                challenges.js, problems/*.js, docs.js (docs manifest);
+    │                                problems/<sql|python>/pack-*.js + define.js + golden.json (§13.2)
+    ├── scripts/                  ← migrate, seed, make-admin, seed-test-users, verify-problems, freeze-expected, loadtest
     ├── test/api.test.js          ← integration tests (real HTTP, Postgres, grader)
     ├── test/contest-rules.test.js← unit tests: problem draw + standings
     ├── legacy/                   ← MongoDB CMS router, models, default content
@@ -642,7 +643,7 @@ The track page filters by topic (sidebar), difficulty, company, pattern and stat
 
 **The bank** (198 problems: SQL 178 — 52 Easy / 81 Medium / 45 Hard, 4 case studies, 111 with sourced company tags across 75 companies — plus Python 5, PySpark 5, pandas 5, Shell 5) and the research behind it — sources studied, which reported question types each problem covers, and a backlog of the ones not yet written — live in [`docs/QUESTION_BANK.md`](QUESTION_BANK.md).
 
-**Content audit** (`npm run verify:problems`), run before every seed: required fields; topics from the taxonomy; ≥ 1 pattern and domain; every company backed by an https source; ≥ 1 visible and ≥ 2 hidden tests with unique names; table rows matching the schema and output columns; Python `entry` matching its signature; then the reference solution must pass every test and the starter must fail at least one. Shell solutions are additionally cross-checked on real `/bin/bash` (just-bash compatibility).
+**Content audit** (`npm run verify:problems`), run before every seed: required fields; topics from the taxonomy; ≥ 1 pattern and domain; every company backed by an https source; ≥ 1 visible and ≥ 2 hidden tests with unique names; table rows matching the schema and output columns; Python `entry` matching its signature and at least one test expecting a non-`None` value; then the reference solution must pass every test and the starter must fail at least one. Shell solutions are additionally cross-checked on real `/bin/bash` (just-bash compatibility).
 
 ### 8.13 Points
 
@@ -1029,13 +1030,24 @@ Sync rules differ on purpose: **docs are synced automatically on every API boot*
 
 ---
 
-### 13.2 Authoring at volume: SQL packs and golden outputs
+### 13.2 Authoring at volume: packs (SQL, Python) and golden outputs
 
 SQL problems beyond the first few live in **packs** (`server/content/problems/sql/pack-*.js`, loaded automatically — no registry to forget) written with the compact `sql({...})` helper (`sql/define.js`): schema as a one-line spec per table, tests as data only.
 
 **Golden outputs.** Expected results aren't hand-typed. `npm run problems:freeze` runs each reference solution on each test in the same DuckDB/Pyodide harness the grader uses and stores the result (and the output columns) in `sql/golden.json` with a fingerprint of the problem's schema, data and solution. `npm run problems:freeze -- --show` prints every output for **human review** — this is where wrong solutions are caught (examples found while writing the bank: a funnel reporting 100 % conversion after a step with 0 users, an SCD2 query splitting consecutive NULLs into two versions, a DuckDB quirk that drops rows after an empty lateral `generate_series`). `verify:problems` fails when a pack problem's golden output is missing or **stale** (fingerprint mismatch), and requires at least one test with a non-empty expected result.
 
 Workflow: write/edit a pack → `npm run problems:freeze -- --show` → review the diff of `golden.json` → `npm run verify:problems` → `npm run seed`.
+
+**Python packs** (`server/content/problems/python/pack-*.js`, 22 packs, 301 problems) use the same mechanism with `python({...})` from `python/define.js`: tests are `ex(name, ...args)` (visible) and `hid(name, ...args)` (hidden), and the frozen value is the reference solution's return value **as the grader normalises it** (`_norm`: tuples → lists, sets → sorted lists, dict keys → strings, floats rounded to 4), stored in `python/golden.json`. The loader (`content/problems/index.js`, `PACK_TRACKS`) reads every `<track>/pack-*.js` and attaches `<track>/golden.json`; `goldenHash` fingerprints `schema`, `solution` and each test's `tables`/`args` (undefined keys drop out, so SQL hashes didn't change). The freeze also:
+
+* refuses outputs containing integers beyond 2⁵³ — JSON in JS (and the stored expected value) can't hold them exactly, so such a test could never be graded reliably;
+* prunes golden entries whose problem was renamed or removed.
+
+**Driver pattern.** Tests can only pass positional JSON args, so problems about *how* code is called — `*args/**kwargs`, mutable defaults, decorators, classes, generators, context managers, pickling — ship a starter containing the stub plus a small `run(...)` driver that the tests call (“don't change it”). The learner edits the stub; hidden tests still exercise behaviour.
+
+**Sandbox limits shape the content.** Pyodide can't start OS threads or run `asyncio` event loops (no stack switching), so the concurrency pack models threading deterministically (interleavings, lock ownership, semaphore slots, barriers, deadlock graphs) while still using real `threading.Lock`/`queue` objects. `sqlite3` *is* in the Python 3.14 Pyodide stdlib (browser and grader alike), so the database pack teaches DB-API on an in-memory SQLite database. Class pickling needs the driver to register the exec'd module in `sys.modules` (classes live in `__solution__`).
+
+`npm run verify:problems -- --track python` re-runs only one track's solutions and starters while iterating (the registry and golden checks still cover everything).
 
 ## 14. Testing
 
@@ -1208,6 +1220,9 @@ These passwords are public — never create these accounts on a real deployment.
 | 2026-11-19 | **Lineage theme** replaces Data Arcade: neutral paper, Geist 600 two-tone headlines, Geist Mono labels, hairline structure, one green "pass" accent; landing rebuilt product-first (live hero demo, real catalog numbers, walkthrough, tracks table, grading panel) with tighter 112 px section rhythm (§11.1) | Arcade read as playful but not trustworthy; reviewing 12 reference sites and dev-tool landing research favoured a calm, product-first page whose motion only demonstrates the product |
 | 2026-11-19 | Dot-grid page ground for Lineage (1 px dots / 22 px), with text-heavy blocks on plain paper and a fade behind the hero (§11.1) | Adds texture and an engineering-paper feel without competing with the hairline tables; a line grid was tried and rejected because it echoed the table rules |
 | 2026-11-19 | Finer dotted-paper ground (0.75 px / 5 px, staggered, no patches); tags become plain text; track filters become one toolbar with a custom `Dropdown`; problem facts as a list; profile rebuilt as header + stats strip + open sections (§11.1) | The 22 px dot grid with paper patches flickered between blocks, and boxed chips and cards everywhere made the practice screens noisy; a calmer, more typographic treatment fits the serious tone |
+| 2026-11-20 | **Python packs + golden values**: `python({...})` packs auto-loaded per track (`PACK_TRACKS`), expected values frozen from reference solutions into `python/golden.json`; freeze refuses integers beyond 2⁵³ and prunes orphans; `verify:problems -- --track` (§13.2) | 300 hand-typed expected values would have been error-prone; reviewing frozen outputs caught real slips (a wrong palindrome example, a hanging race-condition drain, a precision-losing `fib(90)`) |
+| 2026-11-20 | Python track 5 → 306 problems; taxonomy 14 → 38 topics (arguments & scope, closures & decorators, OOP / MRO / magic methods, logging, concurrency, DB-API, modules, DSA topics); 76 companies with sources (`python/sources.js`) | User request: every Python topic in depth (syllabus from the referenced 181-video advanced-Python playlist, titles only) plus interview questions reported at 70+ companies |
+| 2026-11-20 | Concurrency taught as deterministic simulations; DB-API taught on sqlite3; driver functions for call-shape topics (§13.2) | The WebAssembly sandbox can't start threads, but grading must be identical in browser and grader |
 
 ---
 

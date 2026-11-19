@@ -43,8 +43,10 @@ export function sql(p) {
 // Fingerprint of everything that determines a problem's outputs. golden.json
 // stores it; verify:problems fails when they differ (stale golden outputs).
 import { createHash } from 'node:crypto';
+// Shared by every pack track: SQL tests carry `tables`, Python tests `args`
+// (undefined keys drop out of the JSON, so SQL hashes are unchanged by `args`).
 export const goldenHash = (p) => createHash('sha256')
-  .update(JSON.stringify({ schema: p.schema, solution: p.solution, tests: p.tests.map(({ name, tables }) => ({ name, tables })) }))
+  .update(JSON.stringify({ schema: p.schema, solution: p.solution, tests: p.tests.map(({ name, tables, args }) => ({ name, tables, args })) }))
   .digest('hex').slice(0, 16);
 
 // Multi-line markdown without template-literal escaping: md('line', 'line').
