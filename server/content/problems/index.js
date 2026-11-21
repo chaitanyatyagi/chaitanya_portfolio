@@ -87,7 +87,8 @@ const SINGLE_FILE = [
 // Each pack exports { problems: [sql({...}) | python({...}), …], caseStudies?: [...] }.
 // Expected outputs are attached from <track>/golden.json (see sql/define.js,
 // python/define.js); `npm run problems:freeze` writes them.
-export const PACK_TRACKS = ['sql', 'python'];
+export const PACK_TRACKS = ['sql', 'python', 'pyspark', 'dsa'];
+const TABLE_TRACKS = new Set(['sql', 'pyspark']);
 const here = path.dirname(fileURLToPath(import.meta.url));
 export const goldenPath = (track) => path.join(here, track, 'golden.json');
 const golden = {};
@@ -103,7 +104,7 @@ function withGolden(p) {
   const g = golden[p.track]?.[p.id];
   return {
     ...p,
-    ...(p.track === 'sql' ? { outputColumns: p.outputColumns || g?.columns } : {}),
+    ...(TABLE_TRACKS.has(p.track) ? { outputColumns: p.outputColumns || g?.columns } : {}),
     tests: p.tests.map((t) => (t.expected === undefined && g?.tests && t.name in g.tests ? { ...t, expected: g.tests[t.name] } : t)),
   };
 }

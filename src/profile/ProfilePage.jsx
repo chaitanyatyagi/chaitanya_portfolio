@@ -15,7 +15,7 @@ import { fmtClock } from '../contests/useContest.js';
 // ---------------------------------------------------------------------------
 
 const TZ = Intl.DateTimeFormat().resolvedOptions().timeZone || 'UTC';
-const TRACK_ICONS = { sql: 'sql', python: 'python', pyspark: 'spark', pandas: 'pandas', shell: 'terminal' };
+const TRACK_ICONS = { sql: 'sql', python: 'python', dsa: 'code', pyspark: 'spark', pandas: 'pandas', shell: 'terminal' };
 const ago = (iso) => {
   const s = Math.round((Date.now() - new Date(iso).getTime()) / 1000);
   if (s < 3600) return `${Math.max(1, Math.floor(s / 60))} min ago`;

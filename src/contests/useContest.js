@@ -98,5 +98,5 @@ export function fmtClock(ms) {
   return `${h ? `${h}:` : ''}${String(m).padStart(h ? 2 : 1, '0')}:${String(s).padStart(2, '0')}`;
 }
 
-export const TRACK_LABEL = { sql: 'SQL', python: 'Python', pyspark: 'PySpark', pandas: 'pandas', shell: 'Shell' };
+export const TRACK_LABEL = { sql: 'SQL', python: 'Python', dsa: 'DSA', pyspark: 'PySpark', pandas: 'pandas', shell: 'Shell' };
 export const POOL_LABEL = { unsolved: 'Unsolved', solved: 'Solved (revise)', both: 'Both, unsolved first' };

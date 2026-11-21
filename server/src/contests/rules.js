@@ -7,7 +7,7 @@
 import { randomInt } from 'node:crypto';
 
 export const PENALTY_MS = 5 * 60_000;           // per wrong attempt on a problem you went on to solve
-export const CODE_TRACKS = ['sql', 'python', 'pyspark', 'pandas', 'shell'];
+export const CODE_TRACKS = ['sql', 'python', 'dsa', 'pyspark', 'pandas', 'shell'];
 export const POOLS = ['unsolved', 'solved', 'both'];
 const DIFF_ORDER = { Easy: 0, Medium: 1, Hard: 2 };
 

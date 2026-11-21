@@ -142,6 +142,36 @@
    ]
   }
  },
+ "argparse-cli": {
+  "hash": "f8f5ee3b89ec10ae",
+  "tests": {
+   "Example": [
+    {
+     "table": "orders",
+     "start": "2024-01-01",
+     "days": 7,
+     "dry_run": true,
+     "mode": "append"
+    },
+    {
+     "table": "users",
+     "start": "2024-02-01",
+     "days": 1,
+     "dry_run": false,
+     "mode": "append"
+    }
+   ],
+   "Invalid choice": [
+    "error"
+   ],
+   "Missing required option": [
+    "error"
+   ],
+   "Bad int": [
+    "error"
+   ]
+  }
+ },
  "arithmetic-evaluator": {
   "hash": "cb2b40fd7362e24a",
   "tests": {
@@ -366,6 +396,51 @@
    "Ties alphabetical, stops at dead end": "go home go home go"
   }
  },
+ "bisect-leaderboard": {
+  "hash": "3306a159bf3d7099",
+  "tests": {
+   "Example": [
+    [
+     1,
+     3,
+     0
+    ],
+    [
+     20,
+     50,
+     80
+    ]
+   ],
+   "Ties": [
+    [
+     0,
+     2
+    ],
+    [
+     5,
+     5
+    ]
+   ],
+   "Empty board": [
+    [
+     0
+    ],
+    []
+   ],
+   "Interleaved": [
+    [
+     1,
+     2,
+     3
+    ],
+    [
+     1,
+     3,
+     9
+    ]
+   ]
+  }
+ },
  "booking-lead-time": {
   "hash": "81b90fe78f59a172",
   "tests": {
@@ -541,6 +616,58 @@
    ]
   }
  },
+ "cached-property-report": {
+  "hash": "d2d29b43744d480e",
+  "tests": {
+   "Example": [
+    [
+     1,
+     3,
+     2
+    ],
+    [
+     1,
+     3,
+     2
+    ],
+    [
+     10,
+     20,
+     15
+    ],
+    2
+   ],
+   "Never read": [
+    0
+   ],
+   "Refresh before first read": [
+    [
+     5,
+     5,
+     5
+    ],
+    [
+     5,
+     5,
+     5
+    ],
+    1
+   ],
+   "Two refreshes": [
+    [
+     4,
+     4,
+     4
+    ],
+    [
+     9,
+     9,
+     9
+    ],
+    2
+   ]
+  }
+ },
  "callable-objects": {
   "hash": "069ca0d177ef4f88",
   "tests": {
@@ -696,6 +823,75 @@
     "+----------+",
     "|   data   |",
     "+----------+"
+   ]
+  }
+ },
+ "chainmap-config": {
+  "hash": "65aa0dc23eb09e8d",
+  "tests": {
+   "Example": [
+    [
+     8,
+     "eu",
+     false,
+     null
+    ],
+    [
+     "cli",
+     "env",
+     "defaults",
+     null
+    ],
+    [
+     "debug",
+     "region",
+     "workers"
+    ],
+    "cli"
+   ],
+   "Only defaults": [
+    [
+     1
+    ],
+    [
+     "defaults"
+    ],
+    [
+     "a",
+     "debug"
+    ],
+    "cli"
+   ],
+   "Env overrides defaults": [
+    [
+     2,
+     3
+    ],
+    [
+     "env",
+     "defaults"
+    ],
+    [
+     "a",
+     "b",
+     "debug"
+    ],
+    "cli"
+   ],
+   "Cli wins over everything": [
+    [
+     9,
+     null
+    ],
+    [
+     "cli",
+     null
+    ],
+    [
+     "a",
+     "debug"
+    ],
+    "cli"
    ]
   }
  },
@@ -955,6 +1151,127 @@
    "Empty": []
   }
  },
+ "combinatorics-itertools": {
+  "hash": "ecb8937abef7a010",
+  "tests": {
+   "Example": [
+    [
+     [
+      "chrome",
+      "en"
+     ],
+     [
+      "chrome",
+      "fr"
+     ],
+     [
+      "safari",
+      "en"
+     ],
+     [
+      "safari",
+      "fr"
+     ]
+    ],
+    3,
+    [
+     "a>b",
+     "a>c",
+     "b>a",
+     "b>c",
+     "c>a",
+     "c>b"
+    ],
+    [
+     "a+a",
+     "a+b",
+     "a+c",
+     "b+b",
+     "b+c",
+     "c+c"
+    ]
+   ],
+   "Single dimension": [
+    [
+     [
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ]
+    ],
+    0,
+    [],
+    [
+     "x+x"
+    ]
+   ],
+   "Empty items": [
+    [
+     [
+      "only"
+     ]
+    ],
+    0,
+    [],
+    []
+   ],
+   "Three dimensions": [
+    [
+     [
+      "a",
+      1,
+      "x"
+     ],
+     [
+      "a",
+      1,
+      "y"
+     ],
+     [
+      "b",
+      1,
+      "x"
+     ],
+     [
+      "b",
+      1,
+      "y"
+     ]
+    ],
+    6,
+    [
+     "p>q",
+     "p>r",
+     "p>s",
+     "q>p",
+     "q>r",
+     "q>s",
+     "r>p",
+     "r>q",
+     "r>s",
+     "s>p",
+     "s>q",
+     "s>r"
+    ],
+    [
+     "p+p",
+     "p+q",
+     "p+r",
+     "p+s",
+     "q+q",
+     "q+r",
+     "q+s",
+     "r+r",
+     "r+s",
+     "s+s"
+    ]
+   ]
+  }
+ },
  "commit-rollback-transfer": {
   "hash": "58c7aa45493ea299",
   "tests": {
@@ -1080,6 +1397,146 @@
    ]
   }
  },
+ "compress-base64": {
+  "hash": "d5a804e805d05eb4",
+  "tests": {
+   "Example": [
+    [
+     56,
+     35,
+     48,
+     true
+    ],
+    [
+     2,
+     10,
+     16,
+     true
+    ]
+   ],
+   "Empty string": [
+    [
+     0,
+     8,
+     12,
+     true
+    ]
+   ],
+   "Highly repetitive": [
+    [
+     1000,
+     17,
+     24,
+     true
+    ]
+   ],
+   "Unicode text": [
+    [
+     35,
+     30,
+     40,
+     true
+    ]
+   ]
+  }
+ },
+ "condition-producer-consumer": {
+  "hash": "529bdeb1868c3733",
+  "tests": {
+   "Example": [
+    [
+     "c1:x",
+     "c2:y"
+    ],
+    [
+     "z"
+    ],
+    []
+   ],
+   "Broadcast with one item": [
+    [],
+    [],
+    [
+     "a",
+     "b"
+    ]
+   ],
+   "Broadcast after items queue up": [
+    [
+     "a:p",
+     "b:q"
+    ],
+    [],
+    [
+     "c"
+    ]
+   ],
+   "Nobody waiting": [
+    [
+     "k:1"
+    ],
+    [
+     "2"
+    ],
+    []
+   ]
+  }
+ },
+ "configparser-ini": {
+  "hash": "5360bfb12f19f35c",
+  "tests": {
+   "Example": [
+    [
+     "replica",
+     "rep.internal",
+     6432,
+     false,
+     5
+    ],
+    [
+     "warehouse",
+     "wh.internal",
+     5432,
+     true,
+     3
+    ]
+   ],
+   "Single section": [
+    [
+     "db",
+     "x",
+     1,
+     true,
+     3
+    ]
+   ],
+   "Comments and spacing": [
+    [
+     "a",
+     "h",
+     10,
+     false,
+     3
+    ]
+   ],
+   "Defaults everywhere": [
+    [
+     "a",
+     "shared",
+     80,
+     false,
+     9
+    ],
+    [
+     "b",
+     "shared",
+     80,
+     false,
+     1
+    ]
+   ]
+  }
+ },
  "consecutive-login-days": {
   "hash": "00bbf2de3195b05e",
   "tests": {
@@ -1158,6 +1615,30 @@
      "rollback KeyError"
     ]
    ]
+  }
+ },
+ "contextmanager-timer": {
+  "hash": "e9811ef672f46bb9",
+  "tests": {
+   "Example": [
+    "start extract",
+    "done extract 3",
+    "start load",
+    "fail load ValueError"
+   ],
+   "Single step": [
+    "start only",
+    "done only 0"
+   ],
+   "Different errors": [
+    "start a",
+    "fail a KeyError",
+    "start b",
+    "done b 1",
+    "start c",
+    "fail c ValueError"
+   ],
+   "No steps": []
   }
  },
  "coroutine-running-stats": {
@@ -1300,6 +1781,75 @@
     ],
     [],
     true
+   ]
+  }
+ },
+ "counter-arithmetic": {
+  "hash": "970369c2f4b859a3",
+  "tests": {
+   "Example": [
+    {
+     "A": 2,
+     "C": 10
+    },
+    {
+     "B": 2
+    },
+    false,
+    [
+     [
+      "C",
+      10
+     ],
+     [
+      "A",
+      5
+     ]
+    ]
+   ],
+   "Everything available": [
+    {},
+    {},
+    true,
+    [
+     [
+      "X",
+      1
+     ]
+    ]
+   ],
+   "Unknown sku ordered": [
+    {
+     "A": 1
+    },
+    {
+     "Z": 2
+    },
+    false,
+    [
+     [
+      "A",
+      1
+     ]
+    ]
+   ],
+   "Nothing ordered": [
+    {
+     "A": 3,
+     "B": 1
+    },
+    {},
+    true,
+    [
+     [
+      "A",
+      3
+     ],
+     [
+      "B",
+      1
+     ]
+    ]
    ]
   }
  },
@@ -1661,6 +2211,62 @@
    ]
   }
  },
+ "dataclass-records": {
+  "hash": "337e02fe158e4163",
+  "tests": {
+   "Example": [
+    "invalid",
+    [
+     "A",
+     1,
+     9.99,
+     9.99
+    ],
+    [
+     "B",
+     2,
+     1.5,
+     3
+    ],
+    true
+   ],
+   "All invalid": [
+    "invalid",
+    false
+   ],
+   "Ordering by later fields": [
+    [
+     "A",
+     1,
+     2,
+     2
+    ],
+    [
+     "A",
+     1,
+     5,
+     5
+    ],
+    [
+     "A",
+     2,
+     1,
+     2
+    ],
+    true
+   ],
+   "Negative price": [
+    "invalid",
+    [
+     "Y",
+     3,
+     0,
+     0
+    ],
+    true
+   ]
+  }
+ },
  "days-at-number-one": {
   "hash": "43fe37224a9dfcb9",
   "tests": {
@@ -1738,6 +2344,69 @@
     "C"
    ],
    "Waiting on a free lock": []
+  }
+ },
+ "decimal-money-rounding": {
+  "hash": "e2ba7c5ea140fa7e",
+  "tests": {
+   "Example": [
+    [
+     2.67,
+     "2.68",
+     "2.68"
+    ],
+    [
+     1,
+     "1.01",
+     "1.00"
+    ],
+    [
+     0.12,
+     "0.13",
+     "0.12"
+    ]
+   ],
+   "No rounding needed": [
+    [
+     3.1,
+     "3.10",
+     "3.10"
+    ]
+   ],
+   "Half-even differences": [
+    [
+     0.14,
+     "0.14",
+     "0.14"
+    ],
+    [
+     0.14,
+     "0.15",
+     "0.14"
+    ],
+    [
+     -1.55,
+     "-1.56",
+     "-1.56"
+    ]
+   ],
+   "Large and tiny amounts": [
+    [
+     123456.79,
+     "123456.79",
+     "123456.78"
+    ],
+    [
+     0.01,
+     "0.01",
+     "0.00"
+    ],
+    [
+     0,
+     "-0.00",
+     "-0.00"
+    ]
+   ]
   }
  },
  "decorator-stacking-order": {
@@ -2070,6 +2739,80 @@
    ]
   }
  },
+ "enum-flag-permissions": {
+  "hash": "79249fa1a3e0ac2c",
+  "tests": {
+   "Example": [
+    [
+     1,
+     false,
+     false,
+     [
+      "READ"
+     ]
+    ],
+    [
+     3,
+     true,
+     false,
+     [
+      "READ",
+      "WRITE"
+     ]
+    ],
+    [
+     7,
+     true,
+     true,
+     [
+      "DELETE",
+      "READ",
+      "WRITE"
+     ]
+    ]
+   ],
+   "No permissions": [
+    [
+     0,
+     false,
+     false,
+     []
+    ]
+   ],
+   "Duplicates collapse": [
+    [
+     5,
+     false,
+     false,
+     [
+      "DELETE",
+      "READ"
+     ]
+    ]
+   ],
+   "Write and delete": [
+    [
+     6,
+     true,
+     false,
+     [
+      "DELETE",
+      "WRITE"
+     ]
+    ],
+    [
+     7,
+     true,
+     true,
+     [
+      "DELETE",
+      "READ",
+      "WRITE"
+     ]
+    ]
+   ]
+  }
+ },
  "epoch-time-module": {
   "hash": "a8e72fae5ca827a9",
   "tests": {
@@ -2255,6 +2998,33 @@
    ]
   }
  },
+ "exception-groups": {
+  "hash": "960097d1d016814b",
+  "tests": {
+   "Example": [
+    2,
+    1,
+    []
+   ],
+   "Unhandled type error": [
+    1,
+    0,
+    [
+     "TypeError"
+    ]
+   ],
+   "Nothing fails": [
+    0,
+    0,
+    []
+   ],
+   "Only key errors": [
+    0,
+    3,
+    []
+   ]
+  }
+ },
  "exception-hierarchy-paths": {
   "hash": "9e4b92a183ef9700",
   "tests": {
@@ -2337,6 +3107,119 @@
      false,
      false,
      false
+    ]
+   ]
+  }
+ },
+ "executor-map-order": {
+  "hash": "a13278c4bd746dd4",
+  "tests": {
+   "Example": [
+    [
+     "a",
+     "b",
+     "c",
+     "d"
+    ],
+    [
+     "b",
+     "c",
+     "a",
+     "d"
+    ],
+    [
+     0,
+     1,
+     1,
+     1
+    ],
+    4
+   ],
+   "One worker": [
+    [
+     "x",
+     "y"
+    ],
+    [
+     "x",
+     "y"
+    ],
+    [
+     0,
+     0
+    ],
+    3
+   ],
+   "More workers than jobs": [
+    [
+     "p",
+     "q"
+    ],
+    [
+     "q",
+     "p"
+    ],
+    [
+     0,
+     1
+    ],
+    3
+   ],
+   "Long first job": [
+    [
+     "big",
+     "s1",
+     "s2",
+     "s3"
+    ],
+    [
+     "s1",
+     "s2",
+     "s3",
+     "big"
+    ],
+    [
+     0,
+     1,
+     1,
+     1
+    ],
+    10
+   ]
+  }
+ },
+ "exitstack-resources": {
+  "hash": "39d2e6c271ea3209",
+  "tests": {
+   "Example": [
+    "ok",
+    [
+     "open db",
+     "open cache",
+     "open queue",
+     "work",
+     "close queue",
+     "close cache",
+     "close db"
+    ]
+   ],
+   "Third fails": [
+    "failed at queue",
+    [
+     "open db",
+     "open cache",
+     "close cache",
+     "close db"
+    ]
+   ],
+   "First fails": [
+    "failed at a",
+    []
+   ],
+   "No resources": [
+    "ok",
+    [
+     "work"
     ]
    ]
   }
@@ -2771,6 +3654,80 @@
    ]
   }
  },
+ "format-text-table": {
+  "hash": "694a202b7651ce5c",
+  "tests": {
+   "Example": [
+    "name     count      amount",
+    "--------------------------",
+    "orders      12    1,234.50",
+    "refunds      3      100.00"
+   ],
+   "Short names": [
+    "name  count      amount",
+    "-----------------------",
+    "a         1        1.00"
+   ],
+   "No rows": [
+    "name  count      amount",
+    "-----------------------"
+   ],
+   "Long name and big amount": [
+    "name                   count      amount",
+    "----------------------------------------",
+    "very_long_metric_name  12345  9,876,543.22"
+   ]
+  }
+ },
+ "gather-vs-as-completed": {
+  "hash": "2d48317da763a5eb",
+  "tests": {
+   "Example": [
+    [
+     "a",
+     "b",
+     "c"
+    ],
+    [
+     "b",
+     "c",
+     "a"
+    ],
+    3
+   ],
+   "Limit of one is sequential": [
+    [
+     "a",
+     "b"
+    ],
+    [
+     "a",
+     "b"
+    ],
+    4
+   ],
+   "Limit two": [
+    [
+     "a",
+     "b",
+     "c",
+     "d"
+    ],
+    [
+     "a",
+     "b",
+     "c",
+     "d"
+    ],
+    3
+   ],
+   "No calls": [
+    [],
+    [],
+    0
+   ]
+  }
+ },
  "gc-unreachable-cycles": {
   "hash": "05397ef25390ff7a",
   "tests": {
@@ -2786,6 +3743,96 @@
    "Self loop": [
     "s"
    ]
+  }
+ },
+ "generator-close-throw": {
+  "hash": "fe07fb5c711f5ad5",
+  "tests": {
+   "Exhaust": [
+    [
+     0,
+     1,
+     2
+    ],
+    [
+     "open",
+     "closed"
+    ]
+   ],
+   "Stop early": [
+    [
+     0,
+     1
+    ],
+    [
+     "open",
+     "closed"
+    ]
+   ],
+   "Throw": [
+    [
+     0
+    ],
+    [
+     "open",
+     "bad row",
+     "closed"
+    ]
+   ],
+   "Empty generator": [
+    [],
+    [
+     "open",
+     "closed"
+    ]
+   ]
+  }
+ },
+ "generator-event-loop": {
+  "hash": "8d7d32a9566df026",
+  "tests": {
+   "Example": [
+    [
+     "log",
+     "log done",
+     0
+    ],
+    [
+     "parse",
+     "parse done",
+     1
+    ],
+    [
+     "fetch",
+     "fetch done",
+     3
+    ]
+   ],
+   "Ties keep start order": [
+    [
+     "a",
+     "a done",
+     1
+    ],
+    [
+     "b",
+     "b done",
+     1
+    ]
+   ],
+   "Many steps": [
+    [
+     "busy",
+     "busy done",
+     4
+    ],
+    [
+     "slow",
+     "slow done",
+     5
+    ]
+   ],
+   "No tasks": []
   }
  },
  "generator-pipeline": {
@@ -2816,6 +3863,43 @@
     [
      "/z",
      1
+    ]
+   ]
+  }
+ },
+ "getattr-lazy-proxy": {
+  "hash": "41c5fc41f7e829db",
+  "tests": {
+   "Example": [
+    [
+     "eu-west-1",
+     "pong",
+     "eu-west-1"
+    ],
+    [
+     "created"
+    ]
+   ],
+   "Never used": [
+    [],
+    []
+   ],
+   "Method first": [
+    [
+     "pong"
+    ],
+    [
+     "created"
+    ]
+   ],
+   "Attribute repeated": [
+    [
+     "eu-west-1",
+     "eu-west-1",
+     "eu-west-1"
+    ],
+    [
+     "created"
     ]
    ]
   }
@@ -3040,6 +4124,62 @@
    ]
   }
  },
+ "hash-partitioning": {
+  "hash": "f22555dda7535da0",
+  "tests": {
+   "Example": [
+    [
+     1,
+     0,
+     2,
+     0
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "Single partition": [
+    [
+     0,
+     0
+    ],
+    [
+     2
+    ]
+   ],
+   "Repeated keys land together": [
+    [
+     3,
+     3,
+     3
+    ],
+    [
+     0,
+     0,
+     0,
+     3
+    ]
+   ],
+   "Many keys": [
+    [
+     1,
+     1,
+     1,
+     1,
+     0,
+     1,
+     1,
+     1
+    ],
+    [
+     1,
+     7
+    ]
+   ]
+  }
+ },
  "highest-paid-titles": {
   "hash": "5271db336b6e424a",
   "tests": {
@@ -3220,6 +4360,15 @@
     "x",
     null
    ]
+  }
+ },
+ "init-subclass-registry": {
+  "hash": "371b802c3ffcc36a",
+  "tests": {
+   "Example": "HELLO",
+   "Unknown transform": "unknown: base64",
+   "Inherited registration": "CBA",
+   "Empty pipeline": " keep "
   }
  },
  "insert-json-records": {
@@ -3407,6 +4556,169 @@
      true
     ]
    ]
+  }
+ },
+ "itertools-toolbox": {
+  "hash": "dd665cb2592cd95b",
+  "tests": {
+   "Example": {
+    "running": [
+     1,
+     4,
+     10,
+     20
+    ],
+    "deltas": [
+     2,
+     3,
+     4
+    ],
+    "flat": [
+     "a",
+     "b",
+     "c"
+    ],
+    "kept": [
+     1,
+     6,
+     10
+    ],
+    "zipped": [
+     [
+      1,
+      [
+       "a"
+      ]
+     ],
+     [
+      3,
+      [
+       "b",
+       "c"
+      ]
+     ],
+     [
+      6,
+      null
+     ],
+     [
+      10,
+      null
+     ]
+    ],
+    "products": [
+     3,
+     18,
+     60
+    ]
+   },
+   "Single value": {
+    "running": [
+     5
+    ],
+    "deltas": [],
+    "flat": [],
+    "kept": [],
+    "zipped": [
+     [
+      5,
+      null
+     ]
+    ],
+    "products": []
+   },
+   "Negative numbers": {
+    "running": [
+     -2,
+     0,
+     -2
+    ],
+    "deltas": [
+     4,
+     -4
+    ],
+    "flat": [
+     1,
+     2,
+     3,
+     4
+    ],
+    "kept": [
+     -2,
+     2
+    ],
+    "zipped": [
+     [
+      -2,
+      [
+       1
+      ]
+     ],
+     [
+      2,
+      [
+       2
+      ]
+     ],
+     [
+      -2,
+      [
+       3
+      ]
+     ],
+     [
+      null,
+      [
+       4
+      ]
+     ]
+    ],
+    "products": [
+     -4,
+     -4
+    ]
+   },
+   "All selected": {
+    "running": [
+     4,
+     8,
+     12
+    ],
+    "deltas": [
+     0,
+     0
+    ],
+    "flat": [
+     7,
+     8
+    ],
+    "kept": [
+     4,
+     4,
+     4
+    ],
+    "zipped": [
+     [
+      4,
+      [
+       7,
+       8
+      ]
+     ],
+     [
+      4,
+      null
+     ],
+     [
+      4,
+      null
+     ]
+    ],
+    "products": [
+     16,
+     16
+    ]
+   }
   }
  },
  "json-custom-encoder": {
@@ -4191,6 +5503,27 @@
    ]
   }
  },
+ "match-statement-commands": {
+  "hash": "e0c22f7cda64f6c7",
+  "tests": {
+   "Example": [
+    "click at 3,4",
+    "purchase of 2 starting with tea",
+    "server error 503"
+   ],
+   "Unknown shapes": [
+    "unknown",
+    "unknown"
+   ],
+   "Empty purchase and client error": [
+    "empty purchase",
+    "client error 404"
+   ],
+   "Error code not an int": [
+    "unknown"
+   ]
+  }
+ },
  "matrix-matmul": {
   "hash": "99d906355ddf8a41",
   "tests": {
@@ -4944,6 +6277,62 @@
    ]
   }
  },
+ "namedtuple-records": {
+  "hash": "d3a4532207cda4a1",
+  "tests": {
+   "Example": [
+    [
+     {
+      "ip": "2.2.2.2",
+      "path": "/b",
+      "status": 503,
+      "ms": 0
+     },
+     {
+      "ip": "3.3.3.3",
+      "path": "/c",
+      "status": 500,
+      "ms": 99
+     }
+    ],
+    [
+     "1.1.1.1",
+     "/redacted",
+     200,
+     12
+    ]
+   ],
+   "No errors": [
+    [],
+    [
+     "9.9.9.9",
+     "/redacted",
+     204,
+     1
+    ]
+   ],
+   "Empty": [
+    [],
+    null
+   ],
+   "All errors": [
+    [
+     {
+      "ip": "5.5.5.5",
+      "path": "/x",
+      "status": 500,
+      "ms": 1
+     }
+    ],
+    [
+     "5.5.5.5",
+     "/redacted",
+     500,
+     1
+    ]
+   ]
+  }
+ },
  "nested-class-order": {
   "hash": "4b50d82dbb4f6c65",
   "tests": {
@@ -4976,6 +6365,46 @@
     0,
     null
    ]
+  }
+ },
+ "nested-defaultdict-tree": {
+  "hash": "0c0bc403391d7457",
+  "tests": {
+   "Example": {
+    "README": 2,
+    "raw": {
+     "2023": {
+      "c.csv": 1
+     },
+     "2024": {
+      "a.csv": 10,
+      "b.csv": 5
+     }
+    }
+   },
+   "Single file": {
+    "x": 1
+   },
+   "Deep path": {
+    "a": {
+     "b": {
+      "c": {
+       "d": {
+        "e.txt": 7
+       }
+      }
+     }
+    }
+   },
+   "Sibling folders": {
+    "a": {
+     "x.txt": 1,
+     "z.txt": 3
+    },
+    "b": {
+     "y.txt": 2
+    }
+   }
   }
  },
  "nested-helper-function": {
@@ -5477,6 +6906,76 @@
    ]
   }
  },
+ "pathlib-partitions": {
+  "hash": "566ca61cc600b694",
+  "tests": {
+   "Example": [
+    [
+     "orders",
+     {
+      "dt": "2024-01-05"
+     },
+     "part-0001",
+     [
+      ".snappy",
+      ".parquet"
+     ],
+     "/lake/curated/orders/dt=2024-01-05/part-0001.parquet"
+    ]
+   ],
+   "Two partition levels": [
+    [
+     "events",
+     {
+      "year": "2024",
+      "month": "02"
+     },
+     "f",
+     [
+      ".json"
+     ],
+     "/lake/curated/events/year=2024/month=02/f.parquet"
+    ]
+   ],
+   "No partitions": [
+    [
+     "users",
+     {},
+     "users",
+     [
+      ".csv"
+     ],
+     "/data/curated/users/users.parquet"
+    ]
+   ],
+   "Several paths": [
+    [
+     "a",
+     {
+      "dt": "1"
+     },
+     "x",
+     [
+      ".gz"
+     ],
+     "/lake/curated/a/dt=1/x.parquet"
+    ],
+    [
+     "b",
+     {
+      "region": "eu",
+      "dt": "2"
+     },
+     "y",
+     [
+      ".csv",
+      ".gz"
+     ],
+     "/lake/curated/b/region=eu/dt=2/y.parquet"
+    ]
+   ]
+  }
+ },
  "payroll-inheritance": {
   "hash": "970d78a4a95091a8",
   "tests": {
@@ -5681,6 +7180,26 @@
    }
   }
  },
+ "priority-scheduler-heap": {
+  "hash": "dc4aecee0d63534a",
+  "tests": {
+   "Example": [
+    "etl",
+    "report",
+    "empty"
+   ],
+   "Cancel": [
+    "b"
+   ],
+   "Ties keep insertion order": [
+    "x",
+    "y"
+   ],
+   "Cancel unknown": [
+    "empty"
+   ]
+  }
+ },
  "property-validation": {
   "hash": "9919920b649ff21b",
   "tests": {
@@ -5742,6 +7261,71 @@
    "Unsorted input": [
     1.75,
     3.25
+   ]
+  }
+ },
+ "queue-task-done": {
+  "hash": "40f0880469beecfc",
+  "tests": {
+   "Example": [
+    [
+     "ok",
+     false
+    ],
+    [
+     "ok",
+     false
+    ],
+    [
+     "Full",
+     false
+    ],
+    [
+     "a",
+     false
+    ],
+    [
+     "ok",
+     false
+    ],
+    [
+     "b",
+     false
+    ],
+    [
+     "ok",
+     true
+    ]
+   ],
+   "Get from empty": [
+    [
+     "Empty",
+     true
+    ]
+   ],
+   "Too many task_done calls": [
+    [
+     "ok",
+     false
+    ],
+    [
+     "ok",
+     true
+    ],
+    [
+     "ValueError",
+     true
+    ]
+   ],
+   "Got but not done": [
+    [
+     "ok",
+     false
+    ],
+    [
+     "x",
+     false
+    ]
    ]
   }
  },
@@ -6367,6 +7951,23 @@
    ]
   }
  },
+ "runtime-type-check": {
+  "hash": "f4f18cf54d9f2f65",
+  "tests": {
+   "Example": [
+    "ok",
+    "missing value",
+    "user_id should be int"
+   ],
+   "Extra key": [
+    "extra debug"
+   ],
+   "Bool is not a number": [
+    "user_id should be int"
+   ],
+   "No records": []
+  }
+ },
  "safe-divide-report": {
   "hash": "11e24ac7c7f72387",
   "tests": {
@@ -6520,6 +8121,83 @@
    "One student": 0,
    "All equal": 0,
    "All missing scores": 3
+  }
+ },
+ "seeded-sampling": {
+  "hash": "5d7ff53f646c58ec",
+  "tests": {
+   "Example": [
+    [
+     1,
+     5
+    ],
+    [
+     4,
+     5,
+     1,
+     2,
+     3
+    ],
+    {
+     "1": "B",
+     "2": "B",
+     "3": "B",
+     "4": "A",
+     "5": "A"
+    }
+   ],
+   "Different seed": [
+    [
+     3,
+     2
+    ],
+    [
+     2,
+     3,
+     5,
+     1,
+     4
+    ],
+    {
+     "1": "A",
+     "2": "A",
+     "3": "B",
+     "4": "A",
+     "5": "A"
+    }
+   ],
+   "Sample everything": [
+    [
+     20,
+     30,
+     10
+    ],
+    [
+     10,
+     30,
+     20
+    ],
+    {
+     "10": "A",
+     "20": "B",
+     "30": "A"
+    }
+   ],
+   "Sample none": [
+    [],
+    [
+     9,
+     10,
+     8,
+     7
+    ],
+    {
+     "7": "B",
+     "8": "A",
+     "9": "B",
+     "10": "B"
+    }
+   ]
   }
  },
  "semaphore-job-slots": {
@@ -6969,6 +8647,30 @@
    ]
   }
  },
+ "slots-records": {
+  "hash": "f0fde1cc0b70994e",
+  "tests": {
+   "Example": [
+    "ok",
+    "AttributeError",
+    false
+   ],
+   "Only known attributes": [
+    "ok",
+    false
+   ],
+   "Typo is rejected": [
+    "AttributeError",
+    false
+   ],
+   "Several valid attributes": [
+    "ok",
+    "ok",
+    "AttributeError",
+    false
+   ]
+  }
+ },
  "smallest-multiple-lcm": {
   "hash": "eedfdceeaf48b990",
   "tests": {
@@ -7173,6 +8875,55 @@
    "Empty __all__": []
   }
  },
+ "statistics-module": {
+  "hash": "3583a9a048e70487",
+  "tests": {
+   "Example": {
+    "mean": 5,
+    "median": 4.5,
+    "mode": 4,
+    "stdev": 2.138,
+    "quartiles": [
+     4,
+     4.5,
+     6.5
+    ]
+   },
+   "Two values": {
+    "mean": 2,
+    "median": 2,
+    "mode": 1,
+    "stdev": 1.414,
+    "quartiles": [
+     0.5,
+     2,
+     3.5
+    ]
+   },
+   "Multiple modes": {
+    "mean": 2,
+    "median": 2,
+    "mode": 3,
+    "stdev": 1,
+    "quartiles": [
+     1,
+     2,
+     3
+    ]
+   },
+   "Floats": {
+    "mean": 4.125,
+    "median": 2.5,
+    "mode": 2.5,
+    "stdev": 3.945,
+    "quartiles": [
+     1.75,
+     2.5,
+     8.125
+    ]
+   }
+  }
+ },
  "status-enum-constants": {
   "hash": "8a8ce2d69ab9890d",
   "tests": {
@@ -7288,6 +9039,25 @@
     3
    ],
    "Empty": []
+  }
+ },
+ "str-translate-cleaning": {
+  "hash": "0d8ec5f7dd712dce",
+  "tests": {
+   "Example": [
+    "15550011213",
+    "n0change9"
+   ],
+   "Empty": [
+    ""
+   ],
+   "Only punctuation": [
+    ""
+   ],
+   "Lookalikes only": [
+    "0011",
+    "He110W0r1d"
+   ]
   }
  },
  "str-vs-repr": {
@@ -7431,6 +9201,42 @@
    ]
   }
  },
+ "struct-binary-records": {
+  "hash": "100a7edb376bfe11",
+  "tests": {
+   "Example": [
+    [
+     1,
+     25.4,
+     true,
+     false
+    ],
+    [
+     2,
+     -2,
+     false,
+     true
+    ]
+   ],
+   "Trailing garbage": [
+    [
+     3,
+     1,
+     false,
+     false
+    ]
+   ],
+   "Empty": [],
+   "Negative and both flags": [
+    [
+     2147483647,
+     -1,
+     true,
+     true
+    ]
+   ]
+  }
+ },
  "subarray-with-target-sum": {
   "hash": "ea015b8cd1596d90",
   "tests": {
@@ -7483,6 +9289,42 @@
    "Preempted several times": {
     "t": "runnable"
    }
+  }
+ },
+ "threading-event-coordination": {
+  "hash": "3462752d90098990",
+  "tests": {
+   "Example": [
+    [
+     "w1",
+     "w2",
+     "w3"
+    ],
+    [
+     "w4"
+    ]
+   ],
+   "Never set": [
+    [],
+    [
+     "a"
+    ]
+   ],
+   "Set before anyone waits": [
+    [
+     "x",
+     "y"
+    ],
+    []
+   ],
+   "Clear blocks later waiters": [
+    [
+     "a",
+     "b",
+     "c"
+    ],
+    []
+   ]
   }
  },
  "threads-vs-gil": {
@@ -8160,6 +10002,42 @@
    ]
   }
  },
+ "typed-descriptors": {
+  "hash": "3e719653f8c6f2eb",
+  "tests": {
+   "Example": [
+    [
+     "A1",
+     2,
+     9.5
+    ],
+    "ValueError: qty must be >= 1",
+    "TypeError: price must be float",
+    5
+   ],
+   "Invalid constructor": [
+    "TypeError: qty must be int"
+   ],
+   "Negative price": [
+    [
+     "C",
+     1,
+     1.25
+    ],
+    "ValueError: price must be >= 0.0",
+    "TypeError: sku must be str"
+   ],
+   "String quantity rejected": [
+    [
+     "D",
+     3,
+     2.5
+    ],
+    "TypeError: qty must be int",
+    "D2"
+   ]
+  }
+ },
  "union-find-components": {
   "hash": "ddea7967e900a45f",
   "tests": {
@@ -8265,6 +10143,37 @@
      "2024-01-02": 2
     }
    }
+  }
+ },
+ "uuid5-stable-ids": {
+  "hash": "67a4e328efcade06",
+  "tests": {
+   "Example": [
+    [
+     "d4599e40-906c-5ea5-90d2-5f2877696587",
+     "d4599e40-906c-5ea5-90d2-5f2877696587",
+     "239e8383-930d-5cf4-b607-97376db3101d"
+    ],
+    2
+   ],
+   "Single key": [
+    [
+     "f1e6230d-996f-58a7-bc93-1919635fa392"
+    ],
+    1
+   ],
+   "Empty list": [
+    [],
+    0
+   ],
+   "Normalisation": [
+    [
+     "c2dd283a-fe7a-52bd-8d7f-7339eb2f1124",
+     "c2dd283a-fe7a-52bd-8d7f-7339eb2f1124",
+     "6adb0a04-7ff0-558e-9c94-02f82c67dde7"
+    ],
+    2
+   ]
   }
  },
  "validate-ipv4": {
@@ -8498,6 +10407,40 @@
     ],
     105,
     0
+   ]
+  }
+ },
+ "weakref-cache": {
+  "hash": "88d2fa4028b9fce5",
+  "tests": {
+   "Example": [
+    "miss",
+    "hit",
+    [
+     "sales"
+    ],
+    [],
+    "miss"
+   ],
+   "Several datasets": [
+    "miss",
+    "miss",
+    [
+     "b"
+    ]
+   ],
+   "Release unknown": [
+    []
+   ],
+   "Reload after release keeps others": [
+    "miss",
+    "miss",
+    "miss",
+    "hit",
+    [
+     "a",
+     "b"
+    ]
    ]
   }
  },

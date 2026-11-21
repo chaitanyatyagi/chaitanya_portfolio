@@ -405,6 +405,30 @@ def solve(customers, orders):
   }
 });
 
+test('DSA problems grade on the Python engine and lane, including ListNode drivers', { timeout: 180_000 }, async () => {
+  const grader = startGrader();
+  try {
+    const { c } = await signedIn();
+    const detail = await c('GET', '/api/problems/dsa-reverse-linked-list');
+    assert.equal(detail.body.problem.track, 'dsa');
+    assert.ok(detail.body.problem.starter.includes('class ListNode'), 'list prelude missing from the starter');
+    const code = detail.body.problem.starter.replace('    # Write your solution here\n    pass\n', `    prev = None
+    while head:
+        head.next, prev, head = prev, head, head.next
+    return prev
+`);
+    assert.notEqual(code, detail.body.problem.starter);
+    const ok = await submitAndWait(c, 'dsa-reverse-linked-list', code);
+    assert.equal(ok.verdict, 'Accepted');
+    const wrong = await submitAndWait(c, 'dsa-pair-to-target', 'def pair_sum(nums, target):\n    return [0, 1]\n');
+    assert.equal(wrong.verdict, 'Wrong Answer');
+    const { rows } = await query("SELECT DISTINCT track FROM submissions WHERE problem_id LIKE 'dsa-%'");
+    assert.deepEqual(rows.map((r) => r.track), ['python']);
+  } finally {
+    grader.kill('SIGTERM');
+  }
+});
+
 test('profile settings: username rules and uniqueness; unknown profile is 404', async () => {
   const a = await signedIn();
   const b = await signedIn();
@@ -588,7 +612,7 @@ test('contest validation: every bad input gets a specific, human message (never 
     [{}, 400, /Choose Solo or With friends|Pick at least one track/],
     [omit('tracks'), 400, /Pick at least one track/],
     [{ ...ok, tracks: [] }, 400, /Pick at least one track/],
-    [{ ...ok, tracks: ['cobol'] }, 400, /Tracks \(each item\) must be one of: sql, python, pyspark, pandas, shell/],
+    [{ ...ok, tracks: ['cobol'] }, 400, /Tracks \(each item\) must be one of: sql, python, dsa, pyspark, pandas, shell/],
     [omit('difficulties'), 400, /Pick at least one difficulty/],
     [{ ...ok, difficulties: ['Impossible'] }, 400, /Difficulty \(each item\) must be one of: Easy, Medium, Hard/],
     [omit('count'), 400, /Choose how many questions/],

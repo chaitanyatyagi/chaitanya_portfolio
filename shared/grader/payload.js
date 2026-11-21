@@ -7,10 +7,13 @@
 // `tests`: [{ name, hidden, ordered, tables?: { table: rows[][] }, args?: [], files?: {path: text}, expected }]
 // ---------------------------------------------------------------------------
 
+import { engineOf } from './runtime.js';
+
 // Test case → the harness's input shape (tables carry their column types).
 function caseInput(problem, test) {
-  if (problem.track === 'python') return { args: test.args };
-  if (problem.track === 'shell') return { files: test.files || {}, ...(test.stdin != null ? { stdin: test.stdin } : {}) };
+  const engine = engineOf(problem.track);
+  if (engine === 'python') return { args: test.args };
+  if (engine === 'shell') return { files: test.files || {}, ...(test.stdin != null ? { stdin: test.stdin } : {}) };
   return {
     tables: problem.schema.map((t) => ({
       name: t.name,
@@ -21,13 +24,13 @@ function caseInput(problem, test) {
 }
 
 function caseExpected(problem, test) {
-  if (problem.track === 'python' || problem.track === 'shell') return test.expected;
+  if (['python', 'shell'].includes(engineOf(problem.track))) return test.expected;
   return { columns: problem.outputColumns, rows: test.expected };
 }
 
 export function buildPayload(problem, tests, code) {
   return {
-    track: problem.track,
+    track: engineOf(problem.track),
     entry: problem.entry,
     code,
     tests: tests.map((t) => ({

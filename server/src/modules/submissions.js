@@ -31,6 +31,7 @@ import { getProblem } from '../content/store.js';
 import { createCache } from '../lib/cache.js';
 import { liveContestFor } from '../contests/guards.js';
 import { refreshStandings } from '../contests/standings.js';
+import { engineOf } from '../../../shared/grader/runtime.js';
 
 export const submissionsRouter = express.Router();
 
@@ -72,7 +73,9 @@ submissionsRouter.post('/submissions', requireAuth, handle(async (req, res) => {
 
   const data = await getProblem(body.problemId);
   if (!data) throw notFound('Problem not found.');
-  if (!['sql', 'python', 'pyspark', 'pandas', 'shell'].includes(data.problem.track)) throw badRequest('This problem is not graded by code.');
+  // The submission's track is its grader lane: DSA grades in the Python lane.
+  const lane = engineOf(data.problem.track);
+  if (!['sql', 'python', 'pyspark', 'pandas', 'shell'].includes(lane)) throw badRequest('This problem is not graded by code.');
   if (!body.contestId) {
     const live = await liveContestFor({ query }, userId, body.problemId);
     if (live) throw conflict('This problem is in a contest you are playing — submit it from the contest page so it counts.');
@@ -113,7 +116,7 @@ submissionsRouter.post('/submissions', requireAuth, handle(async (req, res) => {
       `INSERT INTO submissions (user_id, problem_id, problem_version, code, client_token, track, contest_id)
        VALUES ($1, $2, $3, $4, $5, $6, $7)
        ON CONFLICT (user_id, client_token) DO NOTHING RETURNING *`,
-      [userId, body.problemId, data.problem.version, body.code, body.clientToken, data.problem.track, body.contestId ?? null]);
+      [userId, body.problemId, data.problem.version, body.code, body.clientToken, lane, body.contestId ?? null]);
     if (!rows[0]) return null;
     // Contest code doesn't overwrite your practice draft.
     const draft = body.contestId ? null : body.code;
@@ -129,7 +132,7 @@ submissionsRouter.post('/submissions', requireAuth, handle(async (req, res) => {
     // The board shows "grading…" for this player right away.
     if (body.contestId) await refreshStandings(db, body.contestId);
     // Payload = track, so the grader wakes only that lane.
-    await db.query("SELECT pg_notify('submission_queued', $1)", [data.problem.track]);
+    await db.query("SELECT pg_notify('submission_queued', $1)", [lane]);
     return rows[0];
   });
   if (!submission) {

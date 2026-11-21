@@ -4,7 +4,7 @@
 >
 > **Maintenance rule.** This document is part of the code. Any change that adds or alters behaviour — a new endpoint, table, track, config knob, failure mode or design decision — updates the relevant section **and** adds a line to the [Decision log](#19-decision-log) in the same change. If the doc and the code disagree, that is a bug.
 >
-> Last updated: 2026-11-20
+> Last updated: 2026-11-21
 
 ---
 
@@ -192,7 +192,7 @@ portfolio-react/
 ├── shared/                       ← code used by BOTH browser and server
 │   ├── grader/harness.py         ← THE grading logic (Python)
 │   ├── grader/payload.js         ← test case → harness input; verdict rules
-│   ├── grader/runtime.js         ← Pyodide version, per-track packages
+│   ├── grader/runtime.js         ← Pyodide version, per-track packages, TRACK_ENGINE (dsa → python)
 │   ├── grader/shell.js           ← Shell-track grading (just-bash), same result shape as harness.py
 │   ├── grader/points.js          ← points rule (attempt multipliers)
 │   └── content/slug.js           ← heading ids (lesson links ↔ rendered anchors)
@@ -219,7 +219,7 @@ portfolio-react/
     ├── migrations/*.sql          ← schema, applied in order, never edited after release
     ├── content/                  ← SEED SOURCE: courses.js + courses/*.md, tracks.js,
     │                                challenges.js, problems/*.js, docs.js (docs manifest);
-    │                                problems/<sql|python>/pack-*.js + define.js + golden.json (§13.2)
+    │                                problems/<sql|python|pyspark|dsa>/pack-*.js + define.js + golden.json (§13.2)
     ├── scripts/                  ← migrate, seed, make-admin, seed-test-users, verify-problems, freeze-expected, loadtest
     ├── test/api.test.js          ← integration tests (real HTTP, Postgres, grader)
     ├── test/contest-rules.test.js← unit tests: problem draw + standings
@@ -588,7 +588,7 @@ RETURNING …;
 
 ### 8.8 Lanes (the bulkhead pattern)
 
-Each track has its **own** claim loop, concurrency limit and sandbox pool (`config.grader.lanes`: `sql`, `python`, `pyspark`, `pandas` (≤ 3, cores/4), `shell` (2); env `GRADER_<TRACK>_CONCURRENCY`, `GRADER_WARM_<TRACK>`). Without lanes, a burst of slow PySpark jobs (3 s+ each) occupies every slot while quick SQL jobs wait behind them. With lanes, PySpark can only ever use the PySpark lane's capacity.
+Each track has its **own** claim loop, concurrency limit and sandbox pool (`config.grader.lanes`: `sql`, `python`, `pyspark`, `pandas` (≤ 3, cores/4), `shell` (2); env `GRADER_<TRACK>_CONCURRENCY`, `GRADER_WARM_<TRACK>`). Lanes are per **engine**: a submission's `track` column stores `engineOf(problem.track)`, so DSA jobs run in the Python lane (§13.2). Without lanes, a burst of slow PySpark jobs (3 s+ each) occupies every slot while quick SQL jobs wait behind them. With lanes, PySpark can only ever use the PySpark lane's capacity.
 
 Measured effect in the 100-submission burst (§9.3): the slowest Python job's time-to-verdict fell from **42.9 s → 4.9 s** (lanes + snapshots together).
 
@@ -1030,7 +1030,7 @@ Sync rules differ on purpose: **docs are synced automatically on every API boot*
 
 ---
 
-### 13.2 Authoring at volume: packs (SQL, Python) and golden outputs
+### 13.2 Authoring at volume: packs (SQL, Python, PySpark, DSA) and golden outputs
 
 SQL problems beyond the first few live in **packs** (`server/content/problems/sql/pack-*.js`, loaded automatically — no registry to forget) written with the compact `sql({...})` helper (`sql/define.js`): schema as a one-line spec per table, tests as data only.
 
@@ -1038,14 +1038,37 @@ SQL problems beyond the first few live in **packs** (`server/content/problems/sq
 
 Workflow: write/edit a pack → `npm run problems:freeze -- --show` → review the diff of `golden.json` → `npm run verify:problems` → `npm run seed`.
 
-**Python packs** (`server/content/problems/python/pack-*.js`, 22 packs, 301 problems) use the same mechanism with `python({...})` from `python/define.js`: tests are `ex(name, ...args)` (visible) and `hid(name, ...args)` (hidden), and the frozen value is the reference solution's return value **as the grader normalises it** (`_norm`: tuples → lists, sets → sorted lists, dict keys → strings, floats rounded to 4), stored in `python/golden.json`. The loader (`content/problems/index.js`, `PACK_TRACKS`) reads every `<track>/pack-*.js` and attaches `<track>/golden.json`; `goldenHash` fingerprints `schema`, `solution` and each test's `tables`/`args` (undefined keys drop out, so SQL hashes didn't change). The freeze also:
+**Python packs** (`server/content/problems/python/pack-*.js`, 24 packs, 341 problems) use the same mechanism with `python({...})` from `python/define.js`: tests are `ex(name, ...args)` (visible) and `hid(name, ...args)` (hidden), and the frozen value is the reference solution's return value **as the grader normalises it** (`_norm`: tuples → lists, sets → sorted lists, dict keys → strings, floats rounded to 4), stored in `python/golden.json`. The loader (`content/problems/index.js`, `PACK_TRACKS`) reads every `<track>/pack-*.js` and attaches `<track>/golden.json`; `goldenHash` fingerprints `schema`, `solution` and each test's `tables`/`args` (undefined keys drop out, so SQL hashes didn't change). The freeze also:
 
 * refuses outputs containing integers beyond 2⁵³ — JSON in JS (and the stored expected value) can't hold them exactly, so such a test could never be graded reliably;
 * prunes golden entries whose problem was renamed or removed.
 
 **Driver pattern.** Tests can only pass positional JSON args, so problems about *how* code is called — `*args/**kwargs`, mutable defaults, decorators, classes, generators, context managers, pickling — ship a starter containing the stub plus a small `run(...)` driver that the tests call (“don't change it”). The learner edits the stub; hidden tests still exercise behaviour.
 
-**Sandbox limits shape the content.** Pyodide can't start OS threads or run `asyncio` event loops (no stack switching), so the concurrency pack models threading deterministically (interleavings, lock ownership, semaphore slots, barriers, deadlock graphs) while still using real `threading.Lock`/`queue` objects. `sqlite3` *is* in the Python 3.14 Pyodide stdlib (browser and grader alike), so the database pack teaches DB-API on an in-memory SQLite database. Class pickling needs the driver to register the exec'd module in `sys.modules` (classes live in `__solution__`).
+**Sandbox limits shape the content.** Pyodide can't start OS threads or run `asyncio` event loops (no stack switching), so the concurrency packs model threading deterministically (interleavings, lock ownership, semaphore slots, barriers, deadlock graphs, `Event` / `Condition` wake-ups, executor scheduling) while still using real `threading.Lock`/`queue.Queue` objects, and async is taught by building the event loop itself from generators (how coroutines are scheduled), plus `gather` vs `as_completed` ordering and `ExceptionGroup` / `except*`. `sqlite3` *is* in the Python 3.14 Pyodide stdlib (browser and grader alike), so the database pack teaches DB-API on an in-memory SQLite database. Class pickling needs the driver to register the exec'd module in `sys.modules` (classes live in `__solution__`).
+
+**PySpark packs** (`server/content/problems/pyspark/pack-*.js`, 9 packs, 114 problems) use `pyspark({...})` from `pyspark/define.js`: the same schema spec as `sql()`, a generated `solve(spark, <one DataFrame per table>)` signature and starter, golden rows + columns in `pyspark/golden.json`. Tests compare rows **as a set by default** (Spark output order isn't guaranteed); problems whose spec includes an order set `ordered: true`. The freeze loads the PySpark sandbox packages and the sqlframe wheels from `grader/wheels`.
+
+**sqlframe/DuckDB differences that shape the PySpark content** (probed while writing the bank; each problem avoids them and says so in a hint when a learner might hit one):
+
+| Real Spark | In the sandbox | What the problems do |
+|---|---|---|
+| `groupBy().pivot(col, values)` | groups by every other input column (wrong counts) | pivots are taught as conditional aggregation (`sum(when(...))`) — what pivot compiles to |
+| full outer join on a column **name** coalesces the key | right-only rows get a null key | join on an expression and `coalesce(left_key, right_key)` |
+| `rollup` / `cube` grouping sets, `stack`, `selectExpr` with CASE | unsupported | unions of groupings; `unpivot` |
+| `last(..., ignorenulls=True)` over a window, `explode_outer`, `udf`, `broadcast`, `monotonically_increasing_id`, `F.window` | unsupported | running-count group id for forward fill; `rlike` rules instead of UDFs; `row_number` keys |
+| bad cast → null (non-ANSI) | raises | validate with `rlike` before casting (portable, also correct under ANSI mode) |
+| `from_json` tolerates missing keys; `get_json_object` returns unquoted strings | missing key raises; quoted strings returned | complete JSON documents with explicit nulls + `from_json` |
+| `aggregate()` on an empty array returns the start value | raises | seed element (documented in the solution) |
+| `sequence(date, date, interval month)` returns dates | returns timestamps | cast back to date |
+| `df.dtypes`, star-expanding a struct (`"s.*"`), window functions on computed partition expressions | unsupported | `df.schema.fields`; explicit field lists; add the column first |
+
+**DSA track** (`server/content/problems/dsa/pack-*.js`, 15 packs, 277 problems) is a separate practice track for coding-round algorithms, covering every pattern of the common SDE-sheet syllabi: arrays & matrices, hashing / two pointers / sliding windows, binary search (indices and answers) & sorting, strings (KMP, Z, rolling hash), linked lists, recursion & backtracking, greedy & intervals, stacks / monotonic stacks / heaps / design (LRU, LFU, min-stack, tries), binary trees, BSTs, tries, graph traversal, shortest paths / MST / union-find / SCC / bridges, DP (1-D, grids, knapsack, strings, stocks, LIS, interval DP) and bits & number theory. All statements, titles and data are original; well-known problems are reworded with new framing, inputs and return shapes (often combining variants, e.g. "length **and** one reconstruction").
+
+* **Engine mapping, not a new runtime.** DSA problems are plain Python functions, so `TRACK_ENGINE = { dsa: 'python' }` in `shared/grader/runtime.js` and `engineOf(track)` decide everything engine-specific: `buildPayload` sends `track: 'python'` to the harness, the store writes `{args}` test inputs, a submission's `track` column (its **grader lane**) is `python`, and the workspace renders arguments/values like Python. The problem itself keeps `track_id = 'dsa'` for catalogue, filters, profile stats and contests (`CODE_TRACKS`). Adding a future "graded like Python" track is one line.
+* **Linked lists and trees** can't be JSON, so `dsa({...})` accepts `prelude: 'list' | 'tree'` (a provided `ListNode` / `TreeNode` class plus `build_list` / `list_values` or level-order `build_tree` / `tree_values`) and a `driver` (`run(...)`) that converts JSON args, calls the learner's function and serialises the result. Prelude and driver are added to both starter and solution; `entry` becomes `run` and `runSignature` documents it. Drivers also assert invariants a value can't show (Morris traversal restores the tree, a deep copy shares no original node, `flatten` leaves every `left` empty).
+* **Deterministic answers.** Where several answers are valid (an LIS, an LCS, a divisible subset, an MST edge list), the statement fixes the tie-break the reference uses, so grading stays an exact comparison.
+* **Company tags** come from `dsa/tags.js`, a map of problem id → `[company list, question as listed]` against eight public GeeksforGeeks company-wise question lists; `dsa()` attaches `companies` + `sources` (and `interview: true`) by id, so tags stay reviewable in one file and never change golden hashes. 206 of 277 problems are tagged; a pattern with no listed counterpart stays untagged (§8.12).
 
 `npm run verify:problems -- --track python` re-runs only one track's solutions and starters while iterating (the registry and golden checks still cover everything).
 
@@ -1223,6 +1246,11 @@ These passwords are public — never create these accounts on a real deployment.
 | 2026-11-20 | **Python packs + golden values**: `python({...})` packs auto-loaded per track (`PACK_TRACKS`), expected values frozen from reference solutions into `python/golden.json`; freeze refuses integers beyond 2⁵³ and prunes orphans; `verify:problems -- --track` (§13.2) | 300 hand-typed expected values would have been error-prone; reviewing frozen outputs caught real slips (a wrong palindrome example, a hanging race-condition drain, a precision-losing `fib(90)`) |
 | 2026-11-20 | Python track 5 → 306 problems; taxonomy 14 → 38 topics (arguments & scope, closures & decorators, OOP / MRO / magic methods, logging, concurrency, DB-API, modules, DSA topics); 76 companies with sources (`python/sources.js`) | User request: every Python topic in depth (syllabus from the referenced 181-video advanced-Python playlist, titles only) plus interview questions reported at 70+ companies |
 | 2026-11-20 | Concurrency taught as deterministic simulations; DB-API taught on sqlite3; driver functions for call-shape topics (§13.2) | The WebAssembly sandbox can't start threads, but grading must be identical in browser and grader |
+| 2026-11-21 | **PySpark packs**: `pyspark({...})` helper + `pyspark/golden.json`; PACK_TRACKS += pyspark; freeze loads Spark sandbox packages/wheels; row-set comparison by default; PySpark taxonomy 14 → 23 topics; 114 problems, 33 companies (SparkPlayground-attributed types) | User request: PySpark bank in the same pattern as SQL/Python |
+| 2026-11-21 | Documented sqlframe/DuckDB gaps vs Spark (§13.2 table) and wrote every PySpark solution to be correct on both engines | Expected outputs must equal what real Spark returns, or learners who write idiomatic Spark would fail |
+| 2026-11-21 | Python packs 23–24 (+40): context managers / ExitStack, dataclasses, descriptors, `__init_subclass__`, `__slots__`, `match`, enums/flags, Decimal; generator event loop, `gather` vs `as_completed`, `Event` / `Condition` / `Queue.task_done`, executor ordering, generator `close`/`throw`, `except*`; stdlib (argparse, configparser, statistics, random, pathlib, struct, hashlib, zlib/base64, bisect, heapq updates, weakref, uuid5) | User request: Python still lacked threading, context managers and other core topics |
+| 2026-11-21 | **DSA track** (`dsa`, 277 problems, 27 topics) graded on the Python engine via `TRACK_ENGINE` / `engineOf` (payload, store, submission lane, workspace); `dsa({...})` with ListNode/TreeNode preludes and `run` drivers; `dsa/golden.json`; contests accept `dsa` (§13.2) | User request: a separate DSA section covering every algorithm pattern (SDE-sheet style) with original wording. Reusing the Python engine avoids a new sandbox type, lane and warm pool; keeping a distinct track id keeps catalogue, stats and contests separate |
+| 2026-11-21 | DSA company tags: `dsa/tags.js` (id → GfG company-list entry), applied in `dsa()`; 206 problems, 8 companies (§13.2) | User request; one reviewable map keeps every tag tied to a public list and leaves problem files and golden hashes untouched |
 
 ---
 

@@ -2,7 +2,7 @@
 // warmed by `npm run grader:prepare`, so sandboxes never touch the network).
 // PySpark additionally installs the wheels in grader/wheels (sqlframe & deps).
 export const SANDBOX_PACKAGES = {
-  python: [],
+  python: [], // also DSA problems (they grade on the Python engine)
   sql: ['duckdb', 'pytz'],
   pyspark: ['duckdb', 'pytz', 'micropip', 'more-itertools', 'typing-extensions', 'wcwidth'],
   pandas: ['pandas'],

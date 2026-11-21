@@ -7,7 +7,7 @@ import { Difficulty, StatusIcon } from '../practice/ui.jsx';
 // /interview — interview prep (docs §8.14): multi-part case studies and
 // interview-tagged questions, filterable by data role. Lists are public;
 // solving needs sign-in (the workspace handles that).
-const TRACK_LABEL = { sql: 'SQL', python: 'Python', pyspark: 'PySpark', pandas: 'pandas', shell: 'Shell' };
+const TRACK_LABEL = { sql: 'SQL', python: 'Python', dsa: 'DSA', pyspark: 'PySpark', pandas: 'pandas', shell: 'Shell' };
 const DIFFS = ['All', 'Easy', 'Medium', 'Hard'];
 
 export default function InterviewHome() {

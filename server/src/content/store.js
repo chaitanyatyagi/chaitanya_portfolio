@@ -16,6 +16,7 @@ import { makeSlugger } from '../../../shared/content/slug.js';
 import { query, tx } from '../db.js';
 import { contentCache } from '../lib/cache.js';
 import { config } from '../config.js';
+import { engineOf } from '../../../shared/grader/runtime.js';
 
 const TTL = () => config.contentCacheTtlMs;
 const WORDS_PER_MINUTE = 130; // technical prose with code reads slower than plain text
@@ -112,8 +113,9 @@ export async function upsertProblem(p, position, db) {
   );
   await db.query('DELETE FROM problem_tests WHERE problem_id = $1', [p.id]);
   for (const [i, t] of p.tests.entries()) {
-    const input = p.track === 'python' ? { args: t.args }
-      : p.track === 'shell' ? { files: t.files || {}, ...(t.stdin != null ? { stdin: t.stdin } : {}) }
+    const engine = engineOf(p.track);
+    const input = engine === 'python' ? { args: t.args }
+      : engine === 'shell' ? { files: t.files || {}, ...(t.stdin != null ? { stdin: t.stdin } : {}) }
         : { tables: t.tables };
     await db.query(
       `INSERT INTO problem_tests (problem_id, position, name, hidden, ordered, input, expected)

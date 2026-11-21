@@ -5,15 +5,17 @@
 //   npm run problems:freeze -- --only a,b   just these ids
 // Runs each reference solution on each test in the same Pyodide harness the
 // grader uses and stores the result in content/problems/<track>/golden.json:
-//   sql     { hash, columns, tests: { name: rows } }
-//   python  { hash, tests: { name: value } }      (value as the grader normalises it)
+//   sql, pyspark  { hash, columns, tests: { name: rows } }
+//   python, dsa  { hash, tests: { name: value } }      (value as the grader normalises it)
 // A solution that errors stops that problem's freeze.
 // ---------------------------------------------------------------------------
-import { readFileSync, writeFileSync } from 'node:fs';
+import { readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { loadPyodide } from 'pyodide';
-import { REPO_DIR } from '../src/config.js';
+import { config, REPO_DIR } from '../src/config.js';
+import { SANDBOX_PACKAGES } from '../grader/packages.js';
 import { buildPayload } from '../../shared/grader/payload.js';
+import { engineOf } from '../../shared/grader/runtime.js';
 import { RAW_PACK_PROBLEMS, PACK_TRACKS, goldenPath } from '../content/problems/index.js';
 import { goldenHash } from '../content/problems/sql/define.js';
 
@@ -24,14 +26,24 @@ const golden = Object.fromEntries(PACK_TRACKS.map((t) => [t, JSON.parse(readFile
 
 const todo = RAW_PACK_PROBLEMS.filter((p) => (only ? only.has(p.id) : golden[p.track][p.id]?.hash !== goldenHash(p)));
 const py = await loadPyodide();
-if (todo.some((p) => p.track === 'sql')) await py.loadPackage(['duckdb'], { messageCallback: () => {} });
+const tracks = new Set(todo.map((p) => p.track));
+const packages = [...new Set([...tracks].flatMap((t) => SANDBOX_PACKAGES[engineOf(t)] || []))];
+if (packages.length) await py.loadPackage(packages, { messageCallback: () => {} });
+if (tracks.has('pyspark')) {
+  // Same sqlframe wheels the grader's PySpark sandboxes install (npm run grader:prepare).
+  py.FS.mkdirTree('/wheels');
+  const wheels = readdirSync(config.grader.wheelsDir).filter((f) => f.endsWith('.whl'));
+  for (const f of wheels) py.FS.writeFile(`/wheels/${f}`, readFileSync(path.join(config.grader.wheelsDir, f)));
+  await py.runPythonAsync(`import micropip\nawait micropip.install(${JSON.stringify(wheels.map((f) => `emfs:/wheels/${f}`))}, deps=False)`);
+}
 py.runPython(readFileSync(path.join(REPO_DIR, 'shared', 'grader', 'harness.py'), 'utf8'));
 
 let frozen = 0;
 let failed = 0;
 for (const p of todo) {
-  const tests = p.tests.map((t) => ({ ...t, expected: p.track === 'sql' ? [] : null }));
-  const payload = buildPayload(p.track === 'sql' ? { ...p, outputColumns: [] } : p, tests, p.solution);
+  const table = p.track === 'sql' || p.track === 'pyspark';
+  const tests = p.tests.map((t) => ({ ...t, expected: table ? [] : null }));
+  const payload = buildPayload(table ? { ...p, outputColumns: [] } : p, tests, p.solution);
   const results = JSON.parse(py.globals.get('run')(JSON.stringify(payload)));
   const broken = results.filter((r) => r.status === 'error');
   if (broken.length) {
@@ -40,7 +52,7 @@ for (const p of todo) {
     if (broken[0].traceback) console.log(broken[0].traceback.replace(/^/gm, '    '));
     continue;
   }
-  const value = (r) => (p.track === 'sql' ? r.actual.rows : r.actual);
+  const value = (r) => (table ? r.actual.rows : r.actual);
   // JSON numbers beyond 2^53 lose precision in JS (and in the stored expected
   // value), so a test whose output contains one can never be graded reliably.
   const hasUnsafe = (v) => (typeof v === 'number' ? Number.isInteger(v) && !Number.isSafeInteger(v)
@@ -53,11 +65,11 @@ for (const p of todo) {
   }
   golden[p.track][p.id] = {
     hash: goldenHash(p),
-    ...(p.track === 'sql' ? { columns: results[0].actual.columns } : {}),
+    ...(table ? { columns: results[0].actual.columns } : {}),
     tests: Object.fromEntries(results.map((r) => [r.name, value(r)])),
   };
   frozen += 1;
-  console.log(`✓ [${p.track}] ${p.id}${p.track === 'sql' ? ` (${results[0].actual.columns.join(', ')})` : ''}`);
+  console.log(`✓ [${p.track}] ${p.id}${table ? ` (${results[0].actual.columns.join(', ')})` : ''}`);
   if (show) for (const r of results) console.log(`    ${r.hidden ? '[hidden] ' : ''}${r.name}: ${JSON.stringify(value(r))}`);
 }
 for (const track of PACK_TRACKS) {

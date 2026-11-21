@@ -55,7 +55,7 @@ adminRouter.patch('/users/:id', handle(async (req, res) => {
 
 const tableSchema = z.array(z.object({ name: z.string(), columns: z.array(z.tuple([z.string(), z.string(), z.string().optional()])) }));
 const problemSchema = z.object({
-  track: z.enum(['sql', 'python', 'pyspark']),
+  track: z.enum(['sql', 'python', 'dsa', 'pyspark']),
   title: z.string().min(1),
   difficulty: z.enum(['Easy', 'Medium', 'Hard']),
   topics: z.array(z.string()),

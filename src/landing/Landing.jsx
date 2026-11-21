@@ -262,7 +262,7 @@ function Walkthrough() {
 // --- Tracks table (from the catalog) ---------------------------------------------------
 
 const RUNS_ON = {
-  sql: 'DuckDB', python: 'Pyodide', pyspark: 'sqlframe', pandas: 'Pyodide', shell: 'sandboxed bash',
+  sql: 'DuckDB', python: 'Pyodide', dsa: 'Pyodide', pyspark: 'sqlframe', pandas: 'Pyodide', shell: 'sandboxed bash',
   'data-modeling': 'design review', 'pipeline-hackathon': 'hackathon', 'system-design-hackathon': 'hackathon',
 };
 

@@ -16,7 +16,7 @@
 export { ROLES } from '../../../src/content/roles.js';
 
 // "id INTEGER Primary key, name VARCHAR Employee name" → [[name, type, description], …]
-function parseColumns(spec) {
+export function parseColumns(spec) {
   return spec.split(/,\s*(?=[a-z_][a-z0-9_]*\s+[A-Z])/).map((part) => {
     const [name, type, ...desc] = part.trim().split(/\s+/);
     return [name, type, desc.join(' ')];

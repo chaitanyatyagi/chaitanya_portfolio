@@ -1,0 +1,6911 @@
+{
+ "dsa-add-digit-lists": {
+  "hash": "bebc54523a807a5d",
+  "tests": {
+   "Example": [
+    7,
+    0,
+    8
+   ],
+   "Final carry": [
+    8,
+    9,
+    0,
+    0,
+    1
+   ],
+   "Zeros": [
+    0
+   ],
+   "Different lengths": [
+    0,
+    0,
+    0,
+    1
+   ]
+  }
+ },
+ "dsa-alien-alphabet": {
+  "hash": "e31957a4c908d7d5",
+  "tests": {
+   "Example": "wertf",
+   "Cycle": "",
+   "Prefix violation": "",
+   "Several letters": "bdac"
+  }
+ },
+ "dsa-all-orderings": {
+  "hash": "c61d117bcfa85e4b",
+  "tests": {
+   "Example": [
+    [
+     1,
+     2,
+     3
+    ],
+    [
+     1,
+     3,
+     2
+    ],
+    [
+     2,
+     1,
+     3
+    ],
+    [
+     2,
+     3,
+     1
+    ],
+    [
+     3,
+     1,
+     2
+    ],
+    [
+     3,
+     2,
+     1
+    ]
+   ],
+   "Two": [
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     0
+    ]
+   ],
+   "Single": [
+    [
+     1
+    ]
+   ],
+   "Unsorted": [
+    [
+     1,
+     2,
+     3
+    ],
+    [
+     1,
+     3,
+     2
+    ],
+    [
+     2,
+     1,
+     3
+    ],
+    [
+     2,
+     3,
+     1
+    ],
+    [
+     3,
+     1,
+     2
+    ],
+    [
+     3,
+     2,
+     1
+    ]
+   ]
+  }
+ },
+ "dsa-all-subset-sums": {
+  "hash": "5cdb7d8eda556019",
+  "tests": {
+   "Example": [
+    0,
+    2,
+    3,
+    5
+   ],
+   "Three values": [
+    0,
+    1,
+    2,
+    3,
+    5,
+    6,
+    7,
+    8
+   ],
+   "Empty": [
+    0
+   ],
+   "Duplicates": [
+    0,
+    1,
+    1,
+    2,
+    2,
+    3,
+    3,
+    4
+   ]
+  }
+ },
+ "dsa-allocate-chapters": {
+  "hash": "4e1fdbfbbe5e63c3",
+  "tests": {
+   "Example": 113,
+   "Five readers": 71,
+   "Too many readers": -1,
+   "One reader": 15
+  }
+ },
+ "dsa-anagram-windows": {
+  "hash": "43dcd9d97b733f24",
+  "tests": {
+   "Example": [
+    0,
+    6
+   ],
+   "Overlapping": [
+    0,
+    1,
+    2
+   ],
+   "Pattern longer": [],
+   "None": []
+  }
+ },
+ "dsa-balanced-parens-gen": {
+  "hash": "8a514c748e95bf40",
+  "tests": {
+   "Example": [
+    "((()))",
+    "(()())",
+    "(())()",
+    "()(())",
+    "()()()"
+   ],
+   "One pair": [
+    "()"
+   ],
+   "Four pairs": [
+    "(((())))",
+    "((()()))",
+    "((())())",
+    "((()))()",
+    "(()(()))",
+    "(()()())",
+    "(()())()",
+    "(())(())",
+    "(())()()",
+    "()((()))",
+    "()(()())",
+    "()(())()",
+    "()()(())",
+    "()()()()"
+   ],
+   "Zero": [
+    ""
+   ]
+  }
+ },
+ "dsa-bellman-ford": {
+  "hash": "f3730fc82f7bf282",
+  "tests": {
+   "Example": [
+    0,
+    5,
+    6,
+    6,
+    7
+   ],
+   "Negative cycle": "negative cycle",
+   "Unreachable": [
+    0,
+    null,
+    null
+   ],
+   "Cycle not reachable": [
+    0,
+    2,
+    null,
+    null
+   ]
+  }
+ },
+ "dsa-best-contiguous-sum": {
+  "hash": "ed98ee1f388770cf",
+  "tests": {
+   "Example": [
+    6,
+    3,
+    6
+   ],
+   "All negative": [
+    -1,
+    1,
+    1
+   ],
+   "Whole array": [
+    9,
+    0,
+    2
+   ],
+   "Tie keeps earliest": [
+    3,
+    0,
+    0
+   ]
+  }
+ },
+ "dsa-best-end-cards": {
+  "hash": "05d30cc7a4885ed2",
+  "tests": {
+   "Example": 12,
+   "Take all": 55,
+   "Both ends": 248,
+   "One card": 2
+  }
+ },
+ "dsa-bfs-dfs-orders": {
+  "hash": "09f34ee9997b6d65",
+  "tests": {
+   "Example": [
+    [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    [
+     0,
+     1,
+     2,
+     4,
+     3
+    ]
+   ],
+   "Cycle": [
+    [
+     0,
+     1,
+     3,
+     2
+    ],
+    [
+     0,
+     1,
+     2,
+     3
+    ]
+   ],
+   "Disconnected": [
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ]
+   ],
+   "Single node": [
+    [
+     0
+    ],
+    [
+     0
+    ]
+   ]
+  }
+ },
+ "dsa-biggest-island-one-flip": {
+  "hash": "aa284523d8c18d1f",
+  "tests": {
+   "Example": 3,
+   "Nearly full": 4,
+   "All land": 4,
+   "All water": 1
+  }
+ },
+ "dsa-binary-maze-path": {
+  "hash": "3f50cd97204beb00",
+  "tests": {
+   "Example": 4,
+   "Diagonal": 2,
+   "Blocked start": -1,
+   "Walled off": -1
+  }
+ },
+ "dsa-binary-sum-goal": {
+  "hash": "0ea071634b559da0",
+  "tests": {
+   "Example": 4,
+   "Zeros": 15,
+   "Goal too high": 0,
+   "Zeros between ones": 2
+  }
+ },
+ "dsa-bit-counts-range": {
+  "hash": "46c4a321360d0e39",
+  "tests": {
+   "Example": [
+    [
+     0,
+     1,
+     1,
+     2,
+     1,
+     2
+    ],
+    7
+   ],
+   "Zero": [
+    [
+     0
+    ],
+    0
+   ],
+   "Sixteen": [
+    [
+     0,
+     1,
+     1,
+     2,
+     1,
+     2,
+     2,
+     3,
+     1,
+     2,
+     2,
+     3,
+     2,
+     3,
+     3,
+     4,
+     1
+    ],
+    33
+   ],
+   "Seven": [
+    [
+     0,
+     1,
+     1,
+     2,
+     1,
+     2,
+     2,
+     3
+    ],
+    12
+   ]
+  }
+ },
+ "dsa-bit-tricks": {
+  "hash": "9c7fd36aab39b4d7",
+  "tests": {
+   "Example": [
+    [
+     true,
+     16,
+     false,
+     20,
+     16,
+     20,
+     false
+    ],
+    [
+     false,
+     1,
+     false,
+     15,
+     13,
+     15,
+     true
+    ]
+   ],
+   "Zero": [
+    [
+     false,
+     0,
+     false,
+     1,
+     0,
+     1,
+     false
+    ]
+   ],
+   "One": [
+    [
+     true,
+     1,
+     true,
+     1,
+     0,
+     0,
+     true
+    ],
+    [
+     false,
+     2,
+     false,
+     14,
+     6,
+     14,
+     false
+    ]
+   ],
+   "Large": [
+    [
+     true,
+     1024,
+     true,
+     1024,
+     0,
+     0,
+     false
+    ],
+    [
+     false,
+     1,
+     true,
+     1023,
+     511,
+     511,
+     true
+    ]
+   ]
+  }
+ },
+ "dsa-boolean-parenthesisation": {
+  "hash": "f2d4529023787667",
+  "tests": {
+   "Example": 4,
+   "Another": 2,
+   "Single": 0,
+   "All and": 2
+  }
+ },
+ "dsa-boundary-walk": {
+  "hash": "1125a31d78ce15ed",
+  "tests": {
+   "Example": [
+    1,
+    2,
+    4,
+    8,
+    9,
+    6,
+    7,
+    3
+   ],
+   "Root only right": [
+    1,
+    3,
+    4,
+    2
+   ],
+   "Single": [
+    5
+   ],
+   "Left chain": [
+    1,
+    2,
+    3,
+    4
+   ]
+  }
+ },
+ "dsa-bouquet-days": {
+  "hash": "643e3318eb67e9d1",
+  "tests": {
+   "Example": 3,
+   "Impossible": -1,
+   "Adjacency matters": 12,
+   "Single bouquet": 5
+  }
+ },
+ "dsa-bracket-matching": {
+  "hash": "68e5726a998594f9",
+  "tests": {
+   "Example": [
+    -1,
+    1,
+    2,
+    -1
+   ],
+   "Unclosed": [
+    2
+   ],
+   "Closer first": [
+    0,
+    -1
+   ],
+   "Deep": [
+    -1,
+    3
+   ]
+  }
+ },
+ "dsa-bst-from-preorder": {
+  "hash": "1b4bb5b2f4b0d4be",
+  "tests": {
+   "Example": [
+    8,
+    5,
+    10,
+    1,
+    7,
+    null,
+    12
+   ],
+   "Increasing": [
+    1,
+    null,
+    2,
+    null,
+    3
+   ],
+   "Single": [
+    4
+   ],
+   "Decreasing": [
+    3,
+    2,
+    null,
+    1
+   ]
+  }
+ },
+ "dsa-bst-insert-delete": {
+  "hash": "3bfe15fce56163f5",
+  "tests": {
+   "Example": [
+    [
+     1,
+     2,
+     4,
+     5,
+     6,
+     7
+    ],
+    [
+     5,
+     4,
+     6,
+     2,
+     null,
+     null,
+     7,
+     1
+    ]
+   ],
+   "Delete root": [
+    [
+     3,
+     8
+    ],
+    [
+     8,
+     3
+    ]
+   ],
+   "From empty": [
+    [
+     1,
+     2,
+     3
+    ],
+    [
+     2,
+     1,
+     3
+    ]
+   ],
+   "Delete leaf and missing": [
+    [
+     2,
+     3
+    ],
+    [
+     2,
+     null,
+     3
+    ]
+   ]
+  }
+ },
+ "dsa-bst-lca": {
+  "hash": "4316412d8985d1dc",
+  "tests": {
+   "Example": 6,
+   "Ancestor itself": 2,
+   "Deep": 4,
+   "Root split": 2
+  }
+ },
+ "dsa-bst-neighbours": {
+  "hash": "d1c39a8d6d8d949e",
+  "tests": {
+   "Example": [
+    10,
+    12,
+    10,
+    12
+   ],
+   "Present value": [
+    6,
+    6,
+    4,
+    8
+   ],
+   "Below everything": [
+    null,
+    3,
+    null,
+    3
+   ],
+   "Above everything": [
+    7,
+    null,
+    7,
+    null
+   ]
+  }
+ },
+ "dsa-bst-pair-sum": {
+  "hash": "b715679b131e4fd9",
+  "tests": {
+   "Example": [
+    [
+     2,
+     3,
+     4,
+     5,
+     6,
+     7
+    ],
+    [
+     2,
+     7
+    ]
+   ],
+   "None": [
+    [
+     2,
+     3,
+     4,
+     5,
+     6,
+     7
+    ],
+    []
+   ],
+   "Smallest a wins": [
+    [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7
+    ],
+    [
+     1,
+     7
+    ]
+   ],
+   "Single node": [
+    [
+     5
+    ],
+    []
+   ]
+  }
+ },
+ "dsa-build-post-in": {
+  "hash": "80c0f8bb48ab8396",
+  "tests": {
+   "Example": [
+    3,
+    9,
+    20,
+    null,
+    null,
+    15,
+    7
+   ],
+   "Single": [
+    1
+   ],
+   "Right chain": [
+    1,
+    null,
+    2,
+    null,
+    3
+   ],
+   "Full": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+   ]
+  }
+ },
+ "dsa-build-pre-in": {
+  "hash": "57decc202a7d7402",
+  "tests": {
+   "Example": [
+    3,
+    9,
+    20,
+    null,
+    null,
+    15,
+    7
+   ],
+   "Single": [
+    1
+   ],
+   "Left chain": [
+    3,
+    2,
+    null,
+    1
+   ],
+   "Empty": []
+  }
+ },
+ "dsa-burn-tree": {
+  "hash": "3fe7b107d2fafe39",
+  "tests": {
+   "Example": 4,
+   "Single": 0,
+   "From a leaf": 3,
+   "From the root": 2
+  }
+ },
+ "dsa-burst-balloons": {
+  "hash": "260cde11594f539f",
+  "tests": {
+   "Example": 167,
+   "Two": 10,
+   "Single": 7,
+   "Empty": 0
+  }
+ },
+ "dsa-candy-ratings": {
+  "hash": "e30b0db2ccb9e7e7",
+  "tests": {
+   "Example": 5,
+   "Plateau": 4,
+   "Decreasing": 15,
+   "Mountain": 11
+  }
+ },
+ "dsa-capture-surrounded": {
+  "hash": "cbf24f6ff312df28",
+  "tests": {
+   "Example": [
+    [
+     "XXXX",
+     "XXXX",
+     "XXXX",
+     "XOXX"
+    ],
+    3
+   ],
+   "Single": [
+    [
+     "X"
+    ],
+    0
+   ],
+   "Border region kept": [
+    [
+     "OOO",
+     "OXO",
+     "OOO"
+    ],
+    0
+   ],
+   "Nested": [
+    [
+     "XXXXX",
+     "XXXXX",
+     "XXXXX"
+    ],
+    2
+   ]
+  }
+ },
+ "dsa-cheapest-k-stops": {
+  "hash": "8f1fd38862bb9113",
+  "tests": {
+   "Example": 700,
+   "More stops allowed": 200,
+   "Direct only": 500,
+   "Unreachable": -1
+  }
+ },
+ "dsa-children-sum-fix": {
+  "hash": "2cc15b1417ace47e",
+  "tests": {
+   "Example": [
+    150,
+    80,
+    70,
+    40,
+    40,
+    30,
+    40
+   ],
+   "Already valid": [
+    10,
+    4,
+    6
+   ],
+   "Leaf only": [
+    3
+   ],
+   "One child": [
+    100,
+    100,
+    null,
+    50,
+    50
+   ]
+  }
+ },
+ "dsa-coin-ways": {
+  "hash": "9a74d02386b217f5",
+  "tests": {
+   "Example": [
+    4,
+    9
+   ],
+   "Impossible": [
+    0,
+    0
+   ],
+   "Zero amount": [
+    1,
+    1
+   ],
+   "Larger": [
+    5,
+    17
+   ]
+  }
+ },
+ "dsa-combination-sum-once": {
+  "hash": "4e93e124cb17c111",
+  "tests": {
+   "Example": [
+    [
+     1,
+     1,
+     6
+    ],
+    [
+     1,
+     2,
+     5
+    ],
+    [
+     1,
+     7
+    ],
+    [
+     2,
+     6
+    ]
+   ],
+   "Another": [
+    [
+     1,
+     2,
+     2
+    ],
+    [
+     5
+    ]
+   ],
+   "None": [],
+   "All ones": [
+    [
+     1,
+     1
+    ]
+   ]
+  }
+ },
+ "dsa-combination-sum-reuse": {
+  "hash": "383066c0e12692c6",
+  "tests": {
+   "Example": [
+    [
+     2,
+     2,
+     3
+    ],
+    [
+     7
+    ]
+   ],
+   "Several": [
+    [
+     2,
+     2,
+     2,
+     2
+    ],
+    [
+     2,
+     3,
+     3
+    ],
+    [
+     3,
+     5
+    ]
+   ],
+   "Impossible": [],
+   "Zero target": [
+    []
+   ]
+  }
+ },
+ "dsa-compare-versions": {
+  "hash": "372b04a6fa71823f",
+  "tests": {
+   "Example": [
+    0,
+    0,
+    -1
+   ],
+   "Ten vs nine": [
+    1
+   ],
+   "Longer wins": [
+    1,
+    -1
+   ],
+   "Equal with zeros": [
+    0,
+    0
+   ]
+  }
+ },
+ "dsa-copy-random-list": {
+  "hash": "bad0538649d047e3",
+  "tests": {
+   "Example": [
+    [
+     [
+      7,
+      null
+     ],
+     [
+      13,
+      0
+     ],
+     [
+      11,
+      4
+     ],
+     [
+      10,
+      2
+     ],
+     [
+      1,
+      0
+     ]
+    ],
+    false
+   ],
+   "Self random": [
+    [
+     [
+      1,
+      0
+     ],
+     [
+      2,
+      0
+     ]
+    ],
+    false
+   ],
+   "All null randoms": [
+    [
+     [
+      3,
+      null
+     ],
+     [
+      3,
+      null
+     ],
+     [
+      3,
+      null
+     ]
+    ],
+    false
+   ],
+   "Empty": [
+    [],
+    false
+   ]
+  }
+ },
+ "dsa-count-complete-tree": {
+  "hash": "9a9b729831ea5894",
+  "tests": {
+   "Example": 6,
+   "Perfect": 7,
+   "Empty": 0,
+   "Last level nearly full": 14
+  }
+ },
+ "dsa-count-inversions": {
+  "hash": "b02c00d7847c5405",
+  "tests": {
+   "Example": 3,
+   "Sorted": 0,
+   "Reversed": 10,
+   "Duplicates are not inversions": 4
+  }
+ },
+ "dsa-count-islands": {
+  "hash": "0b6a3a1fd869e8d5",
+  "tests": {
+   "Example": [
+    3,
+    5
+   ],
+   "Diagonal joins": [
+    1,
+    2
+   ],
+   "No land": [
+    0,
+    0
+   ],
+   "Several": [
+    4,
+    1
+   ]
+  }
+ },
+ "dsa-count-lis": {
+  "hash": "96fcf022aaf9d66c",
+  "tests": {
+   "Example": 2,
+   "All equal": 5,
+   "Branching": 3,
+   "Empty": 0
+  }
+ },
+ "dsa-count-palindromic-substrings": {
+  "hash": "f4d9c3b5f03c4785",
+  "tests": {
+   "Example": 3,
+   "Repeats": 6,
+   "Mixed": 6,
+   "Empty": 0
+  }
+ },
+ "dsa-count-provinces": {
+  "hash": "b0052787508f3f15",
+  "tests": {
+   "Example": 2,
+   "All separate": 3,
+   "All connected": 1,
+   "Chain": 1
+  }
+ },
+ "dsa-count-shortest-routes": {
+  "hash": "e3057563ef44ad5f",
+  "tests": {
+   "Example": 3,
+   "Single road": 1,
+   "Diamond": 2,
+   "One node": 1
+  }
+ },
+ "dsa-count-squares": {
+  "hash": "16100bb729895af7",
+  "tests": {
+   "Example": [
+    15,
+    9
+   ],
+   "Small": [
+    7,
+    4
+   ],
+   "All zeros": [
+    0,
+    0
+   ],
+   "All ones": [
+    14,
+    9
+   ]
+  }
+ },
+ "dsa-count-subsets-sum": {
+  "hash": "f678558d20a4b9e8",
+  "tests": {
+   "Example": [
+    3,
+    0
+   ],
+   "Zeros": [
+    4,
+    4
+   ],
+   "None": [
+    0,
+    0
+   ],
+   "Plus-minus signs": [
+    10,
+    5
+   ]
+  }
+ },
+ "dsa-counting-sort-grades": {
+  "hash": "77f2197ec1753159",
+  "tests": {
+   "Example": [
+    [
+     0,
+     70,
+     70,
+     88,
+     88,
+     100
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      70,
+      2
+     ],
+     [
+      88,
+      2
+     ],
+     [
+      100,
+      1
+     ]
+    ]
+   ],
+   "Empty": [
+    [],
+    []
+   ],
+   "All same": [
+    [
+     5,
+     5,
+     5
+    ],
+    [
+     [
+      5,
+      3
+     ]
+    ]
+   ],
+   "Extremes": [
+    [
+     0,
+     0,
+     5,
+     10,
+     10
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      5,
+      1
+     ],
+     [
+      10,
+      2
+     ]
+    ]
+   ]
+  }
+ },
+ "dsa-course-order": {
+  "hash": "50cff31665b3ad52",
+  "tests": {
+   "Example": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "Cycle": [],
+   "No prerequisites": [
+    0,
+    1,
+    2
+   ],
+   "Chain": [
+    1,
+    2,
+    3,
+    0
+   ]
+  }
+ },
+ "dsa-critical-links": {
+  "hash": "bc7453e1fde404b0",
+  "tests": {
+   "Example": [
+    [
+     [
+      1,
+      3
+     ]
+    ],
+    [
+     1
+    ]
+   ],
+   "Path": [
+    [
+     [
+      0,
+      1
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    [
+     1,
+     2
+    ]
+   ],
+   "Cycle has none": [
+    [],
+    []
+   ],
+   "Two triangles sharing a node": [
+    [],
+    [
+     2
+    ]
+   ]
+  }
+ },
+ "dsa-cut-stick": {
+  "hash": "8bb948e5173a679f",
+  "tests": {
+   "Example": 16,
+   "Another": 22,
+   "Single cut": 10,
+   "No cuts": 0
+  }
+ },
+ "dsa-cycle-directed": {
+  "hash": "19750eb7d05ae86f",
+  "tests": {
+   "Example": [
+    true,
+    false
+   ],
+   "Self loop": [
+    true
+   ],
+   "No edges": [
+    false
+   ],
+   "Separate components": [
+    true
+   ]
+  }
+ },
+ "dsa-cycle-undirected": {
+  "hash": "c0e1e95064fc1173",
+  "tests": {
+   "Example": [
+    true,
+    false
+   ],
+   "Disconnected cycle": [
+    true
+   ],
+   "No edges": [
+    false
+   ],
+   "Triangle": [
+    true
+   ]
+  }
+ },
+ "dsa-dag-shortest-paths": {
+  "hash": "f635e7a0cdcdb186",
+  "tests": {
+   "Example": [
+    0,
+    2,
+    3,
+    6,
+    1,
+    5
+   ],
+   "Unreachable": [
+    0,
+    -1,
+    -1
+   ],
+   "Negative weight": [
+    0,
+    5,
+    2
+   ],
+   "Single": [
+    0
+   ]
+  }
+ },
+ "dsa-days-until-warmer": {
+  "hash": "e5a390af8196912a",
+  "tests": {
+   "Example": [
+    1,
+    1,
+    4,
+    2,
+    1,
+    1,
+    0,
+    0
+   ],
+   "Increasing": [
+    1,
+    1,
+    1,
+    0
+   ],
+   "Never warmer": [
+    0,
+    0,
+    0
+   ],
+   "Plateau": [
+    2,
+    1,
+    0
+   ]
+  }
+ },
+ "dsa-deadline-jobs": {
+  "hash": "53078728153ec926",
+  "tests": {
+   "Example": [
+    2,
+    60
+   ],
+   "Another": [
+    2,
+    127
+   ],
+   "All fit": [
+    3,
+    15
+   ],
+   "Empty": [
+    0,
+    0
+   ]
+  }
+ },
+ "dsa-decode-repeats": {
+  "hash": "efd9b916b0743245",
+  "tests": {
+   "Example": "aaabcbc",
+   "Nested": "accaccacc",
+   "Multi-digit": "xxxxxxxxxx",
+   "Plain text around": "abcdcdef"
+  }
+ },
+ "dsa-dedupe-sorted-in-place": {
+  "hash": "beb4c9996bdba940",
+  "tests": {
+   "Keep one": [
+    5,
+    [
+     0,
+     1,
+     2,
+     3,
+     4
+    ]
+   ],
+   "Keep two": [
+    5,
+    [
+     1,
+     1,
+     2,
+     2,
+     3
+    ]
+   ],
+   "Empty": [
+    0,
+    []
+   ],
+   "All same": [
+    3,
+    [
+     7,
+     7,
+     7
+    ]
+   ]
+  }
+ },
+ "dsa-dedupe-sorted-list": {
+  "hash": "9268c9b361d89b68",
+  "tests": {
+   "Example": [
+    1,
+    2,
+    5
+   ],
+   "Head repeats": [
+    2,
+    3
+   ],
+   "All repeat": [],
+   "No repeats": [
+    1,
+    2
+   ]
+  }
+ },
+ "dsa-delete-middle": {
+  "hash": "7a8a36ea3e5e430c",
+  "tests": {
+   "Example": [
+    1,
+    3,
+    4,
+    1,
+    2,
+    6
+   ],
+   "Even": [
+    1,
+    2,
+    4
+   ],
+   "Two": [
+    2
+   ],
+   "One": []
+  }
+ },
+ "dsa-detect-loop": {
+  "hash": "7ca378225d293336",
+  "tests": {
+   "Example": [
+    2,
+    3
+   ],
+   "No cycle": [
+    null,
+    0
+   ],
+   "Self loop": [
+    1,
+    1
+   ],
+   "Whole list is the loop": [
+    5,
+    4
+   ]
+  }
+ },
+ "dsa-dijkstra-with-path": {
+  "hash": "5ba617665efea0b3",
+  "tests": {
+   "Example": [
+    [
+     0,
+     2,
+     4,
+     1,
+     5
+    ],
+    [
+     1,
+     4,
+     3,
+     5
+    ]
+   ],
+   "Unreachable": [
+    [
+     0,
+     1,
+     -1
+    ],
+    []
+   ],
+   "Single node": [
+    [
+     0
+    ],
+    [
+     1
+    ]
+   ],
+   "Direct vs detour": [
+    [
+     0,
+     3,
+     7
+    ],
+    [
+     1,
+     2,
+     3
+    ]
+   ]
+  }
+ },
+ "dsa-distance-k-nodes": {
+  "hash": "4fe2b508304721e6",
+  "tests": {
+   "Example": [
+    1,
+    4,
+    7
+   ],
+   "k = 0": [
+    1
+   ],
+   "Up through the root": [
+    3
+   ],
+   "Too far": []
+  }
+ },
+ "dsa-distinct-island-shapes": {
+  "hash": "d442783eb50163f0",
+  "tests": {
+   "Example": 1,
+   "Different shapes": 3,
+   "No land": 0,
+   "Same singles": 1
+  }
+ },
+ "dsa-distinct-subsequences": {
+  "hash": "23c584a17eac7536",
+  "tests": {
+   "Example": 3,
+   "Another": 5,
+   "Empty target": 1,
+   "Too long": 0
+  }
+ },
+ "dsa-distinct-substrings": {
+  "hash": "524688ab5fef6ae5",
+  "tests": {
+   "Example": 7,
+   "Repeated": 3,
+   "Distinct letters": 6,
+   "Empty": 0
+  }
+ },
+ "dsa-divide-by-shifting": {
+  "hash": "de0dd4795162bb47",
+  "tests": {
+   "Example": [
+    3,
+    -2
+   ],
+   "Overflow": [
+    2147483647
+   ],
+   "Exact": [
+    10,
+    -3
+   ],
+   "Smaller dividend": [
+    0,
+    0
+   ]
+  }
+ },
+ "dsa-divisible-subset": {
+  "hash": "b7cf62fd05a4dbc8",
+  "tests": {
+   "Example": [
+    1,
+    2
+   ],
+   "Chain": [
+    1,
+    2,
+    4,
+    8
+   ],
+   "Mixed": [
+    4,
+    8,
+    16
+   ],
+   "Empty": []
+  }
+ },
+ "dsa-divisors-list": {
+  "hash": "8989670ff133f695",
+  "tests": {
+   "Example": [
+    [
+     [
+      1,
+      2,
+      3,
+      4,
+      6,
+      9,
+      12,
+      18,
+      36
+     ],
+     9,
+     91
+    ],
+    [
+     [
+      1,
+      7
+     ],
+     2,
+     8
+    ]
+   ],
+   "One": [
+    [
+     [
+      1
+     ],
+     1,
+     1
+    ]
+   ],
+   "Perfect number": [
+    [
+     [
+      1,
+      2,
+      4,
+      7,
+      14,
+      28
+     ],
+     6,
+     56
+    ]
+   ],
+   "Larger": [
+    [
+     [
+      1,
+      2,
+      4,
+      5,
+      8,
+      10,
+      20,
+      25,
+      40,
+      50,
+      100,
+      125,
+      200,
+      250,
+      500,
+      1000
+     ],
+     16,
+     2340
+    ]
+   ]
+  }
+ },
+ "dsa-drop-fewest-overlaps": {
+  "hash": "2d80f478d5e01fc0",
+  "tests": {
+   "Example": 1,
+   "Identical": 2,
+   "None needed": 0,
+   "Nested": 2
+  }
+ },
+ "dsa-drop-nth-from-end": {
+  "hash": "96792ffb3cdbdd7e",
+  "tests": {
+   "Example": [
+    1,
+    2,
+    3,
+    5
+   ],
+   "Remove head": [
+    2
+   ],
+   "Remove tail": [
+    1,
+    2
+   ],
+   "Only node": []
+  }
+ },
+ "dsa-eating-speed": {
+  "hash": "5f39927f6fc77cbb",
+  "tests": {
+   "Example": 4,
+   "Tight": 30,
+   "Loose": 23,
+   "One pile": 333334
+  }
+ },
+ "dsa-egg-drop": {
+  "hash": "c127dd098dfcc127",
+  "tests": {
+   "Example": [
+    2,
+    3,
+    4
+   ],
+   "Hundred floors": [
+    14
+   ],
+   "Zero floors": [
+    0
+   ],
+   "Many eggs": [
+    10,
+    10
+   ]
+  }
+ },
+ "dsa-eval-rpn": {
+  "hash": "6b45f2cf3e13cfb3",
+  "tests": {
+   "Example": 9,
+   "Division": 6,
+   "Negative truncation": -3,
+   "Long": 22
+  }
+ },
+ "dsa-exact-change-stand": {
+  "hash": "6af995336fa3b45b",
+  "tests": {
+   "Example": [
+    true,
+    false
+   ],
+   "First pays ten": [
+    false
+   ],
+   "Three fives for a twenty": [
+    true,
+    false
+   ],
+   "Empty queue": [
+    true
+   ]
+  }
+ },
+ "dsa-exactly-k-distinct": {
+  "hash": "701589d65c8e2b21",
+  "tests": {
+   "Example": 7,
+   "Another": 3,
+   "k = 1": 6,
+   "Too many": 0
+  }
+ },
+ "dsa-falling-path": {
+  "hash": "e2a66176f3d0fcff",
+  "tests": {
+   "Example": 105,
+   "Negatives": -4,
+   "Single row": 9,
+   "Column": 3
+  }
+ },
+ "dsa-fast-power": {
+  "hash": "e2a84ec84f947909",
+  "tests": {
+   "Example": [
+    1024,
+    9
+   ],
+   "Negative exponent": [
+    0.25,
+    1
+   ],
+   "Fractional base": [
+    3.375,
+    407
+   ],
+   "Zero exponent": [
+    1,
+    1
+   ]
+  }
+ },
+ "dsa-feed-children": {
+  "hash": "3ae6f13fd125abac",
+  "tests": {
+   "Example": 1,
+   "Everyone": 2,
+   "No cookies": 0,
+   "Big greed": 0
+  }
+ },
+ "dsa-find-a-peak": {
+  "hash": "05a31140b8f068a9",
+  "tests": {
+   "Example": 2,
+   "Several peaks": 5,
+   "Decreasing": 0,
+   "Single": 0
+  }
+ },
+ "dsa-find-celebrity": {
+  "hash": "43c31b7b83b08fdb",
+  "tests": {
+   "Example": 1,
+   "No celebrity": -1,
+   "Single person": 0,
+   "Last is celebrity": 2
+  }
+ },
+ "dsa-flatten-to-list": {
+  "hash": "3c9fdb8d49f06635",
+  "tests": {
+   "Example": [
+    [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6
+    ],
+    true
+   ],
+   "Single": [
+    [
+     0
+    ],
+    true
+   ],
+   "Left chain": [
+    [
+     1,
+     2,
+     3
+    ],
+    true
+   ],
+   "Empty": [
+    [],
+    true
+   ]
+  }
+ },
+ "dsa-flips-and-hamming": {
+  "hash": "c3a400605abea2f9",
+  "tests": {
+   "Example": [
+    3,
+    6
+   ],
+   "Same number": [
+    0,
+    4
+   ],
+   "Empty list": [
+    4,
+    0
+   ],
+   "Larger": [
+    2,
+    55
+   ]
+  }
+ },
+ "dsa-flood-fill": {
+  "hash": "13e7a453ec26ba84",
+  "tests": {
+   "Example": [
+    [
+     2,
+     2,
+     2
+    ],
+    [
+     2,
+     2,
+     0
+    ],
+    [
+     2,
+     0,
+     1
+    ]
+   ],
+   "Same colour": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ]
+   ],
+   "Single pixel region": [
+    [
+     5,
+     2
+    ],
+    [
+     2,
+     2
+    ]
+   ],
+   "Whole image": [
+    [
+     4,
+     4
+    ],
+    [
+     4,
+     4
+    ]
+   ]
+  }
+ },
+ "dsa-floor-ceil-sorted": {
+  "hash": "9456609d0b73791a",
+  "tests": {
+   "Example": [
+    [
+     2,
+     8,
+     2
+    ],
+    [
+     10,
+     10,
+     3
+    ],
+    [
+     null,
+     1,
+     0
+    ],
+    [
+     19,
+     null,
+     7
+    ]
+   ],
+   "Single": [
+    [
+     4,
+     4,
+     0
+    ]
+   ],
+   "Empty list": [
+    [
+     null,
+     null,
+     0
+    ]
+   ],
+   "Duplicates": [
+    [
+     2,
+     2,
+     0
+    ],
+    [
+     null,
+     2,
+     0
+    ],
+    [
+     2,
+     null,
+     3
+    ]
+   ]
+  }
+ },
+ "dsa-floyd-threshold-city": {
+  "hash": "4eaa3eed0a669e3a",
+  "tests": {
+   "Example": 3,
+   "Another": 0,
+   "Isolated city": 2,
+   "All reachable": 2
+  }
+ },
+ "dsa-fractional-knapsack": {
+  "hash": "d3aceac08e5182c4",
+  "tests": {
+   "Example": 240,
+   "Everything fits": 30,
+   "Zero capacity": 0,
+   "Partial first item": 40
+  }
+ },
+ "dsa-frequency-sort-chars": {
+  "hash": "e12569b547720861",
+  "tests": {
+   "Example": "eert",
+   "Ties": "aaaccc",
+   "Case sensitive": "bbAa",
+   "Empty": ""
+  }
+ },
+ "dsa-frog-k-jumps": {
+  "hash": "190c3448af00f317",
+  "tests": {
+   "k = 2": 20,
+   "k = 3": 30,
+   "Single stone": 0,
+   "k = 1": 7
+  }
+ },
+ "dsa-fuel-loop": {
+  "hash": "278c77559e7cc22f",
+  "tests": {
+   "Example": 3,
+   "Impossible": -1,
+   "Start at zero": 0,
+   "Single": 0
+  }
+ },
+ "dsa-gcd-lcm-euclid": {
+  "hash": "ede62fa701a676bd",
+  "tests": {
+   "Example": [
+    [
+     6,
+     36,
+     -1,
+     1
+    ],
+    [
+     1,
+     35,
+     -2,
+     3
+    ]
+   ],
+   "Equal": [
+    [
+     9,
+     9,
+     0,
+     1
+    ]
+   ],
+   "Coprime larger": [
+    [
+     1,
+     6553110167,
+     24224,
+     -36959
+    ]
+   ],
+   "One divides": [
+    [
+     4,
+     20,
+     1,
+     0
+    ],
+    [
+     7,
+     35,
+     0,
+     1
+    ]
+   ]
+  }
+ },
+ "dsa-graph-colouring": {
+  "hash": "d0002e49d17d0f15",
+  "tests": {
+   "Triangle with 3": [
+    1,
+    2,
+    3,
+    2
+   ],
+   "Triangle with 2": [],
+   "No edges": [
+    1,
+    1,
+    1
+   ],
+   "Bipartite square": [
+    1,
+    2,
+    1,
+    2
+   ]
+  }
+ },
+ "dsa-gray-code": {
+  "hash": "922ca23ecf28ed89",
+  "tests": {
+   "Example": [
+    0,
+    1,
+    3,
+    2
+   ],
+   "Zero bits": [
+    0
+   ],
+   "Three bits": [
+    0,
+    1,
+    3,
+    2,
+    6,
+    7,
+    5,
+    4
+   ],
+   "Four bits": [
+    0,
+    1,
+    3,
+    2,
+    6,
+    7,
+    5,
+    4,
+    12,
+    13,
+    15,
+    14,
+    10,
+    11,
+    9,
+    8
+   ]
+  }
+ },
+ "dsa-greedy-change": {
+  "hash": "6dbd6ee9c7b7bc77",
+  "tests": {
+   "Example": [
+    [
+     20,
+     20,
+     5,
+     2,
+     2
+    ],
+    [
+     2000,
+     100,
+     20,
+     1
+    ]
+   ],
+   "Zero": [
+    []
+   ],
+   "Round": [
+    [
+     500
+    ],
+    [
+     5,
+     2
+    ]
+   ],
+   "Large": [
+    [
+     2000,
+     2000,
+     500,
+     500,
+     500,
+     200,
+     100,
+     50,
+     20,
+     10,
+     5,
+     2,
+     1
+    ]
+   ]
+  }
+ },
+ "dsa-grid-path-count": {
+  "hash": "fc69ef5507fc471a",
+  "tests": {
+   "Example": [
+    28,
+    3
+   ],
+   "Single cell": [
+    1
+   ],
+   "Square": [
+    48620,
+    1
+   ],
+   "Long thin grids": [
+    1,
+    30,
+    30421755
+   ]
+  }
+ },
+ "dsa-grid-paths-obstacles": {
+  "hash": "3ff6dabcfbfc6ca1",
+  "tests": {
+   "Example": 2,
+   "Blocked start": 0,
+   "No obstacles": 10,
+   "Wall": 0
+  }
+ },
+ "dsa-height-and-balance": {
+  "hash": "bb9109230baab3b3",
+  "tests": {
+   "Example": [
+    3,
+    2,
+    true
+   ],
+   "Unbalanced": [
+    4,
+    2,
+    false
+   ],
+   "One-sided": [
+    2,
+    2,
+    true
+   ],
+   "Empty": [
+    0,
+    0,
+    true
+   ]
+  }
+ },
+ "dsa-histogram-rectangle": {
+  "hash": "9065569e70ff475d",
+  "tests": {
+   "Example": 10,
+   "Two bars": 4,
+   "Equal bars": 12,
+   "Empty": 0
+  }
+ },
+ "dsa-house-robber-line-and-ring": {
+  "hash": "868078c2ea63f390",
+  "tests": {
+   "Example": [
+    12,
+    11
+   ],
+   "Circle matters": [
+    4,
+    3
+   ],
+   "Single": [
+    5,
+    5
+   ],
+   "Empty": [
+    0,
+    0
+   ]
+  }
+ },
+ "dsa-important-reverse-pairs": {
+  "hash": "2d5c6a521fec3c2f",
+  "tests": {
+   "Example": 2,
+   "Another": 3,
+   "Negatives": 1,
+   "None": 0
+  }
+ },
+ "dsa-infix-to-postfix": {
+  "hash": "6c12a85322f13f28",
+  "tests": {
+   "Example": "abcd^e-fgh*+^*+i-",
+   "Left associative": "ab-c-",
+   "Right associative power": "abc^^",
+   "Parentheses": "ab+c*"
+  }
+ },
+ "dsa-insert-interval": {
+  "hash": "5812484f1b31ff12",
+  "tests": {
+   "Example": [
+    [
+     1,
+     5
+    ],
+    [
+     6,
+     9
+    ]
+   ],
+   "Spans several": [
+    [
+     1,
+     2
+    ],
+    [
+     3,
+     10
+    ],
+    [
+     12,
+     16
+    ]
+   ],
+   "Into empty": [
+    [
+     5,
+     7
+    ]
+   ],
+   "At the end": [
+    [
+     1,
+     5
+    ],
+    [
+     6,
+     8
+    ]
+   ]
+  }
+ },
+ "dsa-insert-operators": {
+  "hash": "cd796395552db56c",
+  "tests": {
+   "Example": [
+    "1*2*3",
+    "1+2+3"
+   ],
+   "Another": [
+    "2*3+2",
+    "2+3*2"
+   ],
+   "Leading zeros": [
+    "1*0+5",
+    "10-5"
+   ],
+   "None": []
+  }
+ },
+ "dsa-integer-nth-root": {
+  "hash": "300c900a6f216a63",
+  "tests": {
+   "Example": [
+    [
+     4,
+     true
+    ],
+    [
+     3,
+     true
+    ],
+    [
+     3,
+     false
+    ]
+   ],
+   "Zero and one": [
+    [
+     0,
+     true
+    ],
+    [
+     1,
+     true
+    ]
+   ],
+   "Large": [
+    [
+     1000,
+     true
+    ],
+    [
+     2,
+     false
+    ],
+    [
+     4,
+     true
+    ]
+   ],
+   "Just below a power": [
+    [
+     9,
+     false
+    ],
+    [
+     3,
+     false
+    ],
+    [
+     42,
+     true
+    ]
+   ]
+  }
+ },
+ "dsa-invert-tree": {
+  "hash": "c6892bc809ed97ba",
+  "tests": {
+   "Example": [
+    4,
+    7,
+    2,
+    9,
+    6,
+    3,
+    1
+   ],
+   "Two levels": [
+    2,
+    3,
+    1
+   ],
+   "Empty": [],
+   "One-sided": [
+    1,
+    null,
+    2
+   ]
+  }
+ },
+ "dsa-islands-online": {
+  "hash": "bcc8dcb21924dbe8",
+  "tests": {
+   "Example": [
+    1,
+    1,
+    2,
+    3
+   ],
+   "Merge three": [
+    1,
+    2,
+    3,
+    1
+   ],
+   "Repeat": [
+    1,
+    1
+   ],
+   "Fill all": [
+    1,
+    2,
+    1,
+    1
+   ]
+  }
+ },
+ "dsa-isomorphic-mapping": {
+  "hash": "6c91c69c6ac90077",
+  "tests": {
+   "Example": [
+    true,
+    false,
+    true
+   ],
+   "Two to one": [
+    false
+   ],
+   "Lengths differ": [
+    false,
+    true
+   ],
+   "Longer words": [
+    false,
+    true,
+    true
+   ]
+  }
+ },
+ "dsa-k-closest-points": {
+  "hash": "650087d1e11cd20c",
+  "tests": {
+   "Example": [
+    [
+     -2,
+     2
+    ]
+   ],
+   "Two of three": [
+    [
+     3,
+     3
+    ],
+    [
+     -2,
+     4
+    ]
+   ],
+   "Ties": [
+    [
+     -1,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     0
+    ]
+   ],
+   "All": [
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     2
+    ]
+   ]
+  }
+ },
+ "dsa-k-digits-sum": {
+  "hash": "30b8654dddac3082",
+  "tests": {
+   "Example": [
+    [
+     1,
+     2,
+     4
+    ]
+   ],
+   "Several": [
+    [
+     1,
+     2,
+     6
+    ],
+    [
+     1,
+     3,
+     5
+    ],
+    [
+     2,
+     3,
+     4
+    ]
+   ],
+   "Impossible": [],
+   "All nine digits": [
+    [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9
+    ]
+   ]
+  }
+ },
+ "dsa-keypad-words": {
+  "hash": "5f3f153df9ffa2f0",
+  "tests": {
+   "Example": [
+    "ad",
+    "ae",
+    "af",
+    "bd",
+    "be",
+    "bf",
+    "cd",
+    "ce",
+    "cf"
+   ],
+   "Single": [
+    "p",
+    "q",
+    "r",
+    "s"
+   ],
+   "Empty": [],
+   "Three digits": [
+    "awg",
+    "awh",
+    "awi",
+    "axg",
+    "axh",
+    "axi",
+    "ayg",
+    "ayh",
+    "ayi",
+    "azg",
+    "azh",
+    "azi",
+    "bwg",
+    "bwh",
+    "bwi",
+    "bxg",
+    "bxh",
+    "bxi",
+    "byg",
+    "byh",
+    "byi",
+    "bzg",
+    "bzh",
+    "bzi",
+    "cwg",
+    "cwh",
+    "cwi",
+    "cxg",
+    "cxh",
+    "cxi",
+    "cyg",
+    "cyh",
+    "cyi",
+    "czg",
+    "czh",
+    "czi"
+   ]
+  }
+ },
+ "dsa-kmp-prefix-function": {
+  "hash": "5b3f9445c9fff157",
+  "tests": {
+   "Example": [
+    [
+     0,
+     0,
+     1,
+     2,
+     0
+    ],
+    [
+     10
+    ]
+   ],
+   "Overlapping": [
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1,
+     2,
+     3
+    ]
+   ],
+   "No match": [
+    [
+     0,
+     0
+    ],
+    []
+   ],
+   "Self-similar pattern": [
+    [
+     0,
+     0,
+     1,
+     2
+    ],
+    [
+     4
+    ]
+   ]
+  }
+ },
+ "dsa-knapsack-01": {
+  "hash": "536cec286a5e8a3f",
+  "tests": {
+   "Example": [
+    9,
+    [
+     1,
+     2
+    ]
+   ],
+   "Nothing fits": [
+    0,
+    []
+   ],
+   "Take all": [
+    7,
+    [
+     0,
+     1
+    ]
+   ],
+   "Classic": [
+    220,
+    [
+     1,
+     2
+    ]
+   ]
+  }
+ },
+ "dsa-kruskal-mst": {
+  "hash": "7c1452eb45a2a58b",
+  "tests": {
+   "Example": [
+    19,
+    [
+     [
+      2,
+      3,
+      4
+     ],
+     [
+      0,
+      3,
+      5
+     ],
+     [
+      0,
+      1,
+      10
+     ]
+    ]
+   ],
+   "Disconnected": [
+    3,
+    [
+     [
+      0,
+      1,
+      1
+     ],
+     [
+      2,
+      3,
+      2
+     ]
+    ]
+   ],
+   "Ties": [
+    2,
+    [
+     [
+      0,
+      1,
+      1
+     ],
+     [
+      0,
+      2,
+      1
+     ]
+    ]
+   ],
+   "No edges": [
+    0,
+    []
+   ]
+  }
+ },
+ "dsa-kth-in-bst": {
+  "hash": "522e0e510acb1483",
+  "tests": {
+   "Example": [
+    1,
+    4
+   ],
+   "Middle": [
+    3,
+    4
+   ],
+   "Single": [
+    9,
+    9
+   ],
+   "Last": [
+    3,
+    1
+   ]
+  }
+ },
+ "dsa-kth-of-two-sorted": {
+  "hash": "1bc5b061093b6758",
+  "tests": {
+   "Example": 6,
+   "First element": 1,
+   "Last element": 4,
+   "One empty": 6
+  }
+ },
+ "dsa-kth-permutation": {
+  "hash": "825ff7f57cc354ba",
+  "tests": {
+   "Example": "213",
+   "Another": "2314",
+   "First": "123",
+   "Last": "4321"
+  }
+ },
+ "dsa-largest-bst-subtree": {
+  "hash": "710f11c9d897804c",
+  "tests": {
+   "Example": 3,
+   "Whole tree": 3,
+   "Empty": 0,
+   "Only leaves": 1
+  }
+ },
+ "dsa-lcs-reconstruct": {
+  "hash": "ff3bb843b542f336",
+  "tests": {
+   "Example": [
+    3,
+    "ace"
+   ],
+   "None": [
+    0,
+    ""
+   ],
+   "Ties": [
+    4,
+    "bcba"
+   ],
+   "Empty": [
+    0,
+    ""
+   ]
+  }
+ },
+ "dsa-leaders-from-right": {
+  "hash": "817815693f31165e",
+  "tests": {
+   "Example": [
+    17,
+    5,
+    2
+   ],
+   "Increasing": [
+    3
+   ],
+   "Ties are not leaders": [
+    5,
+    1
+   ],
+   "Empty": []
+  }
+ },
+ "dsa-level-order": {
+  "hash": "db31e87edad640c6",
+  "tests": {
+   "Example": [
+    [
+     [
+      3
+     ],
+     [
+      9,
+      20
+     ],
+     [
+      15,
+      7
+     ]
+    ],
+    [
+     [
+      3
+     ],
+     [
+      20,
+      9
+     ],
+     [
+      15,
+      7
+     ]
+    ]
+   ],
+   "Full": [
+    [
+     [
+      1
+     ],
+     [
+      2,
+      3
+     ],
+     [
+      4,
+      5,
+      6,
+      7
+     ]
+    ],
+    [
+     [
+      1
+     ],
+     [
+      3,
+      2
+     ],
+     [
+      4,
+      5,
+      6,
+      7
+     ]
+    ]
+   ],
+   "Empty": [
+    [],
+    []
+   ],
+   "Deep left": [
+    [
+     [
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ],
+     [
+      4
+     ]
+    ],
+    [
+     [
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ],
+     [
+      4
+     ]
+    ]
+   ]
+  }
+ },
+ "dsa-lfu-cache": {
+  "hash": "c0061cb5f77b0a45",
+  "tests": {
+   "Example": [
+    null,
+    null,
+    null,
+    1,
+    null,
+    -1,
+    3,
+    null,
+    -1,
+    3,
+    4
+   ],
+   "Zero capacity": [
+    null,
+    null,
+    -1
+   ],
+   "Tie broken by recency": [
+    null,
+    null,
+    null,
+    null,
+    -1,
+    2,
+    3
+   ],
+   "Update counts as use": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    5,
+    -1
+   ]
+  }
+ },
+ "dsa-lis-patience": {
+  "hash": "7b230455235c0709",
+  "tests": {
+   "Example": [
+    4,
+    [
+     2,
+     3,
+     7,
+     18
+    ]
+   ],
+   "Duplicates": [
+    1,
+    [
+     7
+    ]
+   ],
+   "Increasing": [
+    4,
+    [
+     1,
+     2,
+     3,
+     4
+    ]
+   ],
+   "Empty": [
+    0,
+    []
+   ]
+  }
+ },
+ "dsa-list-intersection": {
+  "hash": "16b79d4dd2e4b2e9",
+  "tests": {
+   "Example": 8,
+   "No intersection": null,
+   "Same values, different nodes": 9,
+   "One list is the tail": 7
+  }
+ },
+ "dsa-list-palindrome": {
+  "hash": "b8c127ef48a0b9a9",
+  "tests": {
+   "Example": true,
+   "Not a palindrome": false,
+   "Odd length": true,
+   "Empty": true
+  }
+ },
+ "dsa-lonely-element": {
+  "hash": "b144747c58c7588e",
+  "tests": {
+   "Example": 2,
+   "At the end": 10,
+   "At the start": 0,
+   "Single": 5
+  }
+ },
+ "dsa-longest-bitonic": {
+  "hash": "0437b538b0a90e00",
+  "tests": {
+   "Example": 6,
+   "Increasing": 3,
+   "Plateau": 1,
+   "Empty": 0
+  }
+ },
+ "dsa-longest-buildable-word": {
+  "hash": "b4c744fdb555bcb2",
+  "tests": {
+   "Example": "world",
+   "Tie": "apple",
+   "None": "",
+   "Empty list": ""
+  }
+ },
+ "dsa-longest-common-substring": {
+  "hash": "22622ed4c6612178",
+  "tests": {
+   "Example": [
+    4,
+    "abcd"
+   ],
+   "None": [
+    0,
+    ""
+   ],
+   "Repeated": [
+    2,
+    "aa"
+   ],
+   "Middle": [
+    6,
+    "abcdez"
+   ]
+  }
+ },
+ "dsa-longest-consecutive-run": {
+  "hash": "1f401ba161c87059",
+  "tests": {
+   "Example": 4,
+   "Duplicates": 9,
+   "Empty": 0,
+   "Negatives": 3
+  }
+ },
+ "dsa-longest-distinct-substring": {
+  "hash": "679504dac61c57d1",
+  "tests": {
+   "Example": [
+    3,
+    "abc"
+   ],
+   "Same char": [
+    1,
+    "b"
+   ],
+   "Middle": [
+    3,
+    "wke"
+   ],
+   "Empty": [
+    0,
+    ""
+   ]
+  }
+ },
+ "dsa-longest-palindromic-substring": {
+  "hash": "6176c83bf0578e39",
+  "tests": {
+   "Example": "bab",
+   "Even length": "bb",
+   "Whole string": "racecar",
+   "Empty": ""
+  }
+ },
+ "dsa-look-and-say": {
+  "hash": "3a8e470b36c26cf0",
+  "tests": {
+   "Example": [
+    "1",
+    "11",
+    "21",
+    "1211",
+    "111221"
+   ],
+   "One term": [
+    "1"
+   ],
+   "Eight terms": [
+    "1",
+    "11",
+    "21",
+    "1211",
+    "111221",
+    "312211",
+    "13112221",
+    "1113213211"
+   ],
+   "Zero": []
+  }
+ },
+ "dsa-lru-cache": {
+  "hash": "09e39f31e29bec8f",
+  "tests": {
+   "Example": [
+    null,
+    null,
+    null,
+    1,
+    null,
+    -1,
+    null,
+    -1,
+    3,
+    4
+   ],
+   "Update refreshes": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    10,
+    -1
+   ],
+   "Capacity one": [
+    null,
+    null,
+    null,
+    -1,
+    2
+   ],
+   "Get refreshes": [
+    null,
+    null,
+    null,
+    1,
+    null,
+    1,
+    -1
+   ]
+  }
+ },
+ "dsa-majority-half": {
+  "hash": "7fe521a3b2756614",
+  "tests": {
+   "Example": 2,
+   "No majority": -1,
+   "Single": 9,
+   "Exactly half is not enough": -1
+  }
+ },
+ "dsa-majority-third": {
+  "hash": "07953fc5dd85f51c",
+  "tests": {
+   "Example": [
+    3
+   ],
+   "Two winners": [
+    1,
+    2
+   ],
+   "None": [],
+   "Empty": []
+  }
+ },
+ "dsa-matrix-chain": {
+  "hash": "a3435d117537a5c0",
+  "tests": {
+   "Example": [
+    26000,
+    "((A(BC))D)"
+   ],
+   "Two matrices": [
+    6000,
+    "(AB)"
+   ],
+   "Four": [
+    30000,
+    "(((AB)C)D)"
+   ],
+   "Single": [
+    0,
+    "A"
+   ]
+  }
+ },
+ "dsa-matrix-median": {
+  "hash": "0991892125856536",
+  "tests": {
+   "Example": 5,
+   "Single row": 3,
+   "Duplicates": 1,
+   "Tall grid": 5
+  }
+ },
+ "dsa-max-level-width": {
+  "hash": "6bc90334c8b67046",
+  "tests": {
+   "Example": 4,
+   "Gap in the middle": 7,
+   "Single": 1,
+   "Narrow": 1
+  }
+ },
+ "dsa-max-meetings-one-room": {
+  "hash": "1aecbcafa231c355",
+  "tests": {
+   "Example": [
+    1,
+    2,
+    4,
+    5
+   ],
+   "All overlap": [
+    1
+   ],
+   "Touching ends conflict": [
+    1,
+    3
+   ],
+   "Empty": []
+  }
+ },
+ "dsa-max-paren-depth": {
+  "hash": "91c5fc18aec1f6c8",
+  "tests": {
+   "Example": 3,
+   "Flat": 0,
+   "Deep": 4,
+   "Side by side": 2
+  }
+ },
+ "dsa-max-path-sum": {
+  "hash": "5b9bf3458dd0aad8",
+  "tests": {
+   "Example": 6,
+   "Negatives": 42,
+   "All negative": -1,
+   "Bend below root": 48
+  }
+ },
+ "dsa-max-xor-pair": {
+  "hash": "90d5e6e6d04b76c8",
+  "tests": {
+   "Example": 28,
+   "Two": 7,
+   "Single": 0,
+   "Large": 127
+  }
+ },
+ "dsa-max-xor-with-limit": {
+  "hash": "510bc8b693402c62",
+  "tests": {
+   "Example": [
+    3,
+    3,
+    7
+   ],
+   "Another": [
+    15,
+    -1,
+    5
+   ],
+   "Nothing small enough": [
+    -1
+   ],
+   "Repeated limits": [
+    3,
+    6,
+    0
+   ]
+  }
+ },
+ "dsa-maximal-rectangle": {
+  "hash": "68c1abd5b2a986d7",
+  "tests": {
+   "Example": 6,
+   "Single zero": 0,
+   "All ones": 6,
+   "Column": 2
+  }
+ },
+ "dsa-maze-paths": {
+  "hash": "45bd643ec57f1a97",
+  "tests": {
+   "Example": [
+    "DDRDRR",
+    "DRDDRR"
+   ],
+   "Blocked start": [],
+   "Open 2×2": [
+    "DR",
+    "RD"
+   ],
+   "Single cell": [
+    ""
+   ]
+  }
+ },
+ "dsa-median-two-sorted": {
+  "hash": "77aeb883e743d54d",
+  "tests": {
+   "Odd total": 2,
+   "Even total": 2.5,
+   "One empty": 2.5,
+   "Interleaved": 7
+  }
+ },
+ "dsa-merge-k-sorted": {
+  "hash": "923a669f183b257b",
+  "tests": {
+   "Example": [
+    1,
+    1,
+    2,
+    3,
+    4,
+    4,
+    5,
+    6
+   ],
+   "Empty lists": [],
+   "No lists": [],
+   "Single list": [
+    1,
+    2,
+    3
+   ]
+  }
+ },
+ "dsa-merge-overlaps": {
+  "hash": "88850c236b2a58f2",
+  "tests": {
+   "Example": [
+    [
+     1,
+     6
+    ],
+    [
+     8,
+     10
+    ],
+    [
+     15,
+     18
+    ]
+   ],
+   "Touching": [
+    [
+     1,
+     5
+    ]
+   ],
+   "Contained": [
+    [
+     1,
+     10
+    ]
+   ],
+   "Unsorted": [
+    [
+     1,
+     3
+    ],
+    [
+     5,
+     6
+    ]
+   ]
+  }
+ },
+ "dsa-merge-sort-impl": {
+  "hash": "0cadab6518e7f156",
+  "tests": {
+   "Example": [
+    [
+     [
+      1,
+      "a"
+     ],
+     [
+      2,
+      "x"
+     ],
+     [
+      3,
+      "c"
+     ],
+     [
+      3,
+      "b"
+     ]
+    ],
+    3
+   ],
+   "Single": [
+    [
+     [
+      5,
+      "only"
+     ]
+    ],
+    0
+   ],
+   "Reverse with ties": [
+    [
+     [
+      1,
+      "c"
+     ],
+     [
+      1,
+      "d"
+     ],
+     [
+      2,
+      "a"
+     ],
+     [
+      2,
+      "b"
+     ]
+    ],
+    3
+   ],
+   "Empty": [
+    [],
+    0
+   ]
+  }
+ },
+ "dsa-merge-sorted-in-place": {
+  "hash": "2f3387b620014e6f",
+  "tests": {
+   "Example": [
+    [
+     1,
+     2,
+     3,
+     4
+    ],
+    [
+     8,
+     9,
+     10
+    ]
+   ],
+   "Already separated": [
+    [
+     1,
+     2
+    ],
+    [
+     3,
+     4
+    ]
+   ],
+   "Fully interleaved": [
+    [
+     1,
+     2,
+     3
+    ],
+    [
+     5,
+     6,
+     7
+    ]
+   ],
+   "One empty": [
+    [],
+    [
+     1,
+     2
+    ]
+   ]
+  }
+ },
+ "dsa-merge-two-bsts": {
+  "hash": "737c0f27581d4d45",
+  "tests": {
+   "Example": [
+    0,
+    1,
+    1,
+    2,
+    3,
+    4
+   ],
+   "One empty": [
+    1,
+    5,
+    7
+   ],
+   "Interleaved": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+   ],
+   "Both empty": []
+  }
+ },
+ "dsa-merge-two-sorted-lists": {
+  "hash": "e2ed237e945de04b",
+  "tests": {
+   "Example": [
+    1,
+    1,
+    2,
+    3,
+    4,
+    4
+   ],
+   "One empty": [
+    0
+   ],
+   "Both empty": [],
+   "Disjoint ranges": [
+    1,
+    2,
+    3,
+    5,
+    6
+   ]
+  }
+ },
+ "dsa-middle-node": {
+  "hash": "debb6d7763a4b0a7",
+  "tests": {
+   "Odd": [
+    3,
+    4,
+    5
+   ],
+   "Even": [
+    4,
+    5,
+    6
+   ],
+   "Single": [
+    9
+   ],
+   "Two": [
+    2
+   ]
+  }
+ },
+ "dsa-min-arrows": {
+  "hash": "01a03f8dc7a008c4",
+  "tests": {
+   "Example": 2,
+   "Disjoint": 4,
+   "Touching": 2,
+   "Empty": 0
+  }
+ },
+ "dsa-min-covering-window": {
+  "hash": "a8b48efc2d40f8a3",
+  "tests": {
+   "Example": "BANC",
+   "Impossible": "",
+   "Whole string": "ab",
+   "Duplicates required": "aaa"
+  }
+ },
+ "dsa-min-effort-route": {
+  "hash": "b53c4380bddd62aa",
+  "tests": {
+   "Example": 2,
+   "Flat route exists": 1,
+   "Single cell": 0,
+   "Zero effort": 0
+  }
+ },
+ "dsa-min-path-sum": {
+  "hash": "f66865282342d40f",
+  "tests": {
+   "Example": 7,
+   "Two rows": 12,
+   "Single cell": 7,
+   "Column": 6
+  }
+ },
+ "dsa-min-stack": {
+  "hash": "0494434624205676",
+  "tests": {
+   "Example": [
+    null,
+    null,
+    null,
+    null,
+    -3,
+    null,
+    0,
+    -2
+   ],
+   "Duplicates of the min": [
+    null,
+    null,
+    null,
+    null,
+    1
+   ],
+   "Increasing": [
+    null,
+    null,
+    null,
+    null,
+    1,
+    null,
+    1
+   ],
+   "Single": [
+    null,
+    null,
+    7,
+    7
+   ]
+  }
+ },
+ "dsa-min-stations": {
+  "hash": "dba16adb814628c6",
+  "tests": {
+   "Example": 3,
+   "Same minute": 2,
+   "Single": 1,
+   "All at once": 3
+  }
+ },
+ "dsa-min-subset-difference": {
+  "hash": "6bf2bbf05c0390a7",
+  "tests": {
+   "Example": 1,
+   "Even split": 0,
+   "Single": 7,
+   "Two": 7
+  }
+ },
+ "dsa-missing-and-repeated": {
+  "hash": "a1a2ca75cedf586a",
+  "tests": {
+   "Example": [
+    3,
+    4
+   ],
+   "Smallest case": [
+    2,
+    1
+   ],
+   "Missing the last value": [
+    3,
+    4
+   ],
+   "Missing the first value": [
+    4,
+    1
+   ]
+  }
+ },
+ "dsa-morris-inorder": {
+  "hash": "03608eb973c716f2",
+  "tests": {
+   "Example": [
+    [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7
+    ],
+    true
+   ],
+   "Left chain": [
+    [
+     1,
+     2,
+     3
+    ],
+    true
+   ],
+   "Single": [
+    [
+     1
+    ],
+    true
+   ],
+   "Irregular": [
+    [
+     2,
+     4,
+     1,
+     5,
+     3
+    ],
+    true
+   ]
+  }
+ },
+ "dsa-move-zeros-end": {
+  "hash": "f8abfce6543cdc75",
+  "tests": {
+   "Example": [
+    1,
+    3,
+    12,
+    0,
+    0
+   ],
+   "No zeros": [
+    1,
+    2
+   ],
+   "All zeros": [
+    0,
+    0,
+    0
+   ],
+   "Zeros at the end already": [
+    5,
+    0,
+    0
+   ]
+  }
+ },
+ "dsa-multiply-to-target": {
+  "hash": "8c897b52198ac032",
+  "tests": {
+   "Example": 2,
+   "Another": 4,
+   "Already there": 0,
+   "Unreachable": -1
+  }
+ },
+ "dsa-n-queens": {
+  "hash": "a1b99c2ee5dc31c1",
+  "tests": {
+   "Four": [
+    2,
+    [
+     ".Q..",
+     "...Q",
+     "Q...",
+     "..Q."
+    ]
+   ],
+   "One": [
+    1,
+    [
+     "Q"
+    ]
+   ],
+   "No solution": [
+    0,
+    []
+   ],
+   "Six": [
+    4,
+    [
+     ".Q....",
+     "...Q..",
+     ".....Q",
+     "Q.....",
+     "..Q...",
+     "....Q."
+    ]
+   ]
+  }
+ },
+ "dsa-ncr-mod-prime": {
+  "hash": "1a5cd01c77a9a2c5",
+  "tests": {
+   "Example": [
+    10,
+    120
+   ],
+   "Edges": [
+    1,
+    1,
+    0
+   ],
+   "Large": [
+    149033233,
+    159835829
+   ],
+   "Zero": [
+    1
+   ]
+  }
+ },
+ "dsa-nearest-zero-distance": {
+  "hash": "c285c0d6d32e76f5",
+  "tests": {
+   "Example": [
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     1,
+     0
+    ],
+    [
+     1,
+     2,
+     1
+    ]
+   ],
+   "Single zero": [
+    [
+     2,
+     1
+    ],
+    [
+     1,
+     0
+    ]
+   ],
+   "Row": [
+    [
+     2,
+     1,
+     0,
+     1,
+     2,
+     3
+    ]
+   ],
+   "All zeros": [
+    [
+     0,
+     0
+    ]
+   ]
+  }
+ },
+ "dsa-network-repair": {
+  "hash": "7ea8ff2615b42c34",
+  "tests": {
+   "Example": 1,
+   "Not enough cables": -1,
+   "Already connected": 0,
+   "Two moves": 2
+  }
+ },
+ "dsa-next-arrangement": {
+  "hash": "1e21fed1308c0a5d",
+  "tests": {
+   "Example": [
+    1,
+    3,
+    2
+   ],
+   "Wraps around": [
+    1,
+    2,
+    3
+   ],
+   "Duplicates": [
+    1,
+    5,
+    1
+   ],
+   "Middle pivot": [
+    1,
+    4,
+    2,
+    3,
+    5
+   ]
+  }
+ },
+ "dsa-next-greater-circular": {
+  "hash": "13c183b9b25d1342",
+  "tests": {
+   "Example": [
+    2,
+    -1,
+    2
+   ],
+   "Another": [
+    2,
+    3,
+    4,
+    -1,
+    4
+   ],
+   "All equal": [
+    -1,
+    -1,
+    -1
+   ],
+   "Empty": []
+  }
+ },
+ "dsa-no-adjacent-repeats": {
+  "hash": "16d0fea73bcccb7a",
+  "tests": {
+   "Example": "aba",
+   "Impossible": "",
+   "Many letters": "ababac",
+   "Empty": ""
+  }
+ },
+ "dsa-odd-even-positions": {
+  "hash": "0dbc0b0536bc1b14",
+  "tests": {
+   "Example": [
+    1,
+    3,
+    5,
+    2,
+    4
+   ],
+   "Longer list": [
+    2,
+    3,
+    6,
+    7,
+    1,
+    5,
+    4
+   ],
+   "Two nodes": [
+    1,
+    2
+   ],
+   "Empty": []
+  }
+ },
+ "dsa-ones-with-k-flips": {
+  "hash": "f5b8522307ec98b8",
+  "tests": {
+   "Example": 6,
+   "No flips": 3,
+   "Flip all": 3,
+   "Empty": 0
+  }
+ },
+ "dsa-pair-to-target": {
+  "hash": "cbc6f469e93f5b38",
+  "tests": {
+   "Example": [
+    0,
+    1
+   ],
+   "Duplicates": [
+    0,
+    1
+   ],
+   "None": [],
+   "Earliest closing index": [
+    0,
+    3
+   ]
+  }
+ },
+ "dsa-palindrome-min-cuts": {
+  "hash": "987515abd18d0297",
+  "tests": {
+   "Example": 1,
+   "Already palindrome": 0,
+   "Distinct": 3,
+   "Long": 3
+  }
+ },
+ "dsa-palindrome-partitions": {
+  "hash": "26c267aeeda1d6c9",
+  "tests": {
+   "Example": [
+    [
+     "a",
+     "a",
+     "b"
+    ],
+    [
+     "aa",
+     "b"
+    ]
+   ],
+   "Single": [
+    [
+     "a"
+    ]
+   ],
+   "All same": [
+    [
+     "a",
+     "a",
+     "a"
+    ],
+    [
+     "a",
+     "aa"
+    ],
+    [
+     "aa",
+     "a"
+    ],
+    [
+     "aaa"
+    ]
+   ],
+   "Mixed": [
+    [
+     "a",
+     "b",
+     "b",
+     "a"
+    ],
+    [
+     "a",
+     "bb",
+     "a"
+    ],
+    [
+     "abba"
+    ]
+   ]
+  }
+ },
+ "dsa-palindromic-subsequence": {
+  "hash": "4acf5edf88feaadd",
+  "tests": {
+   "Example": [
+    4,
+    1
+   ],
+   "Another": [
+    3,
+    2
+   ],
+   "Already palindrome": [
+    7,
+    0
+   ],
+   "Distinct letters": [
+    1,
+    3
+   ]
+  }
+ },
+ "dsa-parse-int-strict": {
+  "hash": "2aabad3bffda414c",
+  "tests": {
+   "Example": [
+    42,
+    -42,
+    4193
+   ],
+   "Words first": [
+    0,
+    0
+   ],
+   "Overflow": [
+    -2147483648,
+    2147483647
+   ],
+   "Signs": [
+    1,
+    0,
+    32
+   ]
+  }
+ },
+ "dsa-partition-around-x": {
+  "hash": "85d9712d256da775",
+  "tests": {
+   "Example": [
+    1,
+    2,
+    2,
+    4,
+    3,
+    5
+   ],
+   "Two nodes": [
+    1,
+    2
+   ],
+   "All smaller": [
+    1,
+    1
+   ],
+   "Empty": []
+  }
+ },
+ "dsa-partition-max-sum": {
+  "hash": "7cba4d2616187d28",
+  "tests": {
+   "Example": 84,
+   "Another": 83,
+   "k = 1": 6,
+   "Single": 5
+  }
+ },
+ "dsa-pascal-triangle": {
+  "hash": "784903e3954cc94d",
+  "tests": {
+   "Example": [
+    [
+     [
+      1
+     ],
+     [
+      1,
+      1
+     ],
+     [
+      1,
+      2,
+      1
+     ],
+     [
+      1,
+      3,
+      3,
+      1
+     ],
+     [
+      1,
+      4,
+      6,
+      4,
+      1
+     ]
+    ],
+    6
+   ],
+   "One row": [
+    [
+     [
+      1
+     ]
+    ],
+    1
+   ],
+   "Deeper entry": [
+    [
+     [
+      1
+     ],
+     [
+      1,
+      1
+     ],
+     [
+      1,
+      2,
+      1
+     ],
+     [
+      1,
+      3,
+      3,
+      1
+     ],
+     [
+      1,
+      4,
+      6,
+      4,
+      1
+     ],
+     [
+      1,
+      5,
+      10,
+      10,
+      5,
+      1
+     ]
+    ],
+    120
+   ],
+   "Zero rows": [
+    [],
+    1
+   ]
+  }
+ },
+ "dsa-path-to-node": {
+  "hash": "0637fbe4d464367e",
+  "tests": {
+   "Example": [
+    [
+     3,
+     5,
+     2,
+     7
+    ],
+    2
+   ],
+   "Ancestor of itself": [
+    [
+     3,
+     5
+    ],
+    5
+   ],
+   "Across the root": [
+    [
+     3,
+     5,
+     6
+    ],
+    3
+   ],
+   "Missing target": [
+    [],
+    2
+   ]
+  }
+ },
+ "dsa-plus-one-list": {
+  "hash": "b050f592e4a9733b",
+  "tests": {
+   "Example": [
+    1,
+    2,
+    4
+   ],
+   "All nines": [
+    1,
+    0,
+    0
+   ],
+   "Trailing nines": [
+    2,
+    0,
+    0
+   ],
+   "Zero": [
+    1
+   ]
+  }
+ },
+ "dsa-previous-smaller": {
+  "hash": "d53247705294ec30",
+  "tests": {
+   "Example": [
+    -1,
+    4,
+    -1,
+    2,
+    2
+   ],
+   "Decreasing": [
+    -1,
+    -1,
+    -1
+   ],
+   "Duplicates": [
+    -1,
+    -1,
+    2
+   ],
+   "Empty": []
+  }
+ },
+ "dsa-prim-mst": {
+  "hash": "8c89981a0ceb4487",
+  "tests": {
+   "Example": [
+    16,
+    4
+   ],
+   "Triangle": [
+    4,
+    2
+   ],
+   "Single": [
+    0,
+    0
+   ],
+   "Parallel edges": [
+    2,
+    1
+   ]
+  }
+ },
+ "dsa-product-except-self": {
+  "hash": "5f345b0d4a2364ca",
+  "tests": {
+   "Example": [
+    24,
+    12,
+    8,
+    6
+   ],
+   "Contains zero": [
+    0,
+    0,
+    9,
+    0,
+    0
+   ],
+   "Two zeros": [
+    0,
+    0,
+    0
+   ],
+   "Two elements": [
+    7,
+    5
+   ]
+  }
+ },
+ "dsa-quadruplets-target": {
+  "hash": "d7a8f6a952d2b8f0",
+  "tests": {
+   "Example": [
+    [
+     -2,
+     -1,
+     1,
+     2
+    ],
+    [
+     -2,
+     0,
+     0,
+     2
+    ],
+    [
+     -1,
+     0,
+     0,
+     1
+    ]
+   ],
+   "Repeated value": [
+    [
+     2,
+     2,
+     2,
+     2
+    ]
+   ],
+   "None": [],
+   "Negatives": [
+    [
+     -3,
+     -2,
+     2,
+     3
+    ],
+    [
+     -3,
+     -1,
+     1,
+     3
+    ],
+    [
+     -3,
+     0,
+     0,
+     3
+    ],
+    [
+     -3,
+     0,
+     1,
+     2
+    ],
+    [
+     -2,
+     -1,
+     0,
+     3
+    ],
+    [
+     -2,
+     -1,
+     1,
+     2
+    ],
+    [
+     -2,
+     0,
+     0,
+     2
+    ],
+    [
+     -1,
+     0,
+     0,
+     1
+    ]
+   ]
+  }
+ },
+ "dsa-queue-from-two-stacks": {
+  "hash": "372de5e3bc62cd65",
+  "tests": {
+   "Example": [
+    null,
+    null,
+    null,
+    1,
+    1,
+    false
+   ],
+   "Interleaved": [
+    null,
+    null,
+    1,
+    null,
+    null,
+    2,
+    false
+   ],
+   "Drain": [
+    null,
+    null,
+    null,
+    5,
+    6,
+    true
+   ],
+   "Refill after transfer": [
+    null,
+    null,
+    null,
+    1,
+    null,
+    2,
+    3
+   ]
+  }
+ },
+ "dsa-quickselect-kth": {
+  "hash": "d6e583765bb2725f",
+  "tests": {
+   "Example": [
+    5,
+    2
+   ],
+   "With duplicates": [
+    4,
+    3
+   ],
+   "Largest": [
+    9,
+    1
+   ],
+   "Smallest": [
+    1,
+    2
+   ]
+  }
+ },
+ "dsa-reach-the-end": {
+  "hash": "eb99dd6f8cac4b70",
+  "tests": {
+   "Example": [
+    true,
+    2
+   ],
+   "Stuck": [
+    false,
+    -1
+   ],
+   "Single": [
+    true,
+    0
+   ],
+   "Long first jump": [
+    true,
+    1
+   ]
+  }
+ },
+ "dsa-recover-swapped-bst": {
+  "hash": "7fcb08c9d330d0ca",
+  "tests": {
+   "Example": [
+    3,
+    1,
+    null,
+    null,
+    2
+   ],
+   "Across the root": [
+    2,
+    1,
+    4,
+    null,
+    null,
+    3
+   ],
+   "Adjacent": [
+    2,
+    1,
+    3
+   ],
+   "Far apart": [
+    6,
+    2,
+    8,
+    1,
+    4,
+    7,
+    9
+   ]
+  }
+ },
+ "dsa-regex-match": {
+  "hash": "db8e0e662e65d156",
+  "tests": {
+   "Example": [
+    false,
+    true,
+    true
+   ],
+   "Zero copies": [
+    true
+   ],
+   "No match": [
+    false,
+    false
+   ],
+   "Empty": [
+    true,
+    false
+   ]
+  }
+ },
+ "dsa-remove-k-digits": {
+  "hash": "3c50fa6b55bbed04",
+  "tests": {
+   "Example": "1219",
+   "Leading zeros": "200",
+   "Delete all": "0",
+   "Increasing": "123"
+  }
+ },
+ "dsa-remove-stones": {
+  "hash": "89ccc96192746a23",
+  "tests": {
+   "Example": 5,
+   "Another": 3,
+   "Single": 0,
+   "Separate": 0
+  }
+ },
+ "dsa-reorder-zigzag": {
+  "hash": "cecb344f52359810",
+  "tests": {
+   "Example": [
+    1,
+    4,
+    2,
+    3
+   ],
+   "Odd": [
+    1,
+    5,
+    2,
+    4,
+    3
+   ],
+   "Single": [
+    1
+   ],
+   "Two": [
+    1,
+    2
+   ]
+  }
+ },
+ "dsa-repeat-replacement": {
+  "hash": "d72e69f2fc15f808",
+  "tests": {
+   "Example": 4,
+   "One change": 4,
+   "No changes": 1,
+   "Empty": 0
+  }
+ },
+ "dsa-repeat-until-substring": {
+  "hash": "91672f73479eeebc",
+  "tests": {
+   "Example": 3,
+   "Impossible": -1,
+   "Needs one extra": 3,
+   "Already inside": 1
+  }
+ },
+ "dsa-repeated-id-cycle": {
+  "hash": "a7cfb32ebb75f49b",
+  "tests": {
+   "Example": 2,
+   "Repeated many times": 3,
+   "Duplicate at the start": 2,
+   "Larger": 4
+  }
+ },
+ "dsa-reverse-between": {
+  "hash": "2fbcca02cb02f5af",
+  "tests": {
+   "Example": [
+    1,
+    4,
+    3,
+    2,
+    5
+   ],
+   "Whole list": [
+    5,
+    3
+   ],
+   "Single position": [
+    1,
+    2,
+    3
+   ],
+   "From the head": [
+    3,
+    2,
+    1,
+    4
+   ]
+  }
+ },
+ "dsa-reverse-bits": {
+  "hash": "64c82963016a5c46",
+  "tests": {
+   "Example": [
+    964176192
+   ],
+   "Ones": [
+    3221225471
+   ],
+   "Zero and one": [
+    0,
+    2147483648
+   ],
+   "Top bit": [
+    1
+   ]
+  }
+ },
+ "dsa-reverse-in-groups": {
+  "hash": "862a65f4d6c09efd",
+  "tests": {
+   "Example": [
+    2,
+    1,
+    4,
+    3,
+    5
+   ],
+   "Groups of three": [
+    3,
+    2,
+    1,
+    4,
+    5
+   ],
+   "k = 1": [
+    1,
+    2,
+    3
+   ],
+   "Exact multiple": [
+    4,
+    3,
+    2,
+    1
+   ]
+  }
+ },
+ "dsa-reverse-linked-list": {
+  "hash": "15b6bbfc20c5ee60",
+  "tests": {
+   "Example": [
+    5,
+    4,
+    3,
+    2,
+    1
+   ],
+   "Two nodes": [
+    2,
+    1
+   ],
+   "Single": [
+    7
+   ],
+   "Empty": []
+  }
+ },
+ "dsa-reverse-word-order": {
+  "hash": "c0190a906a15e5c9",
+  "tests": {
+   "Example": "blue is sky the",
+   "Extra spaces": "world hello",
+   "Single word": "data",
+   "Only spaces": ""
+  }
+ },
+ "dsa-rolling-hash-search": {
+  "hash": "83d4ceafb9c2fc9c",
+  "tests": {
+   "Example": [
+    633841754,
+    [
+     0,
+     7
+    ],
+    0
+   ],
+   "No match": [
+    98,
+    [],
+    0
+   ],
+   "Overlapping": [
+    6381921,
+    [
+     0,
+     1,
+     2,
+     3
+    ],
+    0
+   ],
+   "Pattern longer": [
+    0,
+    [],
+    0
+   ]
+  }
+ },
+ "dsa-roman-both-ways": {
+  "hash": "1d97172084d733eb",
+  "tests": {
+   "Example": [
+    [
+     "III",
+     "LVIII",
+     "MCMXCIV"
+    ],
+    [
+     3,
+     58,
+     1994
+    ]
+   ],
+   "Edges": [
+    [
+     "I",
+     "MMMCMXCIX"
+    ],
+    [
+     3999
+    ]
+   ],
+   "Fours and nines": [
+    [
+     "IV",
+     "IX",
+     "XL",
+     "XC",
+     "CD",
+     "CM"
+    ],
+    [
+     44,
+     490
+    ]
+   ],
+   "Round numbers": [
+    [
+     "X",
+     "C",
+     "M",
+     "MMXXIV"
+    ],
+    [
+     2024,
+     800
+    ]
+   ]
+  }
+ },
+ "dsa-root-leaf-paths": {
+  "hash": "e31d303cd72ce1b9",
+  "tests": {
+   "Example": [
+    [
+     [
+      5,
+      8,
+      4,
+      5
+     ]
+    ],
+    23098
+   ],
+   "Digits": [
+    [
+     [
+      1,
+      2
+     ]
+    ],
+    25
+   ],
+   "No match": [
+    [],
+    12
+   ],
+   "Empty": [
+    [],
+    0
+   ]
+  }
+ },
+ "dsa-rotate-by-k": {
+  "hash": "6a320927e516a3de",
+  "tests": {
+   "Example": [
+    5,
+    6,
+    7,
+    1,
+    2,
+    3,
+    4
+   ],
+   "k larger than n": [
+    2,
+    1
+   ],
+   "Zero": [
+    4,
+    5,
+    6
+   ],
+   "Empty": []
+  }
+ },
+ "dsa-rotate-list-right": {
+  "hash": "897043f66706e128",
+  "tests": {
+   "Example": [
+    4,
+    5,
+    1,
+    2,
+    3
+   ],
+   "k beyond length": [
+    2,
+    0,
+    1
+   ],
+   "Zero": [
+    1,
+    2
+   ],
+   "Empty": []
+  }
+ },
+ "dsa-rotated-search": {
+  "hash": "92338e5d92a8b5b8",
+  "tests": {
+   "Example": [
+    4,
+    -1,
+    0
+   ],
+   "Not rotated": [
+    2
+   ],
+   "Two elements": [
+    1,
+    0,
+    -1
+   ],
+   "Empty": [
+    -1
+   ]
+  }
+ },
+ "dsa-rotated-search-dupes": {
+  "hash": "560508ab7060b15c",
+  "tests": {
+   "Example": [
+    true,
+    false
+   ],
+   "Ambiguous ends": [
+    true,
+    false
+   ],
+   "All equal": [
+    true,
+    false
+   ],
+   "Pivot in the middle": [
+    true,
+    true,
+    true,
+    false
+   ]
+  }
+ },
+ "dsa-rotation-minimum": {
+  "hash": "d5d2fe198c3247d1",
+  "tests": {
+   "Example": [
+    1,
+    3
+   ],
+   "Not rotated": [
+    11,
+    0
+   ],
+   "Single": [
+    7,
+    0
+   ],
+   "Rotated by n − 1": [
+    1,
+    4
+   ]
+  }
+ },
+ "dsa-rotting-spread": {
+  "hash": "2dcc379cab6b19ee",
+  "tests": {
+   "Example": 4,
+   "Unreachable": -1,
+   "Nothing fresh": 0,
+   "Two sources": 2
+  }
+ },
+ "dsa-row-most-ones": {
+  "hash": "8089b54db97672d5",
+  "tests": {
+   "Example": [
+    2,
+    4
+   ],
+   "No ones": [
+    -1,
+    0
+   ],
+   "Tie": [
+    0,
+    1
+   ],
+   "Last row wins": [
+    2,
+    2
+   ]
+  }
+ },
+ "dsa-safe-states": {
+  "hash": "8fa63e07fb6e0950",
+  "tests": {
+   "Example": [
+    2,
+    4,
+    5,
+    6
+   ],
+   "Self loop": [
+    4
+   ],
+   "All terminal": [
+    0,
+    1,
+    2
+   ],
+   "Whole cycle": []
+  }
+ },
+ "dsa-same-and-mirror": {
+  "hash": "3164f27161bda015",
+  "tests": {
+   "Same": [
+    true,
+    false
+   ],
+   "Mirror": [
+    false,
+    true
+   ],
+   "Mirrored shapes": [
+    false,
+    true
+   ],
+   "Both empty": [
+    true,
+    true
+   ]
+  }
+ },
+ "dsa-serialise-tree": {
+  "hash": "d0a18c99c37a622f",
+  "tests": {
+   "Example": [
+    [
+     1,
+     2,
+     3,
+     null,
+     null,
+     4,
+     5
+    ],
+    true
+   ],
+   "Negative values": [
+    [
+     -1,
+     -20,
+     300
+    ],
+    true
+   ],
+   "Empty": [
+    [],
+    true
+   ],
+   "Deep": [
+    [
+     1,
+     null,
+     2,
+     null,
+     3,
+     null,
+     4
+    ],
+    true
+   ]
+  }
+ },
+ "dsa-shared-prefix": {
+  "hash": "5f7a0f6a10318383",
+  "tests": {
+   "Example": "fl",
+   "None": "",
+   "Empty list": "",
+   "Identical": "ab"
+  }
+ },
+ "dsa-ship-capacity": {
+  "hash": "da48f6df2f29024d",
+  "tests": {
+   "Example": 15,
+   "Three days": 6,
+   "One day": 6,
+   "One per day": 5
+  }
+ },
+ "dsa-shortest-job-first": {
+  "hash": "5fab2c1de2056b40",
+  "tests": {
+   "Example": 4,
+   "Single": 0,
+   "Equal": 2,
+   "Empty": 0
+  }
+ },
+ "dsa-shortest-palindrome-prefix": {
+  "hash": "4d69d532a409e9f4",
+  "tests": {
+   "Example": [
+    1,
+    "aaacecaaa"
+   ],
+   "Another": [
+    3,
+    "dcbabcd"
+   ],
+   "Already palindrome": [
+    0,
+    "level"
+   ],
+   "Empty": [
+    0,
+    ""
+   ]
+  }
+ },
+ "dsa-shortest-sum-at-least": {
+  "hash": "053664b8f422c90b",
+  "tests": {
+   "Example": 2,
+   "Single element": 1,
+   "Impossible": 0,
+   "Whole array": 3
+  }
+ },
+ "dsa-shortest-supersequence": {
+  "hash": "b4d902e148058ce6",
+  "tests": {
+   "Example": "cabac",
+   "Disjoint": "xyzabc",
+   "One contains the other": "brute",
+   "Empty": "abc"
+  }
+ },
+ "dsa-side-views": {
+  "hash": "c8fe0dbe440e3785",
+  "tests": {
+   "Example": [
+    [
+     1,
+     2,
+     5
+    ],
+    [
+     1,
+     3,
+     4
+    ]
+   ],
+   "Hidden deeper left": [
+    [
+     1,
+     2,
+     4
+    ],
+    [
+     1,
+     3,
+     4
+    ]
+   ],
+   "Single": [
+    [
+     1
+    ],
+    [
+     1
+    ]
+   ],
+   "Empty": [
+    [],
+    []
+   ]
+  }
+ },
+ "dsa-sieve-and-spf": {
+  "hash": "70a80abe2a603735",
+  "tests": {
+   "Example": [
+    [
+     2,
+     3,
+     5,
+     7,
+     11,
+     13,
+     17,
+     19,
+     23,
+     29
+    ],
+    [
+     [
+      2,
+      2,
+      3
+     ],
+     [
+      29
+     ],
+     []
+    ]
+   ],
+   "Tiny": [
+    [
+     2
+    ],
+    [
+     [
+      2
+     ]
+    ]
+   ],
+   "Prime powers": [
+    [
+     2,
+     3,
+     5,
+     7,
+     11,
+     13,
+     17,
+     19,
+     23,
+     29,
+     31,
+     37,
+     41,
+     43,
+     47,
+     53,
+     59,
+     61,
+     67,
+     71,
+     73,
+     79,
+     83,
+     89,
+     97
+    ],
+    [
+     [
+      2,
+      2,
+      2,
+      2,
+      2,
+      2
+     ],
+     [
+      3,
+      3,
+      3,
+      3
+     ],
+     [
+      97
+     ],
+     [
+      2,
+      2,
+      5,
+      5
+     ]
+    ]
+   ],
+   "Below two": [
+    [],
+    []
+   ]
+  }
+ },
+ "dsa-single-among-triples": {
+  "hash": "1e39a2c941069333",
+  "tests": {
+   "Example": 3,
+   "Another": 99,
+   "Negative": -4,
+   "Single": 7
+  }
+ },
+ "dsa-smallest-divisor": {
+  "hash": "b57827b68c15919a",
+  "tests": {
+   "Example": 5,
+   "Another": 44,
+   "Generous threshold": 1,
+   "Tight threshold": 4
+  }
+ },
+ "dsa-sort-linked-list": {
+  "hash": "ea35fa0ab4e5c799",
+  "tests": {
+   "Example": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "Negatives": [
+    -1,
+    0,
+    3,
+    4,
+    5
+   ],
+   "Duplicates": [
+    1,
+    1,
+    2,
+    2
+   ],
+   "Empty": []
+  }
+ },
+ "dsa-sorted-grid-search": {
+  "hash": "5392c3fd81e40cac",
+  "tests": {
+   "Example": [
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     -1
+    ],
+    [
+     2,
+     3
+    ]
+   ],
+   "Single cell": [
+    [
+     0,
+     0
+    ],
+    [
+     -1,
+     -1
+    ]
+   ],
+   "First and last": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     -1,
+     -1
+    ]
+   ],
+   "Single row": [
+    [
+     0,
+     2
+    ],
+    [
+     -1,
+     -1
+    ],
+    [
+     0,
+     0
+    ]
+   ]
+  }
+ },
+ "dsa-sorted-to-balanced-bst": {
+  "hash": "9c5c46424dc59ef3",
+  "tests": {
+   "Example": [
+    0,
+    -10,
+    5,
+    null,
+    -3,
+    null,
+    9
+   ],
+   "Two": [
+    1,
+    null,
+    3
+   ],
+   "Seven": [
+    4,
+    2,
+    6,
+    1,
+    3,
+    5,
+    7
+   ],
+   "Empty": []
+  }
+ },
+ "dsa-spread-out-stalls": {
+  "hash": "128845cd77aa0510",
+  "tests": {
+   "Example": 3,
+   "Four sensors": 3,
+   "All positions": 1,
+   "Two far apart": 999
+  }
+ },
+ "dsa-stack-from-queue": {
+  "hash": "29b74dfdd3820b27",
+  "tests": {
+   "Example": [
+    null,
+    null,
+    null,
+    2,
+    2,
+    false
+   ],
+   "Three": [
+    null,
+    null,
+    null,
+    null,
+    3,
+    2,
+    1
+   ],
+   "Empty check": [
+    null,
+    true,
+    null,
+    false
+   ],
+   "Alternating": [
+    null,
+    null,
+    1,
+    null,
+    2
+   ]
+  }
+ },
+ "dsa-stair-ways": {
+  "hash": "9b9e3b3f01b0d9d8",
+  "tests": {
+   "Example": [
+    2,
+    3,
+    8
+   ],
+   "Zero stairs": [
+    1,
+    1
+   ],
+   "Larger": [
+    89,
+    1346269
+   ],
+   "Empty": []
+  }
+ },
+ "dsa-staircase-grid-search": {
+  "hash": "ec788aa13654406b",
+  "tests": {
+   "Example": [
+    true,
+    false,
+    true
+   ],
+   "Single row": [
+    true,
+    false
+   ],
+   "Corners": [
+    true,
+    true,
+    true,
+    true,
+    false
+   ],
+   "Tall column": [
+    true,
+    false
+   ]
+  }
+ },
+ "dsa-stock-cooldown-fee": {
+  "hash": "a5d4df332e927f0d",
+  "tests": {
+   "Example": [
+    3,
+    0
+   ],
+   "Fee example": [
+    8,
+    8
+   ],
+   "Single day": [
+    0,
+    0
+   ],
+   "Fee eats profit": [
+    1,
+    0
+   ]
+  }
+ },
+ "dsa-stock-k-trades": {
+  "hash": "677d2de44f4f8f02",
+  "tests": {
+   "Example": [
+    4,
+    6
+   ],
+   "Two trades": [
+    7
+   ],
+   "Falling prices": [
+    0,
+    0
+   ],
+   "Many trades": [
+    0,
+    8,
+    13,
+    15
+   ]
+  }
+ },
+ "dsa-strongly-connected": {
+  "hash": "ec670675ec579e34",
+  "tests": {
+   "Example": [
+    [
+     0,
+     1,
+     2
+    ],
+    [
+     3
+    ],
+    [
+     4
+    ]
+   ],
+   "One big cycle": [
+    [
+     0,
+     1,
+     2,
+     3
+    ]
+   ],
+   "No edges": [
+    [
+     0
+    ],
+    [
+     1
+    ],
+    [
+     2
+    ]
+   ],
+   "Two cycles bridged": [
+    [
+     0,
+     1
+    ],
+    [
+     2,
+     3,
+     4
+    ],
+    [
+     5
+    ]
+   ]
+  }
+ },
+ "dsa-subarray-sum-count": {
+  "hash": "339afbf9cb9dd732",
+  "tests": {
+   "Example": 2,
+   "Negatives": 4,
+   "Zero target": 3,
+   "None": 0
+  }
+ },
+ "dsa-subset-sum-exists": {
+  "hash": "0c0e3e16ee98672d",
+  "tests": {
+   "Example": [
+    true,
+    false
+   ],
+   "Partition": [
+    false,
+    true
+   ],
+   "Odd total": [
+    true,
+    false
+   ],
+   "Zero target": [
+    true,
+    false
+   ]
+  }
+ },
+ "dsa-subsets-bitmask": {
+  "hash": "87623d41d08be3bf",
+  "tests": {
+   "Example": [
+    [],
+    [
+     "a"
+    ],
+    [
+     "b"
+    ],
+    [
+     "a",
+     "b"
+    ],
+    [
+     "c"
+    ],
+    [
+     "a",
+     "c"
+    ],
+    [
+     "b",
+     "c"
+    ],
+    [
+     "a",
+     "b",
+     "c"
+    ]
+   ],
+   "Empty": [
+    []
+   ],
+   "One": [
+    [],
+    [
+     "x"
+    ]
+   ],
+   "Four": [
+    [],
+    [
+     "p"
+    ],
+    [
+     "q"
+    ],
+    [
+     "p",
+     "q"
+    ],
+    [
+     "r"
+    ],
+    [
+     "p",
+     "r"
+    ],
+    [
+     "q",
+     "r"
+    ],
+    [
+     "p",
+     "q",
+     "r"
+    ],
+    [
+     "s"
+    ],
+    [
+     "p",
+     "s"
+    ],
+    [
+     "q",
+     "s"
+    ],
+    [
+     "p",
+     "q",
+     "s"
+    ],
+    [
+     "r",
+     "s"
+    ],
+    [
+     "p",
+     "r",
+     "s"
+    ],
+    [
+     "q",
+     "r",
+     "s"
+    ],
+    [
+     "p",
+     "q",
+     "r",
+     "s"
+    ]
+   ]
+  }
+ },
+ "dsa-substring-beauty": {
+  "hash": "11b82caba89d4f7e",
+  "tests": {
+   "Example": 5,
+   "Another": 17,
+   "Uniform": 0,
+   "Empty": 0
+  }
+ },
+ "dsa-sudoku-solver": {
+  "hash": "9089f75ac53705cc",
+  "tests": {
+   "Example": [
+    "534678912",
+    "672195348",
+    "198342567",
+    "859761423",
+    "426853791",
+    "713924856",
+    "961537284",
+    "287419635",
+    "345286179"
+   ],
+   "Harder": [
+    "519748632",
+    "783652419",
+    "426139875",
+    "357986241",
+    "264317598",
+    "198524367",
+    "975863124",
+    "832491756",
+    "641275983"
+   ],
+   "Nearly solved": [
+    "534678912",
+    "672195348",
+    "198342567",
+    "859761423",
+    "426853791",
+    "713924856",
+    "961537284",
+    "287419635",
+    "345286179"
+   ]
+  }
+ },
+ "dsa-sum-of-window-minimums": {
+  "hash": "be242c964c3a73bf",
+  "tests": {
+   "Example": 17,
+   "Another": 444,
+   "Equal values": 12,
+   "Single": 5
+  }
+ },
+ "dsa-swap-adjacent-pairs": {
+  "hash": "b0d8bea1f0fccc07",
+  "tests": {
+   "Example": [
+    2,
+    1,
+    4,
+    3
+   ],
+   "Odd": [
+    2,
+    1,
+    3
+   ],
+   "Single": [
+    1
+   ],
+   "Empty": []
+  }
+ },
+ "dsa-task-cooldown": {
+  "hash": "d60b312bc3852eff",
+  "tests": {
+   "Example": 8,
+   "No cooldown": 6,
+   "Enough variety": 9,
+   "Single type": 9
+  }
+ },
+ "dsa-three-colour-sort": {
+  "hash": "a795f466959f8aef",
+  "tests": {
+   "Example": [
+    0,
+    0,
+    1,
+    1,
+    2,
+    2
+   ],
+   "Already sorted": [
+    0,
+    1,
+    2
+   ],
+   "All twos": [
+    2,
+    2,
+    2
+   ],
+   "Empty": []
+  }
+ },
+ "dsa-top-k-pair-sums": {
+  "hash": "cb02ebe52ad68394",
+  "tests": {
+   "Example": [
+    10,
+    9,
+    9,
+    8
+   ],
+   "k exceeds pairs": [
+    3
+   ],
+   "Duplicates": [
+    4,
+    4,
+    4
+   ],
+   "Empty list": []
+  }
+ },
+ "dsa-training-schedule": {
+  "hash": "dc5d3400a3428e9a",
+  "tests": {
+   "Example": 210,
+   "Single day": 5,
+   "Alternating best": 45,
+   "No days": 0
+  }
+ },
+ "dsa-trapped-rainwater": {
+  "hash": "c6442adfbe5a3d4d",
+  "tests": {
+   "Example": 6,
+   "Valley": 9,
+   "Flat": 0,
+   "Empty": 0
+  }
+ },
+ "dsa-tree-diameter": {
+  "hash": "49657da1e7b73b44",
+  "tests": {
+   "Example": 3,
+   "Two nodes": 1,
+   "Not through root": 4,
+   "Empty": 0
+  }
+ },
+ "dsa-tree-traversals": {
+  "hash": "8c31930181223c1e",
+  "tests": {
+   "Example": [
+    [
+     1,
+     2,
+     4,
+     5,
+     3,
+     6
+    ],
+    [
+     4,
+     2,
+     5,
+     1,
+     3,
+     6
+    ],
+    [
+     4,
+     5,
+     2,
+     6,
+     3,
+     1
+    ]
+   ],
+   "Right chain": [
+    [
+     1,
+     2,
+     3
+    ],
+    [
+     1,
+     2,
+     3
+    ],
+    [
+     3,
+     2,
+     1
+    ]
+   ],
+   "Single": [
+    [
+     7
+    ],
+    [
+     7
+    ],
+    [
+     7
+    ]
+   ],
+   "Empty": [
+    [],
+    [],
+    []
+   ]
+  }
+ },
+ "dsa-triangle-min-path": {
+  "hash": "26a211e584a5daea",
+  "tests": {
+   "Example": 11,
+   "Single": -10,
+   "Negatives": -1,
+   "Two rows": 3
+  }
+ },
+ "dsa-trie-basic": {
+  "hash": "6061cfd9051fcf60",
+  "tests": {
+   "Example": [
+    null,
+    null,
+    true,
+    false,
+    true,
+    null,
+    true
+   ],
+   "Empty prefix": [
+    null,
+    true,
+    false
+   ],
+   "Shared prefixes": [
+    null,
+    null,
+    null,
+    true,
+    false,
+    false
+   ],
+   "Empty word inserted": [
+    null,
+    null,
+    true
+   ]
+  }
+ },
+ "dsa-trie-counts": {
+  "hash": "22c782d36e80bc91",
+  "tests": {
+   "Example": [
+    null,
+    null,
+    null,
+    2,
+    2,
+    null,
+    1,
+    1,
+    null,
+    0
+   ],
+   "Prefix not word": [
+    null,
+    null,
+    0,
+    1
+   ],
+   "Several words": [
+    null,
+    null,
+    null,
+    null,
+    3,
+    null,
+    1,
+    1
+   ],
+   "Unknown prefix": [
+    null,
+    0,
+    0
+   ]
+  }
+ },
+ "dsa-triplets-zero": {
+  "hash": "0dfc25a76197bddb",
+  "tests": {
+   "Example": [
+    [
+     -1,
+     -1,
+     2
+    ],
+    [
+     -1,
+     0,
+     1
+    ]
+   ],
+   "All zeros": [
+    [
+     0,
+     0,
+     0
+    ]
+   ],
+   "None": [],
+   "Several": [
+    [
+     -4,
+     1,
+     3
+    ],
+    [
+     -2,
+     -1,
+     3
+    ],
+    [
+     -2,
+     0,
+     2
+    ],
+    [
+     -2,
+     1,
+     1
+    ],
+    [
+     -1,
+     0,
+     1
+    ]
+   ]
+  }
+ },
+ "dsa-two-basket-fruits": {
+  "hash": "a5cccd6e3a31a724",
+  "tests": {
+   "Two kinds": 4,
+   "Three kinds": 5,
+   "Zero": 0,
+   "All same": 3
+  }
+ },
+ "dsa-two-colourable": {
+  "hash": "a04903e41f3f4618",
+  "tests": {
+   "Odd cycle": false,
+   "Square": true,
+   "Disconnected with a triangle": false,
+   "Isolated nodes": true
+  }
+ },
+ "dsa-two-walkers-grid": {
+  "hash": "4dfb18ebd30cfaf4",
+  "tests": {
+   "Example": 24,
+   "Another": 28,
+   "Single column": 9,
+   "Two columns": 4
+  }
+ },
+ "dsa-unbounded-knapsack": {
+  "hash": "a1c465109fa6c7cf",
+  "tests": {
+   "Example": [
+    27,
+    12
+   ],
+   "Nothing fits": [
+    0,
+    1
+   ],
+   "Classic rod": [
+    0,
+    22
+   ],
+   "Greedy fails": [
+    12,
+    12
+   ]
+  }
+ },
+ "dsa-unique-subsets": {
+  "hash": "838a8aec759f62b6",
+  "tests": {
+   "Example": [
+    [],
+    [
+     1
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     1,
+     2,
+     2
+    ],
+    [
+     2
+    ],
+    [
+     2,
+     2
+    ]
+   ],
+   "Single": [
+    [],
+    [
+     0
+    ]
+   ],
+   "All equal": [
+    [],
+    [
+     3
+    ],
+    [
+     3,
+     3
+    ],
+    [
+     3,
+     3,
+     3
+    ]
+   ],
+   "Unsorted input": [
+    [],
+    [
+     1
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     1,
+     4,
+     4
+    ],
+    [
+     4
+    ],
+    [
+     4,
+     4
+    ]
+   ]
+  }
+ },
+ "dsa-unit-weight-distances": {
+  "hash": "7bbae10b550846d2",
+  "tests": {
+   "Example": [
+    0,
+    1,
+    2,
+    1,
+    2,
+    3,
+    3,
+    4,
+    4
+   ],
+   "Isolated": [
+    0,
+    1,
+    -1
+   ],
+   "Middle source": [
+    2,
+    1,
+    0,
+    1,
+    2
+   ],
+   "Single": [
+    0
+   ]
+  }
+ },
+ "dsa-valid-anagram-groups": {
+  "hash": "d8f1616d1b30f89b",
+  "tests": {
+   "Example": [
+    true,
+    false
+   ],
+   "Empty": [
+    true
+   ],
+   "Case and length": [
+    false,
+    false
+   ],
+   "Spaces count": [
+    true,
+    false
+   ]
+  }
+ },
+ "dsa-validate-bst": {
+  "hash": "fa87d308061505aa",
+  "tests": {
+   "Valid": true,
+   "Deep violation": false,
+   "Duplicate": false,
+   "Empty": true
+  }
+ },
+ "dsa-vertical-columns": {
+  "hash": "e477aef7503a8325",
+  "tests": {
+   "Example": [
+    [
+     [
+      9
+     ],
+     [
+      3,
+      15
+     ],
+     [
+      20
+     ],
+     [
+      7
+     ]
+    ],
+    [
+     9,
+     3,
+     20,
+     7
+    ],
+    [
+     9,
+     15,
+     20,
+     7
+    ]
+   ],
+   "Same cell": [
+    [
+     [
+      4
+     ],
+     [
+      2
+     ],
+     [
+      1,
+      5,
+      6
+     ],
+     [
+      3
+     ],
+     [
+      7
+     ]
+    ],
+    [
+     4,
+     2,
+     1,
+     3,
+     7
+    ],
+    [
+     4,
+     2,
+     5,
+     3,
+     7
+    ]
+   ],
+   "Skewed": [
+    [
+     [
+      4
+     ],
+     [
+      3
+     ],
+     [
+      2
+     ],
+     [
+      1
+     ]
+    ],
+    [
+     4,
+     3,
+     2,
+     1
+    ],
+    [
+     4,
+     3,
+     2,
+     1
+    ]
+   ],
+   "Empty": [
+    [],
+    [],
+    []
+   ]
+  }
+ },
+ "dsa-widest-container": {
+  "hash": "70f8271e0f471227",
+  "tests": {
+   "Example": 49,
+   "Two lines": 1,
+   "Increasing": 6,
+   "Single": 0
+  }
+ },
+ "dsa-wildcard-match": {
+  "hash": "1cb03db7f6b507dd",
+  "tests": {
+   "Example": [
+    false,
+    true,
+    false,
+    true
+   ],
+   "Empty text": [
+    true,
+    false
+   ],
+   "Tricky": [
+    false,
+    true
+   ],
+   "Exact": [
+    true,
+    false
+   ]
+  }
+ },
+ "dsa-wildcard-parens": {
+  "hash": "950b9b1f026f17dc",
+  "tests": {
+   "Example": [
+    true,
+    true,
+    true
+   ],
+   "Unbalanced": [
+    false,
+    false
+   ],
+   "Stars only": [
+    true,
+    true
+   ],
+   "Long": [
+    true,
+    false
+   ]
+  }
+ },
+ "dsa-window-max-deque": {
+  "hash": "01298bb030b66de8",
+  "tests": {
+   "Example": [
+    3,
+    3,
+    5,
+    5,
+    6,
+    7
+   ],
+   "k = 1": [
+    4,
+    2
+   ],
+   "Decreasing": [
+    9,
+    8,
+    7
+   ],
+   "Whole array": [
+    5
+   ]
+  }
+ },
+ "dsa-word-break": {
+  "hash": "9d4b77a47ba71958",
+  "tests": {
+   "Example": [
+    true,
+    [
+     "cat sand dog",
+     "cats and dog"
+    ]
+   ],
+   "Impossible": [
+    false,
+    []
+   ],
+   "Reuse": [
+    true,
+    [
+     "apple pen apple"
+    ]
+   ],
+   "Empty string": [
+    true,
+    [
+     ""
+    ]
+   ]
+  }
+ },
+ "dsa-word-chain": {
+  "hash": "91f5d2583099c9ba",
+  "tests": {
+   "Example": 4,
+   "Another": 5,
+   "No chain": 1,
+   "Empty": 0
+  }
+ },
+ "dsa-word-in-grid": {
+  "hash": "dbf81c0296479e4e",
+  "tests": {
+   "Example": [
+    true,
+    true,
+    false
+   ],
+   "Single cell": [
+    true,
+    false
+   ],
+   "Snake": [
+    true,
+    false
+   ],
+   "Reuse not allowed": [
+    false,
+    true
+   ]
+  }
+ },
+ "dsa-word-ladder": {
+  "hash": "00a76ba5ac188443",
+  "tests": {
+   "Example": [
+    5,
+    [
+     [
+      "hit",
+      "hot",
+      "dot",
+      "dog",
+      "cog"
+     ],
+     [
+      "hit",
+      "hot",
+      "lot",
+      "log",
+      "cog"
+     ]
+    ]
+   ],
+   "Unreachable": [
+    0,
+    []
+   ],
+   "One step": [
+    2,
+    [
+     [
+      "a",
+      "c"
+     ]
+    ]
+   ],
+   "Several shortest ladders": [
+    4,
+    [
+     [
+      "red",
+      "rex",
+      "tex",
+      "tax"
+     ],
+     [
+      "red",
+      "ted",
+      "tad",
+      "tax"
+     ],
+     [
+      "red",
+      "ted",
+      "tex",
+      "tax"
+     ]
+    ]
+   ]
+  }
+ },
+ "dsa-xor-range": {
+  "hash": "774f7cda703e5dfe",
+  "tests": {
+   "Example": [
+    2,
+    4
+   ],
+   "Single": [
+    7,
+    0
+   ],
+   "Large": [
+    1000000,
+    122
+   ],
+   "From zero": [
+    0,
+    11
+   ]
+  }
+ },
+ "dsa-xor-singles": {
+  "hash": "a0c42d5ec3d21eab",
+  "tests": {
+   "Example": [
+    4,
+    [
+     3,
+     5
+    ]
+   ],
+   "Negatives": [
+    -1,
+    [
+     -1,
+     0
+    ]
+   ],
+   "Larger": [
+    7,
+    [
+     6,
+     9
+    ]
+   ],
+   "Zero single": [
+    0,
+    [
+     2,
+     3
+    ]
+   ]
+  }
+ },
+ "dsa-xor-target-subarrays": {
+  "hash": "5639b0dd5d50d611",
+  "tests": {
+   "Example": 4,
+   "Another": 2,
+   "Zero target": 4,
+   "Empty": 0
+  }
+ },
+ "dsa-z-function": {
+  "hash": "3d51a87a0f4d796e",
+  "tests": {
+   "Example": [
+    [
+     0,
+     0,
+     0,
+     0,
+     0,
+     3,
+     0,
+     0,
+     2,
+     0,
+     0,
+     3,
+     0,
+     0
+    ],
+    [
+     1,
+     7
+    ]
+   ],
+   "Repeated": [
+    [
+     0,
+     1,
+     0,
+     2,
+     2,
+     2,
+     1
+    ],
+    [
+     0,
+     1,
+     2
+    ]
+   ],
+   "No match": [
+    [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    []
+   ],
+   "Pattern equals text": [
+    [
+     0,
+     0,
+     0,
+     0,
+     0,
+     4,
+     0,
+     0,
+     0
+    ],
+    [
+     0
+    ]
+   ]
+  }
+ },
+ "dsa-zero-out-rows-cols": {
+  "hash": "1282f0772d267a78",
+  "tests": {
+   "Example": [
+    [
+     1,
+     0,
+     1
+    ],
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     1,
+     0,
+     1
+    ]
+   ],
+   "Zero in a corner": [
+    [
+     0,
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     4,
+     5,
+     0
+    ],
+    [
+     0,
+     3,
+     1,
+     0
+    ]
+   ],
+   "No zeros": [
+    [
+     1,
+     2
+    ],
+    [
+     3,
+     4
+    ]
+   ],
+   "Single column": [
+    [
+     0
+    ],
+    [
+     0
+    ],
+    [
+     0
+    ]
+   ]
+  }
+ },
+ "dsa-zero-sum-span": {
+  "hash": "ae853b4aaae9500f",
+  "tests": {
+   "Example": 5,
+   "None": 0,
+   "Whole array": 4,
+   "Zeros": 3
+  }
+ }
+}

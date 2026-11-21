@@ -1,0 +1,5459 @@
+{
+ "spark-above-dept-average": {
+  "hash": "dd15934c520e1905",
+  "columns": [
+   "dept",
+   "name",
+   "salary",
+   "dept_avg"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "eng",
+     "b",
+     200,
+     150
+    ]
+   ],
+   "Everyone equal": [],
+   "Fractional average": [
+    [
+     "bi",
+     "q",
+     2,
+     1.67
+    ],
+    [
+     "bi",
+     "r",
+     2,
+     1.67
+    ]
+   ]
+  }
+ },
+ "spark-active-watch-time": {
+  "hash": "c9670781529f323b",
+  "columns": [
+   "user_id",
+   "active_minutes"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     50
+    ],
+    [
+     2,
+     5
+    ]
+   ],
+   "No subscriptions": [],
+   "Boundaries inclusive": [
+    [
+     3,
+     3
+    ]
+   ]
+  }
+ },
+ "spark-array-higher-order": {
+  "hash": "df173d3151003c96",
+  "columns": [
+   "cart_id",
+   "paid_items",
+   "total_with_tax"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     2,
+     16.49
+    ],
+    [
+     2,
+     0,
+     0
+    ]
+   ],
+   "Single item": [
+    [
+     3,
+     1,
+     100
+    ]
+   ],
+   "Rounding": [
+    [
+     4,
+     3,
+     0.69
+    ]
+   ]
+  }
+ },
+ "spark-array-ops-purchases": {
+  "hash": "63c602457b2eafab",
+  "columns": [
+   "user_id",
+   "items",
+   "n_items",
+   "bought_milk",
+   "first_item"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     "bread|milk",
+     2,
+     true,
+     "bread"
+    ],
+    [
+     2,
+     "eggs",
+     1,
+     false,
+     "eggs"
+    ]
+   ],
+   "Single item": [
+    [
+     3,
+     "tea",
+     1,
+     false,
+     "tea"
+    ]
+   ],
+   "Case matters": [
+    [
+     4,
+     "Milk|milk",
+     2,
+     true,
+     "Milk"
+    ]
+   ]
+  }
+ },
+ "spark-attendance-pivot": {
+  "hash": "bce95bdb9e5c6b88",
+  "columns": [
+   "employee_id",
+   "present",
+   "absent",
+   "leave"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     2,
+     1,
+     0
+    ],
+    [
+     2,
+     0,
+     0,
+     1
+    ]
+   ],
+   "Nobody on leave": [
+    [
+     3,
+     1,
+     1,
+     0
+    ]
+   ],
+   "One status only": [
+    [
+     4,
+     0,
+     0,
+     2
+    ]
+   ]
+  }
+ },
+ "spark-attendance-streaks": {
+  "hash": "6f5a928223878423",
+  "columns": [
+   "emp_id",
+   "longest_streak",
+   "streak_start",
+   "streak_end"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     3,
+     "2024-01-01",
+     "2024-01-03"
+    ],
+    [
+     2,
+     1,
+     "2024-01-01",
+     "2024-01-01"
+    ]
+   ],
+   "Tie keeps the earliest run": [
+    [
+     3,
+     2,
+     "2024-02-01",
+     "2024-02-02"
+    ]
+   ],
+   "Duplicate check-ins": [
+    [
+     4,
+     2,
+     "2024-03-01",
+     "2024-03-02"
+    ]
+   ]
+  }
+ },
+ "spark-basket-pairs": {
+  "hash": "17ea469a61888526",
+  "columns": [
+   "item_a",
+   "item_b",
+   "orders"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "eggs",
+     "milk",
+     2
+    ],
+    [
+     "bread",
+     "milk",
+     2
+    ]
+   ],
+   "No repeated pairs": [],
+   "Duplicate lines": [
+    [
+     "x",
+     "y",
+     2
+    ]
+   ]
+  }
+ },
+ "spark-budget-utilization": {
+  "hash": "d32e1a695ccfa9b7",
+  "columns": [
+   "dept",
+   "salary_cost",
+   "budget",
+   "utilization_pct",
+   "over_budget",
+   "top_earner"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "eng",
+     220,
+     200,
+     110,
+     true,
+     "ana"
+    ],
+    [
+     "ops",
+     90,
+     100,
+     90,
+     false,
+     "li"
+    ],
+    [
+     "hr",
+     0,
+     50,
+     0,
+     false,
+     null
+    ]
+   ],
+   "Tie for top earner": [
+    [
+     "bi",
+     20,
+     30,
+     66.7,
+     false,
+     "amy"
+    ]
+   ],
+   "Exactly on budget": [
+    [
+     "a",
+     50,
+     50,
+     100,
+     false,
+     "x"
+    ]
+   ]
+  }
+ },
+ "spark-business-hours": {
+  "hash": "be5c13ab6ca35177",
+  "columns": [
+   "day_type",
+   "daypart",
+   "orders"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "weekday",
+     "breakfast",
+     1
+    ],
+    [
+     "weekday",
+     "lunch",
+     1
+    ],
+    [
+     "weekend",
+     "dinner",
+     1
+    ],
+    [
+     "weekend",
+     "other",
+     1
+    ],
+    [
+     "weekday",
+     "other",
+     1
+    ]
+   ],
+   "Boundaries": [
+    [
+     "weekday",
+     "breakfast",
+     1
+    ],
+    [
+     "weekday",
+     "lunch",
+     1
+    ],
+    [
+     "weekday",
+     "dinner",
+     1
+    ]
+   ],
+   "Sunday breakfast": [
+    [
+     "weekend",
+     "breakfast",
+     1
+    ]
+   ]
+  }
+ },
+ "spark-call-center-daily": {
+  "hash": "37e20c5acad2ff08",
+  "columns": [
+   "call_date",
+   "unique_callers",
+   "calls",
+   "minutes"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "2024-03-01",
+     2,
+     3,
+     3.5
+    ],
+    [
+     "2024-03-02",
+     1,
+     1,
+     10
+    ]
+   ],
+   "Single call": [
+    [
+     "2024-01-01",
+     1,
+     1,
+     0.8
+    ]
+   ],
+   "Many repeat callers": [
+    [
+     "2024-02-02",
+     1,
+     3,
+     0.3
+    ]
+   ]
+  }
+ },
+ "spark-cdc-replay": {
+  "hash": "ead79c89d8241e58",
+  "columns": [
+   "id",
+   "name",
+   "balance"
+  ],
+  "tests": {
+   "Example": [
+    [
+     12,
+     "li",
+     0
+    ],
+    [
+     10,
+     "ana",
+     7.5
+    ]
+   ],
+   "Re-insert after delete": [
+    [
+     1,
+     "a2",
+     2
+    ]
+   ],
+   "Out-of-order arrival": [
+    [
+     2,
+     "new",
+     9
+    ]
+   ]
+  }
+ },
+ "spark-charging-sessions": {
+  "hash": "a9b5835259623516",
+  "columns": [
+   "charger_id",
+   "sessions",
+   "hours"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     2,
+     2.25
+    ]
+   ],
+   "Double start": [
+    [
+     3,
+     1,
+     1
+    ]
+   ],
+   "Stop without start": [
+    [
+     4,
+     1,
+     0.5
+    ]
+   ]
+  }
+ },
+ "spark-clean-tag-arrays": {
+  "hash": "b4b44b77d7462e14",
+  "columns": [
+   "ticket_id",
+   "tags_clean",
+   "tag_count"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     "billing,refund",
+     2
+    ],
+    [
+     2,
+     "login",
+     1
+    ]
+   ],
+   "Only legacy": [
+    [
+     3,
+     "",
+     0
+    ]
+   ],
+   "Empty entries": [
+    [
+     4,
+     "a,b",
+     2
+    ]
+   ]
+  }
+ },
+ "spark-collect-sorted-list": {
+  "hash": "5b029e4c94f864a7",
+  "columns": [
+   "customer_id",
+   "products",
+   "distinct_products"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     "cup > tea > tea",
+     2
+    ],
+    [
+     2,
+     "pen",
+     1
+    ]
+   ],
+   "Same timestamp ties by name": [
+    [
+     3,
+     "a > b",
+     2
+    ]
+   ],
+   "Single purchase": [
+    [
+     4,
+     "x",
+     1
+    ]
+   ]
+  }
+ },
+ "spark-connected-airports": {
+  "hash": "e5cc8a6d9801e710",
+  "columns": [
+   "airport_a",
+   "airport_b",
+   "flights"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "BOM",
+     "DEL",
+     3
+    ],
+    [
+     "BLR",
+     "DEL",
+     1
+    ]
+   ],
+   "One flight": [
+    [
+     "JFK",
+     "SFO",
+     1
+    ]
+   ],
+   "Many routes": [
+    [
+     "A",
+     "B",
+     1
+    ],
+    [
+     "B",
+     "C",
+     1
+    ],
+    [
+     "A",
+     "C",
+     2
+    ]
+   ]
+  }
+ },
+ "spark-cumulative-share": {
+  "hash": "487d5abade77efe6",
+  "columns": [
+   "product",
+   "revenue",
+   "cum_revenue",
+   "cum_share"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "a",
+     50,
+     50,
+     0.5
+    ],
+    [
+     "b",
+     30,
+     80,
+     0.8
+    ],
+    [
+     "c",
+     15,
+     95,
+     0.95
+    ],
+    [
+     "d",
+     5,
+     100,
+     1
+    ]
+   ],
+   "Ties by name": [
+    [
+     "x",
+     10,
+     10,
+     0.5
+    ],
+    [
+     "y",
+     10,
+     20,
+     1
+    ]
+   ],
+   "Single product": [
+    [
+     "z",
+     3,
+     3,
+     1
+    ]
+   ]
+  }
+ },
+ "spark-daily-store-sales": {
+  "hash": "dc163630892296b5",
+  "columns": [
+   "store_id",
+   "sale_date",
+   "total_sales"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     "2024-07-01",
+     17
+    ],
+    [
+     1,
+     "2024-07-02",
+     1
+    ],
+    [
+     2,
+     "2024-07-01",
+     9
+    ]
+   ],
+   "Midnight boundary": [
+    [
+     5,
+     "2024-07-01",
+     1
+    ],
+    [
+     5,
+     "2024-07-02",
+     1
+    ]
+   ],
+   "Single sale": [
+    [
+     3,
+     "2024-01-01",
+     0.3
+    ]
+   ]
+  }
+ },
+ "spark-dedupe-latest": {
+  "hash": "97dab3daae7b1f1c",
+  "columns": [
+   "ingest_id",
+   "order_id",
+   "status",
+   "updated_at"
+  ],
+  "tests": {
+   "Example": [
+    [
+     4,
+     10,
+     "paid",
+     "2024-01-01 11:00:00"
+    ],
+    [
+     3,
+     11,
+     "new",
+     "2024-01-01 09:00:00"
+    ]
+   ],
+   "Older redelivery arrives later": [
+    [
+     1,
+     5,
+     "shipped",
+     "2024-02-02 00:00:00"
+    ]
+   ],
+   "No duplicates": [
+    [
+     1,
+     1,
+     "a",
+     "2024-01-01 00:00:00"
+    ],
+    [
+     2,
+     2,
+     "b",
+     "2024-01-01 00:00:00"
+    ]
+   ]
+  }
+ },
+ "spark-device-split": {
+  "hash": "419d42dee14a16dd",
+  "columns": [
+   "mobile_sessions",
+   "desktop_sessions",
+   "tv_sessions",
+   "mobile_minutes_share"
+  ],
+  "tests": {
+   "Example": [
+    [
+     2,
+     1,
+     1,
+     0.25
+    ]
+   ],
+   "Only desktop": [
+    [
+     0,
+     1,
+     0,
+     0
+    ]
+   ],
+   "Android TV counts as mobile": [
+    [
+     1,
+     0,
+     1,
+     0.8
+    ]
+   ]
+  }
+ },
+ "spark-discounted-prices": {
+  "hash": "d1f6677b65126e79",
+  "columns": [
+   "sku",
+   "price",
+   "discount_pct",
+   "sale_price"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "A",
+     100,
+     15,
+     85
+    ],
+    [
+     "B",
+     19.99,
+     null,
+     19.99
+    ],
+    [
+     "C",
+     5,
+     100,
+     0
+    ]
+   ],
+   "Fractional discount": [
+    [
+     "D",
+     9.99,
+     12.5,
+     8.74
+    ]
+   ],
+   "Zero price": [
+    [
+     "E",
+     0,
+     50,
+     0
+    ]
+   ]
+  }
+ },
+ "spark-drop-all-null-rows": {
+  "hash": "61425778b2d01fb0",
+  "columns": [
+   "firm_name",
+   "fund_name",
+   "company",
+   "amount"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "Alpha",
+     "Growth I",
+     null,
+     2
+    ],
+    [
+     "Alpha",
+     "Growth I",
+     "Acme",
+     5
+    ]
+   ],
+   "Fund without a firm": [
+    [
+     null,
+     "Orphan",
+     "X",
+     1
+    ]
+   ],
+   "Company with unknown amount": [
+    [
+     "B",
+     "F",
+     "Y",
+     null
+    ]
+   ]
+  }
+ },
+ "spark-drop-duplicates-subset": {
+  "hash": "a1df97c71f38691e",
+  "columns": [
+   "rows",
+   "distinct_rows",
+   "distinct_emails"
+  ],
+  "tests": {
+   "Example": [
+    [
+     4,
+     3,
+     2
+    ]
+   ],
+   "All unique": [
+    [
+     2,
+     2,
+     2
+    ]
+   ],
+   "One row": [
+    [
+     1,
+     1,
+     1
+    ]
+   ]
+  }
+ },
+ "spark-duplicate-fares": {
+  "hash": "21302c1aa24967c6",
+  "columns": [
+   "rider_id",
+   "duplicates",
+   "refund"
+  ],
+  "tests": {
+   "Example": [
+    [
+     7,
+     1,
+     12.5
+    ]
+   ],
+   "Burst of three": [
+    [
+     9,
+     2,
+     10
+    ]
+   ],
+   "Exactly ten minutes counts": [
+    [
+     1,
+     1,
+     1
+    ]
+   ]
+  }
+ },
+ "spark-duplicate-listings": {
+  "hash": "25a9f3178085bf0a",
+  "columns": [
+   "agent_id",
+   "duplicated_addresses"
+  ],
+  "tests": {
+   "Example": [
+    [
+     10,
+     1
+    ]
+   ],
+   "No duplicates": [],
+   "Several duplicated addresses": [
+    [
+     5,
+     2
+    ]
+   ]
+  }
+ },
+ "spark-dynamic-rename-cast": {
+  "hash": "ec340075536abc62",
+  "columns": [
+   "customer_id",
+   "amount_local",
+   "fx_rate",
+   "order_date",
+   "amount_usd"
+  ],
+  "tests": {
+   "Example": [
+    [
+     7,
+     1000,
+     0.012,
+     "2024-01-05",
+     12
+    ],
+    [
+     8,
+     50.5,
+     1.1,
+     "2024-02-10",
+     55.55
+    ]
+   ],
+   "Large amounts": [
+    [
+     9,
+     123456.5,
+     1,
+     "2024-03-01",
+     123456.5
+    ]
+   ],
+   "Rounding": [
+    [
+     1,
+     3.333,
+     3,
+     "2024-01-01",
+     10
+    ]
+   ]
+  }
+ },
+ "spark-ecommerce-kpis": {
+  "hash": "d7c5cc0c408dbda3",
+  "columns": [
+   "country",
+   "orders",
+   "revenue",
+   "aov",
+   "items_per_order",
+   "top_category"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "IN",
+     2,
+     27,
+     13.5,
+     2,
+     "books"
+    ],
+    [
+     "US",
+     1,
+     10,
+     10,
+     4,
+     "toys"
+    ]
+   ],
+   "Category tie": [
+    [
+     "DE",
+     1,
+     6,
+     6,
+     2,
+     "a"
+    ]
+   ],
+   "Single order": [
+    [
+     "FR",
+     1,
+     3.3,
+     3.3,
+     3,
+     "food"
+    ]
+   ]
+  }
+ },
+ "spark-election-seats": {
+  "hash": "408b8a3b6374c4c7",
+  "columns": [
+   "party",
+   "seats"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "Blue",
+     1
+    ],
+    [
+     "Red",
+     1
+    ]
+   ],
+   "All seats to one party": [
+    [
+     "X",
+     2
+    ]
+   ],
+   "Every seat tied": []
+  }
+ },
+ "spark-employee-manager": {
+  "hash": "930b6dc1d4acf866",
+  "columns": [
+   "employee",
+   "salary",
+   "manager",
+   "manager_salary"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "vp",
+     320,
+     "ceo",
+     300
+    ]
+   ],
+   "Nobody out-earns their manager": [],
+   "Equal pay is not more": []
+  }
+ },
+ "spark-engaged-shoppers": {
+  "hash": "03d0b2d0cb306019",
+  "columns": [
+   "user_id",
+   "day",
+   "sessions",
+   "order_total"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     "2024-05-01",
+     2,
+     40
+    ]
+   ],
+   "All orders returned": [
+    [
+     3,
+     "2024-01-01",
+     2,
+     0
+    ]
+   ],
+   "Order on another day": []
+  }
+ },
+ "spark-etl-job-stats": {
+  "hash": "e444ba8ebb7a6b49",
+  "columns": [
+   "job_name",
+   "last_run",
+   "latest_status",
+   "failures",
+   "consecutive_failures"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "ingest",
+     "2024-01-03 01:00:00",
+     "failed",
+     2,
+     2
+    ],
+    [
+     "dq",
+     "2024-01-02 02:00:00",
+     "success",
+     1,
+     0
+    ],
+    [
+     "export",
+     null,
+     null,
+     0,
+     0
+    ]
+   ],
+   "Never succeeded": [
+    [
+     "x",
+     "2024-01-02 00:00:00",
+     "failed",
+     2,
+     2
+    ]
+   ],
+   "All successful": [
+    [
+     "y",
+     "2024-01-01 00:00:00",
+     "success",
+     0,
+     0
+    ]
+   ]
+  }
+ },
+ "spark-event-type-pivot": {
+  "hash": "48368d7329340a40",
+  "columns": [
+   "user_id",
+   "view",
+   "click",
+   "purchase",
+   "ctr"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     2,
+     1,
+     0,
+     0.5
+    ],
+    [
+     2,
+     0,
+     0,
+     1,
+     null
+    ]
+   ],
+   "All clicks": [
+    [
+     3,
+     1,
+     2,
+     0,
+     2
+    ]
+   ],
+   "Unknown event types ignored": [
+    [
+     4,
+     1,
+     0,
+     0,
+     0
+    ]
+   ]
+  }
+ },
+ "spark-exam-attendance": {
+  "hash": "385ba0bf227b9152",
+  "columns": [
+   "exam_id",
+   "subject",
+   "registered",
+   "attended",
+   "attendance_pct"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     "math",
+     3,
+     2,
+     66.7
+    ],
+    [
+     2,
+     "art",
+     1,
+     1,
+     100
+    ]
+   ],
+   "Nobody attended": [
+    [
+     3,
+     "bio",
+     1,
+     0,
+     0
+    ]
+   ],
+   "Full attendance": [
+    [
+     4,
+     "cs",
+     2,
+     2,
+     100
+    ]
+   ]
+  }
+ },
+ "spark-except-intersect": {
+  "hash": "1f342d0de9e10e2a",
+  "columns": [
+   "id",
+   "value",
+   "side"
+  ],
+  "tests": {
+   "Example": [
+    [
+     2,
+     "B",
+     "added"
+    ],
+    [
+     4,
+     "d",
+     "added"
+    ],
+    [
+     3,
+     "c",
+     "removed"
+    ],
+    [
+     2,
+     "b",
+     "removed"
+    ],
+    [
+     1,
+     "a",
+     "unchanged"
+    ]
+   ],
+   "Identical": [
+    [
+     1,
+     "x",
+     "unchanged"
+    ]
+   ],
+   "Duplicates collapse": [
+    [
+     1,
+     "x",
+     "removed"
+    ]
+   ]
+  }
+ },
+ "spark-expand-subscription-months": {
+  "hash": "28bc75cb3a5eb4f9",
+  "columns": [
+   "month",
+   "mrr"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "2024-01-01",
+     10
+    ],
+    [
+     "2024-02-01",
+     35.5
+    ],
+    [
+     "2024-03-01",
+     10
+    ]
+   ],
+   "Single month": [
+    [
+     "2024-05-01",
+     9.99
+    ]
+   ],
+   "Across a year": [
+    [
+     "2023-12-01",
+     5
+    ],
+    [
+     "2024-01-01",
+     5
+    ]
+   ]
+  }
+ },
+ "spark-explode-json-orders": {
+  "hash": "4dc05e0b643b7393",
+  "columns": [
+   "order_id",
+   "customer",
+   "sku",
+   "qty"
+  ],
+  "tests": {
+   "Example": [
+    [
+     7,
+     "ana",
+     "A",
+     2
+    ],
+    [
+     7,
+     "ana",
+     "B",
+     1
+    ]
+   ],
+   "Single item": [
+    [
+     1,
+     "li",
+     "Z",
+     9
+    ]
+   ],
+   "Many orders": [
+    [
+     2,
+     "a",
+     "X",
+     1
+    ],
+    [
+     3,
+     "b",
+     "Y",
+     2
+    ],
+    [
+     3,
+     "b",
+     "Y",
+     3
+    ]
+   ]
+  }
+ },
+ "spark-feature-flag-map": {
+  "hash": "8d74fb38daabd9aa",
+  "columns": [
+   "user_id",
+   "dark_mode",
+   "beta",
+   "enabled_count"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     false,
+     true,
+     1
+    ],
+    [
+     2,
+     null,
+     false,
+     0
+    ]
+   ],
+   "Flag never set": [
+    [
+     3,
+     null,
+     null,
+     1
+    ]
+   ],
+   "Toggled back on": [
+    [
+     4,
+     null,
+     true,
+     1
+    ]
+   ]
+  }
+ },
+ "spark-filter-catalog": {
+  "hash": "45696e53299a2c1c",
+  "columns": [
+   "sku",
+   "name",
+   "price"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "1",
+     "Phone X",
+     499
+    ],
+    [
+     "2",
+     "Tablet 9",
+     100
+    ]
+   ],
+   "Other categories excluded": [],
+   "Upper bound inclusive": [
+    [
+     "7",
+     "PHONE Z",
+     500
+    ]
+   ]
+  }
+ },
+ "spark-first-last-value": {
+  "hash": "89bbbff116fb85d3",
+  "columns": [
+   "user_id",
+   "first_plan",
+   "current_plan",
+   "changes"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     "free",
+     "team",
+     2
+    ],
+    [
+     2,
+     "pro",
+     "pro",
+     0
+    ]
+   ],
+   "Downgrade and back": [
+    [
+     3,
+     "pro",
+     "pro",
+     2
+    ]
+   ],
+   "Unsorted input": [
+    [
+     4,
+     "a",
+     "b",
+     1
+    ]
+   ]
+  }
+ },
+ "spark-flatten-struct": {
+  "hash": "8ee5fb8b31b9d9ed",
+  "columns": [
+   "id",
+   "user_name",
+   "user_address_city",
+   "user_address_zip",
+   "total"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     "ana",
+     "Pune",
+     "411001",
+     9.5
+    ]
+   ],
+   "Null nested object": [
+    [
+     2,
+     null,
+     null,
+     null,
+     1
+    ]
+   ],
+   "Several documents": [
+    [
+     3,
+     "raj",
+     "Goa",
+     null,
+     2
+    ],
+    [
+     4,
+     "li",
+     null,
+     null,
+     null
+    ]
+   ]
+  }
+ },
+ "spark-flight-delay-buckets": {
+  "hash": "3c16ae22a154962c",
+  "columns": [
+   "airline",
+   "on_time",
+   "delayed",
+   "severe",
+   "cancelled"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "AI",
+     1,
+     1,
+     0,
+     0
+    ],
+    [
+     "6E",
+     0,
+     0,
+     1,
+     1
+    ]
+   ],
+   "Early departures are on time": [
+    [
+     "UK",
+     1,
+     0,
+     0,
+     0
+    ]
+   ],
+   "Exactly 15 and 60 minutes": [
+    [
+     "QP",
+     1,
+     1,
+     0,
+     0
+    ]
+   ]
+  }
+ },
+ "spark-food-beverage-sales": {
+  "hash": "79ffb3f6f61a3397",
+  "columns": [
+   "product_id",
+   "name",
+   "units_sold",
+   "revenue",
+   "stock_left"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     "Latte",
+     5,
+     17.5,
+     95
+    ],
+    [
+     2,
+     "Muffin",
+     10,
+     22.5,
+     30
+    ],
+    [
+     3,
+     "Tea",
+     0,
+     0,
+     50
+    ]
+   ],
+   "No sales at all": [
+    [
+     1,
+     "X",
+     0,
+     0,
+     5
+    ]
+   ],
+   "Oversold": [
+    [
+     9,
+     "Y",
+     3,
+     4.5,
+     -2
+    ]
+   ]
+  }
+ },
+ "spark-forward-fill": {
+  "hash": "15e2bced979b1bd0",
+  "columns": [
+   "device_id",
+   "ts",
+   "reading",
+   "filled"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     "2024-01-01 00:00:00",
+     20,
+     20
+    ],
+    [
+     1,
+     "2024-01-01 00:01:00",
+     null,
+     20
+    ],
+    [
+     1,
+     "2024-01-01 00:02:00",
+     null,
+     20
+    ],
+    [
+     2,
+     "2024-01-01 00:01:00",
+     5,
+     5
+    ],
+    [
+     1,
+     "2024-01-01 00:03:00",
+     22.5,
+     22.5
+    ],
+    [
+     1,
+     "2024-01-01 00:04:00",
+     null,
+     22.5
+    ],
+    [
+     2,
+     "2024-01-01 00:00:00",
+     null,
+     null
+    ]
+   ],
+   "No nulls": [
+    [
+     3,
+     "2024-01-01 00:01:00",
+     2,
+     2
+    ],
+    [
+     3,
+     "2024-01-01 00:00:00",
+     1,
+     1
+    ]
+   ],
+   "All nulls": [
+    [
+     4,
+     "2024-01-01 00:00:00",
+     null,
+     null
+    ],
+    [
+     4,
+     "2024-01-01 00:01:00",
+     null,
+     null
+    ]
+   ]
+  }
+ },
+ "spark-frequent-error-codes": {
+  "hash": "5e458033e4c0e23a",
+  "columns": [
+   "service",
+   "error_code",
+   "occurrences"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "api",
+     "E500",
+     2
+    ],
+    [
+     "db",
+     "E1",
+     1
+    ],
+    [
+     "db",
+     "E2",
+     1
+    ]
+   ],
+   "No errors": [],
+   "Single code": [
+    [
+     "q",
+     "Q9",
+     2
+    ]
+   ]
+  }
+ },
+ "spark-full-outer-reconcile": {
+  "hash": "3b9377890af2135c",
+  "columns": [
+   "account_id",
+   "source_total",
+   "target_total",
+   "variance",
+   "status"
+  ],
+  "tests": {
+   "Example": [
+    [
+     100,
+     15,
+     15,
+     0,
+     "ok"
+    ],
+    [
+     200,
+     7,
+     6.5,
+     -0.5,
+     "mismatch"
+    ],
+    [
+     300,
+     1,
+     null,
+     -1,
+     "missing_in_target"
+    ],
+    [
+     400,
+     null,
+     2,
+     2,
+     "missing_in_source"
+    ]
+   ],
+   "Perfect match": [
+    [
+     1,
+     1,
+     1,
+     0,
+     "ok"
+    ]
+   ],
+   "Rounding noise is ok": [
+    [
+     5,
+     0.3,
+     0.3,
+     0,
+     "ok"
+    ]
+   ]
+  }
+ },
+ "spark-handle-nulls": {
+  "hash": "fec64e66ae51356c",
+  "columns": [
+   "id",
+   "email",
+   "country",
+   "age",
+   "newsletter"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     "a@x.io",
+     "unknown",
+     30,
+     false
+    ],
+    [
+     3,
+     "c@x.io",
+     "US",
+     -1,
+     false
+    ]
+   ],
+   "Nothing to fix": [
+    [
+     5,
+     "e@x",
+     "DE",
+     22,
+     true
+    ]
+   ],
+   "Everything missing but email": [
+    [
+     6,
+     "f@x",
+     "unknown",
+     -1,
+     false
+    ]
+   ]
+  }
+ },
+ "spark-increasing-yearly-sales": {
+  "hash": "81f145dd7a60778d",
+  "columns": [
+   "product"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "a"
+    ]
+   ],
+   "Flat year fails": [],
+   "Several sales per year": [
+    [
+     "f"
+    ]
+   ]
+  }
+ },
+ "spark-iqr-outliers": {
+  "hash": "3ffb8c4beb26aef9",
+  "columns": [
+   "trip_id",
+   "fare"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     10
+    ],
+    [
+     2,
+     12
+    ],
+    [
+     3,
+     11
+    ],
+    [
+     4,
+     13
+    ],
+    [
+     6,
+     12.5
+    ],
+    [
+     7,
+     11.5
+    ]
+   ],
+   "No outliers": [
+    [
+     1,
+     5
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     3,
+     7
+    ],
+    [
+     4,
+     8
+    ]
+   ],
+   "Identical fares": [
+    [
+     1,
+     3
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     3,
+     3
+    ]
+   ]
+  }
+ },
+ "spark-item-weight-per-person": {
+  "hash": "12205661be7a7256",
+  "columns": [
+   "person",
+   "item",
+   "total_kg"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "ana",
+     "rice",
+     5.5
+    ],
+    [
+     "raj",
+     "oil",
+     6
+    ]
+   ],
+   "Nothing heavy enough": [],
+   "Exactly five": [
+    [
+     "y",
+     "b",
+     5
+    ]
+   ]
+  }
+ },
+ "spark-items-within-budget": {
+  "hash": "74174e24cd098119",
+  "columns": [
+   "shopper_id",
+   "items_bought",
+   "spent"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     3,
+     9.5
+    ],
+    [
+     2,
+     0,
+     0
+    ]
+   ],
+   "Exact budget": [
+    [
+     3,
+     2,
+     3.5
+    ]
+   ],
+   "Empty wishlist": [
+    [
+     4,
+     0,
+     0
+    ]
+   ]
+  }
+ },
+ "spark-join-fanout": {
+  "hash": "bfc2292854614e1d",
+  "columns": [
+   "order_id",
+   "revenue",
+   "paid"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     25,
+     25
+    ],
+    [
+     2,
+     3,
+     3
+    ]
+   ],
+   "Unpaid order": [
+    [
+     3,
+     1,
+     null
+    ]
+   ],
+   "Many payments": [
+    [
+     4,
+     9,
+     9
+    ]
+   ]
+  }
+ },
+ "spark-lag-price-change": {
+  "hash": "ca036cb6fff7d8e1",
+  "columns": [
+   "ticker",
+   "day",
+   "close",
+   "change",
+   "pct_change"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "ACME",
+     "2024-01-02",
+     100,
+     null,
+     null
+    ],
+    [
+     "ACME",
+     "2024-01-03",
+     105,
+     5,
+     5
+    ],
+    [
+     "ACME",
+     "2024-01-05",
+     99.75,
+     -5.25,
+     -5
+    ],
+    [
+     "ZED",
+     "2024-01-02",
+     10,
+     null,
+     null
+    ]
+   ],
+   "Unsorted input": [
+    [
+     "X",
+     "2024-02-01",
+     1,
+     null,
+     null
+    ],
+    [
+     "X",
+     "2024-02-02",
+     2,
+     1,
+     100
+    ]
+   ],
+   "Flat price": [
+    [
+     "Y",
+     "2024-03-01",
+     5,
+     null,
+     null
+    ],
+    [
+     "Y",
+     "2024-03-02",
+     5,
+     0,
+     0
+    ]
+   ]
+  }
+ },
+ "spark-last-visit-checkouts": {
+  "hash": "0575a3212d47caee",
+  "columns": [
+   "member_id",
+   "last_visit",
+   "books"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     "2024-02-01",
+     2
+    ],
+    [
+     2,
+     "2024-01-05",
+     1
+    ]
+   ],
+   "Single visit": [
+    [
+     3,
+     "2024-03-03",
+     3
+    ]
+   ],
+   "Older busier visit": [
+    [
+     4,
+     "2024-01-09",
+     1
+    ]
+   ]
+  }
+ },
+ "spark-launch-month-sales": {
+  "hash": "49ddccdabe015d21",
+  "columns": [
+   "game",
+   "launch_month",
+   "launch_units",
+   "lifetime_units",
+   "launch_share_pct"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "Quest",
+     "2024-01-01",
+     150,
+     200,
+     75
+    ],
+    [
+     "Race",
+     "2024-03-01",
+     10,
+     10,
+     100
+    ]
+   ],
+   "Single month game": [
+    [
+     "Solo",
+     "2024-06-01",
+     7,
+     7,
+     100
+    ]
+   ],
+   "Unsorted dates": [
+    [
+     "G",
+     "2024-04-01",
+     3,
+     4,
+     75
+    ]
+   ]
+  }
+ },
+ "spark-left-anti-unsold": {
+  "hash": "480385f3257ecd65",
+  "columns": [
+   "product_id",
+   "name"
+  ],
+  "tests": {
+   "Example": [
+    [
+     2,
+     "cake"
+    ],
+    [
+     3,
+     "bun"
+    ]
+   ],
+   "Everything sold": [],
+   "No orders": [
+    [
+     1,
+     "a"
+    ],
+    [
+     2,
+     "b"
+    ]
+   ]
+  }
+ },
+ "spark-left-semi-active": {
+  "hash": "943515496002d962",
+  "columns": [
+   "customer_id",
+   "name"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     "Ana"
+    ]
+   ],
+   "Nobody ordered": [],
+   "Everyone ordered": [
+    [
+     1,
+     "a"
+    ],
+    [
+     2,
+     "b"
+    ]
+   ]
+  }
+ },
+ "spark-loyalty-score": {
+  "hash": "a571fc263995c2c2",
+  "columns": [
+   "customer_id",
+   "name",
+   "trips",
+   "avg_rating",
+   "score"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     "Ana",
+     3,
+     4.5,
+     51
+    ]
+   ],
+   "Exactly three trips": [
+    [
+     3,
+     "Li",
+     3,
+     2,
+     26
+    ]
+   ],
+   "Cancellations do not count": []
+  }
+ },
+ "spark-marks-to-grade": {
+  "hash": "3fdc2ecd8dca25ee",
+  "columns": [
+   "grade",
+   "students"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "A",
+     2
+    ],
+    [
+     "B",
+     1
+    ],
+    [
+     "D",
+     1
+    ],
+    [
+     "F",
+     1
+    ]
+   ],
+   "Boundaries": [
+    [
+     "B",
+     1
+    ],
+    [
+     "C",
+     1
+    ],
+    [
+     "D",
+     1
+    ],
+    [
+     "F",
+     1
+    ]
+   ],
+   "Everyone fails": [
+    [
+     "F",
+     2
+    ]
+   ]
+  }
+ },
+ "spark-mask-pii": {
+  "hash": "ec99e79bdedf0967",
+  "columns": [
+   "post_id",
+   "masked",
+   "email_domain"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     "Mail [email] or call [phone]",
+     "corp.com"
+    ],
+    [
+     2,
+     "no contact info",
+     null
+    ]
+   ],
+   "Two emails": [
+    [
+     3,
+     "[email] and [email]",
+     "a.io"
+    ]
+   ],
+   "Nine digits is not a phone": [
+    [
+     4,
+     "id 123456789",
+     null
+    ]
+   ]
+  }
+ },
+ "spark-median-delivery-time": {
+  "hash": "9518903258e36c65",
+  "columns": [
+   "courier_id",
+   "median_minutes",
+   "on_time_rate"
+  ],
+  "tests": {
+   "Example": [
+    [
+     7,
+     25,
+     0.667
+    ],
+    [
+     8,
+     30,
+     1
+    ]
+   ],
+   "Even count median": [
+    [
+     9,
+     15.5,
+     1
+    ]
+   ],
+   "All late": [
+    [
+     5,
+     60,
+     0
+    ]
+   ]
+  }
+ },
+ "spark-merge-bookings": {
+  "hash": "1d80748a8d8b85bc",
+  "columns": [
+   "room",
+   "block_start",
+   "block_end",
+   "bookings"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "B",
+     "2024-01-01 09:00:00",
+     "2024-01-01 09:15:00",
+     1
+    ],
+    [
+     "A",
+     "2024-01-01 09:00:00",
+     "2024-01-01 11:30:00",
+     3
+    ],
+    [
+     "A",
+     "2024-01-01 13:00:00",
+     "2024-01-01 14:00:00",
+     1
+    ]
+   ],
+   "Nested booking": [
+    [
+     "C",
+     "2024-01-01 08:00:00",
+     "2024-01-01 19:00:00",
+     3
+    ]
+   ],
+   "No overlaps": [
+    [
+     "D",
+     "2024-01-01 08:00:00",
+     "2024-01-01 09:00:00",
+     1
+    ],
+    [
+     "D",
+     "2024-01-01 09:01:00",
+     "2024-01-01 10:00:00",
+     1
+    ]
+   ]
+  }
+ },
+ "spark-mom-retention": {
+  "hash": "00cfd24173e10863",
+  "columns": [
+   "month",
+   "active",
+   "retained",
+   "retention_pct"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "2024-01-01",
+     2,
+     1,
+     50
+    ],
+    [
+     "2024-02-01",
+     2,
+     1,
+     50
+    ],
+    [
+     "2024-03-01",
+     2,
+     0,
+     0
+    ]
+   ],
+   "Single month": [
+    [
+     "2024-05-01",
+     2,
+     0,
+     0
+    ]
+   ],
+   "Year boundary": [
+    [
+     "2023-12-01",
+     1,
+     1,
+     100
+    ],
+    [
+     "2024-01-01",
+     1,
+     0,
+     0
+    ]
+   ]
+  }
+ },
+ "spark-monthly-hotel-ratings": {
+  "hash": "dc5884ccf8ae1aec",
+  "columns": [
+   "hotel_id",
+   "month",
+   "avg_stars",
+   "ratings"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     "2024-01",
+     4.5,
+     2
+    ],
+    [
+     1,
+     "2024-02",
+     3,
+     1
+    ]
+   ],
+   "Only invalid": [],
+   "Rounding": [
+    [
+     4,
+     "2024-06",
+     4.33,
+     3
+    ]
+   ]
+  }
+ },
+ "spark-monthly-transactions": {
+  "hash": "d2dc035d0b1e2552",
+  "columns": [
+   "account_id",
+   "month",
+   "txns",
+   "total",
+   "avg_amount"
+  ],
+  "tests": {
+   "Example": [
+    [
+     7,
+     "2024-01-01",
+     2,
+     30,
+     15
+    ],
+    [
+     7,
+     "2024-02-01",
+     1,
+     5,
+     5
+    ],
+    [
+     8,
+     "2024-01-01",
+     1,
+     1.5,
+     1.5
+    ]
+   ],
+   "Year boundary": [
+    [
+     1,
+     "2023-12-01",
+     1,
+     1,
+     1
+    ],
+    [
+     1,
+     "2024-01-01",
+     1,
+     2,
+     2
+    ]
+   ],
+   "Averages round": [
+    [
+     2,
+     "2024-05-01",
+     3,
+     4,
+     1.33
+    ]
+   ]
+  }
+ },
+ "spark-most-common-cart-size": {
+  "hash": "7defc468266edda2",
+  "columns": [
+   "cart_size",
+   "orders"
+  ],
+  "tests": {
+   "Example": [
+    [
+     2,
+     130
+    ]
+   ],
+   "Tie": [
+    [
+     1,
+     5
+    ],
+    [
+     2,
+     5
+    ]
+   ],
+   "Single region": [
+    [
+     4,
+     1
+    ]
+   ]
+  }
+ },
+ "spark-new-vs-returning": {
+  "hash": "73e33fa8c87ac5b8",
+  "columns": [
+   "day",
+   "new_users",
+   "returning_users",
+   "cumulative_users"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "2024-01-01",
+     2,
+     0,
+     2
+    ],
+    [
+     "2024-01-02",
+     1,
+     1,
+     3
+    ],
+    [
+     "2024-01-04",
+     0,
+     1,
+     3
+    ]
+   ],
+   "One user": [
+    [
+     "2024-02-01",
+     1,
+     0,
+     1
+    ],
+    [
+     "2024-02-05",
+     0,
+     1,
+     1
+    ]
+   ],
+   "All new on one day": [
+    [
+     "2024-03-01",
+     2,
+     0,
+     2
+    ]
+   ]
+  }
+ },
+ "spark-nth-purchase": {
+  "hash": "a5661dcacfc2c5a8",
+  "columns": [
+   "purchase_id",
+   "customer_id",
+   "purchased_at",
+   "amount"
+  ],
+  "tests": {
+   "Example": [
+    [
+     3,
+     7,
+     "2024-01-03 10:00:00",
+     7
+    ]
+   ],
+   "Same timestamp": [
+    [
+     30,
+     9,
+     "2024-01-01 00:00:00",
+     3
+    ]
+   ],
+   "Nobody has three": []
+  }
+ },
+ "spark-null-profile": {
+  "hash": "476db367b6f62190",
+  "columns": [
+   "column",
+   "nulls",
+   "null_pct"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "id",
+     0,
+     0
+    ],
+    [
+     "email",
+     1,
+     25
+    ],
+    [
+     "phone",
+     3,
+     75
+    ],
+    [
+     "city",
+     1,
+     25
+    ]
+   ],
+   "No nulls": [
+    [
+     "id",
+     0,
+     0
+    ],
+    [
+     "email",
+     0,
+     0
+    ],
+    [
+     "phone",
+     0,
+     0
+    ],
+    [
+     "city",
+     0,
+     0
+    ]
+   ],
+   "All nulls in one column": [
+    [
+     "id",
+     0,
+     0
+    ],
+    [
+     "email",
+     2,
+     100
+    ],
+    [
+     "phone",
+     0,
+     0
+    ],
+    [
+     "city",
+     0,
+     0
+    ]
+   ]
+  }
+ },
+ "spark-odd-even-readings": {
+  "hash": "470d0cc31e66166a",
+  "columns": [
+   "meter_id",
+   "day",
+   "odd_sum",
+   "even_sum"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     "2024-01-01",
+     2,
+     2
+    ],
+    [
+     1,
+     "2024-01-02",
+     4,
+     0
+    ],
+    [
+     2,
+     "2024-01-01",
+     3,
+     0
+    ]
+   ],
+   "Unsorted timestamps": [
+    [
+     3,
+     "2024-01-01",
+     8,
+     9
+    ]
+   ],
+   "Even count": [
+    [
+     4,
+     "2024-01-01",
+     2,
+     2
+    ]
+   ]
+  }
+ },
+ "spark-order-date-parts": {
+  "hash": "7fac4ef5c40fd2c2",
+  "columns": [
+   "order_id",
+   "order_date",
+   "year",
+   "month",
+   "day",
+   "quarter",
+   "is_weekend"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     "2024-03-30",
+     2024,
+     3,
+     30,
+     1,
+     true
+    ],
+    [
+     2,
+     "2024-04-01",
+     2024,
+     4,
+     1,
+     2,
+     false
+    ],
+    [
+     3,
+     "2024-12-31",
+     2024,
+     12,
+     31,
+     4,
+     false
+    ]
+   ],
+   "Sunday": [
+    [
+     4,
+     "2024-06-02",
+     2024,
+     6,
+     2,
+     2,
+     true
+    ]
+   ],
+   "Leap day": [
+    [
+     5,
+     "2024-02-29",
+     2024,
+     2,
+     29,
+     1,
+     false
+    ]
+   ]
+  }
+ },
+ "spark-order-line-metrics": {
+  "hash": "d561369797cf512b",
+  "columns": [
+   "order_id",
+   "sku",
+   "qty",
+   "unit_price",
+   "tax_rate",
+   "gross",
+   "tax",
+   "net"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     "A",
+     2,
+     10,
+     0.18,
+     20,
+     3.6,
+     23.6
+    ],
+    [
+     2,
+     "C",
+     3,
+     1.5,
+     0.05,
+     4.5,
+     0.23,
+     4.73
+    ]
+   ],
+   "No tax": [
+    [
+     3,
+     "D",
+     1,
+     9.99,
+     0,
+     9.99,
+     0,
+     9.99
+    ]
+   ],
+   "Negative quantity dropped": [
+    [
+     4,
+     "F",
+     1,
+     1,
+     0.1,
+     1,
+     0.1,
+     1.1
+    ]
+   ]
+  }
+ },
+ "spark-ordered-page-path": {
+  "hash": "0f0391cf3c9e5f52",
+  "columns": [
+   "user_id",
+   "path"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     "home → cart → home"
+    ],
+    [
+     2,
+     "search"
+    ]
+   ],
+   "Unsorted input": [
+    [
+     3,
+     "a → b → c"
+    ]
+   ],
+   "All the same page": [
+    [
+     4,
+     "x"
+    ]
+   ]
+  }
+ },
+ "spark-palindrome-words": {
+  "hash": "d141ffa89ba9cb8c",
+  "columns": [
+   "doc_id",
+   "word"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     "level"
+    ],
+    [
+     1,
+     "racecar"
+    ],
+    [
+     1,
+     "wow"
+    ],
+    [
+     1,
+     "radar"
+    ],
+    [
+     1,
+     "noon"
+    ]
+   ],
+   "Two-letter words ignored": [
+    [
+     3,
+     "ccc"
+    ]
+   ],
+   "Repeats collapse": [
+    [
+     4,
+     "kayak"
+    ]
+   ]
+  }
+ },
+ "spark-parse-attributes-json": {
+  "hash": "4a4b7db9241ee9db",
+  "columns": [
+   "sku",
+   "brand",
+   "rating",
+   "color"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "A",
+     "Acme",
+     4.5,
+     "red"
+    ],
+    [
+     "C",
+     null,
+     4,
+     null
+    ]
+   ],
+   "No rating": [],
+   "Integer rating": [
+    [
+     "E",
+     "Y",
+     5,
+     "blue"
+    ]
+   ]
+  }
+ },
+ "spark-parse-mixed-dates": {
+  "hash": "98a12cc1e5fb382e",
+  "columns": [
+   "id",
+   "raw_date",
+   "parsed"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     "2024-03-05",
+     "2024-03-05"
+    ],
+    [
+     2,
+     "05/03/2024",
+     "2024-03-05"
+    ],
+    [
+     3,
+     "20240305",
+     "2024-03-05"
+    ],
+    [
+     4,
+     "March 5",
+     null
+    ]
+   ],
+   "Spaces": [
+    [
+     5,
+     " 2023-12-31 ",
+     "2023-12-31"
+    ]
+   ],
+   "Null input": [
+    [
+     6,
+     null,
+     null
+    ],
+    [
+     7,
+     "01/01/2000",
+     "2000-01-01"
+    ]
+   ]
+  }
+ },
+ "spark-posexplode-positions": {
+  "hash": "7cde4dda74caf4ba",
+  "columns": [
+   "query_id",
+   "position",
+   "result_id"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     1,
+     "r9"
+    ],
+    [
+     1,
+     2,
+     "r3"
+    ],
+    [
+     1,
+     3,
+     "r7"
+    ],
+    [
+     2,
+     1,
+     "r5"
+    ]
+   ],
+   "Exactly three": [
+    [
+     3,
+     1,
+     "a"
+    ],
+    [
+     3,
+     2,
+     "b"
+    ],
+    [
+     3,
+     3,
+     "c"
+    ]
+   ],
+   "Two queries": [
+    [
+     4,
+     1,
+     "x"
+    ],
+    [
+     4,
+     2,
+     "y"
+    ],
+    [
+     5,
+     1,
+     "p"
+    ],
+    [
+     5,
+     2,
+     "q"
+    ],
+    [
+     5,
+     3,
+     "r"
+    ]
+   ]
+  }
+ },
+ "spark-positive-balances": {
+  "hash": "fff98b803494e432",
+  "columns": [
+   "customer_id",
+   "name",
+   "balance"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     "Ana",
+     29.88
+    ]
+   ],
+   "No accounts": [],
+   "Tiny positive": [
+    [
+     4,
+     "Zed",
+     0.01
+    ]
+   ]
+  }
+ },
+ "spark-price-active-days": {
+  "hash": "f2e5718717b9c6b4",
+  "columns": [
+   "sku",
+   "price",
+   "valid_from",
+   "valid_to",
+   "days_active"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "B",
+     3,
+     "2024-01-05",
+     null,
+     null
+    ],
+    [
+     "A",
+     10,
+     "2024-01-01",
+     "2024-01-11",
+     10
+    ],
+    [
+     "A",
+     12,
+     "2024-01-11",
+     "2024-02-01",
+     21
+    ],
+    [
+     "A",
+     11,
+     "2024-02-01",
+     null,
+     null
+    ]
+   ],
+   "Single change": [
+    [
+     "C",
+     1,
+     "2024-06-01",
+     null,
+     null
+    ]
+   ],
+   "Unsorted changes": [
+    [
+     "D",
+     1,
+     "2024-03-01",
+     "2024-03-10",
+     9
+    ],
+    [
+     "D",
+     2,
+     "2024-03-10",
+     null,
+     null
+    ]
+   ]
+  }
+ },
+ "spark-price-categories": {
+  "hash": "2a1943a67c9df2b8",
+  "columns": [
+   "sku",
+   "price",
+   "tier"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "a",
+     5,
+     "budget"
+    ],
+    [
+     "b",
+     20,
+     "standard"
+    ],
+    [
+     "c",
+     99.99,
+     "standard"
+    ],
+    [
+     "d",
+     100,
+     "premium"
+    ],
+    [
+     "e",
+     null,
+     "unpriced"
+    ]
+   ],
+   "All premium": [
+    [
+     "x",
+     500,
+     "premium"
+    ],
+    [
+     "y",
+     1000,
+     "premium"
+    ]
+   ],
+   "Negative price is budget": [
+    [
+     "z",
+     -1,
+     "budget"
+    ]
+   ]
+  }
+ },
+ "spark-range-join-prices": {
+  "hash": "b7d681686f9c2fbd",
+  "columns": [
+   "order_id",
+   "sku",
+   "order_date",
+   "unit_price",
+   "amount"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     "A",
+     "2024-01-15",
+     10,
+     20
+    ],
+    [
+     2,
+     "A",
+     "2024-03-01",
+     12,
+     12
+    ],
+    [
+     3,
+     "B",
+     "2024-01-01",
+     null,
+     null
+    ]
+   ],
+   "Order before any price": [
+    [
+     1,
+     "A",
+     "2023-12-31",
+     null,
+     null
+    ]
+   ],
+   "Boundary day takes the new price": [
+    [
+     1,
+     "C",
+     "2024-02-01",
+     2,
+     6
+    ]
+   ]
+  }
+ },
+ "spark-rank-functions": {
+  "hash": "fa8bf6f72dd95aa4",
+  "columns": [
+   "subject",
+   "student",
+   "score",
+   "row_num",
+   "rnk",
+   "dense_rnk"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "math",
+     "amy",
+     90,
+     1,
+     1,
+     1
+    ],
+    [
+     "math",
+     "cat",
+     90,
+     2,
+     1,
+     1
+    ],
+    [
+     "math",
+     "bob",
+     85,
+     3,
+     3,
+     2
+    ],
+    [
+     "math",
+     "dan",
+     70,
+     4,
+     4,
+     3
+    ],
+    [
+     "art",
+     "amy",
+     60,
+     1,
+     1,
+     1
+    ]
+   ],
+   "All tied": [
+    [
+     "m",
+     "w",
+     5,
+     1,
+     1,
+     1
+    ],
+    [
+     "m",
+     "x",
+     5,
+     2,
+     1,
+     1
+    ],
+    [
+     "m",
+     "y",
+     5,
+     3,
+     1,
+     1
+    ]
+   ],
+   "No ties": [
+    [
+     "s",
+     "c",
+     3,
+     1,
+     1,
+     1
+    ],
+    [
+     "s",
+     "b",
+     2,
+     2,
+     2,
+     2
+    ],
+    [
+     "s",
+     "a",
+     1,
+     3,
+     3,
+     3
+    ]
+   ]
+  }
+ },
+ "spark-relational-division": {
+  "hash": "173062cb2e605c2f",
+  "columns": [
+   "student_id"
+  ],
+  "tests": {
+   "Example": [
+    [
+     100
+    ],
+    [
+     102
+    ]
+   ],
+   "Nobody qualifies": [],
+   "Single active track": [
+    [
+     1
+    ],
+    [
+     2
+    ]
+   ]
+  }
+ },
+ "spark-review-sentiment": {
+  "hash": "d920df35788036a8",
+  "columns": [
+   "product_id",
+   "reviews",
+   "positive",
+   "negative",
+   "neutral"
+  ],
+  "tests": {
+   "Example": [
+    [
+     7,
+     3,
+     1,
+     1,
+     1
+    ],
+    [
+     8,
+     1,
+     1,
+     0,
+     0
+    ]
+   ],
+   "Mixed review is negative": [
+    [
+     9,
+     1,
+     0,
+     1,
+     0
+    ]
+   ],
+   "Substring is not a word": [
+    [
+     10,
+     2,
+     0,
+     0,
+     2
+    ]
+   ]
+  }
+ },
+ "spark-ride-driver-details": {
+  "hash": "c019965c9532ff2e",
+  "columns": [
+   "ride_id",
+   "driver_name",
+   "vehicle",
+   "fare"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     "Ana",
+     "sedan",
+     12.5
+    ],
+    [
+     2,
+     "Raj",
+     "bike",
+     7
+    ]
+   ],
+   "No drivers": [],
+   "Driver with many rides": [
+    [
+     1,
+     "Li",
+     "van",
+     1
+    ],
+    [
+     2,
+     "Li",
+     "van",
+     2
+    ]
+   ]
+  }
+ },
+ "spark-rolling-average": {
+  "hash": "fd31cbd048ca3a8f",
+  "columns": [
+   "store_id",
+   "day",
+   "sales",
+   "avg_3d",
+   "above_trend"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     "2024-01-01",
+     10,
+     10,
+     false
+    ],
+    [
+     1,
+     "2024-01-02",
+     20,
+     15,
+     true
+    ],
+    [
+     1,
+     "2024-01-03",
+     30,
+     20,
+     true
+    ],
+    [
+     1,
+     "2024-01-04",
+     5,
+     18.33,
+     false
+    ],
+    [
+     2,
+     "2024-01-01",
+     7,
+     7,
+     false
+    ]
+   ],
+   "Flat sales": [
+    [
+     3,
+     "2024-01-01",
+     1,
+     1,
+     false
+    ],
+    [
+     3,
+     "2024-01-02",
+     1,
+     1,
+     false
+    ],
+    [
+     3,
+     "2024-01-03",
+     1,
+     1,
+     false
+    ]
+   ],
+   "Unsorted days": [
+    [
+     4,
+     "2024-01-01",
+     1,
+     1,
+     false
+    ],
+    [
+     4,
+     "2024-01-02",
+     2,
+     1.5,
+     true
+    ],
+    [
+     4,
+     "2024-01-03",
+     3,
+     2,
+     true
+    ]
+   ]
+  }
+ },
+ "spark-rule-checks": {
+  "hash": "9499271bafa658d9",
+  "columns": [
+   "amount_positive",
+   "status_valid",
+   "email_present",
+   "date_not_future"
+  ],
+  "tests": {
+   "Example": [
+    [
+     2,
+     1,
+     2,
+     1
+    ]
+   ],
+   "All clean": [
+    [
+     0,
+     0,
+     0,
+     0
+    ]
+   ],
+   "Null status is invalid": [
+    [
+     0,
+     1,
+     0,
+     0
+    ]
+   ]
+  }
+ },
+ "spark-running-payroll": {
+  "hash": "fae71d68f2ef5cb9",
+  "columns": [
+   "emp_id",
+   "name",
+   "base_pay",
+   "bonus",
+   "total_pay"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     "ana",
+     3500,
+     75,
+     3575
+    ],
+    [
+     2,
+     "raj",
+     1000,
+     0,
+     1000
+    ]
+   ],
+   "Exactly 160 hours": [
+    [
+     3,
+     "li",
+     2400,
+     0,
+     2400
+    ]
+   ],
+   "Fractional overtime": [
+    [
+     4,
+     "zoe",
+     1605.89,
+     0.01,
+     1605.9
+    ]
+   ]
+  }
+ },
+ "spark-salary-quartiles": {
+  "hash": "ec1f7338c87aa1f5",
+  "columns": [
+   "dept",
+   "emp_id",
+   "salary",
+   "quartile",
+   "pct_rank"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "ops",
+     6,
+     50,
+     1,
+     0
+    ],
+    [
+     "eng",
+     1,
+     100,
+     4,
+     0
+    ],
+    [
+     "eng",
+     2,
+     200,
+     3,
+     0.25
+    ],
+    [
+     "eng",
+     3,
+     300,
+     2,
+     0.5
+    ],
+    [
+     "eng",
+     4,
+     400,
+     1,
+     0.75
+    ],
+    [
+     "eng",
+     5,
+     500,
+     1,
+     1
+    ]
+   ],
+   "Ties": [
+    [
+     "hr",
+     1,
+     10,
+     2,
+     0
+    ],
+    [
+     "hr",
+     2,
+     10,
+     3,
+     0
+    ],
+    [
+     "hr",
+     3,
+     20,
+     1,
+     1
+    ]
+   ],
+   "Two people": [
+    [
+     "bi",
+     1,
+     5,
+     2,
+     0
+    ],
+    [
+     "bi",
+     2,
+     6,
+     1,
+     1
+    ]
+   ]
+  }
+ },
+ "spark-sales-segmentation": {
+  "hash": "f8f1b1302310cde9",
+  "columns": [
+   "segment",
+   "trips",
+   "avg_fare",
+   "fare_per_km"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "short",
+     2,
+     6,
+     2
+    ],
+    [
+     "medium",
+     1,
+     15,
+     1.5
+    ],
+    [
+     "long",
+     1,
+     30,
+     1.5
+    ]
+   ],
+   "Boundaries": [
+    [
+     "medium",
+     2,
+     15,
+     1.5
+    ],
+    [
+     "long",
+     1,
+     20,
+     1.32
+    ]
+   ],
+   "Only cancellations": []
+  }
+ },
+ "spark-sales-subtotals": {
+  "hash": "9ff4ba46efe03f72",
+  "columns": [
+   "region",
+   "category",
+   "revenue"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "north",
+     "toys",
+     11
+    ],
+    [
+     "north",
+     "books",
+     5
+    ],
+    [
+     "south",
+     "toys",
+     2.5
+    ],
+    [
+     "north",
+     "ALL",
+     16
+    ],
+    [
+     "south",
+     "ALL",
+     2.5
+    ],
+    [
+     "ALL",
+     "ALL",
+     18.5
+    ]
+   ],
+   "Single row": [
+    [
+     "east",
+     "food",
+     3
+    ],
+    [
+     "east",
+     "ALL",
+     3
+    ],
+    [
+     "ALL",
+     "ALL",
+     3
+    ]
+   ],
+   "Decimals": [
+    [
+     "w",
+     "a",
+     0.3
+    ],
+    [
+     "w",
+     "b",
+     0.3
+    ],
+    [
+     "w",
+     "ALL",
+     0.6
+    ],
+    [
+     "ALL",
+     "ALL",
+     0.6
+    ]
+   ]
+  }
+ },
+ "spark-scd1-upsert": {
+  "hash": "ba2866df158d5980",
+  "columns": [
+   "sku",
+   "name",
+   "price",
+   "updated"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "B",
+     "Cake",
+     5.5,
+     true
+    ],
+    [
+     "C",
+     "Bun",
+     1,
+     false
+    ],
+    [
+     "A",
+     "Tea",
+     2,
+     false
+    ],
+    [
+     "D",
+     "Jam",
+     3,
+     true
+    ]
+   ],
+   "Empty feed": [
+    [
+     "A",
+     "x",
+     1,
+     false
+    ]
+   ],
+   "Null price unchanged": [
+    [
+     "Z",
+     "z",
+     null,
+     false
+    ]
+   ]
+  }
+ },
+ "spark-scd2-history": {
+  "hash": "56106ba44e26adcd",
+  "columns": [
+   "emp_id",
+   "dept",
+   "valid_from",
+   "valid_to",
+   "is_current"
+  ],
+  "tests": {
+   "Example": [
+    [
+     3,
+     "hr",
+     "2022-01-01",
+     "2023-01-01",
+     false
+    ],
+    [
+     1,
+     "eng",
+     "2023-01-01",
+     null,
+     true
+    ],
+    [
+     3,
+     "bi",
+     "2023-01-01",
+     null,
+     true
+    ],
+    [
+     2,
+     "ops",
+     "2023-01-01",
+     "2024-06-01",
+     false
+    ],
+    [
+     2,
+     "sales",
+     "2024-06-01",
+     null,
+     true
+    ],
+    [
+     4,
+     "eng",
+     "2024-06-01",
+     null,
+     true
+    ]
+   ],
+   "Nothing changed": [
+    [
+     1,
+     "a",
+     "2024-01-01",
+     null,
+     true
+    ]
+   ],
+   "First load": [
+    [
+     5,
+     "x",
+     "2024-01-01",
+     null,
+     true
+    ],
+    [
+     6,
+     "y",
+     "2024-01-01",
+     null,
+     true
+    ]
+   ]
+  }
+ },
+ "spark-schema-drift-check": {
+  "hash": "7fdb448d51ae35f4",
+  "columns": [
+   "column",
+   "issue",
+   "expected",
+   "actual"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "amount",
+     "type",
+     "double",
+     "string"
+    ],
+    [
+     "created_at",
+     "missing",
+     "timestamp",
+     null
+    ],
+    [
+     "channel",
+     "unexpected",
+     null,
+     "string"
+    ]
+   ],
+   "Empty table still has a schema": [
+    [
+     "amount",
+     "type",
+     "double",
+     "string"
+    ],
+    [
+     "created_at",
+     "missing",
+     "timestamp",
+     null
+    ],
+    [
+     "channel",
+     "unexpected",
+     null,
+     "string"
+    ]
+   ],
+   "Many rows, same drift": [
+    [
+     "amount",
+     "type",
+     "double",
+     "string"
+    ],
+    [
+     "created_at",
+     "missing",
+     "timestamp",
+     null
+    ],
+    [
+     "channel",
+     "unexpected",
+     null,
+     "string"
+    ]
+   ]
+  }
+ },
+ "spark-select-cast-clean": {
+  "hash": "f84cbf9f88da4034",
+  "columns": [
+   "product_id",
+   "name",
+   "price",
+   "in_stock"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     "TEA",
+     2.5,
+     true
+    ],
+    [
+     3,
+     "BUN",
+     1,
+     false
+    ]
+   ],
+   "Negative stock is not in stock": [
+    [
+     9,
+     "X",
+     0,
+     false
+    ]
+   ],
+   "Unparseable stock": [
+    [
+     4,
+     "JAM",
+     3,
+     null
+    ]
+   ]
+  }
+ },
+ "spark-session-summary": {
+  "hash": "1ab4505660b6d945",
+  "columns": [
+   "user_id",
+   "session_no",
+   "start_ts",
+   "end_ts",
+   "events",
+   "duration_min"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     1,
+     "2024-01-01 10:00:00",
+     "2024-01-01 10:10:00",
+     2,
+     10
+    ],
+    [
+     1,
+     2,
+     "2024-01-01 11:00:00",
+     "2024-01-01 11:00:00",
+     1,
+     0
+    ],
+    [
+     2,
+     1,
+     "2024-01-01 09:00:00",
+     "2024-01-01 09:00:00",
+     1,
+     0
+    ]
+   ],
+   "Long single session": [
+    [
+     3,
+     1,
+     "2024-01-01 00:00:00",
+     "2024-01-01 00:30:00",
+     3,
+     30
+    ]
+   ],
+   "Many short sessions": [
+    [
+     4,
+     1,
+     "2024-01-01 00:00:00",
+     "2024-01-01 00:00:00",
+     1,
+     0
+    ],
+    [
+     4,
+     2,
+     "2024-01-01 01:00:00",
+     "2024-01-01 01:00:00",
+     1,
+     0
+    ],
+    [
+     4,
+     3,
+     "2024-01-01 02:00:00",
+     "2024-01-01 02:00:00",
+     1,
+     0
+    ]
+   ]
+  }
+ },
+ "spark-sessionize": {
+  "hash": "58202e3f8ac67041",
+  "columns": [
+   "user_id",
+   "ts",
+   "page",
+   "session_no",
+   "visit_no"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     "2024-01-01 10:00:00",
+     "home",
+     1,
+     1
+    ],
+    [
+     1,
+     "2024-01-01 10:20:00",
+     "cart",
+     1,
+     2
+    ],
+    [
+     2,
+     "2024-01-01 10:00:00",
+     "home",
+     1,
+     1
+    ],
+    [
+     1,
+     "2024-01-01 11:00:00",
+     "home",
+     2,
+     1
+    ],
+    [
+     1,
+     "2024-01-01 11:05:00",
+     "pay",
+     2,
+     2
+    ]
+   ],
+   "Exactly 30 minutes": [
+    [
+     3,
+     "2024-01-01 11:00:01",
+     "c",
+     2,
+     1
+    ],
+    [
+     3,
+     "2024-01-01 10:00:00",
+     "a",
+     1,
+     1
+    ],
+    [
+     3,
+     "2024-01-01 10:30:00",
+     "b",
+     1,
+     2
+    ]
+   ],
+   "Unsorted input": [
+    [
+     4,
+     "2024-01-01 12:00:00",
+     "x",
+     2,
+     1
+    ],
+    [
+     4,
+     "2024-01-01 09:00:00",
+     "y",
+     1,
+     1
+    ]
+   ]
+  }
+ },
+ "spark-signup-funnel": {
+  "hash": "ad6e0a5727ea278d",
+  "columns": [
+   "step",
+   "users",
+   "conversion_pct"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "visit",
+     3,
+     null
+    ],
+    [
+     "signup",
+     2,
+     66.7
+    ],
+    [
+     "verify",
+     1,
+     50
+    ],
+    [
+     "first_post",
+     1,
+     100
+    ]
+   ],
+   "Only visits": [
+    [
+     "visit",
+     2,
+     null
+    ],
+    [
+     "signup",
+     0,
+     0
+    ],
+    [
+     "verify",
+     0,
+     0
+    ],
+    [
+     "first_post",
+     0,
+     0
+    ]
+   ],
+   "Out-of-order steps do not count": [
+    [
+     "visit",
+     1,
+     null
+    ],
+    [
+     "signup",
+     1,
+     100
+    ],
+    [
+     "verify",
+     0,
+     0
+    ],
+    [
+     "first_post",
+     0,
+     0
+    ]
+   ]
+  }
+ },
+ "spark-sql-temp-view": {
+  "hash": "987a944540084cf0",
+  "columns": [
+   "customer_id",
+   "orders",
+   "total",
+   "first_order"
+  ],
+  "tests": {
+   "Example": [
+    [
+     7,
+     2,
+     12.5,
+     "2024-01-01"
+    ]
+   ],
+   "Nobody repeats": [],
+   "Rounding": [
+    [
+     2,
+     2,
+     0.3,
+     "2024-01-01"
+    ]
+   ]
+  }
+ },
+ "spark-surrogate-keys": {
+  "hash": "f1e26d47e788ad3a",
+  "columns": [
+   "customer_key",
+   "customer_id"
+  ],
+  "tests": {
+   "Example": [
+    [
+     3,
+     "C0"
+    ],
+    [
+     4,
+     "C3"
+    ]
+   ],
+   "Empty dimension": [
+    [
+     1,
+     "A"
+    ],
+    [
+     2,
+     "B"
+    ]
+   ],
+   "Nothing new": []
+  }
+ },
+ "spark-survivorship": {
+  "hash": "17af08d495567091",
+  "columns": [
+   "email",
+   "name",
+   "phone",
+   "city",
+   "source"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "ana@x.io",
+     "Ana L",
+     "555",
+     "Pune",
+     "web"
+    ],
+    [
+     "raj@x.io",
+     "Raj",
+     null,
+     null,
+     "crm"
+    ]
+   ],
+   "Tie goes to the newest": [
+    [
+     "z@x",
+     null,
+     "1",
+     null,
+     "b"
+    ]
+   ],
+   "Single record": [
+    [
+     "q@x",
+     null,
+     null,
+     null,
+     "s"
+    ]
+   ]
+  }
+ },
+ "spark-top-customers-region": {
+  "hash": "708a434ef2e4fb24",
+  "columns": [
+   "region",
+   "customer_id",
+   "spend",
+   "rnk"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "south",
+     4,
+     5,
+     1
+    ],
+    [
+     "north",
+     1,
+     100,
+     1
+    ],
+    [
+     "north",
+     2,
+     100,
+     1
+    ],
+    [
+     "north",
+     3,
+     10,
+     2
+    ]
+   ],
+   "Ties at second place": [
+    [
+     "w",
+     1,
+     9,
+     1
+    ],
+    [
+     "w",
+     2,
+     5,
+     2
+    ],
+    [
+     "w",
+     3,
+     5,
+     2
+    ]
+   ],
+   "Customer without orders": [
+    [
+     "e",
+     1,
+     1,
+     1
+    ]
+   ]
+  }
+ },
+ "spark-top-delivery-cities": {
+  "hash": "1e9c6bf444aa7bdf",
+  "columns": [
+   "city",
+   "delivered"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "Pune",
+     2
+    ],
+    [
+     "Agra",
+     1
+    ],
+    [
+     "Goa",
+     1
+    ]
+   ],
+   "Fewer than three cities": [
+    [
+     "Delhi",
+     1
+    ]
+   ],
+   "Ties alphabetical": [
+    [
+     "a",
+     1
+    ],
+    [
+     "b",
+     1
+    ],
+    [
+     "c",
+     1
+    ]
+   ]
+  }
+ },
+ "spark-top-n-per-store": {
+  "hash": "190b259ec385a4ba",
+  "columns": [
+   "store_id",
+   "txn_id",
+   "amount",
+   "rank"
+  ],
+  "tests": {
+   "Example": [
+    [
+     10,
+     2,
+     80,
+     1
+    ],
+    [
+     10,
+     1,
+     50,
+     2
+    ],
+    [
+     11,
+     4,
+     5,
+     1
+    ]
+   ],
+   "Ties use txn_id": [
+    [
+     1,
+     7,
+     10,
+     1
+    ],
+    [
+     1,
+     8,
+     10,
+     2
+    ]
+   ],
+   "Many stores": [
+    [
+     3,
+     5,
+     5,
+     1
+    ],
+    [
+     3,
+     4,
+     4,
+     2
+    ],
+    [
+     1,
+     1,
+     1,
+     1
+    ],
+    [
+     2,
+     2,
+     2,
+     1
+    ]
+   ]
+  }
+ },
+ "spark-top-players-summary": {
+  "hash": "6175530b83102f0e",
+  "columns": [
+   "team",
+   "summary"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "IND",
+     "VIRAT (120 runs, avg 60.0)"
+    ],
+    [
+     "ENG",
+     "JOE (33 runs, avg 33.0)"
+    ]
+   ],
+   "Tie by name": [
+    [
+     "X",
+     "ABE (10 runs, avg 10.0)"
+    ]
+   ],
+   "Average rounding": [
+    [
+     "K",
+     "KIM (31 runs, avg 10.3)"
+    ]
+   ]
+  }
+ },
+ "spark-top-support-agents": {
+  "hash": "a3bfb886d09f66b9",
+  "columns": [
+   "agent",
+   "resolved",
+   "rnk"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "ana",
+     2,
+     1
+    ],
+    [
+     "raj",
+     1,
+     2
+    ],
+    [
+     "li",
+     1,
+     2
+    ]
+   ],
+   "Single agent": [
+    [
+     "x",
+     1,
+     1
+    ]
+   ],
+   "Other years excluded": [
+    [
+     "b",
+     1,
+     1
+    ]
+   ]
+  }
+ },
+ "spark-top-users-distinct-events": {
+  "hash": "e0f1f8f2529f3b92",
+  "columns": [
+   "day",
+   "user_id",
+   "event_types",
+   "rnk"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "2024-01-02",
+     5,
+     1,
+     1
+    ],
+    [
+     "2024-01-01",
+     3,
+     3,
+     1
+    ],
+    [
+     "2024-01-01",
+     1,
+     2,
+     2
+    ],
+    [
+     "2024-01-01",
+     2,
+     1,
+     3
+    ],
+    [
+     "2024-01-01",
+     4,
+     1,
+     3
+    ]
+   ],
+   "All tied": [
+    [
+     "2024-02-01",
+     1,
+     1,
+     1
+    ],
+    [
+     "2024-02-01",
+     2,
+     1,
+     1
+    ]
+   ],
+   "Single user": [
+    [
+     "2024-03-01",
+     9,
+     2,
+     1
+    ]
+   ]
+  }
+ },
+ "spark-total-purchases": {
+  "hash": "81ac59bc50405656",
+  "columns": [
+   "customer_id",
+   "orders",
+   "total"
+  ],
+  "tests": {
+   "Example": [
+    [
+     10,
+     2,
+     25.5
+    ],
+    [
+     11,
+     1,
+     7.25
+    ]
+   ],
+   "Only pending": [],
+   "Rounding": [
+    [
+     2,
+     2,
+     0.3
+    ]
+   ]
+  }
+ },
+ "spark-union-by-name": {
+  "hash": "bfaf4b1fed92d5a6",
+  "columns": [
+   "txn_id",
+   "user_id",
+   "amount",
+   "store_id",
+   "channel"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     100,
+     9.5,
+     null,
+     "web"
+    ],
+    [
+     2,
+     200,
+     20,
+     7,
+     "pos"
+    ]
+   ],
+   "Empty web feed": [
+    [
+     5,
+     1,
+     1,
+     3,
+     "pos"
+    ]
+   ],
+   "Several rows each": [
+    [
+     1,
+     1,
+     1,
+     null,
+     "web"
+    ],
+    [
+     2,
+     2,
+     2,
+     null,
+     "web"
+    ],
+    [
+     3,
+     3,
+     3,
+     9,
+     "pos"
+    ],
+    [
+     4,
+     4,
+     4,
+     9,
+     "pos"
+    ]
+   ]
+  }
+ },
+ "spark-unpivot-quarters": {
+  "hash": "99842e25ba2dbf10",
+  "columns": [
+   "region",
+   "quarter",
+   "sales",
+   "growth_pct"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "south",
+     "q1",
+     0,
+     null
+    ],
+    [
+     "south",
+     "q2",
+     10,
+     null
+    ],
+    [
+     "south",
+     "q3",
+     20,
+     100
+    ],
+    [
+     "south",
+     "q4",
+     null,
+     null
+    ],
+    [
+     "north",
+     "q1",
+     100,
+     null
+    ],
+    [
+     "north",
+     "q2",
+     120,
+     20
+    ],
+    [
+     "north",
+     "q3",
+     90,
+     -25
+    ],
+    [
+     "north",
+     "q4",
+     99,
+     10
+    ]
+   ],
+   "Flat sales": [
+    [
+     "east",
+     "q1",
+     5,
+     null
+    ],
+    [
+     "east",
+     "q2",
+     5,
+     0
+    ],
+    [
+     "east",
+     "q3",
+     5,
+     0
+    ],
+    [
+     "east",
+     "q4",
+     5,
+     0
+    ]
+   ],
+   "Two regions": [
+    [
+     "a",
+     "q1",
+     1,
+     null
+    ],
+    [
+     "a",
+     "q2",
+     2,
+     100
+    ],
+    [
+     "a",
+     "q3",
+     4,
+     100
+    ],
+    [
+     "a",
+     "q4",
+     8,
+     100
+    ],
+    [
+     "b",
+     "q1",
+     8,
+     null
+    ],
+    [
+     "b",
+     "q2",
+     4,
+     -50
+    ],
+    [
+     "b",
+     "q3",
+     2,
+     -50
+    ],
+    [
+     "b",
+     "q4",
+     1,
+     -50
+    ]
+   ]
+  }
+ },
+ "spark-utm-params": {
+  "hash": "c8d0e9dc6683b6ef",
+  "columns": [
+   "utm_source",
+   "utm_campaign",
+   "sessions"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "google",
+     "spring",
+     2
+    ],
+    [
+     "(none)",
+     "(none)",
+     1
+    ]
+   ],
+   "Only a source": [
+    [
+     "news",
+     "(none)",
+     1
+    ]
+   ],
+   "Look-alike parameter": [
+    [
+     "real",
+     "(none)",
+     1
+    ]
+   ]
+  }
+ },
+ "spark-value-mapping": {
+  "hash": "ba11474e75d3c786",
+  "columns": [
+   "user_id",
+   "country_raw",
+   "iso2"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     " india",
+     "IN"
+    ],
+    [
+     2,
+     "IN",
+     "IN"
+    ],
+    [
+     3,
+     "U.S.",
+     "US"
+    ],
+    [
+     4,
+     "Narnia",
+     "UNKNOWN"
+    ]
+   ],
+   "Empty mapping": [
+    [
+     1,
+     "x",
+     "UNKNOWN"
+    ]
+   ],
+   "Case and spaces": [
+    [
+     1,
+     "  uk ",
+     "GB"
+    ]
+   ]
+  }
+ },
+ "spark-watermark-incremental": {
+  "hash": "092633318f08b557",
+  "columns": [
+   "id",
+   "updated_at",
+   "value",
+   "new_watermark"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     "2024-01-01 09:30:00",
+     "late",
+     "2024-01-01 11:00:00"
+    ],
+    [
+     2,
+     "2024-01-01 11:00:00",
+     "new",
+     "2024-01-01 11:00:00"
+    ]
+   ],
+   "Nothing new": [],
+   "Re-run loads nothing twice": []
+  }
+ },
+ "spark-word-count": {
+  "hash": "c44c741b93486610",
+  "columns": [
+   "word",
+   "count"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "spark",
+     3
+    ],
+    [
+     "is",
+     3
+    ]
+   ],
+   "Nothing repeats": [],
+   "Punctuation and spacing": [
+    [
+     "data",
+     3
+    ]
+   ]
+  }
+ },
+ "spark-workout-span": {
+  "hash": "90c37e22ace0e6e0",
+  "columns": [
+   "member_id",
+   "first_day",
+   "last_day",
+   "span_days"
+  ],
+  "tests": {
+   "Example": [
+    [
+     1,
+     "2024-01-03",
+     "2024-03-01",
+     58
+    ]
+   ],
+   "Leap year span": [
+    [
+     3,
+     "2024-02-28",
+     "2024-03-01",
+     2
+    ]
+   ],
+   "Whole year": [
+    [
+     4,
+     "2024-01-01",
+     "2024-12-31",
+     365
+    ]
+   ]
+  }
+ },
+ "spark-yoy-growth": {
+  "hash": "5b171597c4518dc6",
+  "columns": [
+   "country",
+   "year",
+   "gdp",
+   "growth_pct",
+   "trend"
+  ],
+  "tests": {
+   "Example": [
+    [
+     "IN",
+     2021,
+     3150,
+     null,
+     "n/a"
+    ],
+    [
+     "IN",
+     2022,
+     3390,
+     7.62,
+     "growth"
+    ],
+    [
+     "IN",
+     2023,
+     3550,
+     4.72,
+     "growth"
+    ],
+    [
+     "XY",
+     2021,
+     100,
+     null,
+     "n/a"
+    ],
+    [
+     "XY",
+     2022,
+     90,
+     -10,
+     "decline"
+    ]
+   ],
+   "Gap in the years": [
+    [
+     "ZZ",
+     2019,
+     10,
+     null,
+     "n/a"
+    ],
+    [
+     "ZZ",
+     2021,
+     12,
+     null,
+     "n/a"
+    ],
+    [
+     "ZZ",
+     2022,
+     12,
+     0,
+     "flat"
+    ]
+   ],
+   "Single year": [
+    [
+     "AA",
+     2020,
+     1,
+     null,
+     "n/a"
+    ]
+   ]
+  }
+ }
+}

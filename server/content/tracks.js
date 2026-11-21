@@ -49,12 +49,25 @@ export const TRACKS = [
     ],
   },
   {
+    id: 'dsa', title: 'DSA', short: 'DSA', kind: 'editor', status: 'live', icon: 'code', course: null,
+    blurb: 'Every core algorithm pattern for coding rounds — arrays to graphs, trees, tries and DP — solved in Python and graded on hidden tests.',
+    topics: [
+      'Arrays', 'Matrices', 'Hashing', 'Prefix Sums', 'Two Pointers', 'Sliding Window', 'Sorting', 'Binary Search',
+      'Strings', 'Linked Lists', 'Recursion & Backtracking', 'Greedy', 'Intervals', 'Stacks & Queues', 'Monotonic Stack',
+      'Heaps', 'Binary Trees', 'Binary Search Trees', 'Tries', 'Graphs: Traversal', 'Graphs: Shortest Paths',
+      'Graphs: MST & Union-Find', 'Topological Sort', 'Dynamic Programming', 'Bit Manipulation', 'Math & Number Theory',
+      'Design',
+    ],
+  },
+  {
     id: 'pyspark', title: 'PySpark', short: 'PySpark', kind: 'editor', status: 'live', icon: 'spark', course: 'pyspark',
     blurb: 'DataFrame transformations, windows, joins and incremental loads — graded on output.',
     topics: [
       'DataFrame Basics', 'Column Expressions', 'Filtering', 'Aggregation', 'Joins', 'Window Functions',
-      'Deduplication', 'NULL Handling', 'Date & Time', 'Strings & Regex', 'Complex Types (Arrays / Structs)',
-      'Pivoting', 'SCD & Incremental Loads', 'Sessionization',
+      'Ranking & Top-N', 'Deduplication', 'NULL Handling', 'Date & Time', 'Strings & Regex',
+      'Complex Types (Arrays / Structs)', 'Maps & JSON', 'Pivoting', 'Set Operations', 'Spark SQL',
+      'Schema Handling', 'Data Quality', 'Gaps & Islands', 'Statistics', 'Funnels & Retention',
+      'SCD & Incremental Loads', 'Sessionization',
     ],
   },
   {

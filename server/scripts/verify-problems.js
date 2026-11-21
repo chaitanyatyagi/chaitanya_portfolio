@@ -15,6 +15,7 @@ import { loadPyodide } from 'pyodide';
 import { config, REPO_DIR } from '../src/config.js';
 import { SANDBOX_PACKAGES } from '../grader/packages.js';
 import { buildPayload } from '../../shared/grader/payload.js';
+import { engineOf } from '../../shared/grader/runtime.js';
 import { runShell } from '../../shared/grader/shell.js';
 import { Bash } from 'just-bash';
 import { PROBLEMS, RAW_PACK_PROBLEMS, CASE_STUDIES, PACK_TRACKS, goldenPath } from '../content/problems/index.js';
@@ -74,7 +75,7 @@ function audit(problem, track) {
       need(Array.isArray(t.expected) && t.expected.every((r) => r.length === problem.outputColumns.length), `test "${t.name}": expected rows must have ${problem.outputColumns?.length} columns`);
     }
   }
-  if (problem.track === 'python') {
+  if (engineOf(problem.track) === 'python') {
     need(problem.entry && problem.signature?.startsWith(`${problem.entry}(`), 'python needs entry + matching signature');
     for (const t of tests) need(Array.isArray(t.args), `test "${t.name}" needs args`);
     // A function that returns nothing must not pass: some test has to expect a value.

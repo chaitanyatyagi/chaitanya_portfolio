@@ -5,6 +5,7 @@ import { api } from '../lib/api.js';
 import { useApi, useCatalog } from '../lib/useApi.js';
 import { renderModuleHtml, LoadState } from '../learn/components.jsx';
 import { buildPayload, verdictOf } from '../../shared/grader/payload.js';
+import { engineOf } from '../../shared/grader/runtime.js';
 import { pointsFor, ordinal } from '../../shared/grader/points.js';
 import CodeEditor from './CodeEditor.jsx';
 import { prepare, runTests, subscribe, runtimeLabel } from './runner/client.js';
@@ -84,7 +85,7 @@ function CaseInput({ problem, test }) {
       </>
     );
   }
-  if (problem.track === 'python') {
+  if (engineOf(problem.track) === 'python') {
     const names = problem.signature.match(/\(([^)]*)\)/)[1].split(',').map((s) => s.split(':')[0].trim()).filter(Boolean);
     return test.args.map((arg, i) => (
       <div key={i} className="pf-io-block">
@@ -102,7 +103,7 @@ function CaseInput({ problem, test }) {
 
 function Expected({ problem, test }) {
   if (problem.track === 'shell') return <TextBlock text={test.expected} empty="(no output)" />;
-  return problem.track === 'python'
+  return engineOf(problem.track) === 'python'
     ? <ValueBlock value={test.expected} />
     : <DataTable columns={problem.outputColumns} rows={test.expected} />;
 }
@@ -681,7 +682,7 @@ export function ProblemView({ data, setData, track, contest = null }) {
   const submissionCount = submissionsList.data?.submissions.length || 0;
   const problemHref = (id) => `/practice/${problem.track}/${id}`;
 
-  const fileName = { sql: 'query.sql', python: 'solution.py', pyspark: 'job.py', pandas: 'analysis.py', shell: 'script.sh' }[problem.track];
+  const fileName = { sql: 'query.sql', python: 'solution.py', dsa: 'solution.py', pyspark: 'job.py', pandas: 'analysis.py', shell: 'script.sh' }[problem.track];
   const panels = [
     ['description', 'Brief', 'doc'],
     ...(contest ? [] : [['hints', 'Hints', 'bulb', problem.hints.length]]),
@@ -737,7 +738,7 @@ export function ProblemView({ data, setData, track, contest = null }) {
 
           <section className="pf-ws-right" style={{ '--console': dockOpen ? `${consoleH}px` : '40px' }}>
             <div className="pf-wb-toolbar">
-              <span className="pf-wb-file"><span className={`pf-wb-file-dot is-${problem.track}`} />{fileName}</span>
+              <span className="pf-wb-file"><span className={`pf-wb-file-dot is-${engineOf(problem.track)}`} />{fileName}</span>
               <span className={`pf-runtime ${runtimeDot} pf-hide-sm`} title={runtime.text}>
                 <span className="pf-runtime-dot" />{runtime.text || runtimeLabel(problem.track)}
               </span>
